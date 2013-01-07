@@ -1,0 +1,13 @@
+2013-01-07 09:08:38 Error: [MissingViewException] View file "/var/www/apps/reddevil/View/Videos/home.ctp" is missing.
+#0 /var/www/cakes/2.1.5.x/Cake/View/View.php(467): View->_getViewFileName(NULL)
+#1 /var/www/cakes/2.1.5.x/Cake/Controller/Controller.php(959): View->render(NULL, NULL)
+#2 /var/www/cakes/2.1.5.x/Cake/Routing/Dispatcher.php(110): Controller->render()
+#3 /var/www/cakes/2.1.5.x/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(VideosController), Object(CakeRequest), Object(CakeResponse))
+#4 /var/www/apps/reddevil/webroot/index.php(94): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2013-01-07 10:53:12 Error: [MissingControllerException] Controller class WebrootController could not be found.
+#0 /var/www/apps/reddevil/webroot/index.php(94): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2013-01-07 10:53:13 Error: [MissingControllerException] Controller class WebrootController could not be found.
+#0 /var/www/apps/reddevil/webroot/index.php(94): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
