@@ -178,3 +178,10 @@ html[xmlns] .clearfix {
 	border-right:solid 1px #666;
 	float:left;
 }
+.block_video .footer a.suscribe:hover {
+	background:#333 url(../img/hd.png) no-repeat right;
+}
+.block_video .footer a.private:hover,
+.block_video .footer a.num_photos:hover {
+	background:#333;
+}
