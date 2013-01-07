@@ -1,11 +1,14 @@
+<?php
+$video_url = array('controller' => 'videos', 'action' => 'view', $Video['id']);
+?>
 <div class="block_video">
 	<div class="clearfix">
 		<div class="main_photo">
-			<?php echo $this->Html->link($this->Html->image('play.png', array('alt' => '')), array(), array('escape' => false, 'class' => 'play', 'title' => 'Ver vídeo')); ?>
+			<?php echo $this->Html->link($this->Html->image('play.png', array('alt' => '')), $video_url, array('escape' => false, 'class' => 'play', 'title' => 'Ver vídeo')); ?>
 			<?php echo $this->Html->image('screenshots/1.jpg', array('class' => 'image', 'alt' => '')); ?>
 			<div class="info clearfix">
 				<div>
-					<?php echo $this->Html->link('Roccos Revenge', array(), array('class' => 'title')); ?>
+					<?php echo $this->Html->link('Roccos Revenge', $video_url, array('class' => 'title')); ?>
 				</div>
 				<div class="left">
 					<p class="grey"><strong><?php echo __('Puntuación'); ?>:</strong> * * * * *</p>
@@ -43,14 +46,14 @@
 			$images = array('screenshots/2.jpg', 'screenshots/3.jpg', 'screenshots/4.jpg');
 			shuffle($images);
 			foreach ($images as $image) {
-				echo $this->Html->link($this->Html->image($image, array('alt' => '')), array(), array('escape' => false, 'title' => 'Ver vídeo'));
+				echo $this->Html->link($this->Html->image($image, array('alt' => '')), $video_url, array('escape' => false, 'title' => 'Ver vídeo'));
 			}
 			?>
 		</div>
 	</div>
 	<div class="footer clearfix">
-		<?php echo $this->Html->link(__('Haz click aquí para suscribirte', true), array(), array('class' => 'suscribe')); ?>
-		<?php echo $this->Html->link(__('Privado', true), array(), array('class' => 'private')); ?>
-		<?php echo $this->Html->link(__('Ver fotos (32)', true), array(), array('class' => 'num_photos')); ?>
+		<?php echo $this->Html->link(__('Haz click aquí para suscribirte', true), $video_url, array('class' => 'suscribe')); ?>
+		<?php echo $this->Html->link(__('Privado', true), $video_url, array('class' => 'private')); ?>
+		<?php echo $this->Html->link(__('Ver fotos (32)', true), $video_url, array('class' => 'num_photos')); ?>
 	</div>
 </div>

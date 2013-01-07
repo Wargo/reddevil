@@ -1,3 +1,7 @@
+/*
+ * Main
+ */
+
 body {
 	margin:0;
 	background:url(../img/bg.png);
@@ -14,6 +18,11 @@ ul {
 	padding:0;
 }
 
+
+/*
+ * Generics
+ */
+
 .left {
 	float:left;
 }
@@ -27,7 +36,7 @@ ul {
 }
 
 .grey strong {
-	color:#CCC;
+	color:#BBB;
 }
 
 .clearfix:after {
@@ -50,6 +59,10 @@ html[xmlns] .clearfix {
 * html .clearfix {
 	height: 1%;
 }
+
+/*
+ * Global
+ */
 
 #header {
 	background:url(../img/bg_header.png) repeat-x;
@@ -94,6 +107,10 @@ html[xmlns] .clearfix {
 	height:70px;
 }
 
+
+/*
+ * Menu
+ */
 .menu {
 	width:984px;
 	margin:5px auto;
@@ -120,6 +137,10 @@ html[xmlns] .clearfix {
 	background:#333;
 }
 
+
+/*
+ * Blocks Home
+ */
 .block_video {
 	background:#000;
 	margin-bottom: 20px;
@@ -132,7 +153,7 @@ html[xmlns] .clearfix {
 }
 .block_video .main_photo img.image {
 	width:680px;
-	height:404px;
+	height:402px;
 }
 .block_video .main_photo a.play {
 	opacity:0.4;
@@ -154,8 +175,8 @@ html[xmlns] .clearfix {
 	margin:1px;
 }
 .block_video .info {
-	height:180px;
-	padding:10px;
+	height:160px;
+	padding:20px;
 	background:url(../img/bg_info.png) repeat-x;
 }
 .block_video .info a.title {
@@ -213,4 +234,34 @@ html[xmlns] .clearfix {
 .block_video .footer a.private:hover,
 .block_video .footer a.num_photos:hover {
 	background:#333;
+}
+
+
+/*
+ * View
+ */
+.featured {
+	height:100px;
+	background:#CCC;
+	text-align:center;
+	padding-top:100px;
+}
+.video {
+	margin:10px 0px;
+	padding:10px;
+	height:400px;
+	background:#000;
+}
+.video h1 {
+	margin:0px 0px;
+	color:#FFF;
+	font-weight:bold;
+	font-size:1.3em;
+}
+.video .player {
+	background:#CCC;
+	margin-top:10px;
+	height:220px;
+	padding-top:150px;
+	text-align:center;
 }

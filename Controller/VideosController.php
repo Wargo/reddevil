@@ -9,4 +9,16 @@ class VideosController extends AppController {
 
 	}
 
+	function view($id = null) {
+
+		if (empty($id)) {
+			return $this->redirect('/');
+		}
+
+		extract($this->Video->findById($id));
+
+		$this->set(compact('Video'));
+
+	}
+
 }
