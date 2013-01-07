@@ -154,28 +154,22 @@ html[xmlns] .clearfix {
 	margin:1px;
 }
 .block_video .info {
-	color:#FFF;
+	height:180px;
+	padding:10px;
+	background:url(../img/bg_info.png) repeat-x;
 }
-.block_video .info .title {
-	font-size:1.2em;
-	height:1em;
-	background:#FFF;
-	color:#000;
+.block_video .info a.title {
+	font-size:1.3em;
 	font-weight:bold;
-	padding:10px;
 }
-.block_video .info .title a {
-	color:#000;
-}
-.block_video .info .more_info {
-	padding:10px;
-}
-.block_video .info .more_info a {
-	text-decoration:underline;
+.block_video .info a {
 	color:#FFF;
 }
-.block_video .info .more_info .left,
-.block_video .info .more_info .right {
+.block_video .info a:hover {
+	text-decoration:underline;
+}
+.block_video .info .left,
+.block_video .info .right {
 	width:49.9%;
 }
 .block_video .footer {
