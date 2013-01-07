@@ -129,6 +129,9 @@ html[xmlns] .clearfix {
 	font-weight:bold;
 	padding:10px;
 }
+.block_video .info .title a {
+	color:#000;
+}
 .block_video .info .more_info {
 	padding:10px;
 }
@@ -139,4 +142,39 @@ html[xmlns] .clearfix {
 .block_video .info .more_info .left,
 .block_video .info .more_info .right {
 	width:49.9%;
+}
+.block_video .footer {
+	height:64px;
+	background:url(../img/bg_block_footer.png) repeat-x;
+}
+.block_video .footer a.suscribe {
+	width:500px;
+	background:url(../img/hd.png) no-repeat right;
+	display:block;
+	padding:21px 0px;
+	text-align:center;
+	color:#FFF;
+	font-size:1.3em;
+	border-right:solid 1px #666;
+	float:left;
+}
+.block_video .footer a.private {
+	width:181px;
+	display:block;
+	padding:21px 0px;
+	text-align:center;
+	color:#FFF;
+	font-size:1.3em;
+	border-right:solid 1px #666;
+	float:left;
+}
+.block_video .footer a.num_photos {
+	width:300px;
+	display:block;
+	padding:21px 0px;
+	text-align:center;
+	color:#FFF;
+	font-size:1.3em;
+	border-right:solid 1px #666;
+	float:left;
 }
