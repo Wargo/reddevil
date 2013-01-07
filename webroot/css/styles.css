@@ -107,16 +107,16 @@ html[xmlns] .clearfix {
 }
 .block_video .main_photo img {
 	width:680px;
-	height:400px;
+	height:404px;
 }
 .block_video .small_photos {
 	width:300px;
 	float:left;
-	margin:1px;
 }
 .block_video .small_photos img {
 	width:300px;
 	height:200px;
+	margin:1px;
 }
 .block_video .info {
 	color:#FFF;
