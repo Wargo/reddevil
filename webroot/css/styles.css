@@ -1,8 +1,8 @@
 body {
 	margin:0;
-	background:#EAEAEA;
 	background:url(../img/bg.png);
 	font-size:13px;
+	font-family:'Arial';
 }
 
 a {
@@ -61,10 +61,33 @@ html[xmlns] .clearfix {
 
 #content {
 	width:984px;
-	background:#F8F8F8;
+	background:#F2F2F2;
 	margin:0 auto;
 	border:solid 1px #AAA;
 	padding:10px;
+}
+
+#footer {
+	margin-top:50px;
+	text-align:center;
+}
+#footer ul {
+	border-top:solid 1px #CCC;
+	padding:10px 80px;
+	margin-top:20px;
+}
+#footer ul li {
+	display:inline;
+	float:left;
+	padding:18px 20px;
+}
+#footer ul li a {
+	color:#333;
+	font-weight:bold;
+	font-size:1.3em;
+}
+#footer ul li a:hover {
+	text-decoration:underline;
 }
 
 .bg_header {

@@ -32,8 +32,17 @@
 			<div class="bg_header"></div>
 			<?php echo $this->Session->flash(); ?>
 			<?php echo $this->fetch('content'); ?>
-		</div>
-		<div id="footer">
+			<div id="footer">
+				<?php echo $this->Html->link($this->Html->image('logo.png', array('alt' => 'logo')), '/', array('escape' => false, 'title' => __('Red Devil', true), 'class' => 'logo')); ?>
+				<ul class="clearfix">
+					<li><?php echo $this->Html->link(__('Vídeos', true), array()); ?></li>
+					<li><?php echo $this->Html->link(__('Chicas', true), array()); ?></li>
+					<li><?php echo $this->Html->link(__('Escenas', true), array()); ?></li>
+					<li><?php echo $this->Html->link(__('Zona para webmasters', true), array()); ?></li>
+					<li><?php echo $this->Html->link(__('Castings', true), array()); ?></li>
+					<li><?php echo $this->Html->link(__('Versión móvil', true), array()); ?></li>
+				</ul>
+			</div>
 		</div>
 	</div>
 	<?php echo $this->element('sql_dump'); ?>

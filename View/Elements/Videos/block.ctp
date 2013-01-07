@@ -2,7 +2,7 @@
 	<div class="clearfix">
 		<div class="main_photo">
 			<?php echo $this->Html->link($this->Html->image('play.png', array('alt' => '')), array(), array('escape' => false, 'class' => 'play', 'title' => 'Ver vídeo')); ?>
-			<?php echo $this->Html->link($this->Html->image('screenshots/1.jpg', array('class' => 'image', 'alt' => '')), array(), array('escape' => false, 'title' => 'Ver vídeo')); ?>
+			<?php echo $this->Html->image('screenshots/1.jpg', array('class' => 'image', 'alt' => '')); ?>
 			<div class="info">
 				<div class="title">
 					<?php echo $this->Html->link('Roccos Revenge', array()); ?>
