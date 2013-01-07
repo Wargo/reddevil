@@ -1,7 +1,8 @@
 <div class="block_video">
 	<div class="clearfix">
 		<div class="main_photo">
-			<?php echo $this->Html->link($this->Html->image('screenshots/1.jpg', array('alt' => '')), array(), array('escape' => false, 'title' => '')); ?>
+			<?php echo $this->Html->link($this->Html->image('play.png', array('alt' => '')), array(), array('escape' => false, 'class' => 'play', 'title' => 'Ver vídeo')); ?>
+			<?php echo $this->Html->link($this->Html->image('screenshots/1.jpg', array('class' => 'image', 'alt' => '')), array(), array('escape' => false, 'title' => 'Ver vídeo')); ?>
 			<div class="info">
 				<div class="title">
 					<?php echo $this->Html->link('Roccos Revenge', array()); ?>
@@ -44,7 +45,7 @@
 			$images = array('screenshots/2.jpg', 'screenshots/3.jpg', 'screenshots/4.jpg');
 			shuffle($images);
 			foreach ($images as $image) {
-				echo $this->Html->link($this->Html->image($image, array('alt' => '')), array(), array('escape' => false, 'title' => ''));
+				echo $this->Html->link($this->Html->image($image, array('alt' => '')), array(), array('escape' => false, 'title' => 'Ver vídeo'));
 			}
 			?>
 		</div>

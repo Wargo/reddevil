@@ -56,6 +56,7 @@ html[xmlns] .clearfix {
 	height:69px;
 	position:fixed;
 	width:100%;
+	z-index:999;
 }
 
 #content {
@@ -104,10 +105,21 @@ html[xmlns] .clearfix {
 	width:680px;
 	float:left;
 	margin:1px;
+	position:relative;
 }
-.block_video .main_photo img {
+.block_video .main_photo img.image {
 	width:680px;
 	height:404px;
+}
+.block_video .main_photo a.play {
+	opacity:0.4;
+	filter:alpha(opacity=40); /* For IE8 and earlier */
+	padding:138px 276px;
+	position:absolute;
+}
+.block_video .main_photo a.play:hover {
+	opacity:0.8;
+	filter:alpha(opacity=80); /* For IE8 and earlier */
 }
 .block_video .small_photos {
 	width:300px;
