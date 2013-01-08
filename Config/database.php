@@ -62,9 +62,9 @@ class DATABASE_CONFIG {
 	public $default = array(
 		'datasource' => 'Database/Mysql',
 		'persistent' => false,
-		'host' => 'localhost',
-		'login' => 'root',
-		'password' => 'root',
+		'host' => 'servidordeprueba.net',
+		'login' => 'reddevil',
+		'password' => 'Zs7v4eDB',
 		'database' => 'reddevil',
 		'prefix' => '',
 		'encoding' => 'utf8',
