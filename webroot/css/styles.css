@@ -253,7 +253,7 @@ html[xmlns] .clearfix {
 	bottom:0px;
 	left:0px;
 	height:30px;
-	background:#FFF;
+	background:#DDD;
 }
 .featured .buttons li {
 	float:left;
@@ -264,10 +264,12 @@ html[xmlns] .clearfix {
 	font-weight:bold;
 	font-size:1.2em;
 	display:block;
-	padding:5px 15px;
+	padding:4px 15px;
+	margin-top:3px;
 }
+.featured .buttons a.selected,
 .featured .buttons a:hover {
-	background:#DDD;
+	background:#FFF;
 }
 
 .promo {
@@ -299,7 +301,7 @@ html[xmlns] .clearfix {
 }
 
 .video {
-	margin:10px 0px;
+	margin-top:10px;
 	padding:10px;
 	height:572px;
 	background:#000;
@@ -329,4 +331,33 @@ html[xmlns] .clearfix {
 .video a.play:hover {
 	opacity:0.8;
 	filter:alpha(opacity=80); /* For IE8 and earlier */
+}
+
+.video_footer {
+	height:64px;
+	background:url(../img/bg_view_footer.png) repeat-x;
+}
+.video_footer ul li {
+	float:left;
+	display:inline;
+}
+.video_footer ul li a {
+	border-right:solid 1px #000;
+	border-left:solid 1px #000;
+	display:block;
+	padding:22px 50px;
+	margin:0px 35px;
+	color:#FFF;
+	font-size:1.2em;
+	font-weight:bold;
+	background:url(../img/bg_block_footer.png) repeat-x;
+}
+.video_footer ul li a.with_image {
+	padding:15px 40px;
+}
+.video_footer ul li a.with_image img {
+	margin-left:20px;
+}
+.video_footer ul li a:hover {
+	background:#333;
 }

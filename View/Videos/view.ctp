@@ -3,8 +3,8 @@
 		<?php echo $this->Html->link($this->Html->image('screenshots/5.jpg', array('alt' => 'Vídeo')), array(), array('escape' => false, 'class' => 'image')); ?>
 		<ul class="buttons">
 			<li><?php echo $this->Html->link(__('Ver vídeo', true), array()); ?></li>
-			<li><?php echo $this->Html->link(__('Ver trailer', true), array()); ?></li>
-			<li><?php echo $this->Html->link(__('Ver fotos (12)', true), array()); ?></li>
+			<li><?php echo $this->Html->link(__('Ver trailer', true), array(), array('class' => 'selected')); ?></li>
+			<li><?php echo $this->Html->link(sprintf(__('Ver fotos (%d)'), 12), array()); ?></li>
 		</ul>
 	</div>
 	<div class="promo">
@@ -19,4 +19,11 @@
 		<?php echo $this->Html->link($this->Html->image('play.png', array('alt' => '')), array(), array('escape' => false, 'class' => 'play', 'title' => 'Ver vídeo')); ?>
 		<?php echo $this->Html->image('screenshots/6.jpg', array('alt' => 'Vídeo', 'class' => 'preview')); ?>
 	</div>
+</div>
+<div class="video_footer">
+	<ul>
+		<li><?php echo $this->Html->link(__('Bájate el vídeo completo', true), array()); ?></li>
+		<li><?php echo $this->Html->link(__('Ver el vídeo completo', true) . $this->Html->image('mini_play.png', array('align' => 'absmiddle')), array(), array('escape' => false, 'class' => 'with_image')); ?></li>
+		<li><?php echo $this->Html->link(sprintf(__('Fotos (%d)'), 12), array()); ?></li>
+	</ul>
 </div>
