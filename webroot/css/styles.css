@@ -241,15 +241,67 @@ html[xmlns] .clearfix {
  * View
  */
 .featured {
-	height:100px;
+	height:260px;
 	background:#CCC;
 	text-align:center;
-	padding-top:100px;
+	position:relative;
+	width:750px;
+	float:left;
 }
+.featured .buttons {
+	position:absolute;
+	bottom:0px;
+	left:0px;
+	height:30px;
+	background:#FFF;
+}
+.featured .buttons li {
+	float:left;
+	display:inline;
+}
+.featured .buttons a {
+	color:#000;
+	font-weight:bold;
+	font-size:1.2em;
+	display:block;
+	padding:5px 15px;
+}
+.featured .buttons a:hover {
+	background:#DDD;
+}
+
+.promo {
+	float:right;
+	width:230px;
+	background:#000;
+	height:260px;
+}
+.promo .title {
+	color:#D67029;
+	font-weight:bold;
+	font-size:1.3em;
+	text-align:center;
+	margin-top:30px;
+}
+.promo .send {
+	color:#FFF;
+	font-weight:bold;
+	text-align:center;
+}
+.promo .image {
+	display:block;
+	text-align:center;
+	margin-top:30px;
+}
+.promo .image img {
+	width:200px;
+	height:133px;
+}
+
 .video {
 	margin:10px 0px;
 	padding:10px;
-	height:400px;
+	height:572px;
 	background:#000;
 }
 .video h1 {
@@ -261,7 +313,20 @@ html[xmlns] .clearfix {
 .video .player {
 	background:#CCC;
 	margin-top:10px;
-	height:220px;
-	padding-top:150px;
+	height:542px;
 	text-align:center;
+}
+.video .player img.preview {
+	height:542px;
+	width:964px;
+}
+.video a.play {
+	opacity:0.4;
+	filter:alpha(opacity=40); /* For IE8 and earlier */
+	padding:207px 418px;
+	position:absolute;
+}
+.video a.play:hover {
+	opacity:0.8;
+	filter:alpha(opacity=80); /* For IE8 and earlier */
 }
