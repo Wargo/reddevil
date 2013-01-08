@@ -242,7 +242,6 @@ html[xmlns] .clearfix {
  */
 .featured {
 	height:260px;
-	background:#CCC;
 	text-align:center;
 	position:relative;
 	width:750px;
@@ -303,7 +302,7 @@ html[xmlns] .clearfix {
 .video {
 	margin-top:10px;
 	padding:10px;
-	height:572px;
+	/*height:572px;*/
 	background:#000;
 }
 .video h1 {
@@ -313,9 +312,8 @@ html[xmlns] .clearfix {
 	font-size:1.3em;
 }
 .video .player {
-	background:#CCC;
 	margin-top:10px;
-	height:542px;
+	/*height:542px;*/
 	text-align:center;
 }
 .video .player img.preview {
