@@ -761,3 +761,8 @@ pre {
 	background:#FFF;
 	color:#003D4C;
 }
+
+.left {
+	float: left;
+	clear: none;
+}
