@@ -53,4 +53,50 @@ class VideosController extends AppController {
 
 	}
 
+	function admin_index() {
+		
+		$videos = $this->Video->find('all');
+
+		$this->set(compact('videos'));
+
+	}
+
+	function admin_edit($id = null) {
+
+		if ($this->request->data) {
+
+			if ($id) {
+				$this->Video->id = $id;
+			} else {
+				$this->Video->create();
+			}
+
+			$this->Video->save($this->request->data);
+
+			return $this->redirect('index');
+
+		}
+
+		if ($id) {
+
+			$this->request->data = $this->Video->findById($id);
+
+		}
+
+		$this->set(compact('id'));
+
+	}
+
+	function admin_delete($id = null) {
+
+		if ($id) {
+
+			$this->Video->delete($id);
+
+		}
+
+		return $this->redirect('index');
+
+	}
+
 }
