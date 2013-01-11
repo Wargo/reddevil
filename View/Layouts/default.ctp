@@ -13,7 +13,7 @@
 		echo $this->Html->css('styles');
 		echo $this->fetch('css');
 
-		echo $this->Html->script('js');
+		echo $this->element('js');
 		echo $this->fetch('script');
 
 		echo $this->fetch('meta');
@@ -48,6 +48,8 @@
 			</div>
 		</div>
 	</div>
-	<?php echo $this->element('sql_dump'); ?>
+	<?php 
+	 	echo $this->element('sql_dump'); 
+	?>
 </body>
 </html>
