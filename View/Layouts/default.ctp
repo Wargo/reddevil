@@ -11,6 +11,8 @@
 		echo $this->Html->meta('icon');
 
 		echo $this->Html->css('styles');
+		echo $this->Html->css('flowplayer/minimalist');
+		
 		echo $this->fetch('css');
 
 		echo $this->element('js');
