@@ -316,10 +316,11 @@ html[xmlns] .clearfix {
 	/*height:542px;*/
 	text-align:center;
 }
-.video .player img.preview {
+.video .player {
 	height:542px;
 	width:964px;
 }
+
 .video a.play {
 	opacity:0.4;
 	filter:alpha(opacity=40); /* For IE8 and earlier */
