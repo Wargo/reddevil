@@ -17,7 +17,6 @@ echo $this->Form->inputs(array(
 ));
 
 $c_fields = array('fieldset' => false);
-
 foreach ($categories as $category) {
 
 	extract($category);
@@ -35,7 +34,6 @@ foreach ($categories as $category) {
 }
 
 $a_fields = array('fieldset' => false);
-
 foreach ($actors as $actor) {
 
 	extract($actor);
