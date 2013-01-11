@@ -9,8 +9,9 @@ echo $this->Html->link(
 </div>
 <script>
 flowplayer("player", "<?php echo $this->Html->url('/flash/flowplayer/flowplayer.swf'); ?>", {
-clip: {
-autoPlay: true,
-}
+	clip: {
+		autoPlay: true,
+		scaling: 'orig'
+	}
 });
 </script>
