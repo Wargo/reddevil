@@ -46,7 +46,7 @@ h1, h2, h3, h4 {
 	margin-bottom:0.5em;
 }
 h1 {
-	background:#fff;
+	/*background:#fff;*/
 	color: #003d4c;
 	font-size: 100%;
 }
@@ -82,9 +82,9 @@ p {
 }
 #header h1 {
 	line-height:20px;
-	background: #003d4c url('../img/cake.icon.png') no-repeat left;
+	/*background: #003d4c url('../img/cake.icon.png') no-repeat left;*/
 	color: #fff;
-	padding: 0px 30px;
+	/*padding: 0px 30px;*/
 }
 #header h1 a {
 	color: #fff;
@@ -105,9 +105,10 @@ p {
 	overflow: auto;
 }
 #footer {
+	margin-top: 15px;
 	clear: both;
 	padding: 6px 10px;
-	text-align: right;
+	text-align: center;
 }
 
 /** containers **/
@@ -529,6 +530,7 @@ input[type=submit],
 	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), 0px 1px 1px rgba(0, 0, 0, 0.2);
 	-webkit-user-select: none;
 	user-select: none;
+	cursor:pointer;
 }
 .actions ul li a:hover,
 .actions a:hover {
@@ -736,4 +738,31 @@ pre {
 /** Elements **/
 #url-rewriting-warning {
 	display:none;
+}
+
+.menu {
+	margin: 20px 0 0 0;
+	padding: 0;
+}
+.menu li {
+	float: left;
+	display: inline;
+}
+.menu li a {
+	display: block;
+	padding: 5px 15px;
+	margin: 0px 5px;
+	color: #FFF;
+	font-weight: bold;
+	text-decoration: none;
+}
+.menu li a.selected,
+.menu li a:hover {
+	background:#FFF;
+	color:#003D4C;
+}
+
+.left {
+	float: left;
+	clear: none;
 }

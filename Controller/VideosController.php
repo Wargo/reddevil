@@ -15,9 +15,87 @@ class VideosController extends AppController {
 			return $this->redirect('/');
 		}
 
+		$section = 'trailer';
+
 		extract($this->Video->findById($id));
 
-		$this->set(compact('Video'));
+		$this->set(compact('Video', 'section'));
+
+		if ($this->request->is('ajax')) {
+			$this->layout = 'ajax';
+			$this->render('/Elements/Videos/player');
+		} else {
+			$this->render('view');
+		}
+
+	}
+
+	function view_photos($id = null) {
+
+		if (empty($id)) {
+			return $this->redirect('/');
+		}
+
+		$section = 'photos';
+
+		extract($this->Video->findById($id));
+
+		$photos = array(1, 2, 3, 4, 5);
+
+		$this->set(compact('Video', 'photos', 'section'));
+		
+		if ($this->request->is('ajax')) {
+			$this->layout = 'ajax';
+			$this->render('/Elements/Videos/photos');
+		} else {
+			$this->render('view');
+		}
+
+	}
+
+	function admin_index() {
+		
+		$videos = $this->Video->find('all');
+
+		$this->set(compact('videos'));
+
+	}
+
+	function admin_edit($id = null) {
+
+		if ($this->request->data) {
+
+			if ($id) {
+				$this->Video->id = $id;
+			} else {
+				$this->Video->create();
+			}
+
+			$this->Video->save($this->request->data);
+
+			return $this->redirect('index');
+
+		}
+
+		if ($id) {
+
+			$this->request->data = $this->Video->findById($id);
+
+		}
+
+		$this->set(compact('id'));
+
+	}
+
+	function admin_delete($id = null) {
+
+		if ($id) {
+
+			$this->Video->delete($id);
+
+		}
+
+		return $this->redirect('index');
 
 	}
 

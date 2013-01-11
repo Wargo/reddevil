@@ -32,4 +32,19 @@ App::uses('Controller', 'Controller');
  * @link http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
 class AppController extends Controller {
+
+	function beforeFilter() {
+		
+		if (!empty($this->params['admin'])) {
+
+			// IF user IS admin
+
+			// return $this->redirect('/');
+
+			$this->layout = 'panel';
+
+		}
+
+	}
+
 }

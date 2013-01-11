@@ -5,7 +5,7 @@ $video_url = array('controller' => 'videos', 'action' => 'view', $Video['id']);
 	<div class="clearfix">
 		<div class="main_photo">
 			<?php echo $this->Html->link($this->Html->image('play.png', array('alt' => '')), $video_url, array('escape' => false, 'class' => 'play', 'title' => 'Ver vídeo')); ?>
-			<?php echo $this->Html->image('screenshots/1.jpg', array('class' => 'image', 'alt' => '')); ?>
+			<?php echo $this->Html->image('screenshots/1,fitCrop,680,404.jpg', array('class' => 'image', 'alt' => '')); ?>
 			<div class="info clearfix">
 				<div>
 					<?php echo $this->Html->link('Roccos Revenge', $video_url, array('class' => 'title')); ?>
@@ -43,7 +43,7 @@ $video_url = array('controller' => 'videos', 'action' => 'view', $Video['id']);
 		</div>
 		<div class="small_photos">
 			<?php
-			$images = array('screenshots/2.jpg', 'screenshots/3.jpg', 'screenshots/4.jpg');
+			$images = array('screenshots/2,fitCrop,300,200.jpg', 'screenshots/3,fitCrop,300,200.jpg', 'screenshots/4,fitCrop,300,200.jpg');
 			shuffle($images);
 			foreach ($images as $image) {
 				echo $this->Html->link($this->Html->image($image, array('alt' => '')), $video_url, array('escape' => false, 'title' => 'Ver vídeo'));

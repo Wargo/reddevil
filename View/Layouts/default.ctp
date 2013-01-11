@@ -5,17 +5,18 @@
 	<title>
 		<?php echo $title_for_layout; ?>
 	</title>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script> 
 	<?php
 		echo $this->Html->meta('icon');
 
-		//echo $this->Html->css('cake.generic');
 		echo $this->Html->css('styles');
-
-		echo $this->fetch('meta');
 		echo $this->fetch('css');
 
 		echo $this->element('js');
 		echo $this->fetch('script');
+
+		echo $this->fetch('meta');
 	?>
 </head>
 <body>
