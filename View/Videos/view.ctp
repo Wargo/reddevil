@@ -1,6 +1,6 @@
 <div class="clearfix">
 	<div class="featured">
-		<?php echo $this->Html->link($this->Html->image('screenshots/5.jpg', array('alt' => 'Vídeo')), array(), array('escape' => false, 'class' => 'image')); ?>
+		<?php echo $this->Html->link($this->Html->image('screenshots/5,fitCrop,750,260.jpg', array('alt' => 'Vídeo')), array(), array('escape' => false, 'class' => 'image')); ?>
 		<a name="anchor"></a>
 		<ul class="buttons">
 			<li><?php echo $this->Html->link(__('Ver vídeo', true), array(), array('id' => 'view_video', 'class' => $section == 'video' ? 'selected' : '')); ?></li>
@@ -11,7 +11,7 @@
 	<div class="promo">
 		<p class="title"><?php echo __('¿Quieres ver este vídeo?', true); ?></p>
 		<p class="send"><?php printf(__('Envía %s al %d'), 'GATITO', 1234); ?></p>
-		<?php echo $this->Html->link($this->Html->image('screenshots/2.jpg', array('alt' => 'Vídeo')), array(), array('escape' => false, 'class' => 'image')); ?>
+		<?php echo $this->Html->link($this->Html->image('screenshots/2,fitCrop,200,133.jpg', array('alt' => 'Vídeo')), array(), array('escape' => false, 'class' => 'image')); ?>
 	</div>
 </div>
 <div class="video">
