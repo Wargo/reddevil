@@ -11,7 +11,7 @@
 	<div class="promo">
 		<p class="title"><?php echo __('¿Quieres ver este vídeo?', true); ?></p>
 		<p class="send"><?php printf(__('Envía %s al %d'), 'GATITO', 1234); ?></p>
-		<?php echo $this->Html->link($this->Html->image('screenshots/2,fitCrop,200,133.jpg', array('alt' => 'Vídeo')), array(), array('escape' => false, 'class' => 'image')); ?>
+		<?php echo $this->Html->link($this->Html->image('screenshots/8,fitCrop,200,133.jpg', array('alt' => 'Vídeo')), array(), array('escape' => false, 'class' => 'image')); ?>
 	</div>
 </div>
 <div class="video">
