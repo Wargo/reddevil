@@ -1,5 +1,5 @@
 <?php
-$video_url = array('controller' => 'videos', 'action' => 'view', $Video['id']);
+$video_url = array('controller' => 'videos', 'action' => 'view', $Video['id'], '#player');
 ?>
 <div class="block_video">
 	<div class="clearfix">
