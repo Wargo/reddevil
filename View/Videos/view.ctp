@@ -44,6 +44,14 @@
 	<?php echo $this->Html->image('screenshots/3,fitCrop,239,150.jpg', array('alt' => '')); ?>
 	<?php echo $this->Html->image('screenshots/7,fitCrop,239,150.jpg', array('alt' => '')); ?>
 </div>
+<div class="separator clearfix">
+	<div class="arrow">
+		Ver escena entera ahora
+	</div>
+	<div class="text">
+		Descarga o visualízala en alta definición
+	</div>
+</div>
 <div class="more_videos">
 	<div class="photos clearfix">
 		<div class="photo">

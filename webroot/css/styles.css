@@ -373,6 +373,32 @@ html[xmlns] .clearfix {
 	border:solid 1px #CCC;
 }
 
+.separator {
+	margin-top:20px;
+	height:52px;
+	background:#EAEAEA;
+}
+.separator .arrow {
+	background:url(../img/arrow.png) no-repeat;
+	color:#FFF;
+	font-size:1.3em;
+	padding:3px 90px 5px 10px;
+	margin:-3px;
+	font-weight:bold;
+	float:left;
+	height:52px;
+	line-height:52px;
+}
+.separator .text {
+	float:left;
+	color:#333;
+	font-size:1.3em;
+	margin-left:50px;
+	font-weight:bold;
+	height:52px;
+	line-height:52px;
+}
+
 .more_videos {
 	background:url(../img/bg_info.png) repeat-x #000;
 	/*height:380px;*/
@@ -444,3 +470,5 @@ a.more_videos_button:hover {
 .paging a.selected {
 	background:#555;
 }
+
+
