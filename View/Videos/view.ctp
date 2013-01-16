@@ -50,21 +50,21 @@
 			<?php echo $this->Html->image('screenshots/4,fitCrop,312,280.jpg', array('alt' => '')); ?>
 			<div class="info">
 				<p><strong>Ver este vídeo</strong></p>
-				<p>Haz click  para acceder al vídeo completo</p>
+				<p>Haz click para acceder al vídeo completo</p>
 			</div>
 		</div>
 		<div class="photo">
 			<?php echo $this->Html->image('screenshots/2,fitCrop,312,280.jpg', array('alt' => '')); ?>
 			<div class="info">
 				<p><strong>Ver este vídeo</strong></p>
-				<p>Haz click  para acceder al vídeo completo</p>
+				<p>Haz click para acceder al vídeo completo</p>
 			</div>
 		</div>
 		<div class="photo">
 			<?php echo $this->Html->image('screenshots/7,fitCrop,312,280.jpg', array('alt' => '')); ?>
 			<div class="info">
 				<p><strong>Ver este vídeo</strong></p>
-				<p>Haz click  para acceder al vídeo completo</p>
+				<p>Haz click para acceder al vídeo completo</p>
 			</div>
 		</div>
 	</div>
