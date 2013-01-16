@@ -1,9 +1,14 @@
 <?php
 class VideosController extends AppController {
 
-	function home() {
+	var $paginate = array();
+
+	function home($page = 1) {
 		
-		$videos = $this->Video->find('all');
+		$this->paginate['Video']['limit'] = 3;
+		$this->paginate['Video']['page'] = $page;
+
+		$videos = $this->paginate();
 
 		$this->set(compact('videos'));
 

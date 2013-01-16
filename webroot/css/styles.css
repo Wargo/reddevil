@@ -39,6 +39,10 @@ ul {
 	color:#BBB;
 }
 
+a.selected {
+	cursor:default;
+}
+
 .clearfix:after {
 	content: ".";
 	display: block;
@@ -86,12 +90,11 @@ html[xmlns] .clearfix {
 }
 #footer ul {
 	border-top:solid 1px #CCC;
-	padding:10px 80px;
+	padding:30px 0px;
 	margin-top:20px;
 }
 #footer ul li {
 	display:inline;
-	float:left;
 	padding:18px 20px;
 }
 #footer ul li a {
@@ -372,7 +375,7 @@ html[xmlns] .clearfix {
 
 .more_videos {
 	background:url(../img/bg_info.png) repeat-x #000;
-	height:380px;
+	/*height:380px;*/
 	padding:10px;
 	margin-top:30px;
 }
@@ -387,7 +390,7 @@ html[xmlns] .clearfix {
 .more_videos .photos .photo {
 	position:relative;
 	float:left;
-	margin:0px 1px;
+	margin:1px;
 }
 .more_videos .photos .photo .info {
 	position:absolute;
@@ -414,6 +417,26 @@ html[xmlns] .clearfix {
 	line-height:2.8em;
 	margin-top:10px;
 }
-.more_videos_button:hover {
+a.more_videos_button:hover {
 	background:#333;
+}
+
+
+/*
+ * Paginador
+ */
+.paging {
+	height:45px;
+	text-align:center;
+}
+.paging a {
+	background:url(../img/bg_block_footer.png) repeat-x #000;
+	display:inline-block;
+	color:#FFF;
+	padding:12px 18px;
+	margin:0 1px;
+}
+.paging a:hover,
+.paging a.selected {
+	background:#555;
 }

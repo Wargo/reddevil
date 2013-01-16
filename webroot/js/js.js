@@ -1,5 +1,9 @@
 $(document).ready(function() {
 
+	$('.selected').click(function() {
+		return false;
+	});
+
 	$('._view_trailer').click(function() {
 		$.get(this.href, function(data) {
 			$('#section').html(data);

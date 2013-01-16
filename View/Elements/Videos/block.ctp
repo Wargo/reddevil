@@ -8,7 +8,7 @@ $video_url = array('controller' => 'videos', 'action' => 'view', $Video['id'], '
 			<?php echo $this->Html->image('screenshots/1,fitCrop,680,404.jpg', array('class' => 'image', 'alt' => '')); ?>
 			<div class="info clearfix">
 				<div>
-					<?php echo $this->Html->link('Roccos Revenge', $video_url, array('class' => 'title')); ?>
+					<?php echo $this->Html->link($Video['title'], $video_url, array('class' => 'title')); ?>
 				</div>
 				<div class="left">
 					<p class="grey"><strong><?php echo __('Puntuación'); ?>:</strong> * * * * *</p>
