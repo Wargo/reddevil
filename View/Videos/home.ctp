@@ -34,9 +34,9 @@ foreach ($videos as $video) {
 			extract($video);
 			?>
 			<div class="photo">
-				<?php echo $this->Html->image('screenshots/4,fitCrop,312,280.jpg', array('alt' => '')); ?>
+				<?php echo $this->Html->link($this->Html->image('screenshots/4,fitCrop,312,280.jpg', array('alt' => '')), array('controller' => 'videos', 'action' => 'view', $Video['id']), array('escape' => false)); ?>
 				<div class="info">
-					<p><strong><?php echo $Video['title']; ?></strong></p>
+					<p><strong><?php echo $this->Html->link($Video['title'], array('controller' => 'videos', 'action' => 'view', $Video['id'])); ?></strong></p>
 					<p>Haz click  para acceder al vídeo completo</p>
 				</div>
 			</div>

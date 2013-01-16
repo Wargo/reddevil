@@ -404,6 +404,10 @@ html[xmlns] .clearfix {
 	margin:5px 5px;
 	color:white;
 }
+.more_videos .photos .photo .info a {
+	font-size:1.2em;
+	color:white;
+}
 
 .more_videos_button {
 	display:block;
