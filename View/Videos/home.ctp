@@ -35,9 +35,15 @@ if (count($more_videos)) {
 			<?php
 			foreach ($more_videos as $video) {
 				extract($video);
+				$more_photos = array(
+					$this->Html->url('/img/screenshots/1,fitCrop,312,280.jpg'),
+					$this->Html->url('/img/screenshots/2,fitCrop,312,280.jpg'),
+					$this->Html->url('/img/screenshots/3,fitCrop,312,280.jpg'),
+					$this->Html->url('/img/screenshots/4,fitCrop,312,280.jpg')
+				);
 				?>
 				<div class="photo">
-					<?php echo $this->Html->link($this->Html->image('screenshots/4,fitCrop,312,280.jpg', array('alt' => '')), array('controller' => 'videos', 'action' => 'view', $Video['id']), array('escape' => false)); ?>
+					<?php echo $this->Html->link($this->Html->image('screenshots/4,fitCrop,312,280.jpg', array('var' => "['" . implode("','", $more_photos) . "']", 'alt' => '', 'class' => '_rotate_photos')), array('controller' => 'videos', 'action' => 'view', $Video['id']), array('escape' => false)); ?>
 					<div class="info">
 						<p><strong><?php echo $this->Html->link($Video['title'], array('controller' => 'videos', 'action' => 'view', $Video['id'])); ?></strong></p>
 						<p>Haz click para acceder al vídeo completo</p>

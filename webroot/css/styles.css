@@ -374,7 +374,7 @@ html[xmlns] .clearfix {
 }
 
 .separator {
-	margin-top:20px;
+	margin:20px -10px 20px -12px;
 	height:52px;
 	background:#EAEAEA;
 }
