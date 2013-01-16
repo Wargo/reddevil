@@ -35,6 +35,27 @@ class VideosController extends AppController {
 
 	}
 
+	function view_video($id = null) {
+
+		if (empty($id)) {
+			return $this->redirect('/');
+		}
+
+		$section = 'video';
+
+		extract($this->Video->findById($id));
+
+		$this->set(compact('Video', 'section'));
+
+		if ($this->request->is('ajax')) {
+			$this->layout = 'ajax';
+			$this->render('/Elements/Videos/video');
+		} else {
+			$this->render('view');
+		}
+
+	}
+
 	function view_photos($id = null) {
 
 		if (empty($id)) {
