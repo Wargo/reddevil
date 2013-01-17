@@ -7,6 +7,8 @@ $(document).ready(function() {
 	$('._view_video').click(function() {
 		$.get(this.href, function(data) {
 			$('#section').html(data);
+			refresh($('#remaining').html());
+			isCalling();
 		});
 		$('#view_video').addClass('selected');
 		$('#view_trailer').removeClass('selected');
@@ -62,5 +64,42 @@ $(document).ready(function() {
 		}
 
 	});
+
+	if ($('#remaining').html()) {
+		refresh($('#remaining').html());
+		isCalling();
+	}
+
+	function refresh(timeleft) {
+
+		$('#remaining').html(timeleft);
+
+		if (timeleft >= 0) {
+
+			timeleft --;
+
+			setTimeout(function(){
+				refresh(timeleft);
+			}, 1000);
+
+		} else {
+
+			$('.pay').html('Se acabó el tiempo');
+
+		}
+
+	}
+
+	function isCalling() {
+
+		$.get('/videos/check', function(data) {
+
+			setTimeout(function(){
+				isCalling();
+			}, 1000);
+
+		});
+
+	}
 
 });

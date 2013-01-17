@@ -41,11 +41,20 @@ class VideosController extends AppController {
 			return $this->redirect('/');
 		}
 
+		$user = 'xxx';
+
+		$ch = curl_init('http://flashaccess.micropagos.net/c2enopin/servlet/RequestListener?cid=' . Configure::read('CID_803') . '&uid=' . $user . '&pool=' . Configure::read('pool_803') . '&control=' . Configure::read('pass_803'));
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		$phone = curl_exec($ch);
+
+		$this->Session->write('phone', $phone);
+		$this->Session->write('user', $user);
+
 		$section = 'video';
 
 		extract($this->Video->findById($id));
 
-		$this->set(compact('Video', 'section'));
+		$this->set(compact('Video', 'section', 'user', 'phone'));
 
 		if ($this->request->is('ajax')) {
 			$this->layout = 'ajax';
@@ -123,6 +132,14 @@ class VideosController extends AppController {
 
 		return $this->redirect('index');
 
+	}
+
+	function check() {
+		$ch = curl_init('http://flashaccess.micropagos.net/c2enopin/servlet/Control?cid=' . Configure::read('CID_803') . '&uid=' . $this->Session->read('user') . '&service=' . $this->Session->read('phone'));
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		echo $result = curl_exec($ch);
+
+		$this->autoRender = false;
 	}
 
 }

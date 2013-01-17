@@ -472,3 +472,10 @@ a.more_videos_button:hover {
 }
 
 
+/*
+ * Ask for call
+ */
+.pay {
+	color:#FFF;
+	text-align:center;
+}
