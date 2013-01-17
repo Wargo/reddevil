@@ -41,7 +41,7 @@ class VideosController extends AppController {
 			return $this->redirect('/');
 		}
 
-		$user = 'xxx';
+		$user = mt_rand(1000, 9999);
 
 		$ch = curl_init('http://flashaccess.micropagos.net/c2enopin/servlet/RequestListener?cid=' . Configure::read('CID_803') . '&uid=' . $user . '&pool=' . Configure::read('pool_803') . '&control=' . Configure::read('pass_803'));
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
