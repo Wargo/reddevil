@@ -131,3 +131,16 @@ CakePlugin::loadAll();
  * CakePlugin::load('DebugKit'); //Loads a single plugin named DebugKit
  *
  */
+
+// 803
+/*
+Configure::write('CID', 'FA_7509_01_001');
+Configure::write('pass', 'gr5p4pr3x1');
+Configure::write('pool', 1);
+*/
+
+
+// 905
+Configure::write('CID', 'FA_7509_900_001');
+Configure::write('pass', 'c1b4n4v1l');
+Configure::write('pool', 900);

@@ -5,8 +5,25 @@ $(document).ready(function() {
 	});
 
 	$('._view_video').click(function() {
+		if ($(this).hasClass('selected')) {
+			return false;
+		}
 		$.get(this.href, function(data) {
 			$('#section').html(data);
+			$('#dialog-message').dialog({
+				width: 630,
+				height: 230,
+				modal: true,
+				buttons: {
+					Ok: function() {
+						$(this).dialog('close');
+					}
+				}
+			});
+			setTimeout(function() {
+				refresh($('#remaining').html());
+				isCalling();
+			}, 1000);
 		});
 		$('#view_video').addClass('selected');
 		$('#view_trailer').removeClass('selected');
@@ -15,6 +32,9 @@ $(document).ready(function() {
 	});
 
 	$('._view_trailer').click(function() {
+		if ($(this).hasClass('selected')) {
+			return false;
+		}
 		$.get(this.href, function(data) {
 			$('#section').html(data);
 		});
@@ -25,6 +45,9 @@ $(document).ready(function() {
 	});
 
 	$('._view_photos').click(function() {
+		if ($(this).hasClass('selected')) {
+			return false;
+		}
 		$.get(this.href, function(data) {
 			$('#section').html(data);
 		});
@@ -62,5 +85,70 @@ $(document).ready(function() {
 		}
 
 	});
+
+	if ($('#remaining').html()) {
+		$('#dialog-message').dialog({
+			width: 630,
+			height: 230,
+			modal: true,
+			buttons: {
+				Ok: function() {
+					$(this).dialog('close');
+				}
+			}
+		});
+		setTimeout(function() {
+			refresh($('#remaining').html());
+			isCalling();
+		}, 1000);
+	}
+
+	function refresh(timeleft) {
+
+		if (parseInt($('#phone').html())) {
+
+			$('#remaining').html(timeleft);
+
+			if (timeleft >= 0) {
+
+				timeleft --;
+
+				setTimeout(function(){
+					refresh(timeleft);
+				}, 1000);
+
+			} else {
+
+				$('.pay').html('Se acabó el tiempo');
+
+				setTimeout(function() {
+					$('#dialog-message').dialog('close');
+				}, 2000);
+
+			}
+
+		} else {
+
+			$('.pay').html('Ha ocurrido un error: "' + $('#phone').html() + '"');
+
+		}
+
+	}
+
+	function isCalling() {
+
+		if (parseInt($('#phone').html())) {
+
+			$.get('/videos/check', function(data) {
+
+				setTimeout(function(){
+					isCalling();
+				}, 1000);
+
+			});
+
+		}
+
+	}
 
 });
