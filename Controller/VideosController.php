@@ -131,16 +131,43 @@ class VideosController extends AppController {
 
 	}
 
-	function admin_delete($id = null) {
-
+	public function admin_delete($id = null) {
 		if ($id) {
-
 			$this->Video->delete($id);
-
 		}
-
 		return $this->redirect('index');
 
+	}
+
+
+	public function admin_add_file() {
+		if (!empty($this->request->data)) {
+				$file = $this->request->data['Video']['file'];
+			if ($this->request->data['Video']['video_type'] == 0) {
+				//Añadir como nuevo video	
+				$this->Video->create();
+				$this->Video->save(array('title' => $file));
+				$id = $this->Video->id;	
+			} else {
+				$id = $this->request->data['Video']['id'];
+			}
+			$orig = APP . 'raw' . DS . $file;
+			$movie = new ffmpeg_movie($orig);
+			if ($this->request->data['Video']['mode'] == 'trailer') {
+				$dest = APP . 'uploads' . DS . 'Trailer' . DS . $id;
+				$data = array('has_trailer' => 1, 'trailer_duration' => $movie->getDuration());
+			} else {
+				$dest = APP . 'uploads' . DS . 'Video' . DS . $id;
+				$data = array('has_video' => 1, 'duration' => $movie->getDuration());
+			}
+			exec("mv $orig $dest");			
+			$this->Video->id = $id;
+			$this->Video->save($data);
+			$this->redirect(array('controller' => 'videos', 'action' => 'edit', $id));
+		}
+		$videos = $this->Video->find('list');
+		$this->set(compact('videos'));
+		$this->set($this->params['named']);
 	}
 
 	function check() {

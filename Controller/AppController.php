@@ -33,6 +33,8 @@ App::uses('Controller', 'Controller');
  */
 class AppController extends Controller {
 
+	public $helpers = array('Html', 'Form', 'Session',  'Funciones');
+
 	function beforeFilter() {
 		
 		if (!empty($this->params['admin'])) {
