@@ -1,10 +1,8 @@
 subir
 tmp
 uploads
-<<<<<<< HEAD
 
 *.swp
-=======
+
 Plugin
 webroot/img/screenshots
->>>>>>> ac4cf2ec9abe0eec3d8facc7b1f45140c89db893
