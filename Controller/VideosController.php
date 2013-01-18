@@ -43,7 +43,8 @@ class VideosController extends AppController {
 
 		$user = mt_rand(1000, 9999);
 
-		$ch = curl_init('http://flashaccess.micropagos.net/c2enopin/servlet/RequestListener?cid=' . Configure::read('CID_803') . '&uid=' . $user . '&pool=' . Configure::read('pool_803') . '&control=' . Configure::read('pass_803'));
+		//$ch = curl_init('http://flashaccess.micropagos.net/c2enopin/servlet/RequestListener?cid=' . Configure::read('CID') . '&uid=' . $user . '&pool=' . Configure::read('pool') . '&control=' . Configure::read('pass'));
+		$ch = curl_init('http://flashaccess2008.micropagos.net:8080/c2enopin/servlet/RequestListener?cid=' . Configure::read('CID') . '&uid=' . $user . '&pool=' . Configure::read('pool') . '&control=' . Configure::read('pass'));
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 		$phone = curl_exec($ch);
 
@@ -135,9 +136,11 @@ class VideosController extends AppController {
 	}
 
 	function check() {
-		$ch = curl_init('http://flashaccess.micropagos.net/c2enopin/servlet/Control?cid=' . Configure::read('CID_803') . '&uid=' . $this->Session->read('user') . '&service=' . $this->Session->read('phone'));
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-		echo $result = curl_exec($ch);
+		if (is_int($this->Session->read('phone'))) {
+			$ch = curl_init('http://flashaccess.micropagos.net/c2enopin/servlet/Control?cid=' . Configure::read('CID') . '&uid=' . $this->Session->read('user') . '&service=' . $this->Session->read('phone'));
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+			echo $result = curl_exec($ch);
+		}
 
 		$this->autoRender = false;
 	}

@@ -5,10 +5,25 @@ $(document).ready(function() {
 	});
 
 	$('._view_video').click(function() {
+		if ($(this).hasClass('selected')) {
+			return false;
+		}
 		$.get(this.href, function(data) {
 			$('#section').html(data);
-			refresh($('#remaining').html());
-			isCalling();
+			$('#dialog-message').dialog({
+				width: 630,
+				height: 230,
+				modal: true,
+				buttons: {
+					Ok: function() {
+						$(this).dialog('close');
+					}
+				}
+			});
+			setTimeout(function() {
+				refresh($('#remaining').html());
+				isCalling();
+			}, 1000);
 		});
 		$('#view_video').addClass('selected');
 		$('#view_trailer').removeClass('selected');
@@ -17,6 +32,9 @@ $(document).ready(function() {
 	});
 
 	$('._view_trailer').click(function() {
+		if ($(this).hasClass('selected')) {
+			return false;
+		}
 		$.get(this.href, function(data) {
 			$('#section').html(data);
 		});
@@ -27,6 +45,9 @@ $(document).ready(function() {
 	});
 
 	$('._view_photos').click(function() {
+		if ($(this).hasClass('selected')) {
+			return false;
+		}
 		$.get(this.href, function(data) {
 			$('#section').html(data);
 		});
@@ -66,25 +87,49 @@ $(document).ready(function() {
 	});
 
 	if ($('#remaining').html()) {
-		refresh($('#remaining').html());
-		isCalling();
+		$('#dialog-message').dialog({
+			width: 630,
+			height: 230,
+			modal: true,
+			buttons: {
+				Ok: function() {
+					$(this).dialog('close');
+				}
+			}
+		});
+		setTimeout(function() {
+			refresh($('#remaining').html());
+			isCalling();
+		}, 1000);
 	}
 
 	function refresh(timeleft) {
 
-		$('#remaining').html(timeleft);
+		if (parseInt($('#phone').html())) {
 
-		if (timeleft >= 0) {
+			$('#remaining').html(timeleft);
 
-			timeleft --;
+			if (timeleft >= 0) {
 
-			setTimeout(function(){
-				refresh(timeleft);
-			}, 1000);
+				timeleft --;
+
+				setTimeout(function(){
+					refresh(timeleft);
+				}, 1000);
+
+			} else {
+
+				$('.pay').html('Se acabó el tiempo');
+
+				setTimeout(function() {
+					$('#dialog-message').dialog('close');
+				}, 2000);
+
+			}
 
 		} else {
 
-			$('.pay').html('Se acabó el tiempo');
+			$('.pay').html('Ha ocurrido un error: "' + $('#phone').html() + '"');
 
 		}
 
@@ -92,13 +137,17 @@ $(document).ready(function() {
 
 	function isCalling() {
 
-		$.get('/videos/check', function(data) {
+		if (parseInt($('#phone').html())) {
 
-			setTimeout(function(){
-				isCalling();
-			}, 1000);
+			$.get('/videos/check', function(data) {
 
-		});
+				setTimeout(function(){
+					isCalling();
+				}, 1000);
+
+			});
+
+		}
 
 	}
 

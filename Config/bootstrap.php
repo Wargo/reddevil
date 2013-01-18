@@ -132,10 +132,15 @@ CakePlugin::loadAll();
  *
  */
 
-Configure::write('CID_803', 'FA_7509_01_001');
-Configure::write('pass_803', 'gr5p4pr3x1');
-Configure::write('pool_803', 1);
+// 803
+/*
+Configure::write('CID', 'FA_7509_01_001');
+Configure::write('pass', 'gr5p4pr3x1');
+Configure::write('pool', 1);
+*/
 
-Configure::write('CID_905', 'FA_7509_900_001');
-Configure::write('pass_905', 'c1b4n4v1l');
-Configure::write('pool_905', 900);
+
+// 905
+Configure::write('CID', 'FA_7509_900_001');
+Configure::write('pass', 'c1b4n4v1l');
+Configure::write('pool', 900);
