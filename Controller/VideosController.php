@@ -43,19 +43,27 @@ class VideosController extends AppController {
 
 		$user = mt_rand(1000, 9999);
 
-		//$ch = curl_init('http://flashaccess.micropagos.net/c2enopin/servlet/RequestListener?cid=' . Configure::read('CID') . '&uid=' . $user . '&pool=' . Configure::read('pool') . '&control=' . Configure::read('pass'));
 		$ch = curl_init('http://flashaccess2008.micropagos.net:8080/c2enopin/servlet/RequestListener?cid=' . Configure::read('CID') . '&uid=' . $user . '&pool=' . Configure::read('pool') . '&control=' . Configure::read('pass'));
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 		$phone = curl_exec($ch);
 
+		$ch = curl_init('http://213.27.137.219:8080/SMSGateway/SmsGateway2FlashIn?cid=' . Configure::read('CID_m') . '&uid=' . $user . '&pool=' . Configure::read('pool_m') . '&control=' . Configure::read('pass_m') . '&peticion=SI');
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		$mobile = curl_exec($ch);
+		$mobile = explode('<SEPARATOR>', $mobile);
+		$text = $mobile[0];
+		$sms = str_replace('<SENDER>', '', $mobile[1]);
+
 		$this->Session->write('phone', $phone);
+		$this->Session->write('text', $text);
+		$this->Session->write('sms', $sms);
 		$this->Session->write('user', $user);
 
 		$section = 'video';
 
 		extract($this->Video->findById($id));
 
-		$this->set(compact('Video', 'section', 'user', 'phone'));
+		$this->set(compact('Video', 'section', 'user', 'phone', 'text', 'sms'));
 
 		if ($this->request->is('ajax')) {
 			$this->layout = 'ajax';
@@ -136,7 +144,9 @@ class VideosController extends AppController {
 	}
 
 	function check() {
-		if (is_int($this->Session->read('phone'))) {
+
+		if (is_numeric($this->Session->read('phone'))) {
+			//$ch = curl_init('http://flashaccess2008.micropagos.net:8080/c2enopin/servlet/Control?cid=' . Configure::read('CID') . '&uid=' . $this->Session->read('user') . '&pool=' . Configure::read('pool') . '&service=' . Configure::read('phone'));
 			$ch = curl_init('http://flashaccess.micropagos.net/c2enopin/servlet/Control?cid=' . Configure::read('CID') . '&uid=' . $this->Session->read('user') . '&service=' . $this->Session->read('phone'));
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 			echo $result = curl_exec($ch);

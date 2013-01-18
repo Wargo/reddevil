@@ -10,20 +10,7 @@ $(document).ready(function() {
 		}
 		$.get(this.href, function(data) {
 			$('#section').html(data);
-			$('#dialog-message').dialog({
-				width: 630,
-				height: 230,
-				modal: true,
-				buttons: {
-					Ok: function() {
-						$(this).dialog('close');
-					}
-				}
-			});
-			setTimeout(function() {
-				refresh($('#remaining').html());
-				isCalling();
-			}, 1000);
+			load_popup();
 		});
 		$('#view_video').addClass('selected');
 		$('#view_trailer').removeClass('selected');
@@ -86,28 +73,35 @@ $(document).ready(function() {
 
 	});
 
-	if ($('#remaining').html()) {
-		$('#dialog-message').dialog({
-			width: 630,
-			height: 230,
-			modal: true,
-			buttons: {
-				Ok: function() {
-					$(this).dialog('close');
-				}
-			}
-		});
+	if ($('.remaining').html()) {
+		load_popup();
+	}
+
+	function load_popup() {
+		$.scrollTo('#buttons', 200, {offset:{top:-100}});
 		setTimeout(function() {
-			refresh($('#remaining').html());
-			isCalling();
-		}, 1000);
+			$('#dialog-message').dialog({
+				width: 630,
+				height: 360,
+				modal: true,
+				buttons: {
+					Ok: function() {
+						$(this).dialog('close');
+					}
+				}
+			});
+			setTimeout(function() {
+				refresh($('.remaining').html());
+				isCalling();
+			}, 1000);
+		}, 500);
 	}
 
 	function refresh(timeleft) {
 
 		if (parseInt($('#phone').html())) {
 
-			$('#remaining').html(timeleft);
+			$('.remaining').html(timeleft);
 
 			if (timeleft >= 0) {
 
@@ -140,6 +134,8 @@ $(document).ready(function() {
 		if (parseInt($('#phone').html())) {
 
 			$.get('/videos/check', function(data) {
+
+				$('#isCalling').html(data);
 
 				setTimeout(function(){
 					isCalling();
