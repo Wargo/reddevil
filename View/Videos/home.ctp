@@ -9,7 +9,6 @@ foreach ($videos as $video) {
 ?>
 <div class="paging clearfix">
 	<?php
-	$page = $this->Paginator->params['paging']['Video']['page'];
 	if ($this->Paginator->params['paging']['Video']['prevPage']) {
 		echo $this->Html->link(__('Anterior', true), array('controller' => 'videos', 'action' => 'home', $page - 1));
 	} else {
@@ -26,7 +25,7 @@ foreach ($videos as $video) {
 	?>
 </div>
 <?php
-$more_videos = ClassRegistry::init('Video')->findMore($page);
+$more_videos = ClassRegistry::init('Video')->findMore($page, $conditions);
 if (count($more_videos)) {
 	?>
 	<div class="more_videos">

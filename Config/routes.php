@@ -32,6 +32,9 @@
  */
 	Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));
 
+
+	Router::connect('/admin', array('admin' => true, 'controller' => 'videos', 'action' => 'index'));
+
 /**
  * Connect media types to media plugin
  */

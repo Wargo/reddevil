@@ -78,7 +78,9 @@ $(document).ready(function() {
 	}
 
 	function load_popup() {
+		$('.remaining').html('90');
 		$.scrollTo('#buttons', 200, {offset:{top:-100}});
+		stop_refreshing = false;
 		setTimeout(function() {
 			$('#dialog-message').dialog({
 				width: 630,
@@ -88,6 +90,9 @@ $(document).ready(function() {
 					Ok: function() {
 						$(this).dialog('close');
 					}
+				},
+				close: function() {
+					stop_refreshing = true;
 				}
 			});
 			setTimeout(function() {
@@ -97,7 +102,13 @@ $(document).ready(function() {
 		}, 500);
 	}
 
+	stop_refreshing = false;
+
 	function refresh(timeleft) {
+
+		if (stop_refreshing) {
+			return;
+		}
 
 		if (parseInt($('#phone').html())) {
 
@@ -114,6 +125,7 @@ $(document).ready(function() {
 			} else {
 
 				$('.pay').html('Se acabó el tiempo');
+				$('.sms').html('Se acabó el tiempo');
 
 				setTimeout(function() {
 					$('#dialog-message').dialog('close');
@@ -124,6 +136,7 @@ $(document).ready(function() {
 		} else {
 
 			$('.pay').html('Ha ocurrido un error: "' + $('#phone').html() + '"');
+			$('.sms').html('Ha ocurrido un error: "' + $('#phone').html() + '"');
 
 		}
 
@@ -131,17 +144,28 @@ $(document).ready(function() {
 
 	function isCalling() {
 
+		if (stop_refreshing) {
+			return;
+		}
+
 		if (parseInt($('#phone').html())) {
 
-			$.get('/videos/check', function(data) {
+			$.get('/videos/check_phone', function(data) {
 
-				$('#isCalling').html(data);
-
-				setTimeout(function(){
-					isCalling();
-				}, 1000);
+				$('#isCalling_phone').html(data);
 
 			});
+
+			$.get('/videos/check_sms', function(data) {
+
+				$('#isCalling_sms').html(data);
+
+			});
+
+			setTimeout(function(){
+				isCalling();
+			}, 1000);
+
 
 		}
 

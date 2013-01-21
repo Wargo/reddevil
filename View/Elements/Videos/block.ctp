@@ -1,5 +1,7 @@
 <?php
 $video_url = array('controller' => 'videos', 'action' => 'view', $Video['id']);
+$categories = ClassRegistry::init('VideoRelationship')->getCategories($Video['id']);
+$actors = ClassRegistry::init('VideoRelationship')->getActors($Video['id']);
 ?>
 <div class="block_video">
 	<div class="clearfix">
@@ -19,10 +21,9 @@ $video_url = array('controller' => 'videos', 'action' => 'view', $Video['id']);
 					<p class="grey">
 						<strong><?php echo __('Actores'); ?>:</strong>
 						<?php
-						$actors = array('Rocco Siffredi', 'Mona Lee', 'Valentina Nappi', 'El osito de Mimosín');
 						$links = array();
-						foreach ($actors as $actor) {
-							$links[] = $this->Html->link($actor, array());
+						foreach ($actors as $actor_id => $actor_name) {
+							$links[] = $this->Html->link($actor_name, array('controller' => 'videos', 'action' => 'home', $page, 'actor' => $actor_id));
 						}
 						echo implode(', ', $links);
 						?>
@@ -30,10 +31,9 @@ $video_url = array('controller' => 'videos', 'action' => 'view', $Video['id']);
 					<p class="grey">
 						<strong><?php echo __('Categorías'); ?>:</strong>
 						<?php
-						$actors = array('Actorporno', 'Sexo duro', 'Tetas grandes', 'Anal', 'En la cara');
 						$links = array();
-						foreach ($actors as $actor) {
-							$links[] = $this->Html->link($actor, array());
+						foreach ($categories as $category_id => $category_name) {
+							$links[] = $this->Html->link($category_name, array('controller' => 'videos', 'action' => 'home', $page, 'category' => $category_id));
 						}
 						echo implode(', ', $links);
 						?>
