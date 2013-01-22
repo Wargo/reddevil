@@ -12,10 +12,13 @@ $id = $data['Video']['id'];
 <label><?php echo __('Formatos disponibles: %s', explode(', ', $formats['Trailer'])); ?></label>
 <?php endif; ?>
 <br/>
-<?php for ($i = 1; $i<=6; $i++) {
+<?php
+
+for ($i = 1; $i<=6; $i++) {
 	echo $this->Html->image('Trailer/' . $id . '-' . $i . ',fitCrop,300,200.jpg');
 } 
 echo '<br/>';
+
 
 $conversion = ClassRegistry::init('Conversion')->find('first', array('conditions' => array('model' => 'Trailer', 'foreign_id' => $id)));
 if ($conversion) {
