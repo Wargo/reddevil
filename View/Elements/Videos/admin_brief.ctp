@@ -13,12 +13,12 @@ $id = $data['Video']['id'];
 <?php endif; ?>
 <br/>
 <?php
-/* Screenshots desactivados
+
 for ($i = 1; $i<=6; $i++) {
 	echo $this->Html->image('Trailer/' . $id . '-' . $i . ',fitCrop,300,200.jpg');
 } 
 echo '<br/>';
-*/
+
 
 $conversion = ClassRegistry::init('Conversion')->find('first', array('conditions' => array('model' => 'Trailer', 'foreign_id' => $id)));
 if ($conversion) {

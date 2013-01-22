@@ -218,7 +218,7 @@ class VideosController extends AppController {
 				$dest = APP . 'uploads' . DS . 'Video' . DS . $id;
 				$data = array('has_video' => 1, 'duration' => $movie->getDuration());
 			}
-			/* Screenshots desactivados
+
 			$duration = $movie->getDuration();
 			$framerate = $movie->getFrameRate();
 			$step = round (($duration*$framerate)/7);
@@ -228,7 +228,7 @@ class VideosController extends AppController {
 				$image = $frame->toGDImage();
 				imagejpeg($image, APP . 'uploads' . DS . 'img' . DS . 'Trailer' . DS . $id . '-' . $i . '.jpg');		
 			}
-			*/
+
 			exec("mv $orig $dest");
 			$this->Video->id = $id;
 			$this->Video->save($data);
