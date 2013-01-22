@@ -19,7 +19,7 @@ if ($this->request->data['Video']['has_trailer']) {
 }
 
 if ($this->request->data['Video']['has_video']) {	
-	echo $this->element('Video/admin_brief', array('mode' => 'trailer', 'data' => $this->request->data));
+	echo $this->element('Videos/admin_brief', array('mode' => 'video', 'data' => $this->request->data));
 }
 
 echo $this->Form->end(__('Guardar', true));

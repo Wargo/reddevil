@@ -128,9 +128,7 @@ class VideosController extends AppController {
 			$this->Video->delete($id);
 		}
 		return $this->redirect('index');
-
 	}
-
 
 	public function admin_add_file() {
 		if (!empty($this->request->data)) {
@@ -145,6 +143,7 @@ class VideosController extends AppController {
 			}
 			$orig = APP . 'raw' . DS . $file;
 			$movie = new ffmpeg_movie($orig);
+
 			if ($this->request->data['Video']['mode'] == 'trailer') {
 				$dest = APP . 'uploads' . DS . 'Trailer' . DS . $id;
 				$data = array('has_trailer' => 1, 'trailer_duration' => $movie->getDuration());
@@ -152,7 +151,16 @@ class VideosController extends AppController {
 				$dest = APP . 'uploads' . DS . 'Video' . DS . $id;
 				$data = array('has_video' => 1, 'duration' => $movie->getDuration());
 			}
-			exec("mv $orig $dest");			
+			$duration = $movie->getDuration();
+			$framerate = $movie->getFrameRate();
+			$step = round (($duration*$framerate)/7);
+			for ($i = 1; $i <= 6; $i ++) {
+				$frame = $i * $step;
+				$frame = $movie->getFrame($frame);
+				$image = $frame->toGDImage();
+				imagejpeg($image, APP . 'uploads' . DS . 'img' . DS . 'Trailer' . DS . $id . '-' . $i . '.jpg');		
+			}
+			exec("mv $orig $dest");
 			$this->Video->id = $id;
 			$this->Video->save($data);
 			$this->redirect(array('controller' => 'videos', 'action' => 'edit', $id));
