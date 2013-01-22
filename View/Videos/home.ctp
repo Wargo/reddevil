@@ -9,6 +9,7 @@ foreach ($videos as $video) {
 ?>
 <div class="paging clearfix">
 	<?php
+	$key = $value = null;
 	foreach ($this->params['named'] as $key => $value) {
 	}
 	if ($this->Paginator->params['paging']['Video']['prevPage']) {

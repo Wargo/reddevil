@@ -47,6 +47,10 @@ a.selected {
 	cursor:default;
 }
 
+input[type="submit"] {
+	cursor:pointer;
+}
+
 .clearfix:after {
 	content: ".";
 	display: block;
@@ -496,4 +500,12 @@ a.more_videos_button:hover {
 .sms .info_text,
 .pay .info_text {
 	font-size:0.7em;
+}
+
+
+/*
+ * pages
+ */
+.page_content {
+	padding:0px 15px;
 }

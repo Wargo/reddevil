@@ -13,6 +13,7 @@
 		echo $this->Html->meta('icon');
 
 		echo $this->Html->css('styles');
+		echo $this->Html->css('forms');
 		echo $this->Html->css('flowplayer/minimalist');
 		
 		echo $this->fetch('css');
@@ -44,9 +45,8 @@
 				<ul class="clearfix">
 					<li><?php echo $this->Html->link(__('Vídeos', true), array()); ?></li>
 					<li><?php echo $this->Html->link(__('Chicas', true), array()); ?></li>
-					<li><?php echo $this->Html->link(__('Escenas', true), array()); ?></li>
 					<li><?php echo $this->Html->link(__('Zona para webmasters', true), array()); ?></li>
-					<li><?php echo $this->Html->link(__('Castings', true), array()); ?></li>
+					<li><?php echo $this->Html->link(__('Castings', true), array('controller' => 'pages', 'action' => 'display', 'wannabe')); ?></li>
 					<li><?php echo $this->Html->link(__('Versión móvil', true), array()); ?></li>
 				</ul>
 			</div>
