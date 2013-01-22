@@ -44,7 +44,7 @@ class AppHelper extends Helper {
 			}
 		} else {
 			foreach ($this->models as $model) {
-				if (strpos($path, $model) === 0) {
+				if (strpos($path, $model) === 0) { // TODO || strpos($path, DS . 'img' . DS . $model) === 0) {
 					$aux = explode('-', $path);
 					if (!empty($aux[1])) {
 						$aux = substr($aux[1], 0, 3);
