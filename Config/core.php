@@ -276,3 +276,7 @@ Cache::config('_cake_model_', array(
 	'serialize' => ($engine === 'File'),
 	'duration' => $duration
 ));
+
+if ($_SERVER['SERVER_ADDR'] != '127.0.0.1') {
+	Configure::write('Mime.magic', array('db' => '/usr/share/file/magic'));
+}

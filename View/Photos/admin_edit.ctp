@@ -16,7 +16,8 @@ echo $this->Form->inputs(array(
 	),
 	'file' => array(
 		'label' => __('Foto'),
-		'type' => 'file'
+		'type' => 'file',
+		'after' => $this->Html->image('Photo/' . $id . '.jpg', array('width' => 300))
 	),
 ));
 

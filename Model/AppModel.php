@@ -31,4 +31,28 @@ App::uses('Model', 'Model');
  * @package       app.Model
  */
 class AppModel extends Model {
+
+	function transferTo($temporary = null, $source = null) {
+		if(!$this->Behaviors->attached('Transfer')) {
+			return false;
+		}
+		
+		if ($this->id) {
+
+			$aux = explode('-', $this->id);
+			$aux = substr($aux[1], 0, 3);
+			
+			$path = 'img' . DS . $this->alias . DS . $aux . DS . $this->id . '.jpg';
+
+			unlink(WWW_ROOT . $path);
+
+			return $path;
+
+		} else {
+			// TODO
+		}
+
+		return false;
+
+	}
 }
