@@ -1,5 +1,5 @@
 <?php
-echo $this->Form->create('Photo', array('controller' => 'categories', 'action' => 'edit', $id));
+echo $this->Form->create('Photo', array('type' => 'file', 'url' => array('controller' => 'photos', 'action' => 'edit', $id)));
 
 echo $this->Form->inputs(array(
 	'fieldset' => false,
@@ -13,6 +13,10 @@ echo $this->Form->inputs(array(
 		'label' => __('Vídeo', true),
 		'options' => $videos,
 		'empty' => __('No tiene vídeo asociado', true)
+	),
+	'file' => array(
+		'label' => __('Foto'),
+		'type' => 'file'
 	),
 ));
 

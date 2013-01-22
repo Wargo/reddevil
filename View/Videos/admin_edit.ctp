@@ -1,5 +1,5 @@
 <?php
-echo $this->Form->create('Video', array('controller' => 'categories', 'action' => 'edit', $id));
+echo $this->Form->create('Video', array('url' => array('controller' => 'videos', 'action' => 'edit', $id)));
 
 echo $this->Form->inputs(array(
 	'fieldset' => false,

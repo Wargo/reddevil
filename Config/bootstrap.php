@@ -135,6 +135,10 @@ App::uses('Folder', 'Utility');
  *
  */
 
+
+define('MEDIA_TRANSFER', APP . 'uploads' . DS);
+
+
 // 803
 /*
 Configure::write('CID', 'FA_7509_01_001');
