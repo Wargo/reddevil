@@ -1,11 +1,15 @@
-<div class="player">
-	<?php echo $this->Html->image('screenshots/2,fitCrop,300,200.jpg', array('alt' => '')); ?>
-	<?php echo $this->Html->image('screenshots/4,fitCrop,300,200.jpg', array('alt' => '')); ?>
-	<?php echo $this->Html->image('screenshots/3,fitCrop,300,200.jpg', array('alt' => '')); ?>
-	<?php echo $this->Html->image('screenshots/7,fitCrop,300,200.jpg', array('alt' => '')); ?>
-	<?php echo $this->Html->image('screenshots/6,fitCrop,300,200.jpg', array('alt' => '')); ?>
-	<?php echo $this->Html->image('screenshots/7,fitCrop,300,200.jpg', array('alt' => '')); ?>
-	<?php echo $this->Html->image('screenshots/3,fitCrop,300,200.jpg', array('alt' => '')); ?>
-	<?php echo $this->Html->image('screenshots/2,fitCrop,300,200.jpg', array('alt' => '')); ?>
-	<?php echo $this->Html->image('screenshots/4,fitCrop,300,200.jpg', array('alt' => '')); ?>
+<div class="player" id="gallery">
+	<?php
+	for ($i = 1; $i <= 7; $i ++) {
+		echo $this->Html->link($this->Html->image('screenshots/' . $i . ',fitCrop,324,250.jpg', array('alt' => '')),
+			'/img/screenshots/' . $i . ',fitInside,1024,768.jpg',
+			array('escape' => false));
+	}
+	?>
 </div>
+<script type="text/javascript">
+$(function() {
+	$('#gallery a').lightBox();
+});
+</script>
+

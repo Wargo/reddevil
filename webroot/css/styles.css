@@ -460,6 +460,11 @@ a.more_videos_button:hover {
 	background:#333;
 }
 
+.video #gallery img {
+	margin:2px;
+	width:317px;
+}
+
 
 /*
  * Paginador

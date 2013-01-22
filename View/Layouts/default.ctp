@@ -15,6 +15,7 @@
 		echo $this->Html->css('styles');
 		echo $this->Html->css('forms');
 		echo $this->Html->css('flowplayer/minimalist');
+		echo $this->Html->css('lightbox/jquery.lightbox-0.5');
 		
 		echo $this->fetch('css');
 

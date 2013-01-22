@@ -8,7 +8,7 @@
 
 			extract($photo);
 
-			echo $this->Html->link($this->Html->image('screenshots/3,fitCrop,324,250.jpg', array()),
+			echo $this->Html->link($this->Html->image('screenshots/3,fitCrop,317,200.jpg', array()),
 				array('controller' => 'videos', 'action' => 'view_photos', $Video['id']),
 				array('escape' => false));
 
