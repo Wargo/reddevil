@@ -132,6 +132,10 @@ CakePlugin::loadAll();
  *
  */
 
+
+define('MEDIA_TRANSFER', APP . 'uploads' . DS);
+
+
 // 803
 /*
 Configure::write('CID', 'FA_7509_01_001');
