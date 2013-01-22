@@ -1,6 +1,16 @@
 <?php
 class PhotosController extends AppController {
 
+	function index($page = 1) {
+		
+		$this->loadModel('Video');
+
+		list($conditions, $pageCount, $videos) = $this->Video->getVideos($page, 3, $this->params['named']);
+
+		$this->set(compact('videos', 'conditions', 'page', 'pageCount'));
+
+	}
+
 	function admin_index() {
 		
 		$photos = $this->Photo->find('all');

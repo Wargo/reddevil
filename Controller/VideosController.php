@@ -5,39 +5,9 @@ class VideosController extends AppController {
 
 	function home($page = 1) {
 
-		$ids = $conditions = array();
+		list($conditions, $pageCount, $videos) = $this->Video->getVideos($page, 3, $this->params['named']);
 
-		foreach ($this->params['named'] as $key => $value) {
-			/*
-			$this->paginate['Video']['recursive'] = 1;
-			$this->paginate['VideoRelationship']['conditions'] = array(
-				'model' => 'Category',
-				'foreign_id' => $this->params['named']['category']
-			);
-			*/
-			$this->loadModel('VideoRelationship');
-			$new_ids = $this->VideoRelationship->find('list', array(
-				'conditions' => array(
-					'model' => ucwords($key),
-					'foreign_id' => $value
-				),
-				'fields' => array('id', 'video_id'),
-			));
-			$ids = array_merge($ids, $new_ids);
-		}
-
-		if (count($ids)) {
-			$conditions['id'] = $ids;
-		}
-
-		$conditions['active'] = 1;
-		
-		$this->paginate['Video']['limit'] = 3;
-		$this->paginate['Video']['page'] = $page;
-
-		$videos = $this->paginate($conditions);
-
-		$this->set(compact('videos', 'conditions', 'page'));
+		$this->set(compact('videos', 'conditions', 'page', 'pageCount'));
 
 	}
 

@@ -12,15 +12,15 @@ foreach ($videos as $video) {
 	$key = $value = null;
 	foreach ($this->params['named'] as $key => $value) {
 	}
-	if ($this->Paginator->params['paging']['Video']['prevPage']) {
+	if ($page > 1) {
 		echo $this->Html->link(__('Anterior', true), array('controller' => 'videos', 'action' => 'home', $page - 1, $key => $value));
 	} else {
 		echo $this->Html->link(__('Anterior', true), array(), array('class' => 'selected'));
 	}
-	for ($i = 1; $i <= $this->Paginator->params['paging']['Video']['pageCount']; $i ++) {
+	for ($i = 1; $i <= $pageCount; $i ++) {
 		echo $this->Html->link($i, array('controller' => 'videos', 'action' => 'home', $i, $key => $value), array('class' => ($i == $page ? 'selected' : '')));
 	}
-	if ($this->Paginator->params['paging']['Video']['nextPage']) {
+	if ($page < $pageCount) {
 		echo $this->Html->link(__('Siguiente', true), array('controller' => 'videos', 'action' => 'home', $page + 1, $key => $value));
 	} else {
 		echo $this->Html->link(__('Siguiente', true), array(), array('class' => 'selected'));

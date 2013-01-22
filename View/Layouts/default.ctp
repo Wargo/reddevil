@@ -30,9 +30,9 @@
 			<div class="menu">
 				<?php echo $this->Html->link($this->Html->image('logo.png', array('alt' => 'logo')), '/', array('escape' => false, 'title' => __('Red Devil', true), 'class' => 'logo')); ?>
 				<ul>
-					<li><?php echo $this->Html->link(__('Vídeos', true), array(), array('title' => __('Vídeos', true))); ?></li>
+					<li><?php echo $this->Html->link(__('Vídeos', true), array('controller' => 'videos', 'action' => 'home'), array('class' => $this->params['controller'] == 'videos' ? 'selected' : '', 'title' => __('Vídeos', true))); ?></li>
+					<li><?php echo $this->Html->link(__('Fotos', true), array('controller' => 'photos', 'action' => 'index'), array('class' => $this->params['controller'] == 'photos' ? 'selected' : '', 'title' => __('Fotos', true))); ?></li>
 					<li><?php echo $this->Html->link(__('Chicas', true), array(), array('title' => __('Chicas', true))); ?></li>
-					<li><?php echo $this->Html->link(__('Fotos', true), array(), array('title' => __('Fotos', true))); ?></li>
 				</ul>
 			</div>
 		</div>

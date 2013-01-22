@@ -144,6 +144,7 @@ html[xmlns] .clearfix {
 	margin-left:20px;
 	padding:18px 25px;
 }
+.menu ul li a.selected,
 .menu ul li a:hover {
 	background:#333;
 }
@@ -508,4 +509,26 @@ a.more_videos_button:hover {
  */
 .page_content {
 	padding:0px 15px;
+}
+
+
+/*
+ * Photos
+ */
+.block_photos {
+	background:#000;
+	margin-bottom:20px;
+}
+.block_photos .title {
+	color:#FFF;
+	font-size:1.3em;
+	font-weight:bold;
+	text-align:center;
+	line-height:64px;
+	background:url(../img/bg_block_footer.png) repeat-x;
+	height:64px;
+}
+.block_photos img {
+	margin:2px;
+	width:324px;
 }
