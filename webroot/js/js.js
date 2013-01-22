@@ -10,20 +10,7 @@ $(document).ready(function() {
 		}
 		$.get(this.href, function(data) {
 			$('#section').html(data);
-			$('#dialog-message').dialog({
-				width: 630,
-				height: 230,
-				modal: true,
-				buttons: {
-					Ok: function() {
-						$(this).dialog('close');
-					}
-				}
-			});
-			setTimeout(function() {
-				refresh($('#remaining').html());
-				isCalling();
-			}, 1000);
+			load_popup();
 		});
 		$('#view_video').addClass('selected');
 		$('#view_trailer').removeClass('selected');
@@ -86,28 +73,46 @@ $(document).ready(function() {
 
 	});
 
-	if ($('#remaining').html()) {
-		$('#dialog-message').dialog({
-			width: 630,
-			height: 230,
-			modal: true,
-			buttons: {
-				Ok: function() {
-					$(this).dialog('close');
-				}
-			}
-		});
-		setTimeout(function() {
-			refresh($('#remaining').html());
-			isCalling();
-		}, 1000);
+	if ($('.remaining').html()) {
+		load_popup();
 	}
+
+	function load_popup() {
+		$('.remaining').html('90');
+		$.scrollTo('#buttons', 200, {offset:{top:-100}});
+		stop_refreshing = false;
+		setTimeout(function() {
+			$('#dialog-message').dialog({
+				width: 630,
+				height: 360,
+				modal: true,
+				buttons: {
+					Ok: function() {
+						$(this).dialog('close');
+					}
+				},
+				close: function() {
+					stop_refreshing = true;
+				}
+			});
+			setTimeout(function() {
+				refresh($('.remaining').html());
+				isCalling();
+			}, 1000);
+		}, 500);
+	}
+
+	stop_refreshing = false;
 
 	function refresh(timeleft) {
 
+		if (stop_refreshing) {
+			return;
+		}
+
 		if (parseInt($('#phone').html())) {
 
-			$('#remaining').html(timeleft);
+			$('.remaining').html(timeleft);
 
 			if (timeleft >= 0) {
 
@@ -120,6 +125,7 @@ $(document).ready(function() {
 			} else {
 
 				$('.pay').html('Se acabó el tiempo');
+				$('.sms').html('Se acabó el tiempo');
 
 				setTimeout(function() {
 					$('#dialog-message').dialog('close');
@@ -130,6 +136,7 @@ $(document).ready(function() {
 		} else {
 
 			$('.pay').html('Ha ocurrido un error: "' + $('#phone').html() + '"');
+			$('.sms').html('Ha ocurrido un error: "' + $('#phone').html() + '"');
 
 		}
 
@@ -137,15 +144,28 @@ $(document).ready(function() {
 
 	function isCalling() {
 
+		if (stop_refreshing) {
+			return;
+		}
+
 		if (parseInt($('#phone').html())) {
 
-			$.get('/videos/check', function(data) {
+			$.get('/videos/check_phone', function(data) {
 
-				setTimeout(function(){
-					isCalling();
-				}, 1000);
+				$('#isCalling_phone').html(data);
 
 			});
+
+			$.get('/videos/check_sms', function(data) {
+
+				$('#isCalling_sms').html(data);
+
+			});
+
+			setTimeout(function(){
+				isCalling();
+			}, 1000);
+
 
 		}
 

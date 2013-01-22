@@ -39,8 +39,16 @@ ul {
 	color:#BBB;
 }
 
+.hidden {
+	display:none;
+}
+
 a.selected {
 	cursor:default;
+}
+
+input[type="submit"] {
+	cursor:pointer;
 }
 
 .clearfix:after {
@@ -475,17 +483,29 @@ a.more_videos_button:hover {
 /*
  * Ask for call
  */
+.sms,
 .pay {
 	color:#666;
 	text-align:center;
 	font-size:1.3em;
 }
-.pay #phone {
+.sms .big,
+.pay .big{
 	font-size:1.5em;
 }
+.sms #remaining,
 .pay #remaining {
 	font-size:1.35em;
 }
+.sms .info_text,
 .pay .info_text {
 	font-size:0.7em;
+}
+
+
+/*
+ * pages
+ */
+.page_content {
+	padding:0px 15px;
 }

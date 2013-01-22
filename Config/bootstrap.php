@@ -144,3 +144,10 @@ Configure::write('pool', 1);
 Configure::write('CID', 'FA_7509_900_001');
 Configure::write('pass', 'c1b4n4v1l');
 Configure::write('pool', 900);
+Configure::write('info', __('Servicio exclusivamente para aadultos prestado por Sistemas de Micropago, Sl. Apdo. de Correos 14.953 - 28080 Madrid. Cte. 1.45€/llamada desde fijo y 2€/llamada desde móvil I.V.A incluido.'));
+
+// SMS 1.20€ + IVA
+Configure::write('CID_m', 'FA_7509_SMS_3');
+Configure::write('pass_m', 'n1p5l2s');
+Configure::write('pool_m', 94);
+Configure::write('info_m', __('WPR,S.A. Cte sms 1.45€ I.V.A incl., sms@wpr.es Nº atn clte 902044008. Apdo. Correos 14.953 - 28080 Madrid'));

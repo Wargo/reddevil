@@ -9,24 +9,26 @@ foreach ($videos as $video) {
 ?>
 <div class="paging clearfix">
 	<?php
-	$page = $this->Paginator->params['paging']['Video']['page'];
+	$key = $value = null;
+	foreach ($this->params['named'] as $key => $value) {
+	}
 	if ($this->Paginator->params['paging']['Video']['prevPage']) {
-		echo $this->Html->link(__('Anterior', true), array('controller' => 'videos', 'action' => 'home', $page - 1));
+		echo $this->Html->link(__('Anterior', true), array('controller' => 'videos', 'action' => 'home', $page - 1, $key => $value));
 	} else {
 		echo $this->Html->link(__('Anterior', true), array(), array('class' => 'selected'));
 	}
 	for ($i = 1; $i <= $this->Paginator->params['paging']['Video']['pageCount']; $i ++) {
-		echo $this->Html->link($i, array('controller' => 'videos', 'action' => 'home', $i), array('class' => ($i == $page ? 'selected' : '')));
+		echo $this->Html->link($i, array('controller' => 'videos', 'action' => 'home', $i, $key => $value), array('class' => ($i == $page ? 'selected' : '')));
 	}
 	if ($this->Paginator->params['paging']['Video']['nextPage']) {
-		echo $this->Html->link(__('Siguiente', true), array('controller' => 'videos', 'action' => 'home', $page + 1));
+		echo $this->Html->link(__('Siguiente', true), array('controller' => 'videos', 'action' => 'home', $page + 1, $key => $value));
 	} else {
 		echo $this->Html->link(__('Siguiente', true), array(), array('class' => 'selected'));
 	}
 	?>
 </div>
 <?php
-$more_videos = ClassRegistry::init('Video')->findMore($page);
+$more_videos = ClassRegistry::init('Video')->findMore($page, $conditions);
 if (count($more_videos)) {
 	?>
 	<div class="more_videos">

@@ -7,11 +7,13 @@
 	</title>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script> 
+	<script src="http://flesler-plugins.googlecode.com/files/jquery.scrollTo-1.4.2.js"></script> 
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
 	<?php
 		echo $this->Html->meta('icon');
 
 		echo $this->Html->css('styles');
+		echo $this->Html->css('forms');
 		echo $this->Html->css('flowplayer/minimalist');
 		
 		echo $this->fetch('css');
@@ -43,9 +45,8 @@
 				<ul class="clearfix">
 					<li><?php echo $this->Html->link(__('Vídeos', true), array()); ?></li>
 					<li><?php echo $this->Html->link(__('Chicas', true), array()); ?></li>
-					<li><?php echo $this->Html->link(__('Escenas', true), array()); ?></li>
 					<li><?php echo $this->Html->link(__('Zona para webmasters', true), array()); ?></li>
-					<li><?php echo $this->Html->link(__('Castings', true), array()); ?></li>
+					<li><?php echo $this->Html->link(__('Castings', true), array('controller' => 'pages', 'action' => 'display', 'wannabe')); ?></li>
 					<li><?php echo $this->Html->link(__('Versión móvil', true), array()); ?></li>
 				</ul>
 			</div>
