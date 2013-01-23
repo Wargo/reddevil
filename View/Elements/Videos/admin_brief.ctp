@@ -9,7 +9,7 @@ $id = $data['Video']['id'];
 <label><?php echo $title ?></label>
 <label><?php echo __('Duración: %s', $_duration); ?></label>
 <?php if (!empty($formats[$mode])): ?>
-<label><?php echo __('Formatos disponibles: %s', explode(', ', $formats[$mode])); ?></label>
+<label><?php echo __('Formatos disponibles: %s', implode(', ', $formats[$mode])); ?></label>
 <?php endif; ?>
 <br/>
 <?php

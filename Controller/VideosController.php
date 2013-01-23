@@ -200,7 +200,7 @@ class VideosController extends AppController {
 	public function admin_add_file() {
 		if (!empty($this->request->data)) {
 			$this->Video->addFile($this->request->data);
-			$this->redirect(array('controller' => 'videos', 'action' => 'edit', $id));
+			$this->redirect(array('controller' => 'videos', 'action' => 'edit', $this->Video->id));
 		}
 		$videos = $this->Video->find('list');
 		$this->set(compact('videos'));

@@ -58,7 +58,6 @@ class Video extends AppModel {
 	}
 
 	public function addFile($data) {
-
 			$file = $data['Video']['file'];
 			if ($data['Video']['video_type'] == 0) {
 				//Añadir como nuevo video	
