@@ -74,11 +74,13 @@ class Video extends AppModel {
 			if ($data['Video']['mode'] == 'trailer') {
 				$dest = Configure::read('TrailerUploadFolder') . $id;
 				$imageFolder = Configure::read('TrailerImageFolder');
-				$data = array('has_trailer' => 1, 'trailer_duration' => $movie->getDuration());
+				$formats = serialize(array('Trailer' => array('mp4' => true)));
+				$data = array('has_trailer' => 1, 'trailer_duration' => $movie->getDuration(), 'formats' => $formats);
 			} else {
 				$dest = Configure::read('VideoUploadFolder') . $id;
 				$imageFolder = Configure::read('VideoImageFolder');
-				$data = array('has_video' => 1, 'duration' => $movie->getDuration());
+				$formats = serialize(array('Video' => array('mp4' => true)));
+				$data = array('has_video' => 1, 'duration' => $movie->getDuration(), 'formats' => $formats);
 			}
 			
 			if (Configure::read('GenerateScreenshots')) {
