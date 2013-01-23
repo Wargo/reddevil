@@ -1,7 +1,7 @@
 <?php
 class ConversionShell extends AppShell {
 
-	public $formats = array('flv');
+	public $formats = array('flv', 'wmv');
 	
 	public function convert_all() {
 		$Conversion = ClassRegistry::init('Conversion');
@@ -32,13 +32,30 @@ class ConversionShell extends AppShell {
 
 		$cmd = "ffmpeg -i ".$path.$input." -vcodec libx264 -vpre medium -f flv -acodec copy -b 1000k -f flv -s ".$_w."x".$_h." ".$path.$output;
 		shell_exec($cmd);
+		
+		$this->_saveFormat($id, $model, 'flv');
 
+	}
+
+	public function wmv($id, $model) {	
+		$path = Configure::read($model. 'UploadFolder');
+		$input = $id;
+		$output = 'flv' . DS . $id;
+
+		$cmd = "ffmpeg -sameq -i ".$path.$input." ".$path.$output . ".wmv";
+		shell_exec($cmd);
+		shell_exec('mv ' . $path.$output.'.wmv '.$path.$output);
+		
+		$this->_saveFormat($id, $model, 'wmv');
+	}
+
+	protected function _saveFormat($id, $model, $format) {
 		$formats = unserialize($this->Video->field('formats', array('id' => $id)));
 		if (empty($formats[$model])) {
 			$formats[$model] = array();
 		}
-		if (empty($formats[$model]['flv'])) {
-			$formats[$model]['flv'] = 1;
+		if (empty($formats[$model][$format])) {
+			$formats[$model][$format] = 1;
 		}
 		$formats = serialize($formats);
 		$this->Video->id = $id;
