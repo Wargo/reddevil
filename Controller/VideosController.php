@@ -74,7 +74,7 @@ class VideosController extends AppController {
 
 	}
 
-	function view_photos($id = null) {
+	function view_photos($id = null, $photo_id = null) {
 
 		if (empty($id)) {
 			return $this->redirect('/');
@@ -86,7 +86,7 @@ class VideosController extends AppController {
 
 		$photos = array(1, 2, 3, 4, 5);
 
-		$this->set(compact('Video', 'photos', 'section'));
+		$this->set(compact('Video', 'photos', 'section', 'photo_id'));
 		
 		if ($this->request->is('ajax')) {
 			$this->layout = 'ajax';

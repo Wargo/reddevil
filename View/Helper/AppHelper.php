@@ -31,4 +31,30 @@ App::uses('Helper', 'View');
  * @package       app.View.Helper
  */
 class AppHelper extends Helper {
+
+	var $models = array('Photo');
+
+	function assetUrl($path, $options = array()) {
+
+		if (!empty($options['fullBase'])) {
+			foreach ($this->models as $model) {
+				if (strpos($path, 'img' . DS . $model) !== false) {
+					// TODO Convertir
+				}
+			}
+		} else {
+			foreach ($this->models as $model) {
+				if (strpos($path, $model) === 0) { // TODO || strpos($path, DS . 'img' . DS . $model) === 0) {
+					$aux = explode('-', $path);
+					if (!empty($aux[1])) {
+						$aux = substr($aux[1], 0, 3);
+						$path = str_replace(DS, DS . $aux . DS , $path);
+					}
+				}
+			}
+		}
+
+		return parent::assetUrl($path, $options);
+	}
+
 }
