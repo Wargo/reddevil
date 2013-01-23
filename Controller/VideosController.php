@@ -199,39 +199,7 @@ class VideosController extends AppController {
 
 	public function admin_add_file() {
 		if (!empty($this->request->data)) {
-				$file = $this->request->data['Video']['file'];
-			if ($this->request->data['Video']['video_type'] == 0) {
-				//Añadir como nuevo video	
-				$this->Video->create();
-				$this->Video->save(array('title' => $file));
-				$id = $this->Video->id;	
-			} else {
-				$id = $this->request->data['Video']['id'];
-			}
-			$orig = APP . 'raw' . DS . $file;
-			$movie = new ffmpeg_movie($orig);
-
-			if ($this->request->data['Video']['mode'] == 'trailer') {
-				$dest = APP . 'uploads' . DS . 'Trailer' . DS . $id;
-				$data = array('has_trailer' => 1, 'trailer_duration' => $movie->getDuration());
-			} else {
-				$dest = APP . 'uploads' . DS . 'Video' . DS . $id;
-				$data = array('has_video' => 1, 'duration' => $movie->getDuration());
-			}
-
-			$duration = $movie->getDuration();
-			$framerate = $movie->getFrameRate();
-			$step = round (($duration*$framerate)/7);
-			for ($i = 1; $i <= 6; $i ++) {
-				$frame = $i * $step;
-				$frame = $movie->getFrame($frame);
-				$image = $frame->toGDImage();
-				imagejpeg($image, APP . 'uploads' . DS . 'img' . DS . 'Trailer' . DS . $id . '-' . $i . '.jpg');		
-			}
-
-			exec("mv $orig $dest");
-			$this->Video->id = $id;
-			$this->Video->save($data);
+			$this->Video->addFile($this->request->data);
 			$this->redirect(array('controller' => 'videos', 'action' => 'edit', $id));
 		}
 		$videos = $this->Video->find('list');

@@ -276,3 +276,12 @@ Cache::config('_cake_model_', array(
 	'serialize' => ($engine === 'File'),
 	'duration' => $duration
 ));
+
+Configure::write('GenerateScreenshots', false);
+
+Configure::write('TrailerUploadFolder', WWW_ROOT . 'video' . DS . 'Trailer' . DS);
+Configure::write('VideoUploadFolder', WWW_ROOT . 'video' . DS . 'Video'. DS);
+
+Configure::write('TrailerImageFolder', APP . 'uploads' . DS . 'img' . DS . 'Trailer' . DS);
+Configure::write('VideoImageFolder', APP . 'uploads' . DS . 'img' . DS . 'Video'. DS);
+
