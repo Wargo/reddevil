@@ -8,8 +8,15 @@ $id = $data['Video']['id'];
 <div class="input">
 <label><?php echo $title ?></label>
 <label><?php echo __('Duración: %s', $_duration); ?></label>
-<?php if (!empty($formats[$mode])): ?>
-<label><?php echo __('Formatos disponibles: %s', implode(', ', $formats[$mode])); ?></label>
+<?php if (!empty($formats[$mode])): 
+	$_formats = array();
+	foreach ($formats[$mode] as $format => $active) {
+		if ($active) {
+			$_formats[] = $format;
+		}
+	}
+?>
+<label><?php echo __('Formatos disponibles: %s', implode(', ', $_formats)); ?></label>
 <?php endif; ?>
 <br/>
 <?php
