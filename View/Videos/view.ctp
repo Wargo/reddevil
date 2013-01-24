@@ -78,23 +78,25 @@
 <div class="more_videos">
 	<div class="photos clearfix">
 		<?php
-		$others = ClassRegistry::init('Photo')->find('all', array(
+		$others = ClassRegistry::init('Video')->find('all', array(
 			'conditions' => array(
-				'video_id !=' => $Video['id'],
-				'main' => 0,
+				'id !=' => $Video['id'],
 				'Video.active' => 1
 			),
-			'group' => array('video_id'),
-			'order' => ('rand()'),
-			'limit' => 1
+			'limit' => 3,
+			'fields' => array('id', 'title')
 		));
 		foreach ($others as $other) {
-			$video = ClassRegistry::init('Video')->findById($other['Photo']['video_id']);
+			//$video = ClassRegistry::init('Video')->findById($other['Photo']['video_id']);
+			$photo = ClassRegistry::init('Photo')->find('first', array(
+				'conditions' => array('video_id' => $other['Video']['id'], 'main' => 0, 'Photo.active' => 1),
+				'order' => array('rand()'),
+			));
 			?>
 			<div class="photo">
-				<?php echo $this->Html->link($this->Html->image('Photo/' . $other['Photo']['id'] . ',fitCrop,312,280.jpg', array('alt' => '')), array('controller' => 'videos', 'action' => 'view', $other['Photo']['video_id']), array('escape' => false)); ?>
+				<?php echo $this->Html->link($this->Html->image('Photo/' . $photo['Photo']['id'] . ',fitCrop,312,280.jpg', array('alt' => '')), array('controller' => 'videos', 'action' => 'view', $photo['Photo']['video_id']), array('escape' => false)); ?>
 				<div class="info">
-					<p><strong><?php echo $video['Video']['title']; ?></strong></p>
+					<p><strong><?php echo $other['Video']['title']; ?></strong></p>
 					<p>Haz click para acceder al vídeo completo</p>
 				</div>
 			</div>
