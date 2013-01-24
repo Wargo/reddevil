@@ -41,15 +41,24 @@ if (count($more_videos)) {
 			<?php
 			foreach ($more_videos as $video) {
 				extract($video);
-				$more_photos = array(
-					$this->Html->url('/img/screenshots/1,fitCrop,312,280.jpg'),
-					$this->Html->url('/img/screenshots/2,fitCrop,312,280.jpg'),
-					$this->Html->url('/img/screenshots/3,fitCrop,312,280.jpg'),
-					$this->Html->url('/img/screenshots/4,fitCrop,312,280.jpg')
-				);
+				$more_photos = ClassRegistry::init('Photo')->find('all', array(
+					'conditions' => array(
+						'video_id' => $Video['id'],
+						'Photo.active' => 1
+					),
+					'limit' => 6,
+					'order' => array('rand()')
+				));
+				$var = array();
+				foreach ($more_photos as $photo) {
+					extract($photo);
+					$folder = explode('-', $Photo['id']);
+					$folder = substr($folder[1], 0, 3);
+					$var[] = $this->Html->url('/img/Photo/' . $folder . '/' . $Photo['id'] . ',fitCrop,312,280.jpg');
+				}
 				?>
 				<div class="photo">
-					<?php echo $this->Html->link($this->Html->image('screenshots/4,fitCrop,312,280.jpg', array('var' => "['" . implode("','", $more_photos) . "']", 'alt' => '', 'class' => '_rotate_photos')), array('controller' => 'videos', 'action' => 'view', $Video['id']), array('escape' => false)); ?>
+					<?php echo $this->Html->link($this->Html->image('Photo/' . $Photo['id'] . ',fitCrop,312,280.jpg', array('var' => "['" . implode("','", $var) . "']", 'alt' => 'a', 'class' => '_rotate_photos')), array('controller' => 'videos', 'action' => 'view', $Video['id']), array('escape' => false)); ?>
 					<div class="info">
 						<p><strong><?php echo $this->Html->link($Video['title'], array('controller' => 'videos', 'action' => 'view', $Video['id'])); ?></strong></p>
 						<p>Haz click para acceder al vídeo completo</p>

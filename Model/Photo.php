@@ -11,12 +11,13 @@ class Photo extends AppModel {
 		),
 	);
 
-	function getPhotos($video_id) {
+	function getPhotos($video_id, $limit = 0) {
 
 		return $this->find('all', array(
 			'conditions' => array(
 				'video_id' => $video_id,
 			),
+			'limit' => $limit
 		));
 
 	}

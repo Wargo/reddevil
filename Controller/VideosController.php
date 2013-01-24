@@ -5,7 +5,7 @@ class VideosController extends AppController {
 
 	function home($page = 1) {
 
-		list($conditions, $pageCount, $videos) = $this->Video->getVideos($page, 3, $this->params['named']);
+		list($conditions, $pageCount, $videos) = $this->Video->getVideos($page, $this->params['named']);
 
 		$this->set(compact('videos', 'conditions', 'page', 'pageCount'));
 
@@ -84,9 +84,7 @@ class VideosController extends AppController {
 
 		extract($this->Video->findById($id));
 
-		$photos = array(1, 2, 3, 4, 5);
-
-		$this->set(compact('Video', 'photos', 'section', 'photo_id'));
+		$this->set(compact('Video', 'section', 'photo_id'));
 		
 		if ($this->request->is('ajax')) {
 			$this->layout = 'ajax';
