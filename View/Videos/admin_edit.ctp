@@ -62,12 +62,12 @@ echo '<div>';
 	);
 echo '</div>';
 
-if ($this->request->data['Video']['has_trailer']) {
-	echo $this->element('Videos/admin_brief', array('mode' => 'trailer', 'data' => $this->request->data));
+if (!empty($this->request->data['Video']['has_trailer'])) {
+	echo $this->element('Videos/admin_brief', array('mode' => 'Trailer', 'data' => $this->request->data));
 }
 
-if ($this->request->data['Video']['has_video']) {	
-	echo $this->element('Videos/admin_brief', array('mode' => 'video', 'data' => $this->request->data));
+if (!empty($this->request->data['Video']['has_video'])) {	
+	echo $this->element('Videos/admin_brief', array('mode' => 'Video', 'data' => $this->request->data));
 }
 
 echo $this->Form->end(__('Guardar', true));

@@ -277,6 +277,17 @@ Cache::config('_cake_model_', array(
 	'duration' => $duration
 ));
 
+
+Configure::write('GenerateScreenshots', false);
+
+Configure::write('TrailerUploadFolder', WWW_ROOT . 'video' . DS . 'Trailer' . DS);
+Configure::write('VideoUploadFolder', WWW_ROOT . 'video' . DS . 'Video'. DS);
+
+Configure::write('TrailerImageFolder', APP . 'uploads' . DS . 'img' . DS . 'Trailer' . DS);
+Configure::write('VideoImageFolder', APP . 'uploads' . DS . 'img' . DS . 'Video'. DS);
+
+
 if ($_SERVER['SERVER_ADDR'] != '127.0.0.1') {
 	Configure::write('Mime.magic', array('db' => '/usr/share/file/magic'));
 }
+

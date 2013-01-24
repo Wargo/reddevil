@@ -57,4 +57,45 @@ class Video extends AppModel {
 
 	}
 
+	public function addFile($data) {
+			$file = $data['Video']['file'];
+			if ($data['Video']['video_type'] == 0) {
+				//Añadir como nuevo video	
+				$this->create();
+				$this->save(array('title' => $file));
+				$id = $this->id;	
+			} else {
+				$id = $data['Video']['id'];
+			}
+			$orig = APP . 'raw' . DS . $file;
+			$movie = new ffmpeg_movie($orig);
+
+			if ($data['Video']['mode'] == 'trailer') {
+				$dest = Configure::read('TrailerUploadFolder') . $id;
+				$imageFolder = Configure::read('TrailerImageFolder');
+				$formats = serialize(array('Trailer' => array('mp4' => true)));
+				$data = array('has_trailer' => 1, 'trailer_duration' => $movie->getDuration(), 'formats' => $formats);
+			} else {
+				$dest = Configure::read('VideoUploadFolder') . $id;
+				$imageFolder = Configure::read('VideoImageFolder');
+				$formats = serialize(array('Video' => array('mp4' => true)));
+				$data = array('has_video' => 1, 'duration' => $movie->getDuration(), 'formats' => $formats);
+			}
+			
+			if (Configure::read('GenerateScreenshots')) {
+				$duration = $movie->getDuration();
+				$framerate = $movie->getFrameRate();
+				$step = round (($duration*$framerate)/7);
+				for ($i = 1; $i <= 6; $i ++) {
+					$frame = $i * $step;
+					$frame = $movie->getFrame($frame);
+					$image = $frame->toGDImage();
+					imagejpeg($image, $imageFolder . $id . '-' . $i . '.jpg');		
+				}
+			}
+			exec("mv $orig $dest");
+			$this->id = $id;
+			return $this->save($data);
+	}
+
 }
