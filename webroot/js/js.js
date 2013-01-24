@@ -28,6 +28,7 @@ $(document).ready(function() {
 		$('#view_trailer').addClass('selected');
 		$('#view_photos').removeClass('selected');
 		$('#view_video').removeClass('selected');
+
 		return false;
 	});
 

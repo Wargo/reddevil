@@ -20,3 +20,8 @@ $image = $this->Html->url('/img/Photo/' . $folder . '/' . $main['Photo']['id'] .
 		</div>
 	</div>
 </div>
+<?php if ($this->request->is('ajax')): ?>
+<script>
+		$(".flowplayer").flowplayer({});
+</script>
+<?php endif; ?>
