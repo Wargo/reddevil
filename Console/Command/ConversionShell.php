@@ -1,7 +1,7 @@
 <?php
 class ConversionShell extends AppShell {
 
-	public $formats = array('flv', 'wmv');
+	public $formats = array('flv', 'wmv', 'v3gp');
 	
 	public function convert_all() {
 		$Conversion = ClassRegistry::init('Conversion');
@@ -47,6 +47,20 @@ class ConversionShell extends AppShell {
 		shell_exec('mv ' . $path.$output.'.wmv '.$path.$output);
 		
 		$this->_saveFormat($id, $model, 'wmv');
+	}
+
+	public function v3gp($id, $model) {
+
+		$path = Configure::read($model. 'UploadFolder');
+		$input = $id;
+		$output = '3gp' . DS . $id;
+
+		$cmd = "ffmpeg -i ".$path.$input." -s 352x288 -sameq -vcodec h263 -acodec libfaac -ac 1 -ar 8000 -r 25 -ab 16k -y ".$path.$output.".3gp";
+		shell_exec($cmd);
+		shell_exec('mv ' . $path.$output.'.3gp '.$path.$output);
+		
+		$this->_saveFormat($id, $model, '3gp');
+		echo 
 	}
 
 	protected function _saveFormat($id, $model, $format) {

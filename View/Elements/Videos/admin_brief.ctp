@@ -29,10 +29,20 @@ if (Configure::read('GenerateScreenshots')) {
 
 $conversion = ClassRegistry::init('Conversion')->find('first', array('conditions' => array('model' => $mode, 'foreign_id' => $id)));
 if ($conversion) {
-	echo 'Conversión del video en curso';
+	switch ($conversion['Conversion']['state']) {
+		case 0: 
+			echo __('Conversión del video en programada');
+		break;
+		case 1:
+			echo __('Conversión del video en curso');
+		break;
+		case 2:
+			echo __('Conversión del video finalizada');
+		break;
+	}
 } else {
 	echo $this->Html->link(
-		__('Programar conversión del trailer'), 
+		__('Programar conversión del %s', $title), 
 		array('controller' => 'conversions', 'action' => 'add', $mode, $id)
 	);
 }
