@@ -13,6 +13,7 @@ foreach ($photos as $photo) {
 	echo '<tr>';
 		echo '<td>' . $Photo['title'] . '</td>';
 		echo '<td>' . $Video['title'] . '</td>';
+		echo '<td>' . ($Photo['main'] ? __('Principal') : '') . '</td>';
 		echo '<td>' . $this->Html->link(__('Editar', true), array('controller' => 'photos', 'action' => 'edit', $Photo['id'])) . '</td>';
 		echo '<td>' . $this->Html->link(__('Borrar', true), array('controller' => 'photos', 'action' => 'delete', $Photo['id']), array(), __('¿Seguro?', true)) . '</td>';
 	echo '</tr>';

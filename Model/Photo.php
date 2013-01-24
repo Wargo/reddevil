@@ -1,6 +1,8 @@
 <?php
 class Photo extends AppModel {
 
+	var $belongsTo = array('Video');
+
 	public $actsAs = array(
 		'Media.Transfer' => array(
 			'trustClient' => false,

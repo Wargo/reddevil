@@ -9,6 +9,12 @@ echo $this->Form->inputs(array(
 	'description' => array(
 		'label' => __('Descripción', true),
 	),
+	'active' => array(
+		'label' => __('Publicado')
+	),
+	'main' => array(
+		'label' => __('Foto principal')
+	),
 	'video_id' => array(
 		'label' => __('Vídeo', true),
 		'options' => $videos,

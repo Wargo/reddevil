@@ -1,6 +1,17 @@
 <div class="clearfix">
 	<div class="featured">
-		<?php echo $this->Html->link($this->Html->image('screenshots/5,fitCrop,750,260.jpg', array('alt' => 'Vídeo')), array(), array('escape' => false, 'class' => 'image')); ?>
+		<?php
+		$ad = ClassRegistry::init('Photo')->find('all', array(
+			'conditions' => array(
+				'video_id !=' => $Video['id'],
+				'main' => 0,
+				'Video.active' => 1
+			),
+			'order' => ('rand()'),
+			'limit' => 2
+		));
+		echo $this->Html->link($this->Html->image('Photo/' . $ad[0]['Photo']['id'] . ',fitCrop,750,260.jpg', array('alt' => 'Vídeo')), array('controller' => 'videos', 'action' => 'view', $ad[0]['Photo']['video_id']), array('escape' => false, 'class' => 'image'));
+		?>
 		<ul class="buttons" id="buttons">
 			<li><?php echo $this->Html->link(__('Ver vídeo', true), array('controller' => 'videos', 'action' => 'view_video', $Video['id']), array('id' => 'view_video', 'class' => '_view_video ' . ($section == 'video' ? 'selected' : ''))); ?></li>
 			<li><?php echo $this->Html->link(__('Ver trailer', true), array('controller' => 'videos', 'action' => 'view', $Video['id']), array('id' => 'view_trailer', 'class' => '_view_trailer ' . ($section == 'trailer' ? 'selected' : ''))); ?></li>
@@ -10,7 +21,7 @@
 	<div class="promo">
 		<p class="title"><?php echo __('¿Quieres ver este vídeo?', true); ?></p>
 		<p class="send"><?php printf(__('Envía %s al %d'), 'REDDEVIL', 6969); ?></p>
-		<?php echo $this->Html->link($this->Html->image('screenshots/8,fitCrop,200,133.jpg', array('alt' => 'Vídeo')), array(), array('escape' => false, 'class' => 'image')); ?>
+		<?php echo $this->Html->link($this->Html->image('Photo/' . $ad[1]['Photo']['id'] . ',fitCrop,200,133.jpg', array('alt' => 'Vídeo')), array('controller' => 'videos', 'action' => 'view', $ad[0]['Photo']['video_id']), array('escape' => false, 'class' => 'image')); ?>
 	</div>
 </div>
 <div class="video">
@@ -40,10 +51,21 @@
 	</ul>
 </div>
 <div class="preview_photos">
-	<?php echo $this->Html->image('screenshots/2,fitCrop,239,150.jpg', array('alt' => '')); ?>
-	<?php echo $this->Html->image('screenshots/4,fitCrop,239,150.jpg', array('alt' => '')); ?>
-	<?php echo $this->Html->image('screenshots/3,fitCrop,239,150.jpg', array('alt' => '')); ?>
-	<?php echo $this->Html->image('screenshots/7,fitCrop,239,150.jpg', array('alt' => '')); ?>
+	<?php
+	$images = ClassRegistry::init('Photo')->find('all', array(
+		'conditions' => array(
+			'video_id' => $Video['id'],
+			'main' => 0
+		),
+		'limit' => 4,
+		'order' => array('rand()')
+	));
+	foreach ($images as $image) {
+		extract($image);
+		echo $this->Html->link($this->Html->image('Photo' . DS . $Photo['id'] . ',fitCrop,239,150.jpg',
+			array('alt' => '')), array(), array('escape' => false, 'title' => 'Ver vídeo'));
+	}
+	?>
 </div>
 <div class="separator clearfix">
 	<div class="arrow">

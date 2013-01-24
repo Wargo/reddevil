@@ -7,7 +7,15 @@ $actors = ClassRegistry::init('VideoRelationship')->getActors($Video['id']);
 	<div class="clearfix">
 		<div class="main_photo">
 			<?php echo $this->Html->link($this->Html->image('play.png', array('alt' => '')), $video_url, array('escape' => false, 'class' => 'play', 'title' => 'Ver vídeo')); ?>
-			<?php echo $this->Html->image('screenshots/1,fitCrop,680,404.jpg', array('class' => 'image', 'alt' => '')); ?>
+			<?php
+			$main = ClassRegistry::init('Photo')->find('first', array(
+				'conditions' => array(
+					'video_id' => $Video['id'],
+					'main' => 1
+				),
+			));
+			echo $this->Html->image('Photo' . DS . $main['Photo']['id'] . ',fitCrop,680,404.jpg', array('class' => 'image', 'alt' => ''));
+			?>
 			<div class="info clearfix">
 				<div>
 					<?php echo $this->Html->link($Video['title'], $video_url, array('class' => 'title')); ?>
@@ -43,10 +51,17 @@ $actors = ClassRegistry::init('VideoRelationship')->getActors($Video['id']);
 		</div>
 		<div class="small_photos">
 			<?php
-			$images = array('screenshots/2,fitCrop,300,200.jpg', 'screenshots/3,fitCrop,300,200.jpg', 'screenshots/4,fitCrop,300,200.jpg');
-			shuffle($images);
+			$images = ClassRegistry::init('Photo')->find('all', array(
+				'conditions' => array(
+					'video_id' => $Video['id'],
+					'main' => 0
+				),
+				'limit' => 3,
+				'order' => array('rand()')
+			));
 			foreach ($images as $image) {
-				echo $this->Html->link($this->Html->image($image, array('alt' => '')), $video_url, array('escape' => false, 'title' => 'Ver vídeo'));
+				extract($image);
+				echo $this->Html->link($this->Html->image('Photo' . DS . $Photo['id'] . ',fitCrop,300,200.jpg', array('alt' => '')), $video_url, array('escape' => false, 'title' => 'Ver vídeo'));
 			}
 			?>
 		</div>
