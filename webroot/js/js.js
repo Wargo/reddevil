@@ -164,7 +164,7 @@ $(document).ready(function() {
 
 			setTimeout(function(){
 				isCalling();
-			}, 1000);
+			}, 500);
 
 
 		}
