@@ -1,16 +1,26 @@
 <div class="clearfix">
 	<div class="featured">
 		<?php
-		$ad = ClassRegistry::init('Photo')->find('all', array(
+		$ad1 = ClassRegistry::init('Photo')->find('first', array(
 			'conditions' => array(
 				'video_id !=' => $Video['id'],
 				'main' => 0,
+				'adv' => 1,
 				'Video.active' => 1
 			),
 			'order' => ('rand()'),
-			'limit' => 2
 		));
-		echo $this->Html->link($this->Html->image('Photo/' . $ad[0]['Photo']['id'] . ',fitCrop,750,260.jpg', array('alt' => '')), array('controller' => 'videos', 'action' => 'view', $ad[0]['Photo']['video_id']), array('escape' => false, 'class' => 'image'));
+		$ad2 = ClassRegistry::init('Photo')->find('first', array(
+			'conditions' => array(
+				'video_id !=' => $Video['id'],
+				'main' => 0,
+				'adv' => 0,
+				'featured' => 1,
+				'Video.active' => 1
+			),
+			'order' => ('rand()'),
+		));
+		echo $this->Html->link($this->Html->image('Photo/' . $ad1['Photo']['id'] . ',fitCrop,750,260.jpg', array('alt' => '')), array('controller' => 'videos', 'action' => 'view', $ad1['Photo']['video_id']), array('escape' => false, 'class' => 'image'));
 		?>
 		<ul class="buttons" id="buttons">
 			<li><?php echo $this->Html->link(__('Ver vídeo', true), array('controller' => 'videos', 'action' => 'view_video', $Video['id']), array('id' => 'view_video', 'class' => '_view_video ' . ($section == 'video' ? 'selected' : ''))); ?></li>
@@ -21,7 +31,7 @@
 	<div class="promo">
 		<p class="title"><?php echo __('¿Quieres ver este vídeo?', true); ?></p>
 		<p class="send"><?php printf(__('Envía %s al %d'), 'REDDEVIL', 6969); ?></p>
-		<?php echo $this->Html->link($this->Html->image('Photo/' . $ad[1]['Photo']['id'] . ',fitCrop,200,133.jpg', array('alt' => '')), array('controller' => 'videos', 'action' => 'view', $ad[0]['Photo']['video_id']), array('escape' => false, 'class' => 'image')); ?>
+		<?php echo $this->Html->link($this->Html->image('Photo/' . $ad2['Photo']['id'] . ',fitCrop,200,133.jpg', array('alt' => '')), array('controller' => 'videos', 'action' => 'view', $ad2['Photo']['video_id']), array('escape' => false, 'class' => 'image')); ?>
 	</div>
 </div>
 <div class="video">

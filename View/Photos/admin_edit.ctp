@@ -15,6 +15,12 @@ echo $this->Form->inputs(array(
 	'main' => array(
 		'label' => __('Foto principal')
 	),
+	'adv' => array(
+		'label' => __('Para publicidad')
+	),
+	'featured' => array(
+		'label' => __('Foto destacada')
+	),
 	'video_id' => array(
 		'label' => __('Vídeo', true),
 		'options' => $videos,

@@ -54,7 +54,8 @@ $actors = ClassRegistry::init('VideoRelationship')->getActors($Video['id']);
 			$images = ClassRegistry::init('Photo')->find('all', array(
 				'conditions' => array(
 					'video_id' => $Video['id'],
-					'main' => 0
+					'main' => 0,
+					'featured' => 1,
 				),
 				'limit' => 3,
 				'order' => array('rand()')
