@@ -1,6 +1,17 @@
 <div class="clearfix">
 	<div class="featured">
-		<?php echo $this->Html->link($this->Html->image('screenshots/5,fitCrop,750,260.jpg', array('alt' => 'Vídeo')), array(), array('escape' => false, 'class' => 'image')); ?>
+		<?php
+		$ad = ClassRegistry::init('Photo')->find('all', array(
+			'conditions' => array(
+				'video_id !=' => $Video['id'],
+				'main' => 0,
+				'Video.active' => 1
+			),
+			'order' => ('rand()'),
+			'limit' => 2
+		));
+		echo $this->Html->link($this->Html->image('Photo/' . $ad[0]['Photo']['id'] . ',fitCrop,750,260.jpg', array('alt' => '')), array('controller' => 'videos', 'action' => 'view', $ad[0]['Photo']['video_id']), array('escape' => false, 'class' => 'image'));
+		?>
 		<ul class="buttons" id="buttons">
 			<li><?php echo $this->Html->link(__('Ver vídeo', true), array('controller' => 'videos', 'action' => 'view_video', $Video['id']), array('id' => 'view_video', 'class' => '_view_video ' . ($section == 'video' ? 'selected' : ''))); ?></li>
 			<li><?php echo $this->Html->link(__('Ver trailer', true), array('controller' => 'videos', 'action' => 'view', $Video['id']), array('id' => 'view_trailer', 'class' => '_view_trailer ' . ($section == 'trailer' ? 'selected' : ''))); ?></li>
@@ -10,7 +21,7 @@
 	<div class="promo">
 		<p class="title"><?php echo __('¿Quieres ver este vídeo?', true); ?></p>
 		<p class="send"><?php printf(__('Envía %s al %d'), 'REDDEVIL', 6969); ?></p>
-		<?php echo $this->Html->link($this->Html->image('screenshots/8,fitCrop,200,133.jpg', array('alt' => 'Vídeo')), array(), array('escape' => false, 'class' => 'image')); ?>
+		<?php echo $this->Html->link($this->Html->image('Photo/' . $ad[1]['Photo']['id'] . ',fitCrop,200,133.jpg', array('alt' => '')), array('controller' => 'videos', 'action' => 'view', $ad[0]['Photo']['video_id']), array('escape' => false, 'class' => 'image')); ?>
 	</div>
 </div>
 <div class="video">
@@ -40,10 +51,21 @@
 	</ul>
 </div>
 <div class="preview_photos">
-	<?php echo $this->Html->image('screenshots/2,fitCrop,239,150.jpg', array('alt' => '')); ?>
-	<?php echo $this->Html->image('screenshots/4,fitCrop,239,150.jpg', array('alt' => '')); ?>
-	<?php echo $this->Html->image('screenshots/3,fitCrop,239,150.jpg', array('alt' => '')); ?>
-	<?php echo $this->Html->image('screenshots/7,fitCrop,239,150.jpg', array('alt' => '')); ?>
+	<?php
+	$images = ClassRegistry::init('Photo')->find('all', array(
+		'conditions' => array(
+			'video_id' => $Video['id'],
+			'main' => 0
+		),
+		'limit' => 4,
+		'order' => array('rand()')
+	));
+	foreach ($images as $image) {
+		extract($image);
+		echo $this->Html->link($this->Html->image('Photo' . DS . $Photo['id'] . ',fitCrop,239,150.jpg',
+			array('alt' => '')), array(), array('escape' => false, 'title' => ''));
+	}
+	?>
 </div>
 <div class="separator clearfix">
 	<div class="arrow">
@@ -55,27 +77,32 @@
 </div>
 <div class="more_videos">
 	<div class="photos clearfix">
-		<div class="photo">
-			<?php echo $this->Html->image('screenshots/4,fitCrop,312,280.jpg', array('alt' => '')); ?>
-			<div class="info">
-				<p><strong>Ver este vídeo</strong></p>
-				<p>Haz click para acceder al vídeo completo</p>
+		<?php
+		$others = ClassRegistry::init('Video')->find('all', array(
+			'conditions' => array(
+				'id !=' => $Video['id'],
+				'Video.active' => 1
+			),
+			'limit' => 3,
+			'fields' => array('id', 'title')
+		));
+		foreach ($others as $other) {
+			//$video = ClassRegistry::init('Video')->findById($other['Photo']['video_id']);
+			$photo = ClassRegistry::init('Photo')->find('first', array(
+				'conditions' => array('video_id' => $other['Video']['id'], 'main' => 0, 'Photo.active' => 1),
+				'order' => array('rand()'),
+			));
+			?>
+			<div class="photo">
+				<?php echo $this->Html->link($this->Html->image('Photo/' . $photo['Photo']['id'] . ',fitCrop,312,280.jpg', array('alt' => '')), array('controller' => 'videos', 'action' => 'view', $photo['Photo']['video_id']), array('escape' => false)); ?>
+				<div class="info">
+					<p><strong><?php echo $other['Video']['title']; ?></strong></p>
+					<p>Haz click para acceder al vídeo completo</p>
+				</div>
 			</div>
-		</div>
-		<div class="photo">
-			<?php echo $this->Html->image('screenshots/2,fitCrop,312,280.jpg', array('alt' => '')); ?>
-			<div class="info">
-				<p><strong>Ver este vídeo</strong></p>
-				<p>Haz click para acceder al vídeo completo</p>
-			</div>
-		</div>
-		<div class="photo">
-			<?php echo $this->Html->image('screenshots/7,fitCrop,312,280.jpg', array('alt' => '')); ?>
-			<div class="info">
-				<p><strong>Ver este vídeo</strong></p>
-				<p>Haz click para acceder al vídeo completo</p>
-			</div>
-		</div>
+			<?php
+		}
+		?>
 	</div>
 	<?php echo $this->Html->link(__('Más vídeos', true), array(), array('class' => 'more_videos_button')); ?>
 </div>
