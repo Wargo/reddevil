@@ -40,7 +40,7 @@ class ConversionShell extends AppShell {
 	public function wmv($id, $model) {	
 		$path = Configure::read($model. 'UploadFolder');
 		$input = $id;
-		$output = 'flv' . DS . $id;
+		$output = 'wmv' . DS . $id;
 
 		$cmd = "ffmpeg -sameq -i ".$path.$input." ".$path.$output . ".wmv";
 		shell_exec($cmd);
