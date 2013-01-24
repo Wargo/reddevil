@@ -62,8 +62,7 @@
 	));
 	foreach ($images as $image) {
 		extract($image);
-		echo $this->Html->link($this->Html->image('Photo' . DS . $Photo['id'] . ',fitCrop,239,150.jpg',
-			array('alt' => '')), array(), array('escape' => false, 'title' => ''));
+		echo $this->Html->image('Photo' . DS . $Photo['id'] . ',fitCrop,239,150.jpg', array('alt' => ''));
 	}
 	?>
 </div>

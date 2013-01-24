@@ -1,5 +1,5 @@
 <?php
-$photos = classregistry::init('Photo')->getPhotos($Video['id']);
+$photos = classregistry::init('Photo')->getPhotos($Video['id'], 6);
 
 if (count($photos)) {
 	?>

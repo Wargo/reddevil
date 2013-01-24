@@ -1,32 +1,22 @@
 <?php
 class Video extends AppModel {
 
-	/*
-	var $hasAndBelongsToMany = array(
-		'Category' => array(
-			'className' => 'Category',
-			'joinTable' => 'video_relationships',
-			'foreignKey' => 'video_id',
-			'associationForeignKey' => 'foreign_id',
-		),
-	);
-	*/
+	var $limit = 3;
 
 	function findMore($page, $conditions) {
 		
 		return $this->find('all', array(
 			'conditions' => $conditions,
 			'limit' => 6,
-			'offset' => 3 * $page
+			'offset' => $this->limit * $page
 		));
 
 	}
 
-	function getVideos($page, $limit, $params = array()) {
+	function getVideos($page, $params = array()) {
 
 		$ids = $conditions = array();
 
-		//$this->loadModel('VideoRelationship');
 		foreach ($params as $key => $value) {
 			$new_ids = ClassRegistry::init('VideoRelationship')->find('list', array(
 				'conditions' => array(
@@ -46,14 +36,11 @@ class Video extends AppModel {
 
 		$count = $this->find('count', compact('conditions'));
 
-		$pageCount = ceil($count / $limit);
+		$pageCount = ceil($count / $this->limit);
+
+		$limit = $this->limit;
 
 		return array($conditions, $pageCount, $this->find('all', compact('conditions', 'limit', 'page')));
-		
-		//$this->paginate['Video']['limit'] = 3;
-		//$this->paginate['Video']['page'] = $page;
-
-		//return $this->paginate($conditions);
 
 	}
 

@@ -68,7 +68,7 @@ $(document).ready(function() {
 					i = 0;
 				}
 
-			}, 500);
+			}, 800);
 		}
 
 	});
