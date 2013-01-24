@@ -326,7 +326,7 @@ html[xmlns] .clearfix {
 .video .player {
 	margin-top:10px;
 	/*height:542px;*/
-	text-align:center;
+	/*text-align:center;*/
 }
 .video .player_video {
 	height:542px;
