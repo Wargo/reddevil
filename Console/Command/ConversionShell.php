@@ -60,7 +60,7 @@ class ConversionShell extends AppShell {
 		shell_exec('mv ' . $path.$output.'.3gp '.$path.$output);
 		
 		$this->_saveFormat($id, $model, '3gp');
-		echo 
+
 	}
 
 	protected function _saveFormat($id, $model, $format) {
