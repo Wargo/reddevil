@@ -213,8 +213,9 @@ class VideosController extends AppController {
 
 	function check_phone() {
 
+		$this->layout = false;
+
 		if (is_numeric($this->Session->read('phone'))) {
-			$this->layout = false;
 			$ch = curl_init('http://flashaccess2008.micropagos.net:8080/c2enopin/servlet/Control?cid=' . Configure::read('CID') . '&uid=' . $this->Session->read('user') . '&service=' . $this->Session->read('phone'));
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 			$result = curl_exec($ch);
@@ -231,6 +232,8 @@ class VideosController extends AppController {
 
 
 	function check_sms() {
+
+		$this->layout = false;
 
 		if (is_numeric($this->Session->read('phone'))) {
 			$ch = curl_init('http://213.27.137.219:8080/SMSGateway/SmsGateway2FlashIn?cid=' . Configure::read('CID_m') . '&uid=' . $this->Session->read('user') . '&control=' . Configure::read('pass_m') . '&peticion=NO');

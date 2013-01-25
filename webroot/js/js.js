@@ -85,7 +85,7 @@ $(document).ready(function() {
 		setTimeout(function() {
 			$('#dialog-message').dialog({
 				width: 630,
-				height: 360,
+				//height: 200,
 				modal: true,
 				buttons: {
 					Ok: function() {
@@ -157,14 +157,18 @@ $(document).ready(function() {
 			$.get(temp_path + '/videos/check_phone', function(data) {
 
 				if (data) {
-					$(location).attr('href', data);
+					//$(location).attr('href', data);
+					alert(data);
 				}
 
 			});
 
 			$.get(temp_path + '/videos/check_sms', function(data) {
 
-				$('#isCalling_sms').html(data);
+				if (data) {
+					//$(location).attr('href', data);
+					alert(data);
+				}
 
 			});
 

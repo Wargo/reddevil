@@ -40,14 +40,12 @@ if ($this->Session->read('video_' . $Video['id']) < date('Y-m-d H:i:s', mktime(d
 					<?php echo sprintf(__('Llama al %s, tienes %s segundos para llamar'), '<span class="big" id="phone">' . $phone . '</span>', '<span class="remaining">' . $total_seconds . '</span>'); ?>
 					<p class="info_text"><?php echo Configure::read('info_m'); ?></p>
 				</div>
-				<p id="isCalling_phone"></p>
 			</div>
 			<div id="fragment-2">
 				<div class="sms">
 					<?php echo sprintf(__('Envía %s al %s, dispones de %s segundos para mandarlo'), '<span class="big">' . $text . '</span>', '<span class="big">' . $sms . '</span>', '<span class="remaining">' . $total_seconds . '</span>'); ?>
 					<p class="info_text"><?php echo Configure::read('info_m'); ?></p>
 				</div>
-				<p id="isCalling_sms"></p>
 			</div>
 		</div>
 		<script>
