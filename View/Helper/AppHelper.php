@@ -32,7 +32,7 @@ App::uses('Helper', 'View');
  */
 class AppHelper extends Helper {
 
-	var $models = array('Photo');
+	var $models = array('Photo', 'Actor');
 
 	function assetUrl($path, $options = array()) {
 

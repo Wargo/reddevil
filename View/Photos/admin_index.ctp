@@ -11,6 +11,7 @@ foreach ($photos as $photo) {
 	extract(ClassRegistry::init('Video')->findById($Photo['video_id']));
 
 	echo '<tr>';
+		echo '<td>' . $this->Html->image('Photo/' . $Photo['id'] . ',fitCrop,60,60.jpg', array('width' => 60)) . '</td>';
 		echo '<td>' . $Photo['title'] . '</td>';
 		echo '<td>' . $Video['title'] . '</td>';
 		echo '<td>' . ($Photo['main'] ? __('Principal') : '') . '</td>';
