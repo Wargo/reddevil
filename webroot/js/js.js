@@ -150,12 +150,15 @@ $(document).ready(function() {
 		}
 
 		var temp_path = '/webs/reddevil';
+		//var temp_path = '';
 
 		if (parseInt($('#phone').html())) {
 
 			$.get(temp_path + '/videos/check_phone', function(data) {
 
-				$('#isCalling_phone').html(data);
+				if (data) {
+					$(location).attr('href', data);
+				}
 
 			});
 
