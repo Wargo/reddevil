@@ -38,9 +38,15 @@ class VideosController extends AppController {
 			return $this->redirect('/');
 		}
 
+		$this->Session->write('current_video_id', $id);
+
 		$total_seconds = 90;
 
-		$user = mt_rand(1000, 9999);
+		if ($this->Session->read('user')) {
+			$user = $this->Session->read('user');
+		} else {
+			$user = mt_rand(1000, 9999);
+		}
 
 		$ch = curl_init('http://flashaccess2008.micropagos.net:8080/c2enopin/servlet/RequestListener?cid=' . Configure::read('CID') . '&uid=' . $user . '&pool=' . Configure::read('pool') . '&control=' . Configure::read('pass'));
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -208,12 +214,19 @@ class VideosController extends AppController {
 	function check_phone() {
 
 		if (is_numeric($this->Session->read('phone'))) {
+			$this->layout = false;
 			$ch = curl_init('http://flashaccess2008.micropagos.net:8080/c2enopin/servlet/Control?cid=' . Configure::read('CID') . '&uid=' . $this->Session->read('user') . '&service=' . $this->Session->read('phone'));
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-			echo $result = curl_exec($ch);
+			$result = curl_exec($ch);
+			$access = false;
+			if (substr($result, 0, 2) === 'OK') {
+				$this->Session->write('video_' . $this->Session->read('current_video_id'), date('Y-m-d H:i:s'));
+				$access = true;
+			}
+			$this->set(compact('result', 'access'));
+		} else {
+			$this->autoRender = false;
 		}
-
-		$this->autoRender = false;
 	}
 
 
@@ -222,10 +235,16 @@ class VideosController extends AppController {
 		if (is_numeric($this->Session->read('phone'))) {
 			$ch = curl_init('http://213.27.137.219:8080/SMSGateway/SmsGateway2FlashIn?cid=' . Configure::read('CID_m') . '&uid=' . $this->Session->read('user') . '&control=' . Configure::read('pass_m') . '&peticion=NO');
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-			echo $result = curl_exec($ch);
+			$result = curl_exec($ch);
+			$access = false;
+			if (substr($result, 0, 2) === 'OK') {
+				$this->Session->write('video_' . $this->Session->read('current_video_id'), date('Y-m-d H:i:s'));
+				$access = true;
+			}
+			$this->set(compact('result', 'access'));
+		} else {
+			$this->autoRender = false;
 		}
-
-		$this->autoRender = false;
 	}
 
 }
