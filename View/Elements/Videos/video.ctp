@@ -20,6 +20,11 @@ $image = $this->Html->url('/img/Photo/' . $folder . '/' . $main['Photo']['id'] .
 		</div>
 	</div>
 </div>
+<?php if ($this->request->is('ajax')): ?>
+<script>
+	$(".flowplayer").flowplayer({});
+</script>
+<?php endif; ?>
 <div class="hidden" id="dialog-message" title="<?php echo __('Ver el vídeo completo'); ?>">
 	<div id="tabs">
 		<ul>

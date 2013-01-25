@@ -1,3 +1,8 @@
+<script type="text/javascript">
+$(function() {
+	$.scrollTo('#buttons', 200, {offset:{top:-100}});
+});
+</script>
 <div class="clearfix">
 	<div class="featured">
 		<?php

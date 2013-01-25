@@ -153,13 +153,13 @@ $(document).ready(function() {
 
 		if (parseInt($('#phone').html())) {
 
-			$.get(temp_path . '/videos/check_phone', function(data) {
+			$.get(temp_path + '/videos/check_phone', function(data) {
 
 				$('#isCalling_phone').html(data);
 
 			});
 
-			$.get(temp_path . '/videos/check_sms', function(data) {
+			$.get(temp_path + '/videos/check_sms', function(data) {
 
 				$('#isCalling_sms').html(data);
 
