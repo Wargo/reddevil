@@ -42,9 +42,13 @@ class AppModel extends Model {
 			$aux = explode('-', $this->id);
 			$aux = substr($aux[1], 0, 3);
 			
+			// Remove original image before update it
 			$path = 'img' . DS . $this->alias . DS . $aux . DS . $this->id . '.jpg';
+			unlink(APP . 'uploads' . DS . $path);
 
-			unlink(WWW_ROOT . $path);
+			// All generated images
+			$delete = 'img' . DS . $this->alias . DS . $aux . DS . $this->id . '*';
+			exec('rm -f ' . WWW_ROOT . $delete);
 
 			return $path;
 

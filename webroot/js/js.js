@@ -174,4 +174,19 @@ $(document).ready(function() {
 
 	}
 
+	
+	$('._dialog').click(function() {
+
+		$.get(this.href, function(data) {
+			$('#dialog-message').html(data);
+			$('#dialog-message').dialog({
+				width: 500,
+				modal: true,
+			});
+		});
+
+		return false;
+
+	});
+
 });

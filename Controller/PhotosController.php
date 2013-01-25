@@ -19,6 +19,33 @@ class PhotosController extends AppController {
 
 	}
 
+	function admin_multiple() {
+		
+		$this->layout = false;
+
+		if (!empty($this->request->data['Photo']['num'])) {
+			
+			for ($i = 0; $i < $this->request->data['Photo']['num']; $i ++) {
+				$this->Photo->create();
+				$this->Photo->save(array(
+					'title' => 'Foto ' . ($i + 1),
+					'video_id' => $this->request->data['Photo']['video_id']
+				));
+			}
+			return $this->redirect(array('admin' => true, 'controller' => 'photos', 'action' => 'index'));
+
+		} else {
+
+			$this->loadModel('Video');
+			$videos = $this->Video->find('list', array(
+				'fields' => array('id', 'title')
+			));
+			$this->set(compact('videos'));
+
+		}
+
+	}
+
 	function admin_edit($id = null) {
 
 		$this->loadModel('PhotoRelationship');

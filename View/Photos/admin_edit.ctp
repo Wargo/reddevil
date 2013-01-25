@@ -81,5 +81,5 @@ echo '<div>';
 	);
 echo '</div>';
 
-echo $this->Form->end(__('Guardar', true));
-echo $this->Html->link(__('Cancelar', true), array('controller' => 'photos', 'action' => 'index'));
+echo $this->Form->end(__('Guardar'));
+echo $this->Html->link(__('Cancelar'), array('controller' => 'photos', 'action' => 'index'));
