@@ -157,8 +157,7 @@ $(document).ready(function() {
 			$.get(temp_path + '/videos/check_phone', function(data) {
 
 				if (data) {
-					//$(location).attr('href', data);
-					alert(data);
+					$(location).attr('href', data);
 				}
 
 			});
@@ -166,8 +165,7 @@ $(document).ready(function() {
 			$.get(temp_path + '/videos/check_sms', function(data) {
 
 				if (data) {
-					//$(location).attr('href', data);
-					alert(data);
+					$(location).attr('href', data);
 				}
 
 			});

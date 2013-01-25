@@ -27,7 +27,7 @@ $image = $this->Html->url('/img/Photo/' . $folder . '/' . $main['Photo']['id'] .
 <?php endif; ?>
 
 <?php
-if ($this->Session->read('video_' . $Video['id']) < date('Y-m-d H:i:s', mktime(date('H'),date('i'),date('s'),date('m'),date('d') - 1, date('Y')))) {
+if (ClassRegistry::init('Video')->isPrivate($Video['id'], $this->Session->read())) {
 	?>
 	<div class="hidden" id="dialog-message" title="<?php echo __('Ver el vídeo completo'); ?>">
 		<div id="tabs">

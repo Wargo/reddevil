@@ -85,4 +85,14 @@ class Video extends AppModel {
 			return $this->save($data);
 	}
 
+	function isPrivate($video_id, $session) {
+
+		if (empty($session['video_' . $video_id]) || $session['video_' . $video_id] < date('Y-m-d H:i:s', mktime(date('H'),date('i'),date('s'),date('m'),date('d') - 1, date('Y')))) {
+			return true;
+		} else {
+			return false;
+		}
+
+	}
+
 }

@@ -69,7 +69,13 @@ $actors = ClassRegistry::init('VideoRelationship')->getActors($Video['id']);
 	</div>
 	<div class="footer clearfix">
 		<?php echo $this->Html->link(__('Haz click aquí para suscribirte', true), $video_url, array('class' => 'suscribe')); ?>
-		<?php echo $this->Html->link(__('Privado'), $video_url, array('class' => 'private')); ?>
+		<?php
+		if (ClassRegistry::init('Video')->isPrivate($Video['id'], $this->Session->read())) {
+			echo $this->Html->link(__('Privado'), $video_url, array('class' => 'private'));
+		} else {
+			echo $this->Html->link(__('Público'), $video_url, array('class' => 'private'));
+		}
+		?>
 		<?php echo $this->Html->link(__('Ver fotos (32)'), array('controller' => 'videos', 'action' => 'view_photos', $Video['id']), array('class' => 'num_photos')); ?>
 	</div>
 </div>
