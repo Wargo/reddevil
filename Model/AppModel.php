@@ -44,7 +44,7 @@ class AppModel extends Model {
 			
 			// Remove original image before update it
 			$path = 'img' . DS . $this->alias . DS . $aux . DS . $this->id . '.jpg';
-			unlink(APP . 'uploads' . DS . $path);
+			@unlink(APP . 'uploads' . DS . $path);
 
 			// All generated images
 			$delete = 'img' . DS . $this->alias . DS . $aux . DS . $this->id . '*';

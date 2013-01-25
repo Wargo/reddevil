@@ -287,7 +287,7 @@ Configure::write('TrailerImageFolder', APP . 'uploads' . DS . 'img' . DS . 'Trai
 Configure::write('VideoImageFolder', APP . 'uploads' . DS . 'img' . DS . 'Video'. DS);
 
 
-if ($_SERVER['SERVER_ADDR'] != '127.0.0.1') {
+if (!empty($_SERVER['SERVER_ADDR']) && $_SERVER['SERVER_ADDR'] != '127.0.0.1') {
 	Configure::write('Mime.magic', array('db' => '/usr/share/file/magic'));
 }
 
