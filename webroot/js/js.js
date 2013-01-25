@@ -149,15 +149,17 @@ $(document).ready(function() {
 			return;
 		}
 
+		var temp_path = '/webs/reddevil';
+
 		if (parseInt($('#phone').html())) {
 
-			$.get('/videos/check_phone', function(data) {
+			$.get(temp_path . '/videos/check_phone', function(data) {
 
 				$('#isCalling_phone').html(data);
 
 			});
 
-			$.get('/videos/check_sms', function(data) {
+			$.get(temp_path . '/videos/check_sms', function(data) {
 
 				$('#isCalling_sms').html(data);
 
