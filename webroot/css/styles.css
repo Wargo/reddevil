@@ -47,6 +47,12 @@ a.selected {
 	cursor:default;
 }
 
+a.disabled {
+	cursor:default;
+	opacity:0.3;
+	filter:alpha(opacity=30); /* For IE8 and earlier */
+}
+
 input[type="submit"] {
 	cursor:pointer;
 }
@@ -541,4 +547,42 @@ a.more_videos_button:hover {
 .block_photos img {
 	margin:2px;
 	width:324px;
+}
+.block_photos .footer {
+	margin:10px;
+}
+.block_photos .footer a {
+	color:#FFF;
+}
+.block_photos .footer a:hover {
+	text-decoration:underline;
+}
+.block_photos a.see_video {
+	font-weight:bold;
+	font-size:1.3em;
+	color:#FFF;
+	display:block;
+	float:right;
+	margin:10px 40px 0px 0px;
+}
+
+
+/*
+ * Profile
+ */
+.profile {
+	margin-bottom:20px;
+}
+.profile .photo {
+	text-align:center;
+	float:left;
+	width:350px;
+}
+.profile .info {
+	float:right;
+	width:620px;
+	margin-right:10px;
+}
+.profile .info .photos img {
+	margin-right:1px;
 }

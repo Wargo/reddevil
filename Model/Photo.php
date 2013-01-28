@@ -22,4 +22,24 @@ class Photo extends AppModel {
 
 	}
 
+	function getPhotosByActor($actor_id, $limit = 0) {
+
+		$ids = ClassRegistry::init('PhotoRelationship')->find('list', array(
+			'conditions' => array(
+				'model' => 'Actor',
+				'foreign_id' => $actor_id,
+			),
+			'fields' => array('id', 'photo_id'),
+		));
+
+		return $this->find('all', array(
+			'conditions' => array(
+				'Photo.id' => $ids,
+				'Photo.active' => 1,
+			),
+			'limit' => $limit,
+		));
+
+	}
+
 }

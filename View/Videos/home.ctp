@@ -1,4 +1,8 @@
 <?php
+if (!empty($this->params['named']['actor'])) {
+	extract(ClassRegistry::init('Actor')->findById($this->params['named']['actor']));
+	echo $this->element('Actor/profile', compact('Actor'));
+}
 foreach ($videos as $video) {
 	
 	extract($video);

@@ -62,7 +62,7 @@ $(function() {
 	<ul>
 		<li><?php echo $this->Html->link(__('Bájate el vídeo completo', true), array()); ?></li>
 		<li><?php echo $this->Html->link(__('Ver el vídeo completo', true) . $this->Html->image('mini_play.png', array('align' => 'absmiddle')), array('controller' => 'videos', 'action' => 'view_video', $Video['id']), array('escape' => false, 'class' => '_view_video with_image')); ?></li>
-		<li><?php echo $this->Html->link(sprintf(__('Fotos (%d)'), 12), array('controller' => 'videos', 'action' => 'view_photos', $Video['id']), array('class' => '_view_photos')); ?></li>
+		<li><?php echo $this->Html->link(sprintf(__('Fotos (%s)'), ClassRegistry::init('Photo')->find('count', array('conditions' => array('video_id' => $Video['id'], 'Photo.active' => 1)))), array('controller' => 'videos', 'action' => 'view_photos', $Video['id']), array('class' => '_view_photos')); ?></li>
 	</ul>
 </div>
 <div class="preview_photos">

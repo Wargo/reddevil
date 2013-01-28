@@ -31,7 +31,7 @@ $actors = ClassRegistry::init('VideoRelationship')->getActors($Video['id']);
 						<?php
 						$links = array();
 						foreach ($actors as $actor_id => $actor_name) {
-							$links[] = $this->Html->link($actor_name, array('controller' => 'videos', 'action' => 'home', $page, 'actor' => $actor_id));
+							$links[] = $this->Html->link($actor_name, array('controller' => 'videos', 'action' => 'home', 1, 'actor' => $actor_id));
 						}
 						echo implode(', ', $links);
 						?>
@@ -41,7 +41,7 @@ $actors = ClassRegistry::init('VideoRelationship')->getActors($Video['id']);
 						<?php
 						$links = array();
 						foreach ($categories as $category_id => $category_name) {
-							$links[] = $this->Html->link($category_name, array('controller' => 'videos', 'action' => 'home', $page, 'category' => $category_id));
+							$links[] = $this->Html->link($category_name, array('controller' => 'videos', 'action' => 'home', 1, 'category' => $category_id));
 						}
 						echo implode(', ', $links);
 						?>
@@ -76,6 +76,6 @@ $actors = ClassRegistry::init('VideoRelationship')->getActors($Video['id']);
 			echo $this->Html->link(__('Público'), $video_url, array('class' => 'private public'));
 		}
 		?>
-		<?php echo $this->Html->link(__('Ver fotos (32)'), array('controller' => 'videos', 'action' => 'view_photos', $Video['id']), array('class' => 'num_photos')); ?>
+		<?php echo $this->Html->link(sprintf(__('Ver fotos (%s)'), ClassRegistry::init('Photo')->find('count', array('conditions' => array('video_id' => $Video['id'], 'Photo.active' => 1)))), array('controller' => 'videos', 'action' => 'view_photos', $Video['id']), array('class' => 'num_photos')); ?>
 	</div>
 </div>

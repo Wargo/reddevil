@@ -3,6 +3,9 @@ $(document).ready(function() {
 	$('.selected').click(function() {
 		return false;
 	});
+	$('.disabled').click(function() {
+		return false;
+	});
 
 	$('._view_video').click(function() {
 		if ($(this).hasClass('selected')) {

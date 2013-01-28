@@ -1,5 +1,7 @@
 <?php
 $photos = classregistry::init('Photo')->getPhotos($Video['id'], 6);
+$categories = ClassRegistry::init('VideoRelationship')->getCategories($Video['id']);
+$actors = ClassRegistry::init('VideoRelationship')->getActors($Video['id']);
 
 if (count($photos)) {
 	?>
@@ -17,6 +19,31 @@ if (count($photos)) {
 
 			}
 			?>
+		</div>
+		<div class="footer clearfix">
+			<?php
+			echo $this->Html->link(__('Ver el vídeo'), array('controller' => 'videos', 'action' => 'view', $Video['id']), array('class' => 'see_video'));
+			?>
+			<p class="grey">
+				<strong><?php echo __('Actores'); ?>:</strong>
+				<?php
+				$links = array();
+				foreach ($actors as $actor_id => $actor_name) {
+					$links[] = $this->Html->link($actor_name, array('controller' => 'videos', 'action' => 'home', 1, 'actor' => $actor_id));
+				}
+				echo implode(', ', $links);
+				?>
+			</p>
+			<p class="grey">
+				<strong><?php echo __('Categorías'); ?>:</strong>
+				<?php
+				$links = array();
+				foreach ($categories as $category_id => $category_name) {
+					$links[] = $this->Html->link($category_name, array('controller' => 'videos', 'action' => 'home', 1, 'category' => $category_id));
+				}
+				echo implode(', ', $links);
+				?>
+			</p>
 		</div>
 	</div>
 	<?php

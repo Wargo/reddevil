@@ -13,7 +13,11 @@ class Video extends AppModel {
 
 	}
 
-	function getVideos($page, $params = array()) {
+	function getVideos($page, $params = array(), $limit = false) {
+
+		if ($limit == false) {
+			$limit = $this->limit;
+		}
 
 		$ids = $conditions = array();
 
@@ -36,9 +40,7 @@ class Video extends AppModel {
 
 		$count = $this->find('count', compact('conditions'));
 
-		$pageCount = ceil($count / $this->limit);
-
-		$limit = $this->limit;
+		$pageCount = ceil($count / $limit);
 
 		return array($conditions, $pageCount, $this->find('all', compact('conditions', 'limit', 'page')));
 
