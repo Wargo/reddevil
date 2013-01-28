@@ -73,7 +73,7 @@ $actors = ClassRegistry::init('VideoRelationship')->getActors($Video['id']);
 		if (ClassRegistry::init('Video')->isPrivate($Video['id'], $this->Session->read())) {
 			echo $this->Html->link(__('Privado'), $video_url, array('class' => 'private'));
 		} else {
-			echo $this->Html->link(__('Público'), $video_url, array('class' => 'private'));
+			echo $this->Html->link(__('Público'), $video_url, array('class' => 'private public'));
 		}
 		?>
 		<?php echo $this->Html->link(__('Ver fotos (32)'), array('controller' => 'videos', 'action' => 'view_photos', $Video['id']), array('class' => 'num_photos')); ?>

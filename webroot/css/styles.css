@@ -230,6 +230,11 @@ html[xmlns] .clearfix {
 	border-right:solid 1px #666;
 	float:left;
 }
+.block_video .footer a.private.public {
+	color:#00FF00;
+	font-size:1.5em;
+	font-weight:bold;
+}
 .block_video .footer a.num_photos {
 	width:300px;
 	display:block;
