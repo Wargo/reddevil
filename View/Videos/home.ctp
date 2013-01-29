@@ -62,10 +62,10 @@ if (count($more_videos)) {
 				}
 				?>
 				<div class="photo">
-					<?php echo $this->Html->link($this->Html->image('Photo/' . $Photo['id'] . ',fitCrop,312,280.jpg', array('var' => "['" . implode("','", $var) . "']", 'alt' => 'a', 'class' => '_rotate_photos')), array('controller' => 'videos', 'action' => 'view', $Video['id']), array('escape' => false)); ?>
+					<?php echo $this->Html->link($this->Html->image('Photo/' . $Photo['id'] . ',fitCrop,312,280.jpg', array('var' => "['" . implode("','", $var) . "']", 'alt' => 'a', 'class' => '_rotate_photos')), array('controller' => 'videos', 'action' => 'view', $Video['slug']), array('escape' => false)); ?>
 					<div class="info">
-						<p><strong><?php echo $this->Html->link($Video['title'], array('controller' => 'videos', 'action' => 'view', $Video['id'])); ?></strong></p>
-						<p>Haz click para acceder al vídeo completo</p>
+						<p><strong><?php echo $this->Html->link($Video['title'], array('controller' => 'videos', 'action' => 'view', $Video['slug'])); ?></strong></p>
+						<p><?php echo __('Haz click para acceder al vídeo completo'); ?></p>
 					</div>
 				</div>
 				<?php

@@ -14,7 +14,7 @@ if (count($photos)) {
 				extract($photo);
 
 				echo $this->Html->link($this->Html->image('Photo/' . $Photo['id'] . ',fitCrop,317,200.jpg', array()),
-					array('controller' => 'videos', 'action' => 'view_photos', $Video['id'], $Photo['id']),
+					array('controller' => 'videos', 'action' => 'view_photos', $Video['slug'], $Photo['id']),
 					array('escape' => false));
 
 			}
@@ -22,7 +22,7 @@ if (count($photos)) {
 		</div>
 		<div class="footer clearfix">
 			<?php
-			echo $this->Html->link(__('Ver el vídeo'), array('controller' => 'videos', 'action' => 'view', $Video['id']), array('class' => 'see_video'));
+			echo $this->Html->link(__('Ver el vídeo'), array('controller' => 'videos', 'action' => 'view', $Video['slug']), array('class' => 'see_video'));
 			?>
 			<p class="grey">
 				<strong><?php echo __('Actores'); ?>:</strong>

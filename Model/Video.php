@@ -97,4 +97,8 @@ class Video extends AppModel {
 
 	}
 
+	function getSlug($video_id) {
+		return $this->field('slug', array('id' => $video_id));
+	}
+
 }

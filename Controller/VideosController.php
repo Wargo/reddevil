@@ -19,9 +19,14 @@ class VideosController extends AppController {
 
 		$section = 'trailer';
 
-		extract($this->Video->findById($id));
+		if (!$video = $this->Video->findById($id)) {
+			$video = $this->Video->findBySlug($id);
+		}
+		extract($video);
 
-		$this->set(compact('Video', 'section'));
+		$title_for_layout = $this->_getTitle($Video);
+
+		$this->set(compact('Video', 'section', 'layout_title', 'title_for_layout'));
 
 		if ($this->request->is('ajax')) {
 			$this->layout = 'ajax';
@@ -67,9 +72,14 @@ class VideosController extends AppController {
 
 		$section = 'video';
 
-		extract($this->Video->findById($id));
+		if (!$video = $this->Video->findById($id)) {
+			$video = $this->Video->findBySlug($id);
+		}
+		extract($video);
 
-		$this->set(compact('Video', 'section', 'user', 'phone', 'text', 'sms', 'total_seconds'));
+		$title_for_layout = $this->_getTitle($Video);
+
+		$this->set(compact('Video', 'section', 'user', 'phone', 'text', 'sms', 'total_seconds', 'title_for_layout'));
 
 		if ($this->request->is('ajax')) {
 			$this->layout = 'ajax';
@@ -88,9 +98,14 @@ class VideosController extends AppController {
 
 		$section = 'photos';
 
-		extract($this->Video->findById($id));
+		if (!$video = $this->Video->findById($id)) {
+			$video = $this->Video->findBySlug($id);
+		}
+		extract($video);
 
-		$this->set(compact('Video', 'section', 'photo_id'));
+		$title_for_layout = $this->_getTitle($Video);
+
+		$this->set(compact('Video', 'section', 'photo_id', 'title_for_layout'));
 		
 		if ($this->request->is('ajax')) {
 			$this->layout = 'ajax';
@@ -154,6 +169,17 @@ class VideosController extends AppController {
 					}
 				}
 			}
+
+			$actors = ClassRegistry::init('VideoRelationship')->getActors($id);
+			if (count($actors) > 1) {
+				$last = array_pop($actors);
+				$layout_title = sprintf(__('%s y %s en %s'), implode(', ', $actors), $last, $this->request->data['Video']['title']);
+			} else {
+				$layout_title = sprintf(__('%s en %s'), implode(', ', $actors), $Video['title']);
+			}
+
+			$this->Video->save(array('slug' => $this->_title2url($layout_title)));
+
 
 			return $this->redirect('index');
 
@@ -248,6 +274,40 @@ class VideosController extends AppController {
 		} else {
 			$this->autoRender = false;
 		}
+	}
+
+	protected function _title2url($title) {   
+		$title = str_replace('-', ' ', $title);
+		$title = explode(' ', $title);
+		$aux = array();
+		foreach($title as $t) {
+			if($t !== '') {
+				$aux[] = trim($t);
+			}   
+		}   
+
+		$title = implode('-', $aux);
+		$original = array('á', 'é', 'í', 'ó', 'ú', 'ý', 'Á', 'É', 'Í', 'Ó', 'Ú', 'Ý', 'à', 'è', 'ì', 'ò', 'ù', 'À', 'È', 'Ì', 'Ò', 'Ù',
+				'â', 'ê', 'î', 'ô', 'û', 'Â', 'Ê', 'Î', 'Ô', 'Û', 'ñ', 'Ñ', 'ç', 'Ç',
+				);  
+		$replace  = array('a', 'e', 'i', 'o', 'u', 'y', 'A', 'E', 'I', 'O', 'U', 'Y', 'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U',
+				'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U', 'n', 'N', 'c', 'C',
+				);  
+		$title = str_replace($original, $replace, $title);
+		$title = ereg_replace("[^A-Za-z0-9\-]", "", $title);
+		return $title = strtolower($title);
+	} 
+
+	protected function _getTitle($Video) {
+
+		$actors = ClassRegistry::init('VideoRelationship')->getActors($Video['id']);
+		if (count($actors) > 1) {
+			$last = array_pop($actors);
+			return sprintf(__('%s y %s en %s'), implode(', ', $actors), $last, $Video['title']);
+		} else {
+			return sprintf(__('%s en %s'), implode(', ', $actors), $Video['title']);
+		}
+
 	}
 
 }

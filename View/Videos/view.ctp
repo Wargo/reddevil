@@ -15,6 +15,7 @@ $(function() {
 			),
 			'order' => ('rand()'),
 		));
+		$slug1 = ClassRegistry::init('Video')->getSlug($ad1['Photo']['video_id']);
 		$ad2 = ClassRegistry::init('Photo')->find('first', array(
 			'conditions' => array(
 				'video_id !=' => $Video['id'],
@@ -25,22 +26,25 @@ $(function() {
 			),
 			'order' => ('rand()'),
 		));
-		echo $this->Html->link($this->Html->image('Photo/' . $ad1['Photo']['id'] . ',fitCrop,750,260.jpg', array('alt' => '')), array('controller' => 'videos', 'action' => 'view', $ad1['Photo']['video_id']), array('escape' => false, 'class' => 'image'));
+		$slug2 = ClassRegistry::init('Video')->getSlug($ad2['Photo']['video_id']);
+
+		echo $this->Html->link($this->Html->image('Photo/' . $ad1['Photo']['id'] . ',fitCrop,750,260.jpg', array('alt' => '')), array('controller' => 'videos', 'action' => 'view', $slug1), array('escape' => false, 'class' => 'image'));
 		?>
 		<ul class="buttons" id="buttons">
-			<li><?php echo $this->Html->link(__('Ver vídeo', true), array('controller' => 'videos', 'action' => 'view_video', $Video['id']), array('id' => 'view_video', 'class' => '_view_video ' . ($section == 'video' ? 'selected' : ''))); ?></li>
-			<li><?php echo $this->Html->link(__('Ver trailer', true), array('controller' => 'videos', 'action' => 'view', $Video['id']), array('id' => 'view_trailer', 'class' => '_view_trailer ' . ($section == 'trailer' ? 'selected' : ''))); ?></li>
-			<li><?php echo $this->Html->link(sprintf(__('Ver fotos (%d)'), 12), array('controller' => 'videos', 'action' => 'view_photos', $Video['id']), array('id' => 'view_photos', 'class' => '_view_photos ' . ($section == 'photos' ? 'selected' : ''))); ?></li>
+			<li><?php echo $this->Html->link(__('Ver vídeo', true), array('controller' => 'videos', 'action' => 'view_video', $Video['slug']), array('id' => 'view_video', 'class' => '_view_video ' . ($section == 'video' ? 'selected' : ''))); ?></li>
+			<li><?php echo $this->Html->link(__('Ver trailer', true), array('controller' => 'videos', 'action' => 'view', $Video['slug']), array('id' => 'view_trailer', 'class' => '_view_trailer ' . ($section == 'trailer' ? 'selected' : ''))); ?></li>
+			<li><?php echo $this->Html->link(sprintf(__('Ver fotos (%d)'), 12), array('controller' => 'videos', 'action' => 'view_photos', $Video['slug']), array('id' => 'view_photos', 'class' => '_view_photos ' . ($section == 'photos' ? 'selected' : ''))); ?></li>
 		</ul>
 	</div>
+
 	<div class="promo">
 		<p class="title"><?php echo __('¿Quieres ver este vídeo?', true); ?></p>
 		<p class="send"><?php printf(__('Envía %s al %d'), 'REDDEVIL', 6969); ?></p>
-		<?php echo $this->Html->link($this->Html->image('Photo/' . $ad2['Photo']['id'] . ',fitCrop,200,133.jpg', array('alt' => '')), array('controller' => 'videos', 'action' => 'view', $ad2['Photo']['video_id']), array('escape' => false, 'class' => 'image')); ?>
+		<?php echo $this->Html->link($this->Html->image('Photo/' . $ad2['Photo']['id'] . ',fitCrop,200,133.jpg', array('alt' => '')), array('controller' => 'videos', 'action' => 'view', $slug2), array('escape' => false, 'class' => 'image')); ?>
 	</div>
 </div>
 <div class="video">
-	<h1><?php echo $Video['title']; ?></h1>
+	<h1><?php echo $title_for_layout; ?></h1>
 	<div id="section">
 		<?php
 		switch ($section) {
@@ -61,7 +65,7 @@ $(function() {
 <div class="video_footer">
 	<ul>
 		<li><?php echo $this->Html->link(__('Bájate el vídeo completo', true), array()); ?></li>
-		<li><?php echo $this->Html->link(__('Ver el vídeo completo', true) . $this->Html->image('mini_play.png', array('align' => 'absmiddle')), array('controller' => 'videos', 'action' => 'view_video', $Video['id']), array('escape' => false, 'class' => '_view_video with_image')); ?></li>
+		<li><?php echo $this->Html->link(__('Ver el vídeo completo') . $this->Html->image('mini_play.png', array('align' => 'absmiddle')), array('controller' => 'videos', 'action' => 'view_video', $Video['slug']), array('escape' => false, 'class' => '_view_video with_image')); ?></li>
 		<li><?php echo $this->Html->link(sprintf(__('Fotos (%s)'), ClassRegistry::init('Photo')->find('count', array('conditions' => array('video_id' => $Video['id'], 'Photo.active' => 1)))), array('controller' => 'videos', 'action' => 'view_photos', $Video['id']), array('class' => '_view_photos')); ?></li>
 	</ul>
 </div>
@@ -98,7 +102,7 @@ $(function() {
 				'Video.active' => 1
 			),
 			'limit' => 3,
-			'fields' => array('id', 'title')
+			'fields' => array('id', 'title', 'slug')
 		));
 		foreach ($others as $other) {
 			//$video = ClassRegistry::init('Video')->findById($other['Photo']['video_id']);
@@ -108,10 +112,10 @@ $(function() {
 			));
 			?>
 			<div class="photo">
-				<?php echo $this->Html->link($this->Html->image('Photo/' . $photo['Photo']['id'] . ',fitCrop,312,280.jpg', array('alt' => '')), array('controller' => 'videos', 'action' => 'view', $photo['Photo']['video_id']), array('escape' => false)); ?>
+				<?php echo $this->Html->link($this->Html->image('Photo/' . $photo['Photo']['id'] . ',fitCrop,312,280.jpg', array('alt' => '')), array('controller' => 'videos', 'action' => 'view', $other['Video']['slug']), array('escape' => false)); ?>
 				<div class="info">
 					<p><strong><?php echo $other['Video']['title']; ?></strong></p>
-					<p>Haz click para acceder al vídeo completo</p>
+					<p><?php echo __('Haz click para acceder al vídeo completo'); ?></p>
 				</div>
 			</div>
 			<?php

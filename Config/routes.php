@@ -29,6 +29,14 @@
 
 	Router::connect('/admin', array('admin' => true, 'controller' => 'videos', 'action' => 'index'));
 
+	Router::connect('/trailer/*', array('controller' => 'videos', 'action' => 'view'));
+
+	Router::connect('/video/*', array('controller' => 'videos', 'action' => 'view_video'));
+
+	Router::connect('/fotos/*', array('controller' => 'videos', 'action' => 'view_photos'));
+
+	Router::connect('/quiero-ser-actriz-porno', array('controller' => 'pages', 'action' => 'display', 'wannabe'));
+
 	Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));
 
 

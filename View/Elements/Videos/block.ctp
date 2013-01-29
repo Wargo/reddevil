@@ -1,5 +1,6 @@
 <?php
-$video_url = array('controller' => 'videos', 'action' => 'view', $Video['id']);
+//$video_url = array('controller' => 'videos', 'action' => 'view', $Video['id']);
+$video_url = array('controller' => 'videos', 'action' => 'view', $Video['slug']);
 $categories = ClassRegistry::init('VideoRelationship')->getCategories($Video['id']);
 $actors = ClassRegistry::init('VideoRelationship')->getActors($Video['id']);
 ?>
@@ -76,6 +77,6 @@ $actors = ClassRegistry::init('VideoRelationship')->getActors($Video['id']);
 			echo $this->Html->link(__('Público'), $video_url, array('class' => 'private public'));
 		}
 		?>
-		<?php echo $this->Html->link(sprintf(__('Ver fotos (%s)'), ClassRegistry::init('Photo')->find('count', array('conditions' => array('video_id' => $Video['id'], 'Photo.active' => 1)))), array('controller' => 'videos', 'action' => 'view_photos', $Video['id']), array('class' => 'num_photos')); ?>
+		<?php echo $this->Html->link(sprintf(__('Ver fotos (%s)'), ClassRegistry::init('Photo')->find('count', array('conditions' => array('video_id' => $Video['id'], 'Photo.active' => 1)))), array('controller' => 'videos', 'action' => 'view_photos', $Video['slug']), array('class' => 'num_photos')); ?>
 	</div>
 </div>

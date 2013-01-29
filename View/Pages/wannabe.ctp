@@ -1,3 +1,6 @@
+<?php
+$this->set('title_for_layout', __('Quiero ser actriz porno'));
+?>
 <div class="page_content">
 	<h1><?php echo __('¿Quieres ser actriz porno?'); ?></h1>
 	<p>En FAKings tenemos trabajo para ti ¿Quieres ser actriz porno pero no sabes por donde empezar? Acabas de llegar al sitio adecuado para empezar tu carrera como actriz porno. En FAKings PRODUCIMOS TODAS LAS SEMANAS y estamos especializados en trabajar con chicas nóveles. Nosotros te pagamos desde la primera escena y te guiaremos en este mundo ya que además colaboramos con las principales productoras porno nacionales.</p>
