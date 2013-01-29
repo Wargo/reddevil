@@ -35,6 +35,11 @@
 
 	Router::connect('/fotos/*', array('controller' => 'videos', 'action' => 'view_photos'));
 
+	//Router::connect('/actriz/*', array('controller' => 'videos', 'action' => 'home'));
+
+	//Router::connect('/actor/*', array('controller' => 'videos', 'action' => 'home'));
+
+
 	Router::connect('/quiero-ser-actriz-porno', array('controller' => 'pages', 'action' => 'display', 'wannabe'));
 
 	Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));

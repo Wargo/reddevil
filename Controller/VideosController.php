@@ -24,7 +24,7 @@ class VideosController extends AppController {
 		}
 		extract($video);
 
-		$title_for_layout = $this->_getTitle($Video);
+		$title_for_layout = $this->Video->getTitle($Video);
 
 		$this->set(compact('Video', 'section', 'layout_title', 'title_for_layout'));
 
@@ -77,7 +77,7 @@ class VideosController extends AppController {
 		}
 		extract($video);
 
-		$title_for_layout = $this->_getTitle($Video);
+		$title_for_layout = $this->Video->getTitle($Video);
 
 		$this->set(compact('Video', 'section', 'user', 'phone', 'text', 'sms', 'total_seconds', 'title_for_layout'));
 
@@ -103,7 +103,7 @@ class VideosController extends AppController {
 		}
 		extract($video);
 
-		$title_for_layout = $this->_getTitle($Video);
+		$title_for_layout = $this->Video->getTitle($Video);
 
 		$this->set(compact('Video', 'section', 'photo_id', 'title_for_layout'));
 		
@@ -303,6 +303,8 @@ class VideosController extends AppController {
 		return $title = strtolower($title);
 	} 
 
+
+
 	function _getTitle($Video) {
 
 		$actors = ClassRegistry::init('VideoRelationship')->getActors($Video['id']);
@@ -314,5 +316,6 @@ class VideosController extends AppController {
 		}
 
 	}
+
 
 }
