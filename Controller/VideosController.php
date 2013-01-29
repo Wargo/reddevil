@@ -233,7 +233,7 @@ class VideosController extends AppController {
 				$this->Session->setFlash(__('Video añadido'));
 				$this->redirect(array('controller' => 'videos', 'action' => 'edit', $this->Video->id));
 			} else {
-				$this->Session->setFlash(__('Error al añadir el video')); {	
+				$this->Session->setFlash(__('Error al añadir el video')); 	
 				$this->redirect(array('controller' => 'archivos', 'action' => 'index'));
 			}
 		}
