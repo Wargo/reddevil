@@ -281,7 +281,7 @@ class VideosController extends AppController {
 		}
 	}
 
-	protected function _title2url($title) {   
+	function _title2url($title) {   
 		$title = str_replace('-', ' ', $title);
 		$title = explode(' ', $title);
 		$aux = array();
@@ -302,5 +302,20 @@ class VideosController extends AppController {
 		$title = ereg_replace("[^A-Za-z0-9\-]", "", $title);
 		return $title = strtolower($title);
 	} 
+
+
+
+	function _getTitle($Video) {
+
+		$actors = ClassRegistry::init('VideoRelationship')->getActors($Video['id']);
+		if (count($actors) > 1) {
+			$last = array_pop($actors);
+			return sprintf(__('%s y %s en %s'), implode(', ', $actors), $last, $Video['title']);
+		} else {
+			return sprintf(__('%s en %s'), implode(', ', $actors), $Video['title']);
+		}
+
+	}
+
 
 }

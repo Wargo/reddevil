@@ -32,7 +32,7 @@
  * In production mode, flash messages redirect after a time interval.
  * In development mode, you need to click the flash message to continue.
  */
-if (!empty($_SERVER['SERVER_ADDR']) && $_SERVER['SERVER_ADDR'] == '188.165.210.160') {
+if (empty($_SERVER['SERVER_ADDR']) || $_SERVER['SERVER_ADDR'] == '188.165.210.160') {
 
 	Configure::write('debug', 1);
 
