@@ -281,7 +281,7 @@ class VideosController extends AppController {
 		}
 	}
 
-	protected function _title2url($title) {   
+	function _title2url($title) {   
 		$title = str_replace('-', ' ', $title);
 		$title = explode(' ', $title);
 		$aux = array();
@@ -303,7 +303,7 @@ class VideosController extends AppController {
 		return $title = strtolower($title);
 	} 
 
-	protected function _getTitle($Video) {
+	function _getTitle($Video) {
 
 		$actors = ClassRegistry::init('VideoRelationship')->getActors($Video['id']);
 		if (count($actors) > 1) {
