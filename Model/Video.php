@@ -82,8 +82,11 @@ class Video extends AppModel {
 					imagejpeg($image, $imageFolder . $id . '-' . $i . '.jpg');		
 				}
 			}
-			str_replace(' ', '\ ', $orig);
+			$orig = escapeshellarg($orig);
 			exec("mv $orig $dest");
+			if (file_exists($orig)) {
+				return false;
+			}
 			$this->id = $id;
 			return $this->save($data);
 	}
