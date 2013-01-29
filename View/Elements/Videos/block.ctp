@@ -15,7 +15,8 @@ $actors = ClassRegistry::init('VideoRelationship')->getActors($Video['id']);
 					'main' => 1
 				),
 			));
-			echo $this->Html->image('Photo' . DS . $main['Photo']['id'] . ',fitCrop,680,404.jpg', array('class' => 'image', 'alt' => ''));
+			$alt = ClassRegistry::init('Photo')->getTitle($main['Photo']);
+			echo $this->Html->image('Photo' . DS . $main['Photo']['id'] . ',fitCrop,680,404.jpg', array('class' => 'image', 'alt' => $alt, 'title' => $alt));
 			?>
 			<div class="info clearfix">
 				<div>
@@ -63,7 +64,8 @@ $actors = ClassRegistry::init('VideoRelationship')->getActors($Video['id']);
 			));
 			foreach ($images as $image) {
 				extract($image);
-				echo $this->Html->link($this->Html->image('Photo' . DS . $Photo['id'] . ',fitCrop,300,200.jpg', array('alt' => '')), $video_url, array('escape' => false, 'title' => 'Ver vídeo'));
+				$alt = ClassRegistry::init('Photo')->getTitle($Photo);
+				echo $this->Html->link($this->Html->image('Photo' . DS . $Photo['id'] . ',fitCrop,300,200.jpg', array('alt' => $alt, 'title' => $alt)), $video_url, array('escape' => false, 'title' => $alt));
 			}
 			?>
 		</div>

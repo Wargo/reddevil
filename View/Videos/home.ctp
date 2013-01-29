@@ -60,9 +60,10 @@ if (count($more_videos)) {
 					$folder = substr($folder[1], 0, 3);
 					$var[] = $this->Html->url('/img/Photo/' . $folder . '/' . $Photo['id'] . ',fitCrop,312,280.jpg');
 				}
+				$alt = ClassRegistry::init('Photo')->getTitle($Photo);
 				?>
 				<div class="photo">
-					<?php echo $this->Html->link($this->Html->image('Photo/' . $Photo['id'] . ',fitCrop,312,280.jpg', array('var' => "['" . implode("','", $var) . "']", 'alt' => 'a', 'class' => '_rotate_photos')), array('controller' => 'videos', 'action' => 'view', $Video['slug']), array('escape' => false)); ?>
+					<?php echo $this->Html->link($this->Html->image('Photo/' . $Photo['id'] . ',fitCrop,312,280.jpg', array('var' => "['" . implode("','", $var) . "']", 'alt' => $alt, 'title' => $alt, 'class' => '_rotate_photos')), array('controller' => 'videos', 'action' => 'view', $Video['slug']), array('escape' => false)); ?>
 					<div class="info">
 						<p><strong><?php echo $this->Html->link($Video['title'], array('controller' => 'videos', 'action' => 'view', $Video['slug'])); ?></strong></p>
 						<p><?php echo __('Haz click para acceder al vídeo completo'); ?></p>

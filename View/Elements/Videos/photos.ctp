@@ -11,9 +11,12 @@
 		$aux = explode('-', $Photo['id']);
 		$folder = substr($aux[1], 0, 3);
 		$path = '/img/Photo/' . $folder . '/' . $Photo['id'] . ',fitInside,1024,768.jpg';
-		echo $this->Html->link($this->Html->image('Photo/' . $Photo['id'] . ',fitCrop,324,250.jpg', array('alt' => '')),
+
+		$alt = ClassRegistry::init('Photo')->getTitle($Photo);
+
+		echo $this->Html->link($this->Html->image('Photo/' . $Photo['id'] . ',fitCrop,324,250.jpg', array('alt' => $alt, 'title' => $alt)),
 			$path,
-			array('escape' => false, 'id' => $id));
+			array('escape' => false, 'id' => $id, 'title' => $alt));
 		$id = '';
 	}
 	?>

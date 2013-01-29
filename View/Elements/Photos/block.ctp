@@ -13,7 +13,9 @@ if (count($photos)) {
 
 				extract($photo);
 
-				echo $this->Html->link($this->Html->image('Photo/' . $Photo['id'] . ',fitCrop,317,200.jpg', array()),
+				$alt = ClassRegistry::init('Photo')->getTitle($Photo);
+
+				echo $this->Html->link($this->Html->image('Photo/' . $Photo['id'] . ',fitCrop,317,200.jpg', array('alt' => $alt, 'title' => $alt)),
 					array('controller' => 'videos', 'action' => 'view_photos', $Video['slug'], $Photo['id']),
 					array('escape' => false));
 

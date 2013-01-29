@@ -101,4 +101,16 @@ class Video extends AppModel {
 		return $this->field('slug', array('id' => $video_id));
 	}
 
+	function getTitle($Video) {
+
+		$actors = ClassRegistry::init('VideoRelationship')->getActors($Video['id']);
+		if (count($actors) > 1) {
+			$last = array_pop($actors);
+			return sprintf(__('%s y %s en %s'), implode(', ', $actors), $last, $Video['title']);
+		} else {
+			return sprintf(__('%s en %s'), implode(', ', $actors), $Video['title']);
+		}
+
+	}
+
 }

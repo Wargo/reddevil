@@ -24,7 +24,7 @@ class VideosController extends AppController {
 		}
 		extract($video);
 
-		$title_for_layout = $this->_getTitle($Video);
+		$title_for_layout = $this->Video->getTitle($Video);
 
 		$this->set(compact('Video', 'section', 'layout_title', 'title_for_layout'));
 
@@ -77,7 +77,7 @@ class VideosController extends AppController {
 		}
 		extract($video);
 
-		$title_for_layout = $this->_getTitle($Video);
+		$title_for_layout = $this->Video->getTitle($Video);
 
 		$this->set(compact('Video', 'section', 'user', 'phone', 'text', 'sms', 'total_seconds', 'title_for_layout'));
 
@@ -103,7 +103,7 @@ class VideosController extends AppController {
 		}
 		extract($video);
 
-		$title_for_layout = $this->_getTitle($Video);
+		$title_for_layout = $this->Video->getTitle($Video);
 
 		$this->set(compact('Video', 'section', 'photo_id', 'title_for_layout'));
 		
@@ -297,17 +297,5 @@ class VideosController extends AppController {
 		$title = ereg_replace("[^A-Za-z0-9\-]", "", $title);
 		return $title = strtolower($title);
 	} 
-
-	protected function _getTitle($Video) {
-
-		$actors = ClassRegistry::init('VideoRelationship')->getActors($Video['id']);
-		if (count($actors) > 1) {
-			$last = array_pop($actors);
-			return sprintf(__('%s y %s en %s'), implode(', ', $actors), $last, $Video['title']);
-		} else {
-			return sprintf(__('%s en %s'), implode(', ', $actors), $Video['title']);
-		}
-
-	}
 
 }
