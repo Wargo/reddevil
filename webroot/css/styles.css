@@ -586,3 +586,27 @@ a.more_videos_button:hover {
 .profile .info .photos img {
 	margin-right:1px;
 }
+
+
+/*
+ * Dialog
+ */
+.ui-dialog-titlebar {
+	display:none;
+}
+.ui-dialog .ui-dialog-content {
+	padding:0;
+}
+.ui-dialog div {
+	border:none;
+}
+.ui-widget-header {
+	border:none;
+	background:#333;;
+	-webkit-border-radius:0px;
+	border-radius:0px;
+}
+.ui-tabs-nav li {
+	-webkit-border-radius:0px;
+	border-radius:0px;
+}
