@@ -33,11 +33,15 @@
 
 	Router::connect('/video/*', array('controller' => 'videos', 'action' => 'view_video'));
 
+	Router::connect('/fotos', array('controller' => 'photos', 'action' => 'index'));
+
 	Router::connect('/fotos/*', array('controller' => 'videos', 'action' => 'view_photos'));
 
-	//Router::connect('/actriz/*', array('controller' => 'videos', 'action' => 'home'));
+	Router::connect('/actriz/:actor/:page', array('controller' => 'videos', 'action' => 'home', 'gender' => 0));
 
-	//Router::connect('/actor/*', array('controller' => 'videos', 'action' => 'home'));
+	Router::connect('/actor/:actor/:page', array('controller' => 'videos', 'action' => 'home', 'gender' => 1));
+
+	Router::connect('/categoria/:category/:page', array('controller' => 'videos', 'action' => 'home'));
 
 
 	Router::connect('/quiero-ser-actriz-porno', array('controller' => 'pages', 'action' => 'display', 'wannabe'));

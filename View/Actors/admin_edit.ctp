@@ -9,6 +9,14 @@ echo $this->Form->inputs(array(
 	'description' => array(
 		'label' => __('Descripción'),
 	),
+	'gender' => array(
+		'label' => __('Sexo'),
+		'options' => array(
+			0 => __('Chica'),
+			1 => __('Chico'),
+		),
+		'type' => 'radio',
+	),
 	'file' => array(
 		'label' => __('Foto principal'),
 		'type' => 'file',

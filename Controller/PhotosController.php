@@ -5,9 +5,11 @@ class PhotosController extends AppController {
 		
 		$this->loadModel('Video');
 
-		list($conditions, $pageCount, $videos) = $this->Video->getVideos($page, $this->params['named'], 4);
+		list($conditions, $pageCount, $videos) = $this->Video->getVideos($page, $this->params['named'], 10);
 
-		$this->set(compact('videos', 'conditions', 'page', 'pageCount'));
+		$title_for_layout = __('Fotos');
+
+		$this->set(compact('videos', 'conditions', 'page', 'pageCount', 'title_for_layout'));
 
 	}
 

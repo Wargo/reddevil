@@ -33,7 +33,7 @@
 				<ul>
 					<li><?php echo $this->Html->link(__('Vídeos', true), array('controller' => 'videos', 'action' => 'home'), array('class' => $this->params['controller'] == 'videos' ? 'selected' : '', 'title' => __('Vídeos'))); ?></li>
 					<li><?php echo $this->Html->link(__('Fotos', true), array('controller' => 'photos', 'action' => 'index'), array('class' => $this->params['controller'] == 'photos' ? 'selected' : '', 'title' => __('Fotos'))); ?></li>
-					<li><?php echo $this->Html->link(__('Chicas', true), array(), array('class' => 'disabled', 'title' => __('Chicas'))); ?></li>
+					<li><?php echo $this->Html->link(__('Webcams', true), array(), array('class' => 'disabled', 'title' => __('Webcams'))); ?></li>
 				</ul>
 			</div>
 		</div>
@@ -44,11 +44,12 @@
 			<div id="footer">
 				<?php echo $this->Html->link($this->Html->image('logo.png', array('alt' => 'logo')), '/', array('escape' => false, 'title' => __('Red Devil', true), 'class' => 'logo')); ?>
 				<ul class="clearfix">
-					<li><?php echo $this->Html->link(__('Vídeos', true), array()); ?></li>
-					<li><?php echo $this->Html->link(__('Chicas', true), array()); ?></li>
-					<li><?php echo $this->Html->link(__('Zona para webmasters', true), array()); ?></li>
-					<li><?php echo $this->Html->link(__('Castings', true), array('controller' => 'pages', 'action' => 'display', 'wannabe')); ?></li>
-					<li><?php echo $this->Html->link(__('Versión móvil', true), array()); ?></li>
+					<li><?php echo $this->Html->link(__('Vídeos'), array('controller' => 'videos', 'action' => 'home')); ?></li>
+					<li><?php echo $this->Html->link(__('Fotos'), array('controller' => 'photos', 'action' => 'index')); ?></li>
+					<li><?php echo $this->Html->link(__('Webcams'), array(), array('class' => 'disabled')); ?></li>
+					<li><?php echo $this->Html->link(__('Zona para webmasters'), array(), array('class' => 'disabled')); ?></li>
+					<li><?php echo $this->Html->link(__('Castings'), array('controller' => 'pages', 'action' => 'display', 'wannabe')); ?></li>
+					<li><?php echo $this->Html->link(__('Versión móvil'), array(), array('class' => 'disabled')); ?></li>
 				</ul>
 			</div>
 		</div>

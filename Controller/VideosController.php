@@ -3,11 +3,34 @@ class VideosController extends AppController {
 
 	var $paginate = array();
 
-	function home($page = 1) {
+	function home() {
 
-		list($conditions, $pageCount, $videos) = $this->Video->getVideos($page, $this->params['named']);
+		if (!empty($this->params['page'])) {
+			$page = $this->params['page'];
+		} else {
+			$page = !empty($this->params['named']['page']) ? $this->params['named']['page'] : 1;
+		}
 
-		$this->set(compact('videos', 'conditions', 'page', 'pageCount'));
+		$params = array(
+			'actor' => $this->params['actor'],
+			'category' => $this->params['category'],
+		);
+
+		if ($params['actor']) {
+			$title_for_layout = sprintf(__('Vídeos de %s'), ClassRegistry::init('Actor')->field('name', array(
+				'slug' => $params['actor']
+			)));
+		} elseif ($params['category']) {
+			$title_for_layout = sprintf(__('Vídeos sobre %s'), ClassRegistry::init('Category')->field('name', array(
+				'slug' => $params['category']
+			)));
+		} else {
+			$title_for_layout = __('Videos Reddevilx');
+		}
+
+		list($conditions, $pageCount, $videos) = $this->Video->getVideos($page, $params);
+
+		$this->set(compact('videos', 'conditions', 'page', 'pageCount', 'title_for_layout'));
 
 	}
 
@@ -178,7 +201,7 @@ class VideosController extends AppController {
 				$layout_title = sprintf(__('%s en %s'), implode(', ', $actors), $Video['title']);
 			}
 
-			$this->Video->save(array('slug' => $this->_title2url($layout_title)));
+			$this->Video->save(array('slug' => $this->Video->title2url($layout_title)));
 
 
 			return $this->redirect('index');
@@ -280,42 +303,5 @@ class VideosController extends AppController {
 			$this->autoRender = false;
 		}
 	}
-
-	function _title2url($title) {   
-		$title = str_replace('-', ' ', $title);
-		$title = explode(' ', $title);
-		$aux = array();
-		foreach($title as $t) {
-			if($t !== '') {
-				$aux[] = trim($t);
-			}   
-		}   
-
-		$title = implode('-', $aux);
-		$original = array('á', 'é', 'í', 'ó', 'ú', 'ý', 'Á', 'É', 'Í', 'Ó', 'Ú', 'Ý', 'à', 'è', 'ì', 'ò', 'ù', 'À', 'È', 'Ì', 'Ò', 'Ù',
-				'â', 'ê', 'î', 'ô', 'û', 'Â', 'Ê', 'Î', 'Ô', 'Û', 'ñ', 'Ñ', 'ç', 'Ç',
-				);  
-		$replace  = array('a', 'e', 'i', 'o', 'u', 'y', 'A', 'E', 'I', 'O', 'U', 'Y', 'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U',
-				'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U', 'n', 'N', 'c', 'C',
-				);  
-		$title = str_replace($original, $replace, $title);
-		$title = ereg_replace("[^A-Za-z0-9\-]", "", $title);
-		return $title = strtolower($title);
-	} 
-
-
-
-	function _getTitle($Video) {
-
-		$actors = ClassRegistry::init('VideoRelationship')->getActors($Video['id']);
-		if (count($actors) > 1) {
-			$last = array_pop($actors);
-			return sprintf(__('%s y %s en %s'), implode(', ', $actors), $last, $Video['title']);
-		} else {
-			return sprintf(__('%s en %s'), implode(', ', $actors), $Video['title']);
-		}
-
-	}
-
 
 }

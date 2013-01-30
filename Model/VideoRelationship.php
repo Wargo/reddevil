@@ -12,7 +12,7 @@ class VideoRelationship extends AppModel {
 
 		return ClassRegistry::init('Category')->find('list', array(
 			'conditions' => array('id' => $ids),
-			'fields' => array('id', 'name'),
+			'fields' => array('slug', 'name'),
 		));
 
 	}
@@ -26,9 +26,9 @@ class VideoRelationship extends AppModel {
 			'fields' => array('foreign_id')
 		));
 
-		return ClassRegistry::init('Actor')->find('list', array(
+		return ClassRegistry::init('Actor')->find('all', array(
 			'conditions' => array('id' => $ids),
-			'fields' => array('id', 'name'),
+			'fields' => array('slug', 'name', 'gender'),
 		));
 
 	}

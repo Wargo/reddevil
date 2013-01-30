@@ -21,11 +21,12 @@ class Video extends AppModel {
 
 		$ids = $conditions = array();
 
-		foreach ($params as $key => $value) {
+		foreach ($params as $key => $slug) {
+			$id = ClassRegistry::init(ucwords($key))->field('id', compact('slug'));
 			$new_ids = ClassRegistry::init('VideoRelationship')->find('list', array(
 				'conditions' => array(
 					'model' => ucwords($key),
-					'foreign_id' => $value
+					'foreign_id' => $id
 				),
 				'fields' => array('id', 'video_id'),
 			));
@@ -116,5 +117,28 @@ class Video extends AppModel {
 		}
 
 	}
+
+	function title2url($title) {   
+		$title = str_replace('-', ' ', $title);
+		$title = explode(' ', $title);
+		$aux = array();
+		foreach($title as $t) {
+			if($t !== '') {
+				$aux[] = trim($t);
+			}   
+		}   
+
+		$title = implode('-', $aux);
+		$original = array('á', 'é', 'í', 'ó', 'ú', 'ý', 'Á', 'É', 'Í', 'Ó', 'Ú', 'Ý', 'à', 'è', 'ì', 'ò', 'ù', 'À', 'È', 'Ì', 'Ò', 'Ù',
+				'â', 'ê', 'î', 'ô', 'û', 'Â', 'Ê', 'Î', 'Ô', 'Û', 'ñ', 'Ñ', 'ç', 'Ç',
+				);  
+		$replace  = array('a', 'e', 'i', 'o', 'u', 'y', 'A', 'E', 'I', 'O', 'U', 'Y', 'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U',
+				'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U', 'n', 'N', 'c', 'C',
+				);  
+		$title = str_replace($original, $replace, $title);
+		$title = ereg_replace("[^A-Za-z0-9\-]", "", $title);
+		return $title = strtolower($title);
+	} 
+
 
 }
