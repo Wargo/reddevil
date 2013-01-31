@@ -30,8 +30,8 @@ if (count($photos)) {
 				<strong><?php echo __('Actores'); ?>:</strong>
 				<?php
 				$links = array();
-				foreach ($actors as $actor_id => $actor_name) {
-					$links[] = $this->Html->link($actor_name, array('controller' => 'videos', 'action' => 'home', 1, 'actor' => $actor_id));
+				foreach ($actors as $actor) {
+					$links[] = $this->Html->link($actor['Actor']['name'], array('controller' => 'videos', 'action' => 'home', 'page' => 1, 'actor' => $actor['Actor']['slug'], 'gender' => $actor['Actor']['gender']));
 				}
 				echo implode(', ', $links);
 				?>

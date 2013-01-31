@@ -27,6 +27,8 @@
  */
 	Router::connect('/', array('controller' => 'videos', 'action' => 'home'));
 
+	Router::connect('/videos/:page', array('controller' => 'videos', 'action' => 'home'));
+
 	Router::connect('/admin', array('admin' => true, 'controller' => 'videos', 'action' => 'index'));
 
 	Router::connect('/trailer/*', array('controller' => 'videos', 'action' => 'view'));
@@ -34,6 +36,8 @@
 	Router::connect('/video/*', array('controller' => 'videos', 'action' => 'view_video'));
 
 	Router::connect('/fotos', array('controller' => 'photos', 'action' => 'index'));
+
+	Router::connect('/fotos/:page', array('controller' => 'photos', 'action' => 'index'));
 
 	Router::connect('/fotos/*', array('controller' => 'videos', 'action' => 'view_photos'));
 

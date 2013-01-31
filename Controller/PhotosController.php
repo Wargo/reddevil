@@ -1,11 +1,17 @@
 <?php
 class PhotosController extends AppController {
 
-	function index($page = 1) {
+	function index() {
+
+		if (!empty($this->params['page'])) {
+			$page = $this->params['page'];
+		} else {
+			$page = !empty($this->params['named']['page']) ? $this->params['named']['page'] : 1;
+		}
 		
 		$this->loadModel('Video');
 
-		list($conditions, $pageCount, $videos) = $this->Video->getVideos($page, $this->params['named'], 10);
+		list($conditions, $pageCount, $videos) = $this->Video->getVideos($page, array(), 10);
 
 		$title_for_layout = __('Fotos');
 
