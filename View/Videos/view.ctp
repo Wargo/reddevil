@@ -37,10 +37,9 @@ $(function() {
 
 	<div class="promo">
 		<p class="title"><?php echo __('¿Quieres ver este vídeo?', true); ?></p>
-		<p class="send"><?php printf(__('Envía %s al %d'), 'REDDEVIL', 6969); ?></p>
 		<?php
 		$alt = ClassRegistry::init('Photo')->getTitle($ad2['Photo']);
-		echo $this->Html->link($this->Html->image('Photo/' . $ad2['Photo']['id'] . ',fitCrop,200,133.jpg', array('alt' => $alt, 'title' => $alt)), array('controller' => 'videos', 'action' => 'view', $slug2), array('escape' => false, 'class' => 'image'));
+		echo $this->Html->link($this->Html->image('Photo/' . $ad2['Photo']['id'] . ',fitCrop,200,180.jpg', array('alt' => $alt, 'title' => $alt)), array('controller' => 'videos', 'action' => 'view', $slug2), array('escape' => false, 'class' => 'image'));
 		?>
 	</div>
 </div>

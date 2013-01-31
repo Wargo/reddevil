@@ -307,7 +307,7 @@ html[xmlns] .clearfix {
 	font-weight:bold;
 	font-size:1.3em;
 	text-align:center;
-	margin-top:30px;
+	margin-top:20px;
 }
 .promo .send {
 	color:#FFF;
@@ -317,11 +317,10 @@ html[xmlns] .clearfix {
 .promo .image {
 	display:block;
 	text-align:center;
-	margin-top:30px;
+	margin-top:25px;
 }
 .promo .image img {
 	width:200px;
-	height:133px;
 }
 
 .video {
