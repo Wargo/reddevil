@@ -74,9 +74,9 @@ $actors = ClassRegistry::init('VideoRelationship')->getActors($Video['id']);
 		<?php echo $this->Html->link(__('Haz click aquí ver el vídeo completo', true), array('controller' => 'videos', 'action' => 'view_video', $Video['slug']), array('class' => 'suscribe')); ?>
 		<?php
 		if (ClassRegistry::init('Video')->isPrivate($Video['id'], $cookies)) {
-			echo $this->Html->link(__('Privado'), $video_url, array('class' => 'private'));
+			echo '<span class="private">' . __('Privado') . '</span>';
 		} else {
-			echo $this->Html->link(__('Público'), $video_url, array('class' => 'private public'));
+			echo '<span class="private public">' . __('Público') . '</span>';
 		}
 		?>
 		<?php echo $this->Html->link(sprintf(__('Ver fotos (%s)'), ClassRegistry::init('Photo')->find('count', array('conditions' => array('video_id' => $Video['id'], 'Photo.active' => 1)))), array('controller' => 'videos', 'action' => 'view_photos', $Video['slug']), array('class' => 'num_photos')); ?>

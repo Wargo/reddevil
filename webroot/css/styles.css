@@ -226,7 +226,9 @@ html[xmlns] .clearfix {
 	border-right:solid 1px #666;
 	float:left;
 }
-.block_video .footer a.private {
+.block_video .footer .private {
+	background:#333;
+	cursor:default;
 	width:181px;
 	display:block;
 	padding:21px 0px;
@@ -236,9 +238,9 @@ html[xmlns] .clearfix {
 	border-right:solid 1px #666;
 	float:left;
 }
-.block_video .footer a.private.public {
+.block_video .footer .private.public {
 	color:#00FF00;
-	font-size:1.5em;
+	font-size:1.4em;
 	font-weight:bold;
 }
 .block_video .footer a.num_photos {
