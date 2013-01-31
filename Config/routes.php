@@ -27,6 +27,10 @@
  */
 	Router::connect('/', array('controller' => 'videos', 'action' => 'home'));
 
+
+	Router::connect('/videos/check_phone', array('controller' => 'videos', 'action' => 'check_phone'));
+	Router::connect('/videos/check_sms', array('controller' => 'videos', 'action' => 'check_sms'));
+
 	Router::connect('/videos/:page', array('controller' => 'videos', 'action' => 'home'));
 
 	Router::connect('/admin', array('admin' => true, 'controller' => 'videos', 'action' => 'index'));
@@ -37,9 +41,9 @@
 
 	Router::connect('/fotos', array('controller' => 'photos', 'action' => 'index'));
 
-	Router::connect('/fotos/:page', array('controller' => 'photos', 'action' => 'index'));
+	Router::connect('/ver-fotos/*', array('controller' => 'videos', 'action' => 'view_photos'));
 
-	Router::connect('/fotos/*', array('controller' => 'videos', 'action' => 'view_photos'));
+	Router::connect('/fotos/:page', array('controller' => 'photos', 'action' => 'index'));
 
 	Router::connect('/actriz/:actor/:page', array('controller' => 'videos', 'action' => 'home', 'gender' => 0));
 

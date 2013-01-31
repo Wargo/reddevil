@@ -14,9 +14,21 @@ $image = $this->Html->url('/img/Photo/' . $folder . '/' . $main['Photo']['id'] .
 		<div class="flowplayer is-splash" 
 			<?php echo 'style="background-image:url('.$image.')"'; ?>
 			data-swf="<?php echo $this->Html->url('/html5/flowplayer/flowplayer.swf'); ?>">
-			<video>
-				<source type="video/mp4" src="<?php echo $this->Html->url('/flash/trailers/video.mp4'); ?>"/>
-			</video>
+			<?php
+			if (!empty($cookies[$Video['id']])) {
+				?>
+				<video>
+					<source type="video/mp4" src="<?php echo $this->Html->url('/links/' . $cookies['user'] . '/' . $cookies[$Video['id']]); ?>"/>
+				</video>
+				<?php
+			} else {
+				?>
+				<video>
+					<source type="video/mp4" src="<?php echo $this->Html->url('/video/Trailer/' . $Video['id']); ?>"/>
+				</video>
+				<?php
+			}
+			?>
 		</div>
 	</div>
 </div>
@@ -27,7 +39,7 @@ $image = $this->Html->url('/img/Photo/' . $folder . '/' . $main['Photo']['id'] .
 <?php endif; ?>
 
 <?php
-if (ClassRegistry::init('Video')->isPrivate($Video['id'], $this->Session->read())) {
+if (ClassRegistry::init('Video')->isPrivate($Video['id'], $cookies)) {
 	?>
 	<div class="hidden" id="dialog-message" title="<?php echo __('Ver el vídeo completo'); ?>">
 		<div id="tabs">

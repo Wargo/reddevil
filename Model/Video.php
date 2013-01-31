@@ -109,6 +109,7 @@ class Video extends AppModel {
 	function getTitle($Video) {
 
 		$actors = ClassRegistry::init('VideoRelationship')->getActors($Video['id']);
+		$actors = Set::extract('/Actor/name', $actors);
 		if (count($actors) > 1) {
 			$last = array_pop($actors);
 			return sprintf(__('%s y %s en %s'), implode(', ', $actors), $last, $Video['title']);

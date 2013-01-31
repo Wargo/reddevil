@@ -35,8 +35,10 @@ class AppController extends Controller {
 
 	public $helpers = array('Html', 'Form', 'Session',  'Funciones');
 
+	public $components = array('Cookie', 'Session');
+
 	function beforeFilter() {
-		
+		parent::beforeFilter();	
 		if (!empty($this->params['admin'])) {
 
 			// IF user IS admin
@@ -46,6 +48,10 @@ class AppController extends Controller {
 			$this->layout = 'panel';
 
 		}
+
+ 	 	$this->Cookie->name = 'RedDevilX';
+                $this->Cookie->time = 3600 * 24;  // or '1 hour'
+
 
 	}
 

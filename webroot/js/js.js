@@ -160,7 +160,9 @@ $(document).ready(function() {
 			$.get(temp_path + '/videos/check_phone', function(data) {
 
 				if (data) {
-					$(location).attr('href', data);
+					if (data.substring(0, 1) == '/') {
+						$(location).attr('href', data);
+					}
 				}
 
 			});
@@ -168,14 +170,16 @@ $(document).ready(function() {
 			$.get(temp_path + '/videos/check_sms', function(data) {
 
 				if (data) {
-					$(location).attr('href', data);
+					if (data.substring(0, 1) == '/') {
+						$(location).attr('href', data);
+					}
 				}
 
 			});
 
 			setTimeout(function(){
 				isCalling();
-			}, 500);
+			}, 2000);
 
 
 		}

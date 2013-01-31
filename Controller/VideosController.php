@@ -3,6 +3,12 @@ class VideosController extends AppController {
 
 	var $paginate = array();
 
+	function beforeFilter() {
+		parent::beforeFilter();
+		$cookies = $this->Cookie->read();
+		$this->set(compact('cookies'));
+	}
+
 	function home() {
 
 		if (!empty($this->params['page'])) {
@@ -66,12 +72,10 @@ class VideosController extends AppController {
 			return $this->redirect('/');
 		}
 
-		$this->Session->write('current_video_id', $id);
-
 		$total_seconds = 90;
 
-		if ($this->Session->read('user')) {
-			$user = $this->Session->read('user');
+		if ($this->Cookie->read('user')) {
+			$user = $this->Cookie->read('user');
 		} else {
 			$user = mt_rand(1000, 9999);
 		}
@@ -91,7 +95,9 @@ class VideosController extends AppController {
 		$this->Session->write('phone', $phone);
 		$this->Session->write('text', $text);
 		$this->Session->write('sms', $sms);
-		$this->Session->write('user', $user);
+		$this->Cookie->write('user', $user);
+
+		exec('mkdir links/' . $user);
 
 		$section = 'video';
 
@@ -99,6 +105,9 @@ class VideosController extends AppController {
 			$video = $this->Video->findBySlug($id);
 		}
 		extract($video);
+
+		$this->Session->write('current_video_id', $Video['id']);
+
 
 		$title_for_layout = $this->Video->getTitle($Video);
 
@@ -194,6 +203,7 @@ class VideosController extends AppController {
 			}
 
 			$actors = ClassRegistry::init('VideoRelationship')->getActors($id);
+			$actors = Set::extract('/Actor/slug', $actors);
 			if (count($actors) > 1) {
 				$last = array_pop($actors);
 				$layout_title = sprintf(__('%s y %s en %s'), implode(', ', $actors), $last, $this->request->data['Video']['title']);
@@ -270,13 +280,17 @@ class VideosController extends AppController {
 		$this->layout = false;
 
 		if (is_numeric($this->Session->read('phone'))) {
-			$ch = curl_init('http://flashaccess2008.micropagos.net:8080/c2enopin/servlet/Control?cid=' . Configure::read('CID') . '&uid=' . $this->Session->read('user') . '&service=' . $this->Session->read('phone'));
+			$ch = curl_init('http://flashaccess2008.micropagos.net:8080/c2enopin/servlet/Control?cid=' . Configure::read('CID') . '&uid=' . $this->Cookie->read('user') . '&service=' . $this->Session->read('phone'));
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 			$result = curl_exec($ch);
 			$access = false;
 			if (substr($result, 0, 2) === 'OK') {
-				$this->Session->write('video_' . $this->Session->read('current_video_id'), date('Y-m-d H:i:s'));
+				$current = $this->Session->read('current_video_id');
+				$this->Cookie->write('video_' . $current, date('Y-m-d H:i:s'));
 				$access = true;
+				$link = time();
+				$this->Cookie->write($current, $link);
+				exec('ln -s ../../video/Video/' . $current . ' links/' . $this->Cookie->read('user') . '/' . $link);
 			}
 			$this->set(compact('result', 'access'));
 		} else {
@@ -290,13 +304,17 @@ class VideosController extends AppController {
 		$this->layout = false;
 
 		if (is_numeric($this->Session->read('phone'))) {
-			$ch = curl_init('http://213.27.137.219:8080/SMSGateway/SmsGateway2FlashIn?cid=' . Configure::read('CID_m') . '&uid=' . $this->Session->read('user') . '&control=' . Configure::read('pass_m') . '&peticion=NO');
+			$ch = curl_init('http://213.27.137.219:8080/SMSGateway/SmsGateway2FlashIn?cid=' . Configure::read('CID_m') . '&uid=' . $this->Cookie->read('user') . '&control=' . Configure::read('pass_m') . '&peticion=NO');
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 			$result = curl_exec($ch);
 			$access = false;
 			if (substr($result, 0, 2) === 'OK') {
-				$this->Session->write('video_' . $this->Session->read('current_video_id'), date('Y-m-d H:i:s'));
+				$current = $this->Session->read('current_video_id');
+				$this->Cookie->write('video_' . $current, date('Y-m-d H:i:s'));
 				$access = true;
+				$link = time();
+				$this->Cookie->write($current, $link);
+				exec('ln -s ../../video/Video/' . $current . ' links/' . $this->Cookie->read('user') . '/' . $link);
 			}
 			$this->set(compact('result', 'access'));
 		} else {

@@ -182,7 +182,11 @@ if (empty($_SERVER['SERVER_ADDR']) || $_SERVER['SERVER_ADDR'] == '188.165.210.16
  *
  */
 	Configure::write('Session', array(
-		'defaults' => 'php'
+		'defaults' => 'php',
+		//'cookie' => 'RedDevilX',
+		//'ini' => array('session.cookie_secure' => 0),
+		//'timeout' => 4320,
+		//'expires' => 4320,
 	));
 
 /**
