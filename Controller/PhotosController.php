@@ -1,6 +1,8 @@
 <?php
 class PhotosController extends AppController {
 
+	var $paginate = array();
+
 	function index() {
 
 		if (!empty($this->params['page'])) {
@@ -17,6 +19,35 @@ class PhotosController extends AppController {
 
 		$this->set(compact('videos', 'conditions', 'page', 'pageCount', 'title_for_layout'));
 
+	}
+
+	function view() {
+		if (!$this->params['actor']) {
+			return $this->redirect('/');
+		}
+
+		extract(ClassRegistry::init('Actor')->findBySlug($this->params['actor']));
+
+		$this->loadModel('PhotoRelationship');
+		$ids = $this->PhotoRelationship->find('list', array(
+			'conditions' => array(
+				'foreign_id' => $Actor['id'],
+				'model' => 'Actor',
+			),
+			'fields' => array('photo_id'),
+		));
+
+		if (!empty($this->params['page'])) {
+			$page = $this->params['page'];
+		} else {
+			$page = !empty($this->params['named']['page']) ? $this->params['named']['page'] : 1;
+		}
+		
+		$this->paginate['limit'] = 12;
+		$this->paginate['page'] = $page;
+		$photos = $this->paginate('Photo', array('Photo.id' => $ids, 'Photo.active' => 1));
+
+		$this->set(compact('photos', 'Actor', 'page'));
 	}
 
 	function admin_index() {

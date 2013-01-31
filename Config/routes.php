@@ -45,6 +45,8 @@
 
 	Router::connect('/fotos/:page', array('controller' => 'photos', 'action' => 'index'));
 
+	Router::connect('/fotos-de/:actor/:page', array('controller' => 'photos', 'action' => 'view'));
+
 	Router::connect('/actriz/:actor/:page', array('controller' => 'videos', 'action' => 'home', 'gender' => 0));
 
 	Router::connect('/actor/:actor/:page', array('controller' => 'videos', 'action' => 'home', 'gender' => 1));

@@ -19,6 +19,8 @@ class CategoriesController extends AppController {
 				$this->Category->create();
 			}
 
+			$this->request->data['Category']['slug'] = ClassRegistry::init('Video')->title2url($this->request->data['Category']['name']);
+
 			$this->Category->save($this->request->data);
 
 			return $this->redirect('index');

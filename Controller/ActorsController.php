@@ -19,7 +19,7 @@ class ActorsController extends AppController {
 				$this->Actor->create();
 			}
 
-			echo $this->request->data['Actor']['slug'] = ClassRegistry::init('Video')->title2url($this->request->data['Actor']['name']);
+			$this->request->data['Actor']['slug'] = ClassRegistry::init('Video')->title2url($this->request->data['Actor']['name']);
 
 			$this->Actor->save($this->request->data);
 

@@ -37,6 +37,7 @@ class Photo extends AppModel {
 				'Photo.id' => $ids,
 				'Photo.active' => 1,
 			),
+			'order' => array('rand()'),
 			'limit' => $limit,
 		));
 
