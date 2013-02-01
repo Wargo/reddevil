@@ -33,6 +33,9 @@
 
 	Router::connect('/videos/:page', array('controller' => 'videos', 'action' => 'home'));
 
+	Router::connect('/buscando', array('controller' => 'videos', 'action' => 'search'));
+	Router::connect('/buscando/:search/:page', array('controller' => 'videos', 'action' => 'search'));
+
 	Router::connect('/admin', array('admin' => true, 'controller' => 'videos', 'action' => 'index'));
 
 	Router::connect('/trailer/*', array('controller' => 'videos', 'action' => 'view'));

@@ -1,4 +1,4 @@
-form {
+form.wannabe_form {
 	clear: both;
 	margin-right: 20px;
 	padding: 0;
@@ -60,7 +60,7 @@ label {
 	margin-bottom:3px;
 }
 input, textarea {
-	clear: both;
+	/*clear: both;*/
 	font-size: 140%;
 	font-family: "frutiger linotype", "lucida grande", "verdana", sans-serif;
 	padding: 1%;
@@ -103,7 +103,7 @@ input[type=submit] {
 	font-size: 110%;
 	width: auto;
 }
-form .submit input[type=submit] {
+form input[type=submit] {
 	background:#333;
 	background-image: -webkit-gradient(linear, left top, left bottom, from(#555), to(#111));
 	background-image: -webkit-linear-gradient(top, #555, #111);
@@ -114,7 +114,7 @@ form .submit input[type=submit] {
 	text-shadow: rgba(0, 0, 0, 0.5) 0px -1px 0px;
 	padding: 8px 10px;
 }
-form .submit input[type=submit]:hover {
+form input[type=submit]:hover {
 	background: #333;
 }
 /* Form errors */
@@ -144,4 +144,26 @@ form .error-message {
 	-o-box-shadow: none;
 	box-shadow: none;
 	text-shadow: none;
+}
+
+
+/*
+ * Buscador
+ */
+form.search {
+	float:right;
+	width:275px;
+	margin:10px 0 0 0;
+}
+form.search input[type="text"] {
+	font-size:1em;
+	width:150px;
+	float:left;
+	margin:0 10px 0 0;
+}
+form.search .search_button {
+	font-size:0.8em;
+	float:left;
+	width:100px;
+	border:none;
 }

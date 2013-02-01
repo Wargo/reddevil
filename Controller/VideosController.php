@@ -148,6 +148,44 @@ class VideosController extends AppController {
 
 	}
 
+	function search() {
+
+		if ($this->request->data) {
+			return $this->redirect(array(
+				'controller' => 'videos', 'action' => 'search', 'search' => $this->request->data['Video']['search'], 'page' => 1
+			));
+		}
+		
+		$search = $this->params['search'];
+
+		$this->request->data['Video']['search'] = $search;
+
+		if (!empty($this->params['page'])) {
+			$page = $this->params['page'];
+		} else {
+			$page = !empty($this->params['named']['page']) ? $this->params['named']['page'] : 1;
+		}
+
+		$conditions['or'] = array(
+			'title like' => '%' . $search . '%',
+			'description like' => '%' . $search . '%',
+		);
+
+		$this->paginate['limit'] = 3;
+		$this->paginate['page'] = $page;
+
+		$videos = $this->paginate('Video', $conditions);
+
+		$pageCount = $this->params['paging']['Video']['pageCount'];
+
+		$title_for_layout = sprintf(__('Buscando %s en RedDevilX'), $search);
+
+		$this->set(compact('videos', 'conditions', 'page', 'pageCount', 'title_for_layout'));
+
+		$this->render('home');
+
+	}
+
 	function admin_index() {
 		
 		$videos = $this->Video->find('all');
@@ -202,8 +240,8 @@ class VideosController extends AppController {
 				}
 			}
 
-			$actors = ClassRegistry::init('VideoRelationship')->getActors($id);
-			$actors = Set::extract('/Actor/slug', $actors);
+			$all_actors = ClassRegistry::init('VideoRelationship')->getActors($id);
+			$actors = Set::extract('/Actor/slug', $all_actors);
 			if (count($actors) > 1) {
 				$last = array_pop($actors);
 				$layout_title = sprintf(__('%s y %s en %s'), implode(', ', $actors), $last, $this->request->data['Video']['title']);
@@ -211,7 +249,13 @@ class VideosController extends AppController {
 				$layout_title = sprintf(__('%s en %s'), implode(', ', $actors), $Video['title']);
 			}
 
-			$this->Video->save(array('slug' => $this->Video->title2url($layout_title)));
+			$categories = ClassRegistry::init('VideoRelationship')->getCategories($id);
+			$all_actors = Set::extract('/Actor/name', $all_actors);
+
+			$this->Video->save(array(
+				'slug' => $this->Video->title2url($layout_title),
+				'description' => implode(' ', $all_actors) . ' ' . implode(' ', $categories)
+			));
 
 
 			return $this->redirect('index');

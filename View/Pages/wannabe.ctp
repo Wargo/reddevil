@@ -9,7 +9,7 @@ $this->set('title_for_layout', __('Quiero ser actriz porno'));
 
 	<div class="clearfix">
 		<?php
-		echo $this->Form->create();
+		echo $this->Form->create(null, array('class' => 'wannabe_form'));
 
 		echo $this->Form->inputs(array(
 			'fieldset' => false,

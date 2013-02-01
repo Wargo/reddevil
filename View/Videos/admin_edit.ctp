@@ -7,6 +7,7 @@ echo $this->Form->inputs(array(
 		'label' => __('Título'),
 	),
 	'description' => array(
+		'readonly' => true,
 		'label' => __('Descripción'),
 	),
 	'active' => array(
