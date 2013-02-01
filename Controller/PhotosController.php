@@ -47,6 +47,11 @@ class PhotosController extends AppController {
 		$this->paginate['page'] = $page;
 		$photos = $this->paginate('Photo', array('Photo.id' => $ids, 'Photo.active' => 1));
 
+		$title_for_layout = sprintf(__('Fotos de %s'), $Actor['name']);
+		$description_for_layout =  $Actor['description'];
+		$keywords_for_layout =  $Actor['name'];
+		$this->set(compact('title_for_layout', 'description_for_layout', 'keywords_for_layout'));
+
 		$this->set(compact('photos', 'Actor', 'page'));
 	}
 

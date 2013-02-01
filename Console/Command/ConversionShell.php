@@ -1,7 +1,8 @@
 <?php
 class ConversionShell extends AppShell {
 
-	public $formats = array('flv', 'wmv', 'v3gp');
+	//public $formats = array('flv', 'wmv', 'v3gp');
+	public $formats = array('v3gp');
 	
 	public function convert_all() {
 		$Conversion = ClassRegistry::init('Conversion');
