@@ -201,4 +201,44 @@ $(document).ready(function() {
 
 	});
 
+	$('._download_video').click(function() {
+
+		$.get(this.href, function(data) {
+			$('#dialog').html(data);
+			$('#dialog').dialog({
+				width: 500,
+				height: 310,
+				modal: true,
+				buttons: {
+					Ok: function() {
+						$(this).dialog('close');
+					}
+				},
+			});
+		});
+
+		return false;
+
+	});
+
+	$('._share').click(function() {
+
+		$.get(this.href, function(data) {
+			$('#dialog').html(data);
+			$('#dialog').dialog({
+				width: 500,
+				height: 310,
+				modal: true,
+				buttons: {
+					Ok: function() {
+						$(this).dialog('close');
+					}
+				},
+			});
+		});
+
+		return false;
+
+	});
+
 });

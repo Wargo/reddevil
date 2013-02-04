@@ -18,6 +18,10 @@ ul {
 	padding:0;
 }
 
+a img {
+	border:none;
+}
+
 
 /*
  * Generics
@@ -628,4 +632,40 @@ a.more_videos_button:hover {
  */
 .actor_photos a {
 	margin:4px;
+}
+
+/*
+ * Dialog
+ */
+#dialog .title {
+	background:#333;
+	color:white;
+	font-weight:bold;
+	font-size:1.2em;
+	padding:5px;
+}
+#dialog .text {
+	padding:5px;
+}
+#dialog .button {
+	cursor:pointer;
+	border:#FF9933 2px solid;
+	margin:5px 15px 0px 15px;
+	padding:5px;
+	color:#333;
+	width:200px;
+	font-weight:bold;
+	display:block;
+}
+#dialog .button:hover {
+	border:#CC0000 2px solid;
+}
+#dialog .button.row_odd {
+	float:left;
+}
+#dialog .button.row_even {
+	float:right;
+}
+#dialog .button img {
+	height:50px;
 }
