@@ -20,9 +20,10 @@
 		echo $this->fetch('css');
 
 		echo $this->element('js');
-		echo $this->fetch('script');
+		echo $this->element('meta');
 
-		echo $this->fetch('meta');
+		//echo $this->fetch('script');
+		//echo $this->fetch('meta');
 	?>
 </head>
 <body>

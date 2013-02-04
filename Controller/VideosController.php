@@ -23,9 +23,15 @@ class VideosController extends AppController {
 		);
 
 		if ($params['actor']) {
-			$title_for_layout = sprintf(__('Vídeos de %s'), ClassRegistry::init('Actor')->field('name', array(
-				'slug' => $params['actor']
+			extract(ClassRegistry::init('Actor')->find('first', array(
+				'conditions' => array(
+					'slug' => $params['actor']
+				)
 			)));
+			$title_for_layout = sprintf(__('Vídeos de %s'), $Actor['name']);
+			$description_for_layout =  $Actor['description'];
+			$keywords_for_layout =  $Actor['name'];
+			$this->set(compact('description_for_layout', 'keywords_for_layout'));
 		} elseif ($params['category']) {
 			$title_for_layout = sprintf(__('Vídeos sobre %s'), ClassRegistry::init('Category')->field('name', array(
 				'slug' => $params['category']
@@ -54,8 +60,9 @@ class VideosController extends AppController {
 		extract($video);
 
 		$title_for_layout = $this->Video->getTitle($Video);
+		$description_for_layout = $keywords_for_layout = $Video['description'];
 
-		$this->set(compact('Video', 'section', 'layout_title', 'title_for_layout'));
+		$this->set(compact('Video', 'section', 'layout_title', 'title_for_layout', 'description_for_layout', 'keywords_for_layout'));
 
 		if ($this->request->is('ajax')) {
 			$this->layout = 'ajax';
