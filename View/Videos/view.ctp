@@ -32,7 +32,7 @@ $(function() {
 			<li><?php echo $this->Html->link(__('Ver vídeo', true), array('controller' => 'videos', 'action' => 'view_video', $Video['slug']), array('id' => 'view_video', 'class' => '_view_video ' . ($section == 'video' ? 'selected' : ''))); ?></li>
 			<li><?php echo $this->Html->link(__('Ver trailer', true), array('controller' => 'videos', 'action' => 'view', $Video['slug']), array('id' => 'view_trailer', 'class' => '_view_trailer ' . ($section == 'trailer' ? 'selected' : ''))); ?></li>
 			<li><?php echo $this->Html->link(sprintf(__('Ver fotos (%d)'), 12), array('controller' => 'videos', 'action' => 'view_photos', $Video['slug']), array('id' => 'view_photos', 'class' => '_view_photos ' . ($section == 'photos' ? 'selected' : ''))); ?></li>
-			<li><?php echo $this->Html->link(__('Compartir'), array('controller' => 'videos', 'action' => 'share', $Video['id']), array('id' => 'view_photos', 'class' => '_share')); ?></li>
+			<li><?php echo $this->Html->link($this->Html->image('share.png', array('width' => 20, 'align' => 'left')) .  __('Compartir'), array('controller' => 'videos', 'action' => 'share', $Video['id']), array('id' => 'view_photos', 'class' => '_share', 'escape' => false)); ?></li>
 		</ul>
 	</div>
 
