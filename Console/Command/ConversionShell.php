@@ -3,7 +3,7 @@ class ConversionShell extends AppShell {
 
 
 	public $formats = array(
-		'flv' => array('folder' => 'flv'), 
+		//'flv' => array('folder' => 'flv'), 
 		'wmv' => array('folder' => 'wmv'), 
 		'v3gp' => array('folder' => '3gp')
 	);
@@ -90,7 +90,7 @@ class ConversionShell extends AppShell {
 		shell_exec($cmd);
 		shell_exec('mv ' . $path.$output.'.3gp '.$path.$output);
 		
-		if ($this->_checkVideo($id, $model, '3gp', $duration)) {
+		if ($this->_checkVideo($id, $model, 'v3gp', $duration)) {
 			$this->_saveFormat($id, $model, '3gp');
 		}
 	}
@@ -110,10 +110,13 @@ class ConversionShell extends AppShell {
 
 	protected function _checkVideo($id, $model, $format, $duration) {
 		$video = Configure::read($model. 'UploadFolder') . $this->formats[$format]['folder'] . DS . $id;
+debug($video); 
+debug(file_exists($video)); die;
 		if (!file_exists($video)) {
 			return false;
 		}
 		$movie = new ffmpeg_movie($video, false);
+		debug($movie->getDuration());
 		if ($movie->getDuration() != $duration) {
 			return false;
 		}
