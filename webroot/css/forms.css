@@ -172,12 +172,12 @@ form.search .search_button {
 */
 #search input[type="text"] {
 	float:right;
-	margin-top:10px;
+	margin-top:11px;
 	background: url(../img/search-dark.png) no-repeat 10px 6px #444;
 	border: 0 none;
 	font: bold 12px Arial,Helvetica,Sans-serif;
 	color: #777;
-	width: 150px;
+	width: 100px;
 	padding: 6px 15px 6px 35px;
 	-webkit-border-radius: 20px;
 	-moz-border-radius: 20px;
