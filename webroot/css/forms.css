@@ -156,14 +156,16 @@ form.search {
 	margin:10px 0 0 0;
 }
 form.search input[type="text"] {
+	border:none;
 	font-size:1em;
 	width:150px;
 	float:left;
-	margin:0 10px 0 0;
+	margin:1px 10px 0 0;
 }
 form.search .search_button {
 	font-size:0.8em;
 	float:left;
 	width:100px;
 	border:none;
+	padding:5px 0;
 }

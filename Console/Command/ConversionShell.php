@@ -24,6 +24,21 @@ class ConversionShell extends AppShell {
 		}
 	}
 
+	public function reconvert($id = false, $model = false) {
+		if (!empty($this->args[0])) {
+			$id = $this->args[0];	
+		}
+		if (!empty($this->args[1])) {
+			$model = $this->args[1];
+		}
+		if (!$id || !$model) {
+			return false;
+		}
+		foreach ($this->formats as $format => $config) {
+			$this->{$format}($id, $model);
+		}   
+	} 
+
 	public function flv($id, $model) {
 		$path = Configure::read($model. 'UploadFolder');
 		$input = $id;
