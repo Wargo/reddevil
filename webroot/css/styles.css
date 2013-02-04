@@ -140,22 +140,22 @@ html[xmlns] .clearfix {
 .menu a.logo {
 	float:left;
 }
-.menu ul {
+.menu ul.menu_buttons {
 	float:left;
 }
-.menu ul li {
+.menu ul.menu_buttons li {
 	display:inline;
 	float:left;
 }
-.menu ul li a {
+.menu ul.menu_buttons li a {
 	color:#FFF;
 	font-weight:bold;
 	display:block;
 	margin-left:20px;
 	padding:18px 25px;
 }
-.menu ul li a.selected,
-.menu ul li a:hover {
+.menu ul.menu_buttons li a.selected,
+.menu ul.menu_buttons li a:hover {
 	background:#333;
 }
 
@@ -672,4 +672,17 @@ a.more_videos_button:hover {
 #dialog .button img {
 	height:50px;
 	margin:0 5px;
+}
+
+/*
+ * Follow
+ */
+.menu ul.follow {
+	float:left;
+	margin:18px 0px 0px 20px;
+}
+.menu ul.follow li {
+	margin:0 2px;
+	float:left;
+	display:inline;
 }
