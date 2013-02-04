@@ -201,7 +201,7 @@ $(document).ready(function() {
 
 	});
 
-	$('._download_video').click(function() {
+	$('._download_video, ._share').click(function() {
 
 		$.get(this.href, function(data) {
 			$('#dialog').html(data);
@@ -221,22 +221,9 @@ $(document).ready(function() {
 
 	});
 
-	$('._share').click(function() {
+	$('._popup').live('click', function() {
 
-		$.get(this.href, function(data) {
-			$('#dialog').html(data);
-			$('#dialog').dialog({
-				width: 500,
-				height: 310,
-				modal: true,
-				buttons: {
-					Ok: function() {
-						$(this).dialog('close');
-					}
-				},
-			});
-		});
-
+		window.open(this.href, 'share', 'width=650,height=350');
 		return false;
 
 	});

@@ -299,6 +299,9 @@ html[xmlns] .clearfix {
 .featured .buttons a:hover {
 	background:#FFF;
 }
+.featured .buttons a img {
+	margin-right:5px;
+}
 
 .promo {
 	float:right;
@@ -668,4 +671,5 @@ a.more_videos_button:hover {
 }
 #dialog .button img {
 	height:50px;
+	margin:0 5px;
 }
