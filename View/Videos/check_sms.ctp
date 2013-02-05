@@ -1,4 +1,5 @@
 <?php
 if ($access) {
-	echo $this->Html->url(array('controller' => 'videos', 'action' => 'view_video', $this->Session->read('current_video_id')));
+	$slug = ClassRegistry::init('Video')->field('slug', array('id' => $this->Session->read('current_video_id')));
+	echo $this->Html->url(array('controller' => 'videos', 'action' => 'view_video', $slug));
 }

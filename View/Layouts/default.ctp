@@ -43,7 +43,7 @@
 					<li><?php echo $this->Html->link(__('Fotos'), array('controller' => 'photos', 'action' => 'index')); ?></li>
 					<li><?php echo $this->Html->link(__('Webcams'), array(), array('class' => 'disabled')); ?></li>
 					<li><?php echo $this->Html->link(__('Zona para webmasters'), array(), array('class' => 'disabled')); ?></li>
-					<li><?php echo $this->Html->link(__('Castings'), array('controller' => 'pages', 'action' => 'display', 'wannabe')); ?></li>
+					<li><?php echo $this->Html->link(__('Ser actriz porno'), array('controller' => 'pages', 'action' => 'display', 'wannabe')); ?></li>
 					<li><?php echo $this->Html->link(__('Versión móvil'), array(), array('class' => 'disabled')); ?></li>
 				</ul>
 			</div>
