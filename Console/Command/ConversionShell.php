@@ -40,9 +40,11 @@ class ConversionShell extends AppShell {
 		}   
 	} 
 
-	public function mp4() {
+	public function mp4($id, $model) {
 		$path = Configure::read($model . 'UploadFolder');
 		$input = $id;
+		$movie = new ffmpeg_movie($path.$input, false);	
+		$duration = $movie->getDuration();
 		$sizes = $this->formats['mp4']['sizes'];
 		foreach ($sizes as $size) {	
 			$output = Configure::read($model . 'RootFolder') . 'mp4' . DS . $size . DS . $id;
