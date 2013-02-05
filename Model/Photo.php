@@ -48,7 +48,7 @@ class Photo extends AppModel {
 		$actors = ClassRegistry::init('PhotoRelationship')->getActors($Photo['id']);
 		if (count($actors) > 1) {
 			$last = array_pop($actors);
-			return sprintf(__('Fotos de %s y %s en %s'), implode(', ', $actors), $last, $Photo['title']);
+			return sprintf(__('Fotos de %s y %s %s'), implode(', ', $actors), $last, $Photo['title']);
 		} else {
 			return sprintf(__('Fotos de %s en %s'), implode(', ', $actors), $Photo['title']);
 		}

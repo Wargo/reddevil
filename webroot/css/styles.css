@@ -18,6 +18,10 @@ ul {
 	padding:0;
 }
 
+a img {
+	border:none;
+}
+
 
 /*
  * Generics
@@ -136,22 +140,22 @@ html[xmlns] .clearfix {
 .menu a.logo {
 	float:left;
 }
-.menu ul {
+.menu ul.menu_buttons {
 	float:left;
 }
-.menu ul li {
+.menu ul.menu_buttons li {
 	display:inline;
 	float:left;
 }
-.menu ul li a {
+.menu ul.menu_buttons li a {
 	color:#FFF;
 	font-weight:bold;
 	display:block;
 	margin-left:20px;
 	padding:18px 25px;
 }
-.menu ul li a.selected,
-.menu ul li a:hover {
+.menu ul.menu_buttons li a.selected,
+.menu ul.menu_buttons li a:hover {
 	background:#333;
 }
 
@@ -294,6 +298,9 @@ html[xmlns] .clearfix {
 .featured .buttons a.selected,
 .featured .buttons a:hover {
 	background:#FFF;
+}
+.featured .buttons a img {
+	margin-right:5px;
 }
 
 .promo {
@@ -628,4 +635,54 @@ a.more_videos_button:hover {
  */
 .actor_photos a {
 	margin:4px;
+}
+
+/*
+ * Dialog
+ */
+#dialog .title {
+	background:#333;
+	color:white;
+	font-weight:bold;
+	font-size:1.2em;
+	padding:5px;
+}
+#dialog .text {
+	padding:5px;
+}
+#dialog .button {
+	cursor:pointer;
+	border:#FF9933 2px solid;
+	margin:5px 15px 0px 15px;
+	padding:5px;
+	color:#333;
+	width:200px;
+	font-weight:bold;
+	display:block;
+}
+#dialog .button:hover {
+	border:#CC0000 2px solid;
+}
+#dialog .button.row_odd {
+	float:left;
+}
+#dialog .button.row_even {
+	float:right;
+}
+#dialog .button img {
+	height:50px;
+	margin:0 5px;
+}
+
+/*
+ * Follow
+ */
+.menu ul.follow {
+	float:left;
+	margin:18px 0px 0px 20px;
+}
+.menu ul.follow li {
+	margin:0 2px;
+	float:left;
+	display:inline;
 }

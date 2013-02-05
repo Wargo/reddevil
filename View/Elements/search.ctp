@@ -1,5 +1,5 @@
 <?php
-echo $this->Form->create(null, array('class' => 'search', 'url' => array('controller' => 'videos', 'action' => 'search')));
+echo $this->Form->create(null, array('id' => 'search', 'class' => 'search', 'url' => array('controller' => 'videos', 'action' => 'search')));
 
 echo $this->Form->inputs(array(
 	'fieldset' => false,
@@ -10,5 +10,5 @@ echo $this->Form->inputs(array(
 	),
 ));
 
-echo $this->Form->submit(__('Buscar'), array('div' => false, 'class' => 'search_button'));
+//echo $this->Form->submit(__('Buscar'), array('div' => false, 'class' => 'search_button'));
 echo $this->Form->end();

@@ -373,4 +373,38 @@ class VideosController extends AppController {
 		}
 	}
 
+	function download($id = null) {
+
+		$this->layout = 'ajax';
+
+		if (!$id) {
+			return false;
+		}
+		extract($this->Video->find('first', array(
+			'conditions' => array(
+				'id' => $id,
+				'Video.active' => 1,
+			),
+		)));
+
+		$this->set(compact('Video'));
+	}
+
+	function share($id = null) {
+
+		$this->layout = 'ajax';
+
+		if (!$id) {
+			return false;
+		}
+		extract($this->Video->find('first', array(
+			'conditions' => array(
+				'id' => $id,
+				'Video.active' => 1,
+			),
+		)));
+
+		$this->set(compact('Video'));
+	}
+
 }
