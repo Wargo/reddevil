@@ -299,7 +299,7 @@ Configure::write('VideoUploadFolder', WWW_ROOT . 'video' . DS . 'Video'. DS . 'm
 
 
 Configure::write('TrailerRootFolder', WWW_ROOT . 'video' . DS . 'Trailer' . DS);
-Configure::write('VideoRootFolder', WWW_ROOT . 'video' . DS . 'Video'. DS . DS);
+Configure::write('VideoRootFolder', WWW_ROOT . 'video' . DS . 'Video'. DS );
 
 Configure::write('TrailerImageFolder', APP . 'uploads' . DS . 'img' . DS . 'Trailer' . DS);
 Configure::write('VideoImageFolder', APP . 'uploads' . DS . 'img' . DS . 'Video'. DS);

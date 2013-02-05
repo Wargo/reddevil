@@ -55,10 +55,11 @@ class ConversionShell extends AppShell {
 				$res = '480x270';
 				$bitrate = '700k';
 			}
-			$cmd = "ffmpeg -i ".$path.$input." -s ".$res." -b ".$bitrate." ".$output;
+			$cmd = "ffmpeg -i ".$path.$input." -s ".$res." -b ".$bitrate." ".$output.".mp4";
 			shell_exec($cmd);
-			if ($this->_checkVideo($id, $model, 'flv', $size, $duration)) {
-				$this->_saveFormat($id, $model, 'flv', $size);
+			shell_exec("mv $output.mp4 $output");
+			if ($this->_checkVideo($id, $model, 'mp4', $size, $duration)) {
+				$this->_saveFormat($id, $model, 'mp4', $size);
 			}
 		}
 		
