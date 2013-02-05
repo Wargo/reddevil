@@ -68,20 +68,36 @@ class ConversionShell extends AppShell {
 	public function flv($id, $model) {
 		$path = Configure::read($model. 'UploadFolder');
 		$input = $id;
-		$output = Configure::read($model . 'RootFolder') . 'flv' . DS . $id;
+
 
 		$movie = new ffmpeg_movie($path.$input, false);	
 		$duration = $movie->getDuration();
+		/*
 		$w = $movie->getFrameWidth();
 		$h = $movie->getFrameHeight();
 		$_w = 1600;
 		$_h = round(($_w * $h) / $w);
+		*/
 
-		$cmd = "ffmpeg -i ".$path.$input." -vcodec libx264 -vpre medium -f flv -acodec copy -b 1000k -f flv -s ".$_w."x".$_h." ".$output;
-		shell_exec($cmd);
+		$sizes = $this->formats['flv']['sizes'];
+		foreach ($sizes as $size) {
+			$output = Configure::read($model . 'RootFolder') . 'flv' . DS . $size . DS . $id;
+			if ($size == 'l') {
+				$res = '1920x1080';
+				$bitrate = '4000k';
+			} else if ($size == 'm') {
+				$res = '1280x720p';
+				$bitrate = '2500k';
+			} else if ($size == 's') {
+				$res = '480x270';
+				$bitrate = '700k';
+			}
+			$cmd = "ffmpeg -i ".$path.$input." -vcodec libx264 -vpre medium -f flv -acodec copy -b ".$bitrate." -f flv -s ".$res." ".$output;
+			shell_exec($cmd);
 		
-		if ($this->_checkVideo($id, $model, 'flv', $duration)) {
-			$this->_saveFormat($id, $model, 'flv');
+			if ($this->_checkVideo($id, $model, 'flv', $size, $duration)) {
+				$this->_saveFormat($id, $model, 'flv', $size);
+			}
 		}
 
 	}
@@ -89,17 +105,33 @@ class ConversionShell extends AppShell {
 	public function wmv($id, $model) {	
 		$path = Configure::read($model. 'UploadFolder');
 		$input = $id;
-		$output = Configure::read($model . 'RootFolder') . 'wmv' . DS . $id;
 
 		$movie = new ffmpeg_movie($path.$input, false);	
-		$duration = $movie->getDuration();
+		$duration = $movie->getDuration();	
 
-		$cmd = "ffmpeg -sameq -i ".$path.$input." ".$output . ".wmv";
-		shell_exec($cmd);
-		shell_exec('mv ' . $output.'.wmv '.$output);
+		$sizes = $this->formats['wmv']['sizes'];
+
+		foreach ($sizes as $size) {
+			$output = Configure::read($model . 'RootFolder') . 'wmv' . DS . $size . DS . $id;	
+
+			if ($size == 'l') {
+				$res = '1920x1080';
+				$bitrate = '4000k';
+			} else if ($size == 'm') {
+				$res = '1280x720p';
+				$bitrate = '2500k';
+			} else if ($size == 's') {
+				$res = '480x270';
+				$bitrate = '700k';
+			}
+
+			$cmd = "ffmpeg -i ".$path.$input." -b ".$bitrate." -s ".$res." ".$output . ".wmv";
+			shell_exec($cmd);
+			shell_exec('mv ' . $output.'.wmv '.$output);
 		
-		if ($this->_checkVideo($id, $model, 'wmv', $duration)) {
-			$this->_saveFormat($id, $model, 'wmv');
+			if ($this->_checkVideo($id, $model, 'wmv', $size, $duration)) {
+				$this->_saveFormat($id, $model, 'wmv', $size);
+			}
 		}
 	}
 
@@ -107,17 +139,20 @@ class ConversionShell extends AppShell {
 
 		$path = Configure::read($model. 'UploadFolder');
 		$input = $id;
-		$output = Configure::read($model . 'RootFolder') . '3gp' . DS . $id;
-
 		$movie = new ffmpeg_movie($path.$input, false);	
 		$duration = $movie->getDuration();
+		$sizes = $this->formats['wmv']['sizes'];
 
-		$cmd = "ffmpeg -i ".$path.$input." -s 352x288 -sameq -vcodec h263 -acodec libfaac -ac 1 -ar 8000 -r 25 -ab 16k -y ".$output.".3gp";
-		shell_exec($cmd);
-		shell_exec('mv ' . $output.'.3gp '.$output);
+		foreach ($sizes as $size) {
+			$output = Configure::read($model . 'RootFolder') . '3gp' . DS . $size . DS . $id;
+
+			$cmd = "ffmpeg -i ".$path.$input." -s 352x288 -sameq -vcodec h263 -acodec libfaac -ac 1 -ar 8000 -r 25 -ab 16k -y ".$output.".3gp";
+			shell_exec($cmd);
+			shell_exec('mv ' . $output.'.3gp '.$output);
 		
-		if ($this->_checkVideo($id, $model, 'v3gp', $duration)) {
-			$this->_saveFormat($id, $model, '3gp');
+			if ($this->_checkVideo($id, $model, 'v3gp', $size, $duration)) {
+				$this->_saveFormat($id, $model, '3gp', $size);
+			}
 		}
 	}
 
