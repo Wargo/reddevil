@@ -335,13 +335,13 @@ class VideosController extends AppController {
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 			$result = curl_exec($ch);
 			$access = false;
-			if (substr($result, 0, 2) === 'OK') {
+			if (substr($result, 0, 2) === 'KO') {
 				$current = $this->Session->read('current_video_id');
 				$this->Cookie->write('video_' . $current, date('Y-m-d H:i:s'));
 				$access = true;
 				$link = time();
 				$this->Cookie->write($current, $link);
-				exec('ln -s ../../video/Video/' . $current . ' links/' . $this->Cookie->read('user') . '/' . $link);
+				exec('ln -s ../../video/Video/mp4/l/' . $current . ' links/' . $this->Cookie->read('user') . '/' . $link);
 			}
 			$this->set(compact('result', 'access'));
 		} else {
@@ -365,7 +365,7 @@ class VideosController extends AppController {
 				$access = true;
 				$link = time();
 				$this->Cookie->write($current, $link);
-				exec('ln -s ../../video/Video/' . $current . ' links/' . $this->Cookie->read('user') . '/' . $link);
+				exec('ln -s ../../video/Video/mp4/l/' . $current . ' links/' . $this->Cookie->read('user') . '/' . $link);
 			}
 			$this->set(compact('result', 'access'));
 		} else {
