@@ -1,7 +1,6 @@
 <?php
 class ConversionShell extends AppShell {
 
-
 	public $formats = array(
 		'mp4' => array('folder' => 'mp4', 'sizes' => array('m', 's')),
 		//'flv' => array('folder' => 'flv', 'sizes' => array('l', 'm', 's')), 
@@ -141,7 +140,7 @@ class ConversionShell extends AppShell {
 		$input = $id;
 		$movie = new ffmpeg_movie($path.$input, false);	
 		$duration = $movie->getDuration();
-		$sizes = $this->formats['wmv']['sizes'];
+		$sizes = $this->formats['v3gp']['sizes'];
 
 		foreach ($sizes as $size) {
 			$output = Configure::read($model . 'RootFolder') . '3gp' . DS . $size . DS . $id;
