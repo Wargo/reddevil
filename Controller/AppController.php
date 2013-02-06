@@ -52,7 +52,30 @@ class AppController extends Controller {
  	 	$this->Cookie->name = 'RedDevilX';
                 $this->Cookie->time = 3600 * 24;  // or '1 hour'
 
-
+		$this->_detectarMovil();
 	}
 
+/*
+ * _detectarMovil - Detectar si se accede desde un movil o al subdominio m. y redirigir a la vista de móvil si procede
+*/
+	protected function _detectarMovil() {
+
+			$domain = $_SERVER['SERVER_NAME'];
+			$userAgent = $_SERVER['HTTP_USER_AGENT'];
+
+			//Tipos de dispositivos/browsers móviles
+			$agents = array('Android', 'iPhone', 'BlackBerry', 'Blazer', 'Symbian', 'Dorothy', 'Fennec', 'GoBrowser', 'Windows Phone', 'IEMobile',
+				'Maemo Browser', 'MIB/2.2', 'Minimo', 'NetFront', 'Opera Mini', 'Opera Mobi', 'SEMC-Browser', 'Skyfire', 'TeaShark', 
+				'Teleca', 'uZardWeb', 'Mobile Safari');
+			$mobileDevice = false;
+			foreach ($agents as $agent) {
+				if (strpos($userAgent, $agent) !== false) {
+					$mobileDevice = true;
+					break;
+				}
+			}
+
+			$this->set(compact('mobileDevice'));
+
+	}
 }

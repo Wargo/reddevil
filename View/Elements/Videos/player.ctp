@@ -1,4 +1,5 @@
 <?php
+$size = $mobileDevice?'s':'m';
 $main = ClassRegistry::init('Photo')->find('first', array(
 	'conditions' => array(
 		'video_id' => $Video['id'],
@@ -15,7 +16,7 @@ $image = $this->Html->url('/img/Photo/' . $folder . '/' . $main['Photo']['id'] .
 			<?php echo 'style="background-image:url('.$image.')"'; ?>
 			data-swf="<?php echo $this->Html->url('/html5/flowplayer/flowplayer.swf'); ?>">
 			<video>
-				<source type='video/mp4; codecs="avc1.4D401E, mp4a.40.2"' src="<?php echo $this->Html->url('/video/Trailer/mp4/l/' . $Video['id']); ?>"/>
+				<source type='video/mp4; codecs="avc1.4D401E, mp4a.40.2"' src="<?php echo $this->Html->url('/video/Trailer/mp4/'.$size.'/' . $Video['id']); ?>"/>
 			</video>
 		</div>
 	</div>
