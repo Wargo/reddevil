@@ -4,9 +4,9 @@ class ConversionShell extends AppShell {
 
 	public $formats = array(
 		'mp4' => array('folder' => 'mp4', 'sizes' => array('m', 's')),
-		//'flv' => array('folder' => 'flv', 'sizes' => array('l', 'm', 's')), 
-		//'wmv' => array('folder' => 'wmv', 'sizes' => array('l', 'm', 's')),
-		//'v3gp' => array('folder' => '3gp', array('s'))
+		'flv' => array('folder' => 'flv', 'sizes' => array('l', 'm', 's')), 
+		'wmv' => array('folder' => 'wmv', 'sizes' => array('l', 'm', 's')),
+		'v3gp' => array('folder' => '3gp', array('s'))
 	);
 	
 	public function convert_all() {
@@ -55,7 +55,7 @@ class ConversionShell extends AppShell {
 				$res = '480x270';
 				$bitrate = '700k';
 			}
-			$cmd = "ffmpeg -i ".$path.$input." -s ".$res." -b ".$bitrate." ".$output.".mp4";
+			$cmd = "ffmpeg -i ".$path.$input." -vcodec libx264 -f mp4 -vpre slow -level 30 -s ".$res." -b ".$bitrate." ".$output.".mp4";
 			shell_exec($cmd);
 			shell_exec("mv $output.mp4 $output");
 			if ($this->_checkVideo($id, $model, 'mp4', $size, $duration)) {
