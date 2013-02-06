@@ -6,6 +6,7 @@
 		'facebook' => 'http://www.facebook.com/sharer.php?u=',
 		'twitter' => 'http://twitter.com/home?status=',
 		'google+' => 'https://plus.google.com/share?url=',
+		'tuenti' => 'http://www.tuenti.com/share?url=',
 	);
 	
 	$i = 0;
