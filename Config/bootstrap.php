@@ -158,3 +158,11 @@ Configure::write('CID_m', 'FA_7509_SMS_3');
 Configure::write('pass_m', 'n1p5l2s');
 Configure::write('pool_m', 94);
 Configure::write('info_m', __('WPR,S.A. Cte sms 1.45€ I.V.A incl., sms@wpr.es Nº atn clte 902044008. Apdo. Correos 14.953 - 28080 Madrid'));
+
+$formats = array(
+	'mp4' => array('folder' => 'mp4', 'sizes' => array('m', 's')),
+	'flv' => array('folder' => 'flv', 'sizes' => array('l', 'm', 's')), 
+	'wmv' => array('folder' => 'wmv', 'sizes' => array('l', 'm', 's')),
+	'v3gp' => array('folder' => '3gp', array('s'))
+);
+Configure::write('formats', $formats);

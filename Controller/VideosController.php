@@ -335,7 +335,7 @@ class VideosController extends AppController {
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 			$result = curl_exec($ch);
 			$access = false;
-			if (substr($result, 0, 2) === 'KO') {
+			if (substr($result, 0, 2) === 'OK') {
 				$current = $this->Session->read('current_video_id');
 				$this->Cookie->write('video_' . $current, date('Y-m-d H:i:s'));
 				$access = true;
@@ -405,6 +405,19 @@ class VideosController extends AppController {
 		)));
 
 		$this->set(compact('Video'));
+	}
+
+	function formats($id = null, $type = null) {
+
+		$this->layout = 'ajax';
+
+		if (!$id || !$type) {
+			return false;
+		}
+
+		extract($this->Video->findById($id));
+		
+		$this->set(compact('Video', 'type'));
 	}
 
 }

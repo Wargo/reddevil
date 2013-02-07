@@ -663,6 +663,9 @@ a.more_videos_button:hover {
 #dialog .button:hover {
 	border:#CC0000 2px solid;
 }
+#dialog .button.selected {
+	background:#FFFFCC;
+}
 #dialog .button.row_odd {
 	float:left;
 }
@@ -672,6 +675,15 @@ a.more_videos_button:hover {
 #dialog .button img {
 	height:50px;
 	margin:0 5px;
+}
+#dialog ._download_text {
+	text-align:center;
+	margin:10px 0 0 0;
+}
+#dialog ._download_text a {
+	color:#333;
+	font-weight:bold;
+	text-decoration:underline;
 }
 
 /*

@@ -17,9 +17,10 @@
 			$row = 'row_even';
 		}
 
-		echo $this->Html->link($this->Html->image($type . '.png', array('align' => 'left')) . sprintf(__('Descargar en %s'), $type), array(), array('class' => 'button ' . $row, 'escape' => false));
+		echo $this->Html->link($this->Html->image($type . '.png', array('align' => 'left')) . sprintf(__('Descargar en %s'), $type), array('controller' => 'videos', 'action' => 'formats', $Video['id'], $type), array('class' => '_select_size button ' . $row, 'escape' => false));
 
 	}
 	echo '</div>';
 	?>
+	<div class="_download_text"></div>
 </div>
