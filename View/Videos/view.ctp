@@ -67,7 +67,17 @@ $(function() {
 </div>
 <div class="video_footer">
 	<ul>
-		<li><?php echo $this->Html->link(__('Bájate el vídeo completo'), array('controller' => 'videos', 'action' => 'download', $Video['id']), array('class' => '_download_video')); ?></li>
+		<li><?php
+		if (ClassRegistry::init('Video')->isPrivate($Video['id'], $cookies)) {
+			echo $this->Html->link(__('Bájate el vídeo completo'),
+				array('controller' => 'videos', 'action' => 'view_video', $Video['slug']),
+				array('class' => '_view_video'));
+		} else {
+			echo $this->Html->link(__('Bájate el vídeo completo'),
+				array('controller' => 'videos', 'action' => 'download', $Video['id']),
+				array('class' => '_download_video'));
+		}
+		?></li>
 		<li><?php echo $this->Html->link(__('Ver el vídeo completo') . $this->Html->image('mini_play.png', array('align' => 'absmiddle')), array('controller' => 'videos', 'action' => 'view_video', $Video['slug']), array('escape' => false, 'class' => '_view_video with_image')); ?></li>
 		<li><?php echo $this->Html->link(sprintf(__('Fotos (%s)'), $num_photos), array('controller' => 'videos', 'action' => 'view_photos', $Video['id']), array('class' => '_view_photos')); ?></li>
 	</ul>

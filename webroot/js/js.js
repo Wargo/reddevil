@@ -228,4 +228,20 @@ $(document).ready(function() {
 
 	});
 
+	$('._select_size').live('click', function() {
+
+		$('._select_size').removeClass('selected');
+
+		$(this).addClass('selected');
+
+		$.get(this.href, function(data) {
+
+			$('._download_text').html(data);
+
+		});
+
+		return false;
+
+	});
+
 });
