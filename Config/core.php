@@ -295,11 +295,11 @@ Cache::config('_cake_model_', array(
 Configure::write('GenerateScreenshots', false);
 
 Configure::write('TrailerUploadFolder', WWW_ROOT . 'video' . DS . 'Trailer' . DS . 'mp4' . DS . 'l'. DS);
-Configure::write('VideoUploadFolder', WWW_ROOT . 'video' . DS . 'Video'. DS . 'mp4' . DS . 'l' . DS);
+Configure::write('VideoUploadFolder', APP . 'uploads' . DS . 'Video'. DS . 'mp4' . DS . 'l' . DS);
 
 
 Configure::write('TrailerRootFolder', WWW_ROOT . 'video' . DS . 'Trailer' . DS);
-Configure::write('VideoRootFolder', WWW_ROOT . 'video' . DS . 'Video'. DS );
+Configure::write('VideoRootFolder', APP . 'uploads' . DS . 'Video'. DS );
 
 Configure::write('TrailerImageFolder', APP . 'uploads' . DS . 'img' . DS . 'Trailer' . DS);
 Configure::write('VideoImageFolder', APP . 'uploads' . DS . 'img' . DS . 'Video'. DS);
