@@ -35,26 +35,100 @@ class AppController extends Controller {
 
 	public $helpers = array('Html', 'Form', 'Session',  'Funciones');
 
-	public $components = array('Cookie', 'Session');
+	public $components = array(
+		'Security' => array('csrfUseOnce' => false),
+		'Session',
+		'Mi.SwissArmy' => array('autoLayout' => true, 'authLoginSessionToken' => false),
+		'MiUsers.RememberMe' => array('auth' => array('fields' => array('username' => 'email', 'password' => 'password'))),
+		'Auth' => array(
+				'authenticate' => array(
+					'Form' => array(
+						'fields' => array('username' => 'email')
+					)
+				),
+				'loginAction' => array(
+					'controller' => 'users',
+					'action' => 'login',
+					'plugin' => false
+				),
+		),
+		'Cookie',
+		'RequestHandler'
+	);
 
 	function beforeFilter() {
+		$this->Auth->allow('*');
 		parent::beforeFilter();	
 		if (!empty($this->params['admin'])) {
 
-			// IF user IS admin
-
-			// return $this->redirect('/');
+			if ($this->Auth->user('group') != 'admin') {
+				return $this->redirect('/');
+			}
 
 			$this->layout = 'panel';
 
 		}
 
  	 	$this->Cookie->name = 'RedDevilX';
-                $this->Cookie->time = 3600 * 24;  // or '1 hour'
+        $this->Cookie->time = 3600 * 24;  // or '1 hour'
 
 		$this->_detectarMovil();
 	}
 
+	protected function _message($message, $url = false, $value = false, $error = false, $admin=0){
+		/*
+		if($this->historico>0){
+			$entrada['HistoricoEntrada']['ip']=ip2long($_SERVER['REMOTE_ADDR']);
+
+			if($this->Session->check('Administrador.id')){
+				$administrador_id=$this->Session->read('Administrador.id');
+				$admin=1;
+			}
+			else{
+				$administrador_id=0;
+				//$admin=0;
+			}
+
+			if($this->Session->check('Usuario.usuario')){
+				$entrada['HistoricoEntrada']['usuario_id']=$this->Session->read('Usuario.id');
+			}
+
+			$entrada['HistoricoEntrada']['admin']=$admin;
+			$entrada['HistoricoEntrada']['administrador_id']=$administrador_id;
+			if(isset($_SERVER['REQUEST_URI'])){
+				$current = $_SERVER['REQUEST_URI'];
+			}
+			else{
+				$current="";
+			}
+			$entrada['HistoricoEntrada']['accion']=$current;
+			if ($value) {
+				$mensaje = sprintf($message, $value);
+			}
+			else{
+				$mensaje=$message;
+			}
+			$entrada['HistoricoEntrada']['mensaje']=$mensaje;
+			if($error){
+				$entrada['HistoricoEntrada']['error']=1;
+			}
+			$this->HistoricoEntrada->create();
+			$this->HistoricoEntrada->save($entrada);
+		}
+		*/
+		if ($value) {
+			$message = sprintf($message, '<strong>' . $value . '</strong>');
+		}
+		if ($error) {
+			$message = '<div class="mensaje error">' . $message . '</div>';
+		} else {
+			$message = '<div class="mensaje confirmation">' . $message . '</div>';
+		}
+		$this->Session->setFlash($message, '');
+		if ($url) {
+			$this->redirect($url);
+		}
+	}
 /*
  * _detectarMovil - Detectar si se accede desde un movil o al subdominio m. y redirigir a la vista de móvil si procede
 */
