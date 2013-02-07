@@ -206,8 +206,8 @@ $(document).ready(function() {
 		$.get(this.href, function(data) {
 			$('#dialog').html(data);
 			$('#dialog').dialog({
-				width: 500,
-				height: 310,
+				width: 530,
+				height: 330,
 				modal: true,
 				buttons: {
 					Ok: function() {
