@@ -6,6 +6,8 @@ $(function() {
 <div class="clearfix">
 	<div class="featured">
 		<?php
+		$num_photos = ClassRegistry::init('Photo')->find('count', array('conditions' => array('video_id' => $Video['id'], 'Photo.active' => 1)));
+
 		$ad1 = ClassRegistry::init('Photo')->find('first', array(
 			'conditions' => array(
 				'video_id !=' => $Video['id'],
@@ -31,7 +33,7 @@ $(function() {
 		<ul class="buttons" id="buttons">
 			<li><?php echo $this->Html->link(__('Ver vídeo', true), array('controller' => 'videos', 'action' => 'view_video', $Video['slug']), array('id' => 'view_video', 'class' => '_view_video ' . ($section == 'video' ? 'selected' : ''))); ?></li>
 			<li><?php echo $this->Html->link(__('Ver trailer', true), array('controller' => 'videos', 'action' => 'view', $Video['slug']), array('id' => 'view_trailer', 'class' => '_view_trailer ' . ($section == 'trailer' ? 'selected' : ''))); ?></li>
-			<li><?php echo $this->Html->link(sprintf(__('Ver fotos (%d)'), 12), array('controller' => 'videos', 'action' => 'view_photos', $Video['slug']), array('id' => 'view_photos', 'class' => '_view_photos ' . ($section == 'photos' ? 'selected' : ''))); ?></li>
+			<li><?php echo $this->Html->link(sprintf(__('Ver fotos (%d)'), $num_photos), array('controller' => 'videos', 'action' => 'view_photos', $Video['slug']), array('id' => 'view_photos', 'class' => '_view_photos ' . ($section == 'photos' ? 'selected' : ''))); ?></li>
 			<li><?php echo $this->Html->link($this->Html->image('share.png', array('width' => 20, 'align' => 'left')) .  __('Compartir'), array('controller' => 'videos', 'action' => 'share', $Video['id']), array('id' => 'view_photos', 'class' => '_share', 'escape' => false)); ?></li>
 		</ul>
 	</div>
@@ -67,7 +69,7 @@ $(function() {
 	<ul>
 		<li><?php echo $this->Html->link(__('Bájate el vídeo completo'), array('controller' => 'videos', 'action' => 'download', $Video['id']), array('class' => '_download_video')); ?></li>
 		<li><?php echo $this->Html->link(__('Ver el vídeo completo') . $this->Html->image('mini_play.png', array('align' => 'absmiddle')), array('controller' => 'videos', 'action' => 'view_video', $Video['slug']), array('escape' => false, 'class' => '_view_video with_image')); ?></li>
-		<li><?php echo $this->Html->link(sprintf(__('Fotos (%s)'), ClassRegistry::init('Photo')->find('count', array('conditions' => array('video_id' => $Video['id'], 'Photo.active' => 1)))), array('controller' => 'videos', 'action' => 'view_photos', $Video['id']), array('class' => '_view_photos')); ?></li>
+		<li><?php echo $this->Html->link(sprintf(__('Fotos (%s)'), $num_photos), array('controller' => 'videos', 'action' => 'view_photos', $Video['id']), array('class' => '_view_photos')); ?></li>
 	</ul>
 </div>
 <div class="preview_photos">
