@@ -99,15 +99,21 @@ $(function() {
 	}
 	?>
 </div>
-<div class="separator clearfix">
+<!--<div class="separator clearfix _view_video">-->
+<?php
+echo $this->Html->link('
 	<div class="arrow">
-		<?php echo __('Ver escena entera ahora'); ?>
+		' .__('Ver escena entera ahora') . '
 	</div>
 	<div class="text">
-		<?php echo __('Descarga o visualízala en alta definición'); ?>
+		' .__('Descarga o visualízala en alta definición') . '
 	</div>
-</div>
+	', array('controller' => 'videos', 'action' => 'view_video', $Video['slug']),
+	array('escape' => false, 'class' => 'separator clearfix _view_video'));
+?>
+<!--</div>-->
 <div class="more_videos">
+	<span class="more_videos_button"><?php echo __('Más vídeos'); ?></span>
 	<div class="photos clearfix">
 		<?php
 		$others = ClassRegistry::init('Video')->find('all', array(
@@ -138,6 +144,5 @@ $(function() {
 		}
 		?>
 	</div>
-	<?php echo $this->Html->link(__('Más vídeos', true), array(), array('class' => 'more_videos_button')); ?>
 </div>
 <div class="hidden" id="dialog"></div>

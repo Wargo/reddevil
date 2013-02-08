@@ -2,8 +2,9 @@
 
 $download = array();
 
-if (!empty($Video['formats'])) {
+//if (!empty($Video['formats'])) {
 
+	//$formats = Configure::read('formats');
 	$formats = unserialize($Video['formats']);
 	// TODO ...
 	$formats = array(
@@ -43,10 +44,10 @@ if (!empty($Video['formats'])) {
 
 		}
 
-		$download[] = $this->Html->link($t . ' ' . $value. 'Mb', array(), array());
+		$download[] = $this->Html->link($t . ' ' . $value. 'Mb', '/links/' . $cookies['user'] . '/' . $cookies[$Video['id']] . '_' . $type . '_' . $key, array());
 
 	}
 
 	echo implode(', ', $download);
 
-}
+//}

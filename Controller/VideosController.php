@@ -122,10 +122,16 @@ class VideosController extends AppController {
 
 		$this->Session->write('current_video_id', $Video['id']);
 
+		$main = ClassRegistry::init('Photo')->find('first', array(
+			'conditions' => array(
+				'video_id' => $Video['id'],
+				'main' => 1
+			),
+		));
 
 		$title_for_layout = $this->Video->getTitle($Video);
 
-		$this->set(compact('Video', 'section', 'user', 'phone', 'text', 'sms', 'total_seconds', 'title_for_layout'));
+		$this->set(compact('Video', 'main', 'section', 'user', 'phone', 'text', 'sms', 'total_seconds', 'title_for_layout'));
 
 		if ($this->request->is('ajax')) {
 			$this->layout = 'ajax';
@@ -343,19 +349,14 @@ class VideosController extends AppController {
 			$result = curl_exec($ch);
 			$access = false;
 			if (substr($result, 0, 2) === 'OK') {
-				$current = $this->Session->read('current_video_id');
-				$this->Cookie->write('video_' . $current, date('Y-m-d H:i:s'));
+				$this->validateAccess();
 				$access = true;
-				$link = time();
-				$this->Cookie->write($current, $link);
-				exec('ln -s ../../../uploads/Video/mp4/l/' . $current . '.mp4 links/' . $this->Cookie->read('user') . '/' . $link);
 			}
 			$this->set(compact('result', 'access'));
 		} else {
 			$this->autoRender = false;
 		}
 	}
-
 
 	function check_sms() {
 
@@ -367,16 +368,28 @@ class VideosController extends AppController {
 			$result = curl_exec($ch);
 			$access = false;
 			if (substr($result, 0, 2) === 'OK') {
-				$current = $this->Session->read('current_video_id');
-				$this->Cookie->write('video_' . $current, date('Y-m-d H:i:s'));
+				$this->validateAccess();
 				$access = true;
-				$link = time();
-				$this->Cookie->write($current, $link);
-				exec('ln -s ../../../uploads/Video/mp4/l/' . $current . '.mp4 links/' . $this->Cookie->read('user') . '/' . $link);
 			}
 			$this->set(compact('result', 'access'));
 		} else {
 			$this->autoRender = false;
+		}
+	}
+
+	function validateAccess() {
+		$current = $this->Session->read('current_video_id');
+		$this->Cookie->write('video_' . $current, date('Y-m-d H:i:s'));
+		$link = time();
+		$this->Cookie->write($current, $link);
+
+		$formats = Configure::read('formats');
+
+		exec('ln -s ../../../uploads/Video/mp4/l/' . $current . '.mp4 links/' . $this->Cookie->read('user') . '/' . $link . '_mp4_l');
+		foreach ($formats as $format) {
+			foreach ($format['sizes'] as $size) {
+				exec('ln -s ../../../uploads/Video/' . $format['folder'] . '/' . $size . '/' . $current . '.' . $format['folder'] . ' links/' . $this->Cookie->read('user') . '/' . $link . '_' . $format['folder'] . '_' . $size);
+			}
 		}
 	}
 

@@ -1,13 +1,15 @@
 <div class="title"><?php echo sprintf(__('Descargando %s'), $Video['title']); ?></div>
 <div class="text">
 	<?php
-	echo '<p>' . __('¿Qué formato de descarga quieres?') . '</p>';
-	$types = array('mp4', 'wmv', '3gp', 'flv');
+	//echo '<p>' . __('¿Qué formato de descarga quieres?') . '</p>';
+	$formats = Configure::read('formats');
 	
 	$i = 0;
 
 	echo '<div class="clearfix">';
-	foreach ($types as $type) {
+	foreach ($formats as $type) {
+
+		$type = $type['folder'];
 
 		$i ++;
 
@@ -17,7 +19,9 @@
 			$row = 'row_even';
 		}
 
-		echo $this->Html->link($this->Html->image($type . '.png', array('align' => 'left')) . sprintf(__('Descargar en %s'), $type), array('controller' => 'videos', 'action' => 'formats', $Video['id'], $type), array('class' => '_select_size button ' . $row, 'escape' => false));
+		echo $this->Html->link($this->Html->image($type . '.png', array('align' => 'left')) . sprintf(__('Descargar en %s'), $type),
+			array('controller' => 'videos', 'action' => 'formats', $Video['id'], $type),
+			array('class' => '_select_size button ' . $row, 'escape' => false));
 
 	}
 	echo '</div>';
