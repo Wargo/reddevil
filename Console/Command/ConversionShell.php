@@ -54,7 +54,7 @@ class ConversionShell extends AppShell {
 				$res = '480x270';
 				$bitrate = '700k';
 			}
-			$cmd = "ffmpeg -i ".$path.$input." -vcodec libx264 -f mp4 -preset slow -level 30 -s ".$res." -b:v ".$bitrate." ".$output;
+			$cmd = "ffmpeg -i ".$path.$input." -vcodec libx264 -f mp4 -preset slow -level 30 -s ".$res." -b:v ".$bitrate." -strict -2 ".$output;
 			shell_exec($cmd);
 			if ($this->_checkVideo($id, $model, 'mp4', $size, $duration)) {
 				$this->_saveFormat($id, $model, 'mp4', $size);
@@ -143,7 +143,7 @@ class ConversionShell extends AppShell {
 		foreach ($sizes as $size) {
 			$output = Configure::read($model . 'RootFolder') . '3gp' . DS . $size . DS . $id . '.3gp';
 
-			$cmd = "ffmpeg -i ".$path.$input." -s 352x288 -sameq -vcodec h263 -acodec libfaac -ac 1 -ar 8000 -r 25 -ab 16k -y ".$output;
+			$cmd = "ffmpeg -i ".$path.$input." -s 352x288 -sameq -vcodec h263 -acodec libfaac -ac 1 -ar 8000 -r 25 -ab 16k -strict -2 -y ".$output;
 			shell_exec($cmd);
 		
 			if ($this->_checkVideo($id, $model, 'v3gp', $size, $duration)) {
