@@ -33,7 +33,7 @@
  * In development mode, you need to click the flash message to continue.
  */
  $ips = array('188.165.210.160', '127.0.0.1');
-if (empty($_SERVER['SERVER_ADDR']) || in_array($_SERVER['SERVER_ADDR'], $ips)) {
+if (true || empty($_SERVER['SERVER_ADDR']) || in_array($_SERVER['SERVER_ADDR'], $ips)) {
 
 	Configure::write('debug', 1);
 
