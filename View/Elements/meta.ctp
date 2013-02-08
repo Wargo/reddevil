@@ -1,3 +1,10 @@
 <meta name="title" content="<?php echo $title_for_layout; ?>" />
 <meta name="description" content="<?php echo !empty($description_for_layout) ? $description_for_layout : ''; ?>" />
 <meta name="keywords" content="<?php echo !empty($keywords_for_layout) ? $keywords_for_layout : ''; ?>" />
+
+<?php
+$folder = explode('-', $main['Photo']['id']);
+$folder = substr($folder[1], 0, 3);
+if ($this->params['controller'] == 'videos' && $this->params['action'] == 'view') {
+	echo '<meta property="og:image" content="' . $this->Html->url('/img/Photo/' . $folder . '/' .  $main['Photo']['id'] . ',fitCrop,239,150.jpg') . '" />';
+}

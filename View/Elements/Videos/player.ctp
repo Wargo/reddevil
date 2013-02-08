@@ -1,11 +1,5 @@
 <?php
 $size = $mobileDevice?'s':'m';
-$main = ClassRegistry::init('Photo')->find('first', array(
-	'conditions' => array(
-		'video_id' => $Video['id'],
-		'main' => 1
-	),
-));
 $folder = explode('-', $main['Photo']['id']);
 $folder = substr($folder[1], 0, 3);
 $image = $this->Html->url('/img/Photo/' . $folder . '/' . $main['Photo']['id'] . ',fitCrop,964,542.jpg', array('class' => 'image', 'alt' => ''));

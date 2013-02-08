@@ -62,7 +62,14 @@ class VideosController extends AppController {
 		$title_for_layout = $this->Video->getTitle($Video);
 		$description_for_layout = $keywords_for_layout = $Video['description'];
 
-		$this->set(compact('Video', 'section', 'layout_title', 'title_for_layout', 'description_for_layout', 'keywords_for_layout'));
+		$main = ClassRegistry::init('Photo')->find('first', array(
+			'conditions' => array(
+				'video_id' => $Video['id'],
+				'main' => 1
+			),
+		));
+
+		$this->set(compact('Video', 'main', 'section', 'layout_title', 'title_for_layout', 'description_for_layout', 'keywords_for_layout'));
 
 		if ($this->request->is('ajax')) {
 			$this->layout = 'ajax';

@@ -96,7 +96,6 @@ $(function() {
 		extract($image);
 		$alt = ClassRegistry::init('Photo')->getTitle($Photo);
 		echo $this->Html->image('Photo' . DS . $Photo['id'] . ',fitCrop,239,150.jpg', array('alt' => $alt, 'title' => $alt));
-		echo '<meta property="og:image" content="' . $this->Html->url('/img/Photo' . DS . $Photo['id'] . ',fitCrop,239,150.jpg') . '" />';
 	}
 	?>
 </div>
