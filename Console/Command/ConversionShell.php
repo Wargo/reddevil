@@ -54,7 +54,7 @@ class ConversionShell extends AppShell {
 				$res = '480x270';
 				$bitrate = '700k';
 			}
-			$cmd = "ffmpeg -i ".$path.$input." -vcodec libx264 -f mp4 -vpre slow -level 30 -s ".$res." -b ".$bitrate." ".$output;
+			$cmd = "ffmpeg -i ".$path.$input." -vcodec libx264 -f mp4 -preset slow -level 30 -s ".$res." -b:v ".$bitrate." ".$output;
 			shell_exec($cmd);
 			if ($this->_checkVideo($id, $model, 'mp4', $size, $duration)) {
 				$this->_saveFormat($id, $model, 'mp4', $size);
@@ -90,7 +90,7 @@ class ConversionShell extends AppShell {
 				$res = '480x270';
 				$bitrate = '700k';
 			}
-			$cmd = "ffmpeg -i ".$path.$input." -vcodec libx264 -vpre medium -f flv -acodec copy -b ".$bitrate." -f flv -s ".$res." ".$output;
+			$cmd = "ffmpeg -i ".$path.$input." -vcodec libx264 -preset medium -f flv -acodec copy -b:v ".$bitrate." -f flv -s ".$res." ".$output;
 			shell_exec($cmd);
 		
 			if ($this->_checkVideo($id, $model, 'flv', $size, $duration)) {
@@ -123,7 +123,7 @@ class ConversionShell extends AppShell {
 				$bitrate = '700k';
 			}
 
-			$cmd = "ffmpeg -i ".$path.$input." -b ".$bitrate." -s ".$res." ".$output;
+			$cmd = "ffmpeg -i ".$path.$input." -b:v ".$bitrate." -s ".$res." ".$output;
 			shell_exec($cmd);
 		
 			if ($this->_checkVideo($id, $model, 'wmv', $size, $duration)) {
