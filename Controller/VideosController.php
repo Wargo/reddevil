@@ -341,7 +341,7 @@ class VideosController extends AppController {
 				$access = true;
 				$link = time();
 				$this->Cookie->write($current, $link);
-				exec('ln -s ../../video/Video/mp4/l/' . $current . ' links/' . $this->Cookie->read('user') . '/' . $link);
+				exec('ln -s ../../../uploads/Video/mp4/l/' . $current . '.mp4 links/' . $this->Cookie->read('user') . '/' . $link);
 			}
 			$this->set(compact('result', 'access'));
 		} else {
@@ -365,7 +365,7 @@ class VideosController extends AppController {
 				$access = true;
 				$link = time();
 				$this->Cookie->write($current, $link);
-				exec('ln -s ../../video/Video/mp4/l/' . $current . ' links/' . $this->Cookie->read('user') . '/' . $link);
+				exec('ln -s ../../../uploads/Video/mp4/l/' . $current . '.mp4 links/' . $this->Cookie->read('user') . '/' . $link);
 			}
 			$this->set(compact('result', 'access'));
 		} else {

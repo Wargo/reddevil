@@ -306,6 +306,6 @@ Configure::write('VideoImageFolder', APP . 'uploads' . DS . 'img' . DS . 'Video'
 
 
 if (!empty($_SERVER['SERVER_ADDR']) && $_SERVER['SERVER_ADDR'] != '127.0.0.1') {
-	Configure::write('Mime.magic', array('db' => '/usr/share/file/magic'));
+	Configure::write('Mime.magic', array('db' => '/usr/share/misc/magic.mgc'));
 }
 

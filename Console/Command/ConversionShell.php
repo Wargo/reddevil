@@ -47,6 +47,9 @@ class ConversionShell extends AppShell {
 		$sizes = $this->formats['mp4']['sizes'];
 		foreach ($sizes as $size) {	
 			$output = Configure::read($model . 'RootFolder') . 'mp4' . DS . $size . DS . $id . '.mp4';
+			if (file_exists($output)) {
+				continue;
+			}
 			if ($size == 'm') {
 				$res = '1280x720';
 				$bitrate = '2500k';
