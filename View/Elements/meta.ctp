@@ -3,8 +3,8 @@
 <meta name="keywords" content="<?php echo !empty($keywords_for_layout) ? $keywords_for_layout : ''; ?>" />
 
 <?php
-$folder = explode('-', $main['Photo']['id']);
-$folder = substr($folder[1], 0, 3);
 if ($this->params['controller'] == 'videos' && $this->params['action'] == 'view' && !empty($main)) {
-	echo '<meta property="og:image" content="' . $this->Html->url('/img/Photo/' . $folder . '/' .  $main['Photo']['id'] . ',fitCrop,239,150.jpg') . '" />';
+	$folder = explode('-', $main['Photo']['id']);
+	$folder = substr($folder[1], 0, 3);
+	echo '<meta property="og:image" content="' . $this->Html->url(array('full_base' => true, 'controller' => 'videos', 'action' => 'home')) . 'img/Photo/' . $folder . '/' .  $main['Photo']['id'] . ',fitCrop,239,150.jpg" />';
 }
