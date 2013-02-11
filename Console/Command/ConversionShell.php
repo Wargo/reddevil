@@ -76,7 +76,7 @@ class ConversionShell extends AppShell {
 		
 	}
 
-	public function flv($id, $model) {
+	public function flv($id, $model, $reconvert = false) {
 		$path = Configure::read($model. 'UploadFolder');
 		$input = $id. '.mp4';
 
@@ -123,7 +123,7 @@ class ConversionShell extends AppShell {
 
 	}
 
-	public function wmv($id, $model) {	
+	public function wmv($id, $model, $reconvert = false) {	
 		$path = Configure::read($model. 'UploadFolder');
 		$input = $id . '.mp4';
 
@@ -164,7 +164,7 @@ class ConversionShell extends AppShell {
 		}
 	}
 
-	public function v3gp($id, $model) {
+	public function v3gp($id, $model, $reconvert = false) {
 
 		$path = Configure::read($model. 'UploadFolder');
 		$input = $id . '.mp4';
