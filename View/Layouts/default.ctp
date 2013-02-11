@@ -25,7 +25,7 @@
 		//echo $this->fetch('script');
 		//echo $this->fetch('meta');
 	?>
-	<?php //echo $this->element('analytics'); ?>
+	<?php echo $this->element('analytics'); ?>
 </head>
 <body>
 	<div id="container">

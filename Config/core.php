@@ -39,8 +39,7 @@ if (true || empty($_SERVER['SERVER_ADDR']) || in_array($_SERVER['SERVER_ADDR'], 
 
 } else {
 
-	echo 'Restringido por IP';
-	die;
+	Configure::write('debug', 0);
 
 }
 
