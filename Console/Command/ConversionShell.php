@@ -164,7 +164,7 @@ class ConversionShell extends AppShell {
 		}
 	}
 
-	public function v3gp($id, $model, $reconvert = false {
+	public function v3gp($id, $model, $reconvert = false) {
 
 		$path = Configure::read($model. 'UploadFolder');
 		$input = $id . '.mp4';
