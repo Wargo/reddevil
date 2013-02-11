@@ -152,8 +152,8 @@ $(document).ready(function() {
 			return;
 		}
 
-		var temp_path = '/webs/reddevil';
-		//var temp_path = '';
+		//var temp_path = '/webs/reddevil';
+		var temp_path = '';
 
 		if (parseInt($('#phone').html())) {
 

@@ -33,6 +33,7 @@ App::uses('Model', 'Model');
 class AppModel extends Model {
 
 	function transferTo($temporary = null, $source = null) {
+
 		if(!$this->Behaviors->attached('Transfer')) {
 			return false;
 		}

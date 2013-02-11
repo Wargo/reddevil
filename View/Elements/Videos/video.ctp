@@ -1,10 +1,4 @@
 <?php
-$main = ClassRegistry::init('Photo')->find('first', array(
-	'conditions' => array(
-		'video_id' => $Video['id'],
-		'main' => 1
-	),
-));
 $folder = explode('-', $main['Photo']['id']);
 $folder = substr($folder[1], 0, 3);
 $image = $this->Html->url('/img/Photo/' . $folder . '/' . $main['Photo']['id'] . ',fitCrop,964,542.jpg', array('class' => 'image', 'alt' => ''));
@@ -18,7 +12,7 @@ $image = $this->Html->url('/img/Photo/' . $folder . '/' . $main['Photo']['id'] .
 			if (!empty($cookies[$Video['id']])) {
 				?>
 				<video>
-					<source type="video/mp4" src="<?php echo $this->Html->url('/links/' . $cookies['user'] . '/' . $cookies[$Video['id']]); ?>"/>
+					<source type="video/mp4" src="<?php echo $this->Html->url('/links/' . $cookies['user'] . '/' . $cookies[$Video['id']] . '_mp4_l'); ?>"/>
 				</video>
 				<?php
 			} else {
