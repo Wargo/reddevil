@@ -164,7 +164,7 @@ class ConversionShell extends AppShell {
 		}
 	}
 
-	public function v3gp($id, $model, $reconvert = false) {
+	public function v3gp($id, $model, $reconvert = false {
 
 		$path = Configure::read($model. 'UploadFolder');
 		$input = $id . '.mp4';
@@ -182,7 +182,7 @@ class ConversionShell extends AppShell {
 				unlink($output);
 			}
 			if (!file_exists($output)) {
-				$cmd = "ffmpeg -i ".$path.$input." -s 352x288 -sameq -vcodec h263 -acodec libfaac -ac 1 -ar 8000 -r 25 -ab 16k -strict -2 -y ".$output;
+				$cmd = "ffmpeg -i ".$path.$input." -s 352x288 -qscale 0 -vcodec h263 -acodec libfaac -ac 1 -ar 8000 -r 25 -ab 16k -strict -2 -y ".$output;
 				shell_exec($cmd);
 				
 				if ($this->_checkVideo($id, $model, 'v3gp', $size, $duration)) {
