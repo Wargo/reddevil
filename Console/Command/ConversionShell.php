@@ -39,7 +39,7 @@ class ConversionShell extends AppShell {
 		}   
 	} 
 
-	public function mp4($id, $model) {
+	public function mp4($id, $model, $reconvert = false) {
 		$path = Configure::read($model . 'UploadFolder');
 		$input = $id . '.mp4';
 		$movie = new ffmpeg_movie($path.$input, false);	
@@ -54,10 +54,20 @@ class ConversionShell extends AppShell {
 				$res = '480x270';
 				$bitrate = '700k';
 			}
-			$cmd = "ffmpeg -i ".$path.$input." -vcodec libx264 -f mp4 -preset slow -level 30 -s ".$res." -b:v ".$bitrate." -strict -2 ".$output;
-			shell_exec($cmd);
-			if ($this->_checkVideo($id, $model, 'mp4', $size, $duration)) {
-				$this->_saveFormat($id, $model, 'mp4', $size);
+			
+			if ($reconvert && file_exists($output)) {
+				unlink($output);
+			}
+			if (!$reconvert && !$this->_checkVideo($id, $model, 'mp4', $size, $duration) && file_exists($output)) {
+				unlink($output);
+			}
+			
+			if (!file_exists($output)) {
+				$cmd = "ffmpeg -i ".$path.$input." -vcodec libx264 -f mp4 -preset slow -level 30 -s ".$res." -b:v ".$bitrate." -strict -2 ".$output;
+				shell_exec($cmd);
+				if ($this->_checkVideo($id, $model, 'mp4', $size, $duration)) {
+					$this->_saveFormat($id, $model, 'mp4', $size);
+				}
 			}
 		}
 		
@@ -90,11 +100,21 @@ class ConversionShell extends AppShell {
 				$res = '480x270';
 				$bitrate = '700k';
 			}
-			$cmd = "ffmpeg -i ".$path.$input." -vcodec libx264 -preset medium -f flv -acodec copy -b:v ".$bitrate." -f flv -s ".$res." ".$output;
-			shell_exec($cmd);
-		
-			if ($this->_checkVideo($id, $model, 'flv', $size, $duration)) {
-				$this->_saveFormat($id, $model, 'flv', $size);
+
+			if ($reconvert && file_exists($output)) {
+				unlink($output);
+			}
+			if (!$reconvert && !$this->_checkVideo($id, $model, 'flv', $size, $duration) && file_exists($output)) {
+				unlink($output);
+			}
+
+			if (!file_exists($output)) {
+				$cmd = "ffmpeg -i ".$path.$input." -vcodec libx264 -preset medium -f flv -acodec copy -b:v ".$bitrate." -f flv -s ".$res." ".$output;
+				shell_exec($cmd);
+			
+				if ($this->_checkVideo($id, $model, 'flv', $size, $duration)) {
+					$this->_saveFormat($id, $model, 'flv', $size);
+				}
 			}
 		}
 
@@ -123,11 +143,20 @@ class ConversionShell extends AppShell {
 				$bitrate = '700k';
 			}
 
-			$cmd = "ffmpeg -i ".$path.$input." -b:v ".$bitrate." -s ".$res." ".$output;
-			shell_exec($cmd);
+			if ($reconvert && file_exists($output)) {
+				unlink($output);
+			}
+			if (!$reconvert && !$this->_checkVideo($id, $model, 'flv', $size, $duration) && file_exists($output)) {
+				unlink($output);
+			}
+
+			if (!file_exists($output)) {
+				$cmd = "ffmpeg -i ".$path.$input." -b:v ".$bitrate." -s ".$res." ".$output;
+				shell_exec($cmd);
 		
-			if ($this->_checkVideo($id, $model, 'wmv', $size, $duration)) {
-				$this->_saveFormat($id, $model, 'wmv', $size);
+				if ($this->_checkVideo($id, $model, 'wmv', $size, $duration)) {
+					$this->_saveFormat($id, $model, 'wmv', $size);
+				}
 			}
 		}
 	}
@@ -143,11 +172,19 @@ class ConversionShell extends AppShell {
 		foreach ($sizes as $size) {
 			$output = Configure::read($model . 'RootFolder') . '3gp' . DS . $size . DS . $id . '.3gp';
 
-			$cmd = "ffmpeg -i ".$path.$input." -s 352x288 -sameq -vcodec h263 -acodec libfaac -ac 1 -ar 8000 -r 25 -ab 16k -strict -2 -y ".$output;
-			shell_exec($cmd);
-		
-			if ($this->_checkVideo($id, $model, 'v3gp', $size, $duration)) {
-				$this->_saveFormat($id, $model, '3gp', $size);
+			if ($reconvert && file_exists($output)) {
+				unlink($output);
+			}
+			if (!$reconvert && !$this->_checkVideo($id, $model, 'flv', $size, $duration) && file_exists($output)) {
+				unlink($output);
+			}
+			if (!file_exists($output)) {
+				$cmd = "ffmpeg -i ".$path.$input." -s 352x288 -sameq -vcodec h263 -acodec libfaac -ac 1 -ar 8000 -r 25 -ab 16k -strict -2 -y ".$output;
+				shell_exec($cmd);
+				
+				if ($this->_checkVideo($id, $model, 'v3gp', $size, $duration)) {
+					$this->_saveFormat($id, $model, '3gp', $size);
+				}
 			}
 		}
 	}
