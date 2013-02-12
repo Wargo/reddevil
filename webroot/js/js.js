@@ -244,4 +244,33 @@ $(document).ready(function() {
 
 	});
 
+	$('.feedback').click(function() {
+		$.get(this.href, function(data) {
+			$('#dialog').html(data);
+			$('#dialog').dialog({
+				width: 630,
+				height: 380,
+				modal: true,
+				buttons: {
+					Cancelar: function() {
+						$(this).dialog('close');
+					}
+				},
+			});
+		});
+		return false;
+	});
+
+	$('.dialog_form').live('submit', function() {
+
+		var url = $(this).attr('action');
+		var params = { 'data[Contact][comment]': $(this).find('textarea').val() };
+		
+		$.post(url, params);
+
+		$('#dialog').dialog('close');
+
+		return false;
+	});
+
 });

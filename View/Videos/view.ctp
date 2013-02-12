@@ -145,4 +145,3 @@ echo $this->Html->link('
 		?>
 	</div>
 </div>
-<div class="hidden" id="dialog"></div>
