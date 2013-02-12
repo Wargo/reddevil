@@ -3,7 +3,8 @@ class ContactsController extends AppController {
 
 	function beforeFilter() {
 		if(in_array($this->params['action'], array('feedback'))) {
-			//$this->Security->validatePost = false;
+			$this->Security->validatePost = false;
+			$this->Security->csrfCheck = false;
 		}
 		return parent::beforeFilter();
 	}

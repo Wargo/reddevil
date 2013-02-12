@@ -50,11 +50,7 @@
 		</div>
 	</div>
 	<?php echo $this->element('sql_dump'); ?>
-	<?php
-	if (Configure::read('debug')) {
-		echo $this->element('feedback');
-	}
-	?>
+	<?php echo $this->element('feedback'); ?>
 	<div class="hidden" id="dialog"></div>
 </body>
 </html>
