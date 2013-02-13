@@ -24,10 +24,6 @@
 	<?php echo $this->element('analytics'); ?>
 </head>
 <body>
-	<div id="container">
-		<div id="content">
-			<?php echo $this->fetch('content'); ?>
-		</div>
-	</div>
+	<?php echo $this->fetch('content'); ?>
 </body>
 </html>
