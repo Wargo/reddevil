@@ -25,7 +25,7 @@
 		//echo $this->fetch('script');
 		//echo $this->fetch('meta');
 	?>
-	<?php //echo $this->element('analytics'); ?>
+	<?php echo $this->element('analytics'); ?>
 </head>
 <body>
 	<div id="container">
@@ -50,5 +50,7 @@
 		</div>
 	</div>
 	<?php echo $this->element('sql_dump'); ?>
+	<?php echo $this->element('feedback'); ?>
+	<div class="hidden" id="dialog"></div>
 </body>
 </html>

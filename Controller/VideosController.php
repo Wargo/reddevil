@@ -91,7 +91,7 @@ class VideosController extends AppController {
 		if ($this->Cookie->read('user')) {
 			$user = $this->Cookie->read('user');
 		} else {
-			$user = mt_rand(1000, 9999);
+			$user = mt_rand(1000000, 9999999);
 		}
 
 		$ch = curl_init('http://flashaccess2008.micropagos.net:8080/c2enopin/servlet/RequestListener?cid=' . Configure::read('CID') . '&uid=' . $user . '&pool=' . Configure::read('pool') . '&control=' . Configure::read('pass'));
@@ -348,7 +348,8 @@ class VideosController extends AppController {
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 			$result = curl_exec($ch);
 			$access = false;
-			if (substr($result, 0, 2) === 'OK') {
+			if (Configure::read('debug') || substr($result, 0, 2) === 'OK') {
+			//if (substr($result, 0, 2) === 'OK') {
 				$this->validateAccess();
 				$access = true;
 			}

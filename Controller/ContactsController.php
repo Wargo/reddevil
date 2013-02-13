@@ -1,6 +1,14 @@
 <?php
 class ContactsController extends AppController {
 
+	function beforeFilter() {
+		if(in_array($this->params['action'], array('feedback'))) {
+			$this->Security->validatePost = false;
+			$this->Security->csrfCheck = false;
+		}
+		return parent::beforeFilter();
+	}
+
 	function contact() {
 
 		if ($this->request->data) {
@@ -35,6 +43,34 @@ class ContactsController extends AppController {
 		}
 
 		$this->render('/Pages/wannabe');
+
+	}
+
+	function feedback() {
+
+		if ($this->request->is('ajax')) {
+			$this->layout = 'ajax';
+		}
+
+		if ($this->request->data) {
+
+			$this->Contact->create();
+
+			$this->request->data['Contact']['type'] = 'feedback';
+
+			$this->Contact->save($this->request->data);
+
+			if (!$this->request->is('ajax')) {
+				return $this->redirect('/');
+			}
+
+		}
+
+		if (!$this->request->is('ajax')) {
+			$this->render('/Pages/feedback');
+		} else {
+			$this->autoRender = false;
+		}
 
 	}
 

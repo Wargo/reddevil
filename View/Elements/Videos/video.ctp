@@ -1,4 +1,5 @@
 <?php
+$size = $mobileDevice?'s':'m';
 $folder = explode('-', $main['Photo']['id']);
 $folder = substr($folder[1], 0, 3);
 $image = $this->Html->url('/img/Photo/' . $folder . '/' . $main['Photo']['id'] . ',fitCrop,964,542.jpg', array('class' => 'image', 'alt' => ''));
@@ -18,7 +19,7 @@ $image = $this->Html->url('/img/Photo/' . $folder . '/' . $main['Photo']['id'] .
 			} else {
 				?>
 				<video>
-					<source type="video/mp4" src="<?php echo $this->Html->url('/video/Trailer/' . $Video['id']); ?>"/>
+					<source type='video/mp4; codecs="avc1.4D401E, mp4a.40.2"' src="<?php echo $this->Html->url('/video/Trailer/mp4/'.$size.'/' . $Video['id']); ?>.mp4"/>
 				</video>
 				<?php
 			}
