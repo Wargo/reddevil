@@ -441,4 +441,24 @@ class VideosController extends AppController {
 		$this->set(compact('Video', 'type'));
 	}
 
+	function external($id = null) {
+
+		$this->layout = 'external';
+
+		if (!$id) {
+			return false;
+		}
+
+		extract($this->Video->findById($id));
+
+		$main = ClassRegistry::init('Photo')->find('first', array(
+			'conditions' => array(
+				'video_id' => $Video['id'],
+				'main' => 1
+			),
+		));
+		$this->set(compact('Video', 'main'));
+
+	}
+
 }
