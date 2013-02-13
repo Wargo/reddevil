@@ -98,7 +98,7 @@ class ConversionShell extends AppShell {
 				$res = '1920x1080';
 				$bitrate = '4000k';
 			} else if ($size == 'm') {
-				$res = '1280x720p';
+				$res = '1280x720';
 				$bitrate = '2500k';
 			} else if ($size == 's') {
 				$res = '480x270';
@@ -140,7 +140,7 @@ class ConversionShell extends AppShell {
 				$res = '1920x1080';
 				$bitrate = '4000k';
 			} else if ($size == 'm') {
-				$res = '1280x720p';
+				$res = '1280x720';
 				$bitrate = '2500k';
 			} else if ($size == 's') {
 				$res = '480x270';
@@ -206,7 +206,7 @@ class ConversionShell extends AppShell {
 				$res = '1920x1080';
 				$bitrate = '4000k';
 			} else if ($size == 'm') {
-				$res = '1280x720p';
+				$res = '1280x720';
 				$bitrate = '2500k';
 			} else if ($size == 's') {
 				$res = '480x270';
