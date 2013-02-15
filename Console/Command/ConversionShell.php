@@ -3,9 +3,10 @@ class ConversionShell extends AppShell {
 
 	public $formats = array(
 		'mp4' => array('folder' => 'mp4', 'sizes' => array('m', 's')),
-		//'flv' => array('folder' => 'flv', 'sizes' => array('l', 'm', 's')), 
-		//'wmv' => array('folder' => 'wmv', 'sizes' => array('l', 'm', 's')),
-		//'v3gp' => array('folder' => '3gp', 'sizes' => array('s'))
+		'flv' => array('folder' => 'flv', 'sizes' => array('l', 'm', 's')), 
+		'wmv' => array('folder' => 'wmv', 'sizes' => array('l', 'm', 's')),
+		'v3gp' => array('folder' => '3gp', 'sizes' => array('s')),
+		'ogg' => array('folder' => 'ogg', 'sizes' => array('l', 'm', 's'))
 	);
 	
 	public function convert_all() {
@@ -97,7 +98,7 @@ class ConversionShell extends AppShell {
 				$res = '1920x1080';
 				$bitrate = '4000k';
 			} else if ($size == 'm') {
-				$res = '1280x720p';
+				$res = '1280x720';
 				$bitrate = '2500k';
 			} else if ($size == 's') {
 				$res = '480x270';
@@ -139,7 +140,7 @@ class ConversionShell extends AppShell {
 				$res = '1920x1080';
 				$bitrate = '4000k';
 			} else if ($size == 'm') {
-				$res = '1280x720p';
+				$res = '1280x720';
 				$bitrate = '2500k';
 			} else if ($size == 's') {
 				$res = '480x270';
@@ -165,7 +166,6 @@ class ConversionShell extends AppShell {
 	}
 
 	public function v3gp($id, $model, $reconvert = false) {
-
 		$path = Configure::read($model. 'UploadFolder');
 		$input = $id . '.mp4';
 		$movie = new ffmpeg_movie($path.$input, false);	
@@ -182,7 +182,7 @@ class ConversionShell extends AppShell {
 				unlink($output);
 			}
 			if (!file_exists($output)) {
-				$cmd = "ffmpeg -i ".$path.$input." -s 352x288 -qscale 0 -vcodec h263 -acodec libfaac -ac 1 -ar 8000 -r 25 -ab 16k -strict -2 -y ".$output;
+				$cmd = "ffmpeg -i ".$path.$input." -s 352x288 -q:v 0 -vcodec h263 -acodec libfaac -ac 1 -ar 8000 -r 25 -ab 16k -strict -2 -y ".$output;
 				shell_exec($cmd);
 				
 				if ($this->_checkVideo($id, $model, 'v3gp', $size, $duration)) {
@@ -190,6 +190,45 @@ class ConversionShell extends AppShell {
 				}
 			}
 		}
+	}
+
+	public function ogg ($id, $model, $reconvert = false) {
+		$path = Configure::read($model. 'UploadFolder');
+		$input = $id . '.mp4';
+		$movie = new ffmpeg_movie($path.$input, false);	
+		$duration = $movie->getDuration();
+		$sizes = $this->formats['ogg']['sizes'];
+
+		foreach ($sizes as $size) {
+			$output = Configure::read($model . 'RootFolder') . 'ogg' . DS . $size . DS . $id . '.ogg';	
+
+			if ($size == 'l') {
+				$res = '1920x1080';
+				$bitrate = '4000k';
+			} else if ($size == 'm') {
+				$res = '1280x720';
+				$bitrate = '2500k';
+			} else if ($size == 's') {
+				$res = '480x270';
+				$bitrate = '700k';
+			}
+
+			if ($reconvert && file_exists($output)) {
+				unlink($output);
+			}
+			if (!$reconvert && !$this->_checkVideo($id, $model, 'ogg', $size, $duration) && file_exists($output)) {
+				unlink($output);
+			}
+			if (!file_exists($output)) {
+				$cmd = "ffmpeg -i ".$path.$input." -vcodec libtheora -b:v ".$bitrate." -s ".$res." -acodec libvorbis -aq 60 test.ogg";
+				shell_exec($cmd);	
+				if ($this->_checkVideo($id, $model, 'ogg', $size, $duration)) {
+					$this->_saveFormat($id, $model, 'ogg', $size);
+				}
+			}
+		}
+
+	
 	}
 
 	protected function _saveFormat($id, $model, $format, $size) {
