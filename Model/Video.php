@@ -141,5 +141,29 @@ class Video extends AppModel {
 		return $title = strtolower($title);
 	} 
 
+	function generateSitemap() {
+
+		$conditions = array('active' => 1);
+		$videos = $this->Video->find('all', compact('conditions'));
+
+		foreach ($videos as $video) {
+
+				if (empty($this->xml)) {
+					$this->xml = new File(WWW_ROOT . 'sitemap.xml');
+					if ($this->xml->exists()) {
+						$this->xml->delete();
+					}	
+					$this->xml->append('<?xml version="1.0" encoding="UTF-8"?>'."\r\n");
+					$this->xml->append('<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'."\r\n");
+				}
+				$this->xml->append("\t".'<sitemap>'."\r\n");
+				$this->xml->append("\t\t".'<loc>' . $this->domain . $this->Html->url(array('controller' => 'videos', 'action' => 'view', $Video['slug'])) . '</loc>' . "\r\n");
+				$this->xml->append("\t\t".'<lastmod>'.date('c').'</lastmod>'."\r\n");
+				$this->xml->append("\t".'</sitemap>'."\r\n");
+
+		}
+
+	}
+
 
 }
