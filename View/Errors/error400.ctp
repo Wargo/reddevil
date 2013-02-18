@@ -15,7 +15,7 @@
  * @since         CakePHP(tm) v 0.10.0.1076
  * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
-if (Configure::read('debug') > 0 ):
+if (Configure::read('debug') > 0 ) {
 	?>
 	<h2><?php echo $name; ?></h2>
 	<p class="error">
@@ -27,10 +27,16 @@ if (Configure::read('debug') > 0 ):
 	</p>
 	<?php
 	echo $this->element('exception_stack_trace');
-endif;
+}
 ?>
 <p class="error">
 	<?php 
 		echo __('Error 404, la página que está buscando ya no está disponible en reddevilx.com')
 	?>
 </p>
+<?php
+if (Configure::read('debug') == 0 ) {
+	?>
+	<script>location.href = '<?php echo $this->Html->url('/'); ?>';</script>
+	<?
+}

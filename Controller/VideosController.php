@@ -386,10 +386,10 @@ class VideosController extends AppController {
 
 		$formats = Configure::read('formats');
 
-		exec('ln -s ../../../uploads/Video/mp4/l/' . $current . '.mp4 links/' . $this->Cookie->read('user') . '/' . $link . '_mp4_l');
+		exec('ln -s ../../../uploads/Video/mp4/l/' . $current . '.mp4 links/' . $this->Cookie->read('user') . '/' . $link . '_mp4_l.mp4');
 		foreach ($formats as $format) {
 			foreach ($format['sizes'] as $size) {
-				exec('ln -s ../../../uploads/Video/' . $format['folder'] . '/' . $size . '/' . $current . '.' . $format['folder'] . ' links/' . $this->Cookie->read('user') . '/' . $link . '_' . $format['folder'] . '_' . $size);
+				exec('ln -s ../../../uploads/Video/' . $format['folder'] . '/' . $size . '/' . $current . '.' . $format['folder'] . ' links/' . $this->Cookie->read('user') . '/' . $link . '_' . $format['folder'] . '_' . $size . '.' . $format['folder']);
 			}
 		}
 	}
@@ -459,6 +459,11 @@ class VideosController extends AppController {
 		));
 		$this->set(compact('Video', 'main'));
 
+	}
+
+	function sitemap() {
+		$this->Video->generateSitemap();
+		$this->autoRender = false;
 	}
 
 }

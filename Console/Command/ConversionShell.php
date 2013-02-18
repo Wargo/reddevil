@@ -220,7 +220,7 @@ class ConversionShell extends AppShell {
 				unlink($output);
 			}
 			if (!file_exists($output)) {
-				$cmd = "ffmpeg -i ".$path.$input." -vcodec libtheora -b:v ".$bitrate." -s ".$res." -acodec libvorbis -aq 60 test.ogg";
+				$cmd = "ffmpeg -i ".$path.$input." -vcodec libtheora -b:v ".$bitrate." -s ".$res." -acodec libvorbis -aq 60 ".$output;
 				shell_exec($cmd);	
 				if ($this->_checkVideo($id, $model, 'ogg', $size, $duration)) {
 					$this->_saveFormat($id, $model, 'ogg', $size);
