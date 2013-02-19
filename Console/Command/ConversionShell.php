@@ -236,6 +236,7 @@ class ConversionShell extends AppShell {
 				unlink($output);
 			}
 			if (!file_exists($output)) {
+
 				$priority = '';
 				if (Configure::read('VideoProcessPriority')) {
 					$priority = 'nice -n ' . Configure::read('VideoProcessPriority') . ' ';

@@ -207,7 +207,7 @@ $(document).ready(function() {
 			$('#dialog').html(data);
 			$('#dialog').dialog({
 				width: 530,
-				height: 330,
+				height: 370,
 				modal: true,
 				buttons: {
 					Ok: function() {

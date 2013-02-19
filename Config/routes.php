@@ -30,6 +30,7 @@
 
 	Router::connect('/videos/check_phone', array('controller' => 'videos', 'action' => 'check_phone'));
 	Router::connect('/videos/check_sms', array('controller' => 'videos', 'action' => 'check_sms'));
+	Router::connect('/videos/sitemap', array('controller' => 'videos', 'action' => 'sitemap'));
 
 	Router::connect('/videos/:page', array('controller' => 'videos', 'action' => 'home'));
 

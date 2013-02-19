@@ -386,10 +386,10 @@ class VideosController extends AppController {
 
 		$formats = Configure::read('formats');
 
-		exec('ln -s ../../../uploads/Video/mp4/l/' . $current . '.mp4 links/' . $this->Cookie->read('user') . '/' . $link . '_mp4_l');
+		exec('ln -s ../../../uploads/Video/mp4/l/' . $current . '.mp4 links/' . $this->Cookie->read('user') . '/' . $link . '_mp4_l.mp4');
 		foreach ($formats as $format) {
 			foreach ($format['sizes'] as $size) {
-				exec('ln -s ../../../uploads/Video/' . $format['folder'] . '/' . $size . '/' . $current . '.' . $format['folder'] . ' links/' . $this->Cookie->read('user') . '/' . $link . '_' . $format['folder'] . '_' . $size);
+				exec('ln -s ../../../uploads/Video/' . $format['folder'] . '/' . $size . '/' . $current . '.' . $format['folder'] . ' links/' . $this->Cookie->read('user') . '/' . $link . '_' . $format['folder'] . '_' . $size . '.' . $format['folder']);
 			}
 		}
 	}
@@ -439,6 +439,31 @@ class VideosController extends AppController {
 		extract($this->Video->findById($id));
 		
 		$this->set(compact('Video', 'type'));
+	}
+
+	function external($id = null) {
+
+		$this->layout = 'external';
+
+		if (!$id) {
+			return false;
+		}
+
+		extract($this->Video->findById($id));
+
+		$main = ClassRegistry::init('Photo')->find('first', array(
+			'conditions' => array(
+				'video_id' => $Video['id'],
+				'main' => 1
+			),
+		));
+		$this->set(compact('Video', 'main'));
+
+	}
+
+	function sitemap() {
+		$this->Video->generateSitemap();
+		$this->autoRender = false;
 	}
 
 }

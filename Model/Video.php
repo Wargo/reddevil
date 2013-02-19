@@ -3,6 +3,8 @@ class Video extends AppModel {
 
 	var $limit = 3;
 
+	var $domain = 'http://www.reddevilx.com';
+
 	function findMore($page, $conditions) {
 		
 		return $this->find('all', array(
@@ -140,6 +142,70 @@ class Video extends AppModel {
 		$title = ereg_replace("[^A-Za-z0-9\-]", "", $title);
 		return $title = strtolower($title);
 	} 
+
+	function generateSitemap() {
+
+		$this->xml = new File(WWW_ROOT . 'sitemap.xml');
+		if ($this->xml->exists()) {
+			$this->xml->delete();
+		}	
+
+		$this->xml->append('<?xml version="1.0" encoding="UTF-8"?>'."\r\n");
+		$this->xml->append('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'."\r\n");
+
+		$conditions = array('active' => 1);
+		$videos = $this->find('all', compact('conditions'));
+
+		foreach ($videos as $video) {
+
+			extract($video);
+
+			$this->xml->append("\t".'<url>'."\r\n");
+			$this->xml->append("\t\t".'<loc>' . $this->domain . Router::url(array('controller' => 'videos', 'action' => 'view', $Video['slug'])) . '</loc>' . "\r\n");
+			$this->xml->append("\t\t".'<lastmod>'.date('c').'</lastmod>'."\r\n");
+			$this->xml->append("\t".'</url>'."\r\n");
+
+			$this->xml->append("\t".'<url>'."\r\n");
+			$this->xml->append("\t\t".'<loc>' . $this->domain . Router::url(array('controller' => 'videos', 'action' => 'view_photos', $Video['slug'])) . '</loc>' . "\r\n");
+			$this->xml->append("\t\t".'<lastmod>'.date('c').'</lastmod>'."\r\n");
+			$this->xml->append("\t".'</url>'."\r\n");
+
+		}
+
+		$actors = ClassRegistry::init('Actor')->find('all');
+
+		foreach ($actors as $actor) {
+
+			extract($actor);
+
+			$this->xml->append("\t".'<url>'."\r\n");
+			$this->xml->append("\t\t".'<loc>' . $this->domain . Router::url(array('controller' => 'videos', 'action' => 'home', 'actor' => $Actor['slug'], 'gender' => $Actor['gender'], 'page' => 1)) . '</loc>' . "\r\n");
+			$this->xml->append("\t\t".'<lastmod>'.date('c').'</lastmod>'."\r\n");
+			$this->xml->append("\t".'</url>'."\r\n");
+
+			$this->xml->append("\t".'<url>'."\r\n");
+			$this->xml->append("\t\t".'<loc>' . $this->domain . Router::url(array('controller' => 'photos', 'action' => 'view', 'actor' => $Actor['slug'], 'gender' => $Actor['gender'], 'page' => 1)) . '</loc>' . "\r\n");
+			$this->xml->append("\t\t".'<lastmod>'.date('c').'</lastmod>'."\r\n");
+			$this->xml->append("\t".'</url>'."\r\n");
+
+		}
+
+		$categories = ClassRegistry::init('Category')->find('all');
+
+		foreach ($categories as $category) {
+
+			extract($category);
+
+			$this->xml->append("\t".'<url>'."\r\n");
+			$this->xml->append("\t\t".'<loc>' . $this->domain . Router::url(array('controller' => 'videos', 'action' => 'home', 'category' => $Category['slug'], 'page' => 1)) . '</loc>' . "\r\n");
+			$this->xml->append("\t\t".'<lastmod>'.date('c').'</lastmod>'."\r\n");
+			$this->xml->append("\t".'</url>'."\r\n");
+
+		}
+
+		$this->xml->append('</urlset>');
+
+	}
 
 
 }

@@ -13,7 +13,8 @@ $image = $this->Html->url('/img/Photo/' . $folder . '/' . $main['Photo']['id'] .
 			if (!empty($cookies[$Video['id']])) {
 				?>
 				<video>
-					<source type="video/mp4" src="<?php echo $this->Html->url('/links/' . $cookies['user'] . '/' . $cookies[$Video['id']] . '_mp4_l'); ?>"/>
+					<source type="video/mp4" src="<?php echo $this->Html->url('/links/' . $cookies['user'] . '/' . $cookies[$Video['id']] . '_mp4_l.mp4'); ?>"/>
+					<!--<source type='video/ogg; codecs="theora, vorbis"' src="<?php echo $this->Html->url('/links/' . $cookies['user'] . '/' . $cookies[$Video['id']] . '_ogg_m.ogg'); ?>"/>-->
 				</video>
 				<?php
 			} else {
