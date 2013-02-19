@@ -67,7 +67,11 @@ class ConversionShell extends AppShell {
 			}
 			
 			if (!file_exists($output)) {
-				$cmd = "ffmpeg -i ".$path.$input." -vcodec libx264 -f mp4 -preset slow -level 30 -s ".$res." -b:v ".$bitrate." -strict -2 ".$output;
+				$priority = '';
+				if (Configure::read('VideoProcessPriority')) {
+					$priority = 'nice -n ' . Configure::read('VideoProcessPriority') . ' ';
+				}
+				$cmd = $priority . "ffmpeg -i ".$path.$input." -vcodec libx264 -f mp4 -preset slow -level 30 -s ".$res." -b:v ".$bitrate." -strict -2 ".$output;
 				shell_exec($cmd);
 				if ($this->_checkVideo($id, $model, 'mp4', $size, $duration)) {
 					$this->_saveFormat($id, $model, 'mp4', $size);
@@ -113,7 +117,11 @@ class ConversionShell extends AppShell {
 			}
 
 			if (!file_exists($output)) {
-				$cmd = "ffmpeg -i ".$path.$input." -vcodec libx264 -preset medium -f flv -acodec copy -b:v ".$bitrate." -f flv -s ".$res." ".$output;
+				$priority = '';
+				if (Configure::read('VideoProcessPriority')) {
+					$priority = 'nice -n ' . Configure::read('VideoProcessPriority') . ' ';
+				}
+				$cmd = $priority . "ffmpeg -i ".$path.$input." -vcodec libx264 -preset medium -f flv -acodec copy -b:v ".$bitrate." -f flv -s ".$res." ".$output;
 				shell_exec($cmd);
 			
 				if ($this->_checkVideo($id, $model, 'flv', $size, $duration)) {
@@ -155,7 +163,11 @@ class ConversionShell extends AppShell {
 			}
 
 			if (!file_exists($output)) {
-				$cmd = "ffmpeg -i ".$path.$input." -b:v ".$bitrate." -s ".$res." ".$output;
+				$priority = '';
+				if (Configure::read('VideoProcessPriority')) {
+					$priority = 'nice -n ' . Configure::read('VideoProcessPriority') . ' ';
+				}
+				$cmd = $priority . "ffmpeg -i ".$path.$input." -b:v ".$bitrate." -s ".$res." ".$output;
 				shell_exec($cmd);
 		
 				if ($this->_checkVideo($id, $model, 'wmv', $size, $duration)) {
@@ -182,7 +194,11 @@ class ConversionShell extends AppShell {
 				unlink($output);
 			}
 			if (!file_exists($output)) {
-				$cmd = "ffmpeg -i ".$path.$input." -s 352x288 -q:v 0 -vcodec h263 -acodec libfaac -ac 1 -ar 8000 -r 25 -ab 16k -strict -2 -y ".$output;
+				$priority = '';
+				if (Configure::read('VideoProcessPriority')) {
+					$priority = 'nice -n ' . Configure::read('VideoProcessPriority') . ' ';
+				}
+				$cmd = $priority . "ffmpeg -i ".$path.$input." -s 352x288 -q:v 0 -vcodec h263 -acodec aac -ac 1 -ar 8000 -r 25 -ab 16k -strict -2 -y ".$output;
 				shell_exec($cmd);
 				
 				if ($this->_checkVideo($id, $model, 'v3gp', $size, $duration)) {
@@ -220,7 +236,11 @@ class ConversionShell extends AppShell {
 				unlink($output);
 			}
 			if (!file_exists($output)) {
-				$cmd = "ffmpeg -i ".$path.$input." -vcodec libtheora -b:v ".$bitrate." -s ".$res." -acodec libvorbis -aq 60 test.ogg";
+				$priority = '';
+				if (Configure::read('VideoProcessPriority')) {
+					$priority = 'nice -n ' . Configure::read('VideoProcessPriority') . ' ';
+				}
+				$cmd = $priority . "ffmpeg -i ".$path.$input." -vcodec libtheora -b:v ".$bitrate." -s ".$res." -acodec libvorbis -aq 60 ".$output;
 				shell_exec($cmd);	
 				if ($this->_checkVideo($id, $model, 'ogg', $size, $duration)) {
 					$this->_saveFormat($id, $model, 'ogg', $size);
