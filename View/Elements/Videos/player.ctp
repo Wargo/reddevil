@@ -17,7 +17,7 @@ $image = $this->Html->url('/img/Photo/' . $folder . '/' . $main['Photo']['id'] .
 		</div>
 	</div>
 </div>
-<?php if ($this->request->is('ajax')) { ?>
+<?php if ($this->request->is('ajax')): ?>
 <script>
 	$(".flowplayer").flowplayer({
 		'key': '$397432013148639',
