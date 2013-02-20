@@ -21,7 +21,7 @@ $image = $this->Html->url('/img/Photo/' . $folder . '/' . $main['Photo']['id'] .
 <script>
 	$(".flowplayer").flowplayer({
 		'key': '$397432013148639',
-		'logo' : '<?php echo $this->Html->url('img/logo.png'); ?>'
+		'logo' : '<?php echo $this->Html->url('/img/logo.png', true); ?>'
 	});
 </script>
 
