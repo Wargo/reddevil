@@ -54,11 +54,11 @@
 .flowplayer.is-fullscreen .fp-fullscreen{background-position:10px -217px;display:block !important}
 .flowplayer.is-fullscreen .fp-unload,.flowplayer.is-fullscreen .fp-close{display:none !important}
 .flowplayer .fp-timeline{height:3px;position:relative;overflow:hidden}
-.flowplayer .fp-buffer,.flowplayer .fp-progress{position:absolute;top:0;left:auto;height:100%;cursor:col-resize}
+.flowplayer .fp-buffer,.flowplayer .fp-progress{position:absolute;top:0;left:auto;height:100%;cursor:pointer}
 .flowplayer .fp-volume{position:absolute;top:7.5px;right:5px}
 .flowplayer .fp-mute{width:10px;height:15px;float:left;position:relative;top:-5px;left:;cursor:pointer;background-position:-2px -99px;}
 .no-mute.flowplayer .fp-mute{display:none}
-.flowplayer .fp-volumeslider{width:90px;height:5px;cursor:col-resize;float:left;}
+.flowplayer .fp-volumeslider{width:90px;height:5px;cursor:pointer;float:left;}
 .no-volume.flowplayer .fp-volumeslider{display:none}
 .flowplayer .fp-volumelevel{height:100%}
 .flowplayer .fp-time{text-shadow:0 0 1px #000;font-weight:bold;font-size:12px;color:#fff;width:100%;}
