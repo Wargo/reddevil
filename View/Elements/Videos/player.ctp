@@ -19,6 +19,9 @@ $image = $this->Html->url('/img/Photo/' . $folder . '/' . $main['Photo']['id'] .
 </div>
 <?php if ($this->request->is('ajax')): ?>
 <script>
-	$(".flowplayer").flowplayer({});
+	$(".flowplayer").flowplayer({
+		'key': '$397432013148639',
+		'logo' : <?php echo $this->Html->url('img/logo.png'); ?>
+	});
 </script>
 <?php endif; ?>
