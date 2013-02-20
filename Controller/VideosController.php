@@ -88,10 +88,37 @@ class VideosController extends AppController {
 
 		$total_seconds = 90;
 
+		$this->loadModel('User');
+
 		if ($this->Cookie->read('user')) {
 			$user = $this->Cookie->read('user');
+			if (!$this->Auth->user('id')) {
+				$this->Auth->login($this->User->findById($user));
+			}
 		} else {
 			$user = mt_rand(1000000, 9999999);
+			//$this->User->register(array(
+			$this->User->Behaviors->detach('UserAccount');
+			$this->User->create();
+
+			$user_data = array(
+				'group' => 'guest',
+				'email' => $user . '@guest.com',
+				'password' => $user,
+				'confirm' => $user,
+				'active' => 0,
+				'username' => $user,
+				'first_name' => $user,
+				'last_name' => $user,
+				'last_active' => date('Y-m-d H:i:s'),
+			);
+			$this->User->save($user_data);
+
+			$user = $this->User->id;
+			$this->Cookie->write('user', $user);
+
+			$aux = $this->User->findById($user);
+			$this->Auth->login($aux['User']);
 		}
 
 		$ch = curl_init('http://flashaccess2008.micropagos.net:8080/c2enopin/servlet/RequestListener?cid=' . Configure::read('CID') . '&uid=' . $user . '&pool=' . Configure::read('pool') . '&control=' . Configure::read('pass'));
@@ -109,7 +136,6 @@ class VideosController extends AppController {
 		$this->Session->write('phone', $phone);
 		$this->Session->write('text', $text);
 		$this->Session->write('sms', $sms);
-		$this->Cookie->write('user', $user);
 
 		exec('mkdir links/' . $user);
 
@@ -381,8 +407,10 @@ class VideosController extends AppController {
 	function validateAccess() {
 		$current = $this->Session->read('current_video_id');
 		$this->Cookie->write('video_' . $current, date('Y-m-d H:i:s'));
-		$link = time();
-		$this->Cookie->write($current, $link);
+		//$link = time();
+		//$this->Cookie->write($current, $link);
+		
+		$link = Security::hash($this->Cookie->read('user') . '_' . $current, null, true);
 
 		$formats = Configure::read('formats');
 
