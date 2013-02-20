@@ -82,7 +82,8 @@ class User extends AppModel {
 
 		$this->groups = array(
 			'admin' => __('Administrador'),
-			'user' => __('Usuario')
+			'user' => __('Usuario'),
+			'guest' => __('Invitado'),
 		);
 
 		return parent::__construct($id, $table, $ds);
@@ -172,4 +173,27 @@ class User extends AppModel {
 			return Set::combine($results, $keyPath, $valuePath);
 		}
 	}
+
+	function remove_symlinks() {
+
+		$users = $this->find('list', array(
+			'conditions' => array(
+				'last_active <' => date('Y-m-d H:i:s', strtotime('-1 hour')),
+				'last_active >' => date('Y-m-d H:i:s', strtotime('-3 hours')),
+				'group !=' => 'admin'
+			),
+			'fields' => array('id')
+		));
+
+		foreach ($users as $user) {
+
+			$dir = WWW_ROOT . 'links/' . $user;
+			if (is_dir($dir)) {
+				exec('rm -rf ' . $dir);
+			}
+
+		}
+
+	}
+
 }

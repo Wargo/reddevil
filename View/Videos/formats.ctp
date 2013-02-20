@@ -2,67 +2,53 @@
 
 $download = array();
 
-//if (!empty($Video['formats'])) {
+$formats = Configure::read('formats');
+$formats['mp4']['sizes'][] = 'l';
 
-	//$formats = Configure::read('formats');
-	$formats = unserialize($Video['formats']);
-	// TODO ...
-	$formats = array(
-		'mp4' => array(
-			's' => 149,
-			'm' => 424,
-			'l' => 843,
-		),
-	);
+$ext = $type;
 
-	if (empty($formats[$type])) {
+if ($type == '3gp') {
 
-		echo 'Próximamente...';
+	$type = 'v3gp';
 
-	} else {
+}
 
-		foreach ($formats[$type] as $key => $value) {
+foreach ($formats[$type]['sizes'] as $size) {
 
-			if ($Video['id'] == '50ed6523-1b14-40fa-9903-3414b4188753') { // el pisito
-				if ($key == 's' || $key == 'm') {
-					continue;
-				}
-			}
-			if ($Video['id'] == '5108e954-10fc-44a8-a65a-4b96bca5d2a0') { // doctor y cumple anos
-				if ($key == 's') {
-					continue;
-				}
-			}
-			if ($Video['id'] == '51095021-2bd8-48c5-9ac7-6559bca5d2a0') { // Mi primera vez en el porno
-				if ($key == 's' || $key == 'm') {
-					continue;
-				}
-			}
-			if ($Video['id'] == '510f7f58-29bc-4239-a04d-7f23bca5d2a0') { // Fantasía hard
-				if ($key == 's' || $key == 'm') {
-					continue;
-				}
-			}
+	switch ($size) {
+		
+		case 's':
+			$t = __('pequeño');
+			break;
+		case 'm':
+			$t = __('mediano');
+			break;
+		case 'l':
+			$t = __('grande');
+			break;
 
-			switch ($key) {
-				
-				case 's':
-					$t = __('pequeño');
-					break;
-				case 'm':
-					$t = __('mediano');
-					break;
-				case 'l':
-					$t = __('grande');
-					break;
-
-			}
-
-			$download[] = $this->Html->link($t/* . ' ' . $value. 'Mb'*/, '/links/' . $cookies['user'] . '/' . $cookies[$Video['id']] . '_' . $type . '_' . $key, array());
-
-		}
-
-		echo __('Tamaños') . ': ' . implode(', ', $download);
 	}
 
-//}
+	$link = Security::hash($cookies['user'] . '_' . $Video['id'], null, true);
+
+	$file = '/links/' . $cookies['user'] . '/' . $link . '_' . $ext . '_' . $size . '.' . $ext;
+
+	if (file_exists(WWW_ROOT . $file)) {
+
+		$download[] = $this->Html->link($t . ' ' . number_format(filesize(WWW_ROOT . $file) / 1024 / 1024, 2, ',', '.') . ' Mb', $file, array());
+
+	}
+
+
+}
+
+if ($download) {
+
+	echo __('Tamaños') . ': ' . implode(', ', $download);
+	echo '<br><small>' . __('Pincha botón derecho sobre el tamaño que quieras y luego "descargar" o "guardar" para descargarte el vídeo') . '</small>';
+
+} else {
+
+	echo __('Próximamente...');
+
+}
