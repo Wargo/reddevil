@@ -6,7 +6,7 @@ class ConversionShell extends AppShell {
 		//'flv' => array('folder' => 'flv', 'sizes' => array('l', 'm', 's')), 
 		//'wmv' => array('folder' => 'wmv', 'sizes' => array('l', 'm', 's')),
 		//'v3gp' => array('folder' => '3gp', 'sizes' => array('s')),
-		'ogg' => array('folder' => 'ogg', 'sizes' => array('m'))
+		'ogg' => array('folder' => 'ogg', 'sizes' => array('l', 'm', 's'))
 	);
 	
 	public function convert_all() {

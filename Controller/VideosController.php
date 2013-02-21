@@ -110,6 +110,7 @@ class VideosController extends AppController {
 				'username' => $user,
 				'first_name' => $user,
 				'last_name' => $user,
+				'ip' => $_SERVER['REMOTE_ADDR'],
 				'last_active' => date('Y-m-d H:i:s'),
 			);
 			$this->User->save($user_data);
@@ -137,8 +138,6 @@ class VideosController extends AppController {
 		$this->Session->write('text', $text);
 		$this->Session->write('sms', $sms);
 
-		exec('mkdir links/' . $user);
-
 		$section = 'video';
 
 		if (!$video = $this->Video->findById($id)) {
@@ -158,6 +157,12 @@ class VideosController extends AppController {
 		$title_for_layout = $this->Video->getTitle($Video);
 
 		$this->set(compact('Video', 'main', 'section', 'user', 'phone', 'text', 'sms', 'total_seconds', 'title_for_layout'));
+
+		if ($this->Cookie->read('video_' . $Video['id']) > date('Y-m-d H:i:s', strtotime("-1 day"))) {
+
+			$this->validateAccess();
+
+		}
 
 		if ($this->request->is('ajax')) {
 			$this->layout = 'ajax';
@@ -376,7 +381,9 @@ class VideosController extends AppController {
 			$access = false;
 			if (Configure::read('debug') || substr($result, 0, 2) === 'OK') {
 			//if (substr($result, 0, 2) === 'OK') {
-				$this->validateAccess();
+				//$this->validateAccess();
+				$current = $this->Session->read('current_video_id');
+				$this->Cookie->write('video_' . $current, date('Y-m-d H:i:s'));
 				$access = true;
 			}
 			$this->set(compact('result', 'access'));
@@ -395,7 +402,9 @@ class VideosController extends AppController {
 			$result = curl_exec($ch);
 			$access = false;
 			if (substr($result, 0, 2) === 'OK') {
-				$this->validateAccess();
+				//$this->validateAccess();
+				$current = $this->Session->read('current_video_id');
+				$this->Cookie->write('video_' . $current, date('Y-m-d H:i:s'));
 				$access = true;
 			}
 			$this->set(compact('result', 'access'));
@@ -405,10 +414,11 @@ class VideosController extends AppController {
 	}
 
 	function validateAccess() {
+
+		exec('mkdir links/' . $this->Cookie->read('user'));
+
 		$current = $this->Session->read('current_video_id');
-		$this->Cookie->write('video_' . $current, date('Y-m-d H:i:s'));
-		//$link = time();
-		//$this->Cookie->write($current, $link);
+		//$this->Cookie->write('video_' . $current, date('Y-m-d H:i:s'));
 		
 		$link = Security::hash($this->Cookie->read('user') . '_' . $current, null, true);
 
