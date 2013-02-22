@@ -24,7 +24,7 @@ $actors = ClassRegistry::init('VideoRelationship')->getActors($Video['id']);
 				</div>
 				<div class="left">
 					<!--<p class="grey"><strong><?php echo __('Puntuación'); ?>:</strong> <?php echo $Video['rating']; ?></p>-->
-					<p class="grey"><strong><?php echo __('Actualizado el'); ?>:</strong> <?php echo date('d-m-Y', strtotime($Video['modified'])); ?></p>
+					<p class="grey"><strong><?php echo __('Actualizado el'); ?>:</strong> <?php echo date('d-m-Y', strtotime($Video['published'])); ?></p>
 					<p class="grey"><strong><?php echo __('Duración'); ?>:</strong> <?php echo gmdate('H:i:s', $Video['duration']); ?></p>
 				</div>
 				<div class="right">

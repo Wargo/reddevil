@@ -239,7 +239,7 @@ class VideosController extends AppController {
 
 	function admin_index() {
 		
-		$videos = $this->Video->find('all');
+		$videos = $this->Video->find('all', array('order' => array('published' => 'desc')));
 
 		$this->set(compact('videos'));
 

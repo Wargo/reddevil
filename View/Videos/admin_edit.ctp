@@ -1,4 +1,32 @@
 <?php
+echo $this->Html->script('dtpicker');
+//echo $this->Html->css('dtpicker');
+?>
+<style>
+.datepicker {
+	background: white;	
+	clear: none;
+}
+.datepicker div {
+	clear: none;
+}
+/* css for timepicker */
+.ui-timepicker-div .ui-widget-header { margin-bottom: 8px; }
+.ui-timepicker-div dl { text-align: left; }
+dl {
+	width:100%;
+	line-height:18px;
+}
+.ui-timepicker-div dl dt { height: 25px; margin-bottom: -25px; }
+.ui-timepicker-div dl dd { margin: 0 10px 10px 85px; }
+.ui-timepicker-div td { font-size: 90%; }
+.ui-tpicker-grid-label { background: none; border: none; margin: 0; padding: 0; }
+
+.ui-timepicker-rtl{ direction: rtl; }
+.ui-timepicker-rtl dl { text-align: right; }
+.ui-timepicker-rtl dl dd { margin: 0 65px 10px 10px; }
+</style>
+<?php
 echo $this->Form->create('Video', array('url' => array('controller' => 'videos', 'action' => 'edit', $id)));
 
 echo $this->Form->inputs(array(
@@ -12,6 +40,11 @@ echo $this->Form->inputs(array(
 	),
 	'active' => array(
 		'label' => __('Publicado')
+	),
+	'published' => array(
+		'label' => __('Fecha de publicación'),
+		'id' => 'datepicker',
+		'type' => 'text'
 	)
 ));
 
