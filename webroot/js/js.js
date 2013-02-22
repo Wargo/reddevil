@@ -187,6 +187,10 @@ $(document).ready(function() {
 
 		if (parseInt($('#phone').html())) {
 
+			$.ajaxSetup({
+			    cache: false
+			});
+
 			$.get(temp_path + '/videos/check_phone', function(data) {
 
 				if (data) {
