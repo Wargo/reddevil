@@ -121,7 +121,7 @@ $(document).ready(function() {
 				//height: 200,
 				modal: true,
 				buttons: {
-					Ok: function() {
+					Cancelar: function() { // TODO idioma de "Cancelar"
 						$(this).dialog('close');
 					}
 				},
@@ -286,7 +286,7 @@ $(document).ready(function() {
 				height: 380,
 				modal: true,
 				buttons: {
-					Cancelar: function() {
+					Cancelar: function() { // TODO idioma de "Cancelar"
 						$(this).dialog('close');
 					}
 				},
