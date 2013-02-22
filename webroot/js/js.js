@@ -50,7 +50,7 @@ $(document).ready(function() {
 
 	var interval = null;
 
-	$('._rotate_photos').hover(function() {
+	$('._rotate_photos2').hover(function() {
 
 		var current_image = $(this);
 
@@ -74,6 +74,36 @@ $(document).ready(function() {
 
 			}, 800);
 		}
+
+	});
+
+	var i = 0;
+
+	$('._rotate_photos').hover(function() {
+
+		var current_image = $(this);
+	
+		var images = eval($(this).attr('var'));
+
+		i ++;
+		if (i >= images.length) {
+			i = 0;
+		}
+		$(current_image).attr('src', images[i]);
+
+		interval = setInterval(function() {
+
+			i ++;
+			if (i >= images.length) {
+				i = 0;
+			}
+			$(current_image).attr('src', images[i]);
+
+		}, 800);
+
+	}, function() {
+
+		clearInterval(interval);
 
 	});
 
@@ -157,6 +187,10 @@ $(document).ready(function() {
 
 		if (parseInt($('#phone').html())) {
 
+			$.ajaxSetup({
+			    cache: false
+			});
+
 			$.get(temp_path + '/videos/check_phone', function(data) {
 
 				if (data) {
@@ -207,7 +241,7 @@ $(document).ready(function() {
 			$('#dialog').html(data);
 			$('#dialog').dialog({
 				width: 530,
-				height: 370,
+				height: 390,
 				modal: true,
 				buttons: {
 					Ok: function() {

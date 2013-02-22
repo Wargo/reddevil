@@ -524,7 +524,7 @@ class UsersController extends AppController {
 
 		if ($this->request->data) {
 
-			$this->request->data['User']['group'] = 'api';
+			$this->request->data['User']['group'] = 'user';
 			$this->request->data['User']['active'] = 0;
 			list($return, $message) = $this->User->register($this->request->data);
 

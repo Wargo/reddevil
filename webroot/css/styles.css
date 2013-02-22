@@ -776,3 +776,10 @@ a.more_videos_button:hover {
 .feedback:hover {
 	margin-right:-30px;
 }
+
+.external_link {
+	color:#222;
+	font-size:24px;
+	text-align:center;
+	margin-top:50px;
+}

@@ -44,7 +44,7 @@ class ConversionShell extends AppShell {
 		$path = Configure::read($model . 'UploadFolder');
 		$input = $id . '.mp4';
 		$movie = new ffmpeg_movie($path.$input, false);	
-		$duration = $movie->getDuration();
+		$duration = round($movie->getDuration());
 		$sizes = $this->formats['mp4']['sizes'];
 		foreach ($sizes as $size) {	
 			$output = Configure::read($model . 'RootFolder') . 'mp4' . DS . $size . DS . $id . '.mp4';
@@ -87,7 +87,7 @@ class ConversionShell extends AppShell {
 
 
 		$movie = new ffmpeg_movie($path.$input, false);	
-		$duration = $movie->getDuration();
+		$duration = round($movie->getDuration());
 		/*
 		$w = $movie->getFrameWidth();
 		$h = $movie->getFrameHeight();
@@ -137,7 +137,7 @@ class ConversionShell extends AppShell {
 		$input = $id . '.mp4';
 
 		$movie = new ffmpeg_movie($path.$input, false);	
-		$duration = $movie->getDuration();	
+		$duration = round($movie->getDuration());	
 
 		$sizes = $this->formats['wmv']['sizes'];
 
@@ -181,7 +181,7 @@ class ConversionShell extends AppShell {
 		$path = Configure::read($model. 'UploadFolder');
 		$input = $id . '.mp4';
 		$movie = new ffmpeg_movie($path.$input, false);	
-		$duration = $movie->getDuration();
+		$duration = round($movie->getDuration());
 		$sizes = $this->formats['v3gp']['sizes'];
 
 		foreach ($sizes as $size) {
@@ -212,7 +212,7 @@ class ConversionShell extends AppShell {
 		$path = Configure::read($model. 'UploadFolder');
 		$input = $id . '.mp4';
 		$movie = new ffmpeg_movie($path.$input, false);	
-		$duration = $movie->getDuration();
+		$duration = round($movie->getDuration());
 		$sizes = $this->formats['ogg']['sizes'];
 
 		foreach ($sizes as $size) {
@@ -269,12 +269,12 @@ class ConversionShell extends AppShell {
 	}
 
 	protected function _checkVideo($id, $model, $format, $size, $duration) {
-		$video = Configure::read($model. 'RootFolder') . $this->formats[$format]['folder'] . DS . $size . $id;
+		$video = Configure::read($model. 'RootFolder') . $this->formats[$format]['folder'] . DS . $size . DS . $id . '.' . $format;
 		if (!file_exists($video)) {
 			return false;
 		}
 		$movie = new ffmpeg_movie($video, false);
-		if ($movie->getDuration() != $duration) {
+		if (round($movie->getDuration()) != $duration) {
 			return false;
 		}
 		return true;

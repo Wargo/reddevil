@@ -167,3 +167,52 @@ $formats = array(
 	'v3gp' => array('folder' => '3gp', 'sizes' => array('s'))
 );
 Configure::write('formats', $formats);
+
+
+/**
+ * isproduction method
+ * a stub/example
+ *
+ * @return boolean
+ * @access public
+ */
+
+function isProduction() {
+
+    return APP_DIR === 'live';
+
+}
+
+
+
+/**
+ * isstaging method
+ * a stub/example
+ *
+ * @return boolean
+ * @access public
+ */
+
+function isStaging() {
+
+    return APP_DIR === 'staging';
+
+}
+
+
+
+/**
+ * isdevelopment method
+ * a stub/example
+ *
+ * @return boolean
+ * @access public
+ */
+
+function isdevelopment() {
+
+    return (!isProduction() && !isStaging());
+
+}
+
+

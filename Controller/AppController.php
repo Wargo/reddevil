@@ -70,9 +70,11 @@ class AppController extends Controller {
 		}
 
  	 	$this->Cookie->name = 'RedDevilX';
-        $this->Cookie->time = 3600 * 24;  // or '1 hour'
+		$this->Cookie->time = 3600 * 24;  // or '1 hour'
 
 		$this->_detectarMovil();
+
+		$this->_checkActive();
 	}
 
 	protected function _message($message, $url = false, $value = false, $error = false, $admin=0){
@@ -150,6 +152,28 @@ class AppController extends Controller {
 			}
 
 			$this->set(compact('mobileDevice'));
+
+	}
+
+	protected function _checkActive() {
+
+		if ($this->Auth->user('id')) {
+			
+			if (strtotime($this->Auth->user('last_active')) < strtotime("-10 seconds")) {
+
+				$this->loadModel('User');
+
+				$this->User->id = $this->Auth->user('id');
+
+				$now = date('Y-m-d H:i:s');
+
+				$this->User->save(array('last_active' => $now));
+
+				$this->Session->write('Auth.User.last_active', $now);
+
+			}
+
+		}	
 
 	}
 }
