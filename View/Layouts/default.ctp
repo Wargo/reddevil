@@ -36,17 +36,9 @@
 			<div class="bg_header"></div>
 			<?php echo $this->Session->flash(); ?>
 			<?php echo $this->fetch('content'); ?>
-			<div id="footer">
-				<?php echo $this->Html->link($this->Html->image('logo.png', array('alt' => 'logo')), '/', array('escape' => false, 'title' => __('Red Devil', true), 'class' => 'logo')); ?>
-				<ul class="clearfix">
-					<li><?php echo $this->Html->link(__('Vídeos'), array('controller' => 'videos', 'action' => 'home')); ?></li>
-					<li><?php echo $this->Html->link(__('Fotos'), array('controller' => 'photos', 'action' => 'index')); ?></li>
-					<li><?php echo $this->Html->link(__('Webcams'), array(), array('class' => 'disabled')); ?></li>
-					<li><?php echo $this->Html->link(__('Zona para webmasters'), array(), array('class' => 'disabled')); ?></li>
-					<li><?php echo $this->Html->link(__('Ser actriz porno'), array('controller' => 'pages', 'action' => 'display', 'wannabe')); ?></li>
-					<li><?php echo $this->Html->link(__('Versión móvil'), array(), array('class' => 'disabled')); ?></li>
-				</ul>
-			</div>
+		</div>
+		<div id="footer">
+			<?php echo $this->element('footer'); ?>
 		</div>
 	</div>
 	<?php echo $this->element('sql_dump'); ?>

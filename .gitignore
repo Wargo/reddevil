@@ -12,3 +12,6 @@ webroot/video
 webroot/links
 raw
 webroot/sitemap.xml
+
+Config/core.php
+Config/database.php

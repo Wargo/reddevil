@@ -42,6 +42,13 @@ if (ClassRegistry::init('Video')->isPrivate($Video['id'], $cookies)) {
 			<ul>
 				<li><a href="#fragment-1"><span><?php echo __('Teléfono'); ?></span></a></li>
 				<li><a href="#fragment-2"><span><?php echo __('SMS'); ?></span></a></li>
+				<?php
+				if (false && Configure::read('debug')) {
+					?>
+					<li><a href="#fragment-3"><span><?php echo __('Registro'); ?></span></a></li>
+					<?php
+				}
+				?>
 			</ul>
 			<div id="fragment-1">
 				<div class="pay">
@@ -55,6 +62,18 @@ if (ClassRegistry::init('Video')->isPrivate($Video['id'], $cookies)) {
 					<p class="info_text"><?php echo Configure::read('info_m'); ?></p>
 				</div>
 			</div>
+			<?php
+			if (false && Configure::read('debug')) {
+				?>
+				<div id="fragment-3">
+					<div class="register">
+						<?php echo $this->Html->link(__('Regístrate'), array('controller' => 'users', 'action' => 'register')); ?>
+						<p class="info_text"><?php echo __('Regístrate para obtener más ventajas...'); ?></p>
+					</div>
+				</div>
+				<?php
+			}
+			?>
 		</div>
 		<script>
 			$( "#tabs" ).tabs();

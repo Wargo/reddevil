@@ -52,7 +52,7 @@ echo $this->Form->button(__('Enviar'), array('type'=>'submit'));
 <?php echo $this->Html->link(__('¿Has olvidado tu contraseña?'), array('controller' => 'users', 'action' => 'forgotten_password'));?>
 </div>
 <div class="registro">
-<?php echo $this->Html->link(__('Registro comercializador'), array('controller' => 'users', 'action' => 'register'));?>
+<?php echo $this->Html->link(__('Registro'), array('controller' => 'users', 'action' => 'register'));?>
 </div>
 
 </fieldset>

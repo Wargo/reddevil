@@ -348,8 +348,8 @@ class VideosController extends AppController {
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 			$result = curl_exec($ch);
 			$access = false;
-			if (Configure::read('debug') || substr($result, 0, 2) === 'OK') {
-			//if (substr($result, 0, 2) === 'OK') {
+			//if (Configure::read('debug') || substr($result, 0, 2) === 'OK') {
+			if (substr($result, 0, 2) === 'OK') {
 				$this->validateAccess();
 				$access = true;
 			}
