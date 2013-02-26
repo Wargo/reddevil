@@ -40,12 +40,15 @@ class Video extends AppModel {
 		}
 
 		$conditions['active'] = 1;
+		$conditions['published <='] = date('Y-m-d H:i:s');
 
 		$count = $this->find('count', compact('conditions'));
 
 		$pageCount = ceil($count / $limit);
 
-		return array($conditions, $pageCount, $this->find('all', compact('conditions', 'limit', 'page')));
+		$order = array('published' => 'desc');
+
+		return array($conditions, $pageCount, $this->find('all', compact('conditions', 'limit', 'page', 'order')));
 
 	}
 

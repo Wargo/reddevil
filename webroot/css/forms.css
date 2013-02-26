@@ -45,7 +45,7 @@ form .required {
 }
 form .required label:after {
 	color: #e32;
-	content: '*';
+	content: ' *';
 	display:inline;
 }
 form div.submit {
@@ -194,4 +194,8 @@ form.search .search_button {
 
 #search input[type="text"]:focus {
     width: 200px;
+}
+
+form.register div.input {
+	float:none;
 }

@@ -239,7 +239,7 @@ class VideosController extends AppController {
 
 	function admin_index() {
 		
-		$videos = $this->Video->find('all');
+		$videos = $this->Video->find('all', array('order' => array('published' => 'desc')));
 
 		$this->set(compact('videos'));
 
@@ -372,15 +372,15 @@ class VideosController extends AppController {
 
 	function check_phone() {
 
-		$this->layout = false;
+		$this->layout = 'ajax';
 
 		if (is_numeric($this->Session->read('phone'))) {
 			$ch = curl_init('http://flashaccess2008.micropagos.net:8080/c2enopin/servlet/Control?cid=' . Configure::read('CID') . '&uid=' . $this->Cookie->read('user') . '&service=' . $this->Session->read('phone'));
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 			$result = curl_exec($ch);
 			$access = false;
-			if (Configure::read('debug') || substr($result, 0, 2) === 'OK') {
-			//if (substr($result, 0, 2) === 'OK') {
+			//if (Configure::read('debug') || substr($result, 0, 2) === 'OK') {
+			if (substr($result, 0, 2) === 'OK') {
 				//$this->validateAccess();
 				$current = $this->Session->read('current_video_id');
 				$this->Cookie->write('video_' . $current, date('Y-m-d H:i:s'));
@@ -394,7 +394,7 @@ class VideosController extends AppController {
 
 	function check_sms() {
 
-		$this->layout = false;
+		$this->layout = 'ajax';
 
 		if (is_numeric($this->Session->read('phone'))) {
 			$ch = curl_init('http://213.27.137.219:8080/SMSGateway/SmsGateway2FlashIn?cid=' . Configure::read('CID_m') . '&uid=' . $this->Cookie->read('user') . '&control=' . Configure::read('pass_m') . '&peticion=NO');

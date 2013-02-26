@@ -121,7 +121,7 @@ $(document).ready(function() {
 				//height: 200,
 				modal: true,
 				buttons: {
-					Ok: function() {
+					Cancelar: function() { // TODO idioma de "Cancelar"
 						$(this).dialog('close');
 					}
 				},
@@ -186,6 +186,10 @@ $(document).ready(function() {
 		var temp_path = '';
 
 		if (parseInt($('#phone').html())) {
+
+			$.ajaxSetup({
+			    cache: false
+			});
 
 			$.get(temp_path + '/videos/check_phone', function(data) {
 
@@ -282,7 +286,7 @@ $(document).ready(function() {
 				height: 380,
 				modal: true,
 				buttons: {
-					Cancelar: function() {
+					Cancelar: function() { // TODO idioma de "Cancelar"
 						$(this).dialog('close');
 					}
 				},
@@ -302,5 +306,29 @@ $(document).ready(function() {
 
 		return false;
 	});
+
+	if ($('#datepicker').val()) {
+		$('#datepicker').datetimepicker({
+			'timeFormat':'HH:mm:ss',
+			'dateFormat':'yy-mm-dd',
+			'firstDay':1
+		});
+		$.datepicker.regional['es'] = {
+			closeText: 'Cerrar',
+			prevText: '<Anterior',
+			nextText: 'Siguiente>',
+			currentText: 'Сегодня',
+			monthNames: ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
+			monthNamesShort: ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'],
+			dayNames: ['lunes','martes','miércoles','jueves','viernes','sábado','domingo'],
+			dayNamesShort: ['lun','mar','mié','jue','vie','sáb','dom'],
+			dayNamesMin: ['Lu','Ma','Mi','Ju','Vi','Sá','Do'],
+			firstDay: 1,
+			showMonthAfterYear: false,
+			yearSuffix: ''
+		}
+		//$.timepicker.setDefaults($.timepicker.regional['es']);
+		$.datepicker.setDefaults($.datepicker.regional['es']);
+	}
 
 });
