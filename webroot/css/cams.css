@@ -99,10 +99,11 @@ div.profile_header {
 	margin: 0 -1px 28px 0;
 }
 .arrow_box:after {
-	border-color: rgba(255, 185, 131, 0) rgba(255, 185, 131, 0) rgba(255, 185, 131, 0) #FFB983;
+	border-color: rgba(255, 185, 131, 0);
+	border-left-color: #FFB983;
 	border-width: 27px;
-	margin-top: -27px;
 	top: 50%;
+	margin-top: -27px;
 }
 .arrow_box:after {
 	border: medium solid transparent;
@@ -202,6 +203,15 @@ div.boton_verde {
 
 a.boton_verde {
 	background: linear-gradient(10deg, #6FB159 0%, #6EB058 40%, #408228 60%, #6FB159 80%, #6EB058 100%) repeat scroll 0 0 transparent;
+	background: #6fb159; /* Old browsers */
+	background: -moz-linear-gradient(10deg,  #6fb159 0%, #6eb058 40%, #408228 60%, #6fb159 80%, #6eb058 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,#6fb159), color-stop(40%,#6eb058), color-stop(60%,#408228), color-stop(80%,#6fb159), color-stop(100%,#6eb058)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(80deg,  #6fb159 0%,#6eb058 40%,#408228 60%,#6fb159 80%,#6eb058 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(80deg,  #6fb159 0%,#6eb058 40%,#408228 60%,#6fb159 80%,#6eb058 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(80deg,  #6fb159 0%,#6eb058 40%,#408228 60%,#6fb159 80%,#6eb058 100%); /* IE10+ */
+	background: linear-gradient(10deg,  #6fb159 0%,#6eb058 40%,#408228 60%,#6fb159 80%,#6eb058 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6fb159', endColorstr='#6eb058',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
 	border: 1px groove #6FB159;
 	border-radius: 3px 3px 3px 3px;
 	color: #FFFFFF;
