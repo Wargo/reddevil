@@ -5,7 +5,10 @@ class CamsController extends AppController {
 
 	function index() {
 
-		$url = 'http://modelocam.com/spa/rooms/get_list/20/filter:altas.json';
+		//$url = 'http://modelocam.com/spa/rooms/get_list/20/filter:altas.json';
+		$url_filters = 'http://modelocam.com/spa/filters/get_list.json';
+
+		$url = 'http://modelocam.com/spa/rooms/get_list/80.json';
 
 		$ch = curl_init($url);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);

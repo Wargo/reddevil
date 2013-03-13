@@ -7,9 +7,11 @@ foreach ($cams as $cam) {
 		<div class="element_image">
 			<?php echo $this->Html->link($this->Html->image($cam->RoomSmallPhoto[0]->uri, array('width' => 160)), $url, array('escape' => false)); ?>
 		</div>
-		<div class="online_badge">
-			<?php echo $this->Html->image('online_badge.png'); ?>
-		</div>
+		<?php if ($cam->Room->status == 1) { ?>
+			<div class="online_badge">
+				<?php echo $this->Html->image('online_badge.png'); ?>
+			</div>
+		<?php } ?>
 		<div class="rating">
 			<?php
 			for ($i = 1; $i <= $cam->Room->popularity; $i ++) {
