@@ -1,6 +1,6 @@
 <?php
-if(!empty($room_code)){
-	$parametro_id='&amp;idw='.$room_code;
+if(!empty($code)){
+	$parametro_id='&amp;idw='.$code;
 }
 ?>
 <div class="connect_manager_container">
