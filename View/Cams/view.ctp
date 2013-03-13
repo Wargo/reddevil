@@ -70,22 +70,9 @@
 		</script>
 	</div>
 	<div class="profile_data">
-		<dl>
-			<dt>Sobre <?php echo $room->Room->name; ?></dt>
-			<dd class="newline">Soy una adicta al sexo, solo quiero complacerte y que cumplamos todas nuestras fantasías juntos.</dd>
-			<dt>¿Cómo es <?php echo $room->Room->name; ?>?</dt>
-			<dd class="newline">Soy una chica latina, tengo el cabello negro y los ojos de color negro</dd>
-			<dd class="newline">Mido 180&nbsp;cm de altura, uso una talla 95 para mi pecho, que es natural, y calzo un número 38 de pie</dd>
-			<dt>Mi edad</dt>
-			<dd><?php echo $room->Room->name; ?> tiene 27 años</dd>
 
-			<dt>Las fantasías de </dt>
-			<dd class="newline">Estar con dos hombres al mismo tiempo, sentir como me aplastan entre los dos, yo en medio.</dd>
+		<?php echo $this->element('Cams/description', compact('nice_nick')); ?>
 
-			<dt>¿Cómo le gusta a <?php echo $room->Room->name; ?> en la cama?</dt>
-			<dd class="newline">Con hombres y mujeres de cualquier raza.</dd><dd class="newline">También me gusta el sado.</dd><dt>Las aficiones de <?php echo $room->Room->name; ?></dt>
-			<dd class="newline">Nadar, escuchar música.</dd>
-		</dl>
 		<div class="boton_verde">
 			<?php echo $this->Html->link(__('Chatea con') . ' ' . $room->Room->name, array('controller' => 'cams', 'action' => 'go', $room->Room->code), array('id' => 'connect_boton_verde', 'class' => 'boton_verde cboxElement')); ?>
 		</div>
