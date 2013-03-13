@@ -43,6 +43,10 @@
 
 	Router::connect('/video/*', array('controller' => 'videos', 'action' => 'view_video'));
 
+	Router::connect('/webcams', array('controller' => 'cams', 'action' => 'index'));
+
+	Router::connect('/webcams/*', array('controller' => 'cams', 'action' => 'view'));
+
 	Router::connect('/fotos', array('controller' => 'photos', 'action' => 'index'));
 
 	Router::connect('/ver-fotos/*', array('controller' => 'videos', 'action' => 'view_photos'));

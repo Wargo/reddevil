@@ -5,6 +5,8 @@ class CamsController extends AppController {
 
 	function index() {
 
+		$title_for_layout = __('Webcams');
+
 		//$url = 'http://modelocam.com/spa/rooms/get_list/20/filter:altas.json';
 		$url_filters = 'http://modelocam.com/spa/filters/get_list.json';
 
@@ -16,7 +18,7 @@ class CamsController extends AppController {
 
 		$cams = $cams->data;
 
-		$this->set(compact('cams'));
+		$this->set(compact('cams', 'title_for_layout'));
 
 	}
 
@@ -30,7 +32,9 @@ class CamsController extends AppController {
 
 		$room = $room->data;
 
-		$this->set(compact('room'));
+		$title_for_layout = __('Webcam de') . ' ' . $room->Room->name;
+
+		$this->set(compact('room', 'title_for_layout'));
 
 	}
 
