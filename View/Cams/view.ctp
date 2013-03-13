@@ -15,11 +15,11 @@
 	if (!empty($room->RoomBigVideo[0])) {
 		$video_url = $room->RoomBigVideo[0]->uri;
 		?>
-		<div class="videoplayer no-time no-volume" data-swf="<?php echo $this->Html->url('/html5/flowplayer/flowplayer.swf'); ?>">
+		<a href="<?php echo $this->Html->url(array('controller' => 'cams', 'action' => 'go', $room->Room->code)); ?>" id="videoplayer" class="videoplayer no-time no-volume" data-swf="<?php echo $this->Html->url('/html5/flowplayer/flowplayer.swf'); ?>">
 			<video autoplay loop>
 				<source type="video/flash" src="<?php echo $video_url; ?>" />
 			</video>
-		</div>
+		</a>
 		<script>
 			$(".videoplayer").flowplayer({
 				tooltip: false,
@@ -89,6 +89,7 @@
 				//<![CDATA[
 				$('a#connect_manager_link').colorbox();
 				$('a#connect_boton_verde').colorbox();
+				$('a#videoplayer').colorbox();
 				//]]>
 				</script>
 			</div>

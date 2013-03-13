@@ -141,7 +141,7 @@ div.profile_media {
 	width: 512px;
 }
 
-div.videoplayer, img.profile_photo { /* era a.videoplayer */
+a.videoplayer, img.profile_photo { /* era a.videoplayer */
 	border: 1px solid #BEBEBE;
 	display: block;
 	height: 369px;
@@ -275,6 +275,6 @@ div.connect_link a {
 	width: auto;
 }
 
-.fp-controls, .fp-embed, .fp-fullscreen {
+.fp-controls, .fp-embed, .fp-fullscreen, .fp-ui {
 	display: none !important;
 }
