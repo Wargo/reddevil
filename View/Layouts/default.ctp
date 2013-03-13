@@ -16,6 +16,13 @@
 		echo $this->Html->css('forms');
 		echo $this->Html->css('flowplayer/minimalist');
 		echo $this->Html->css('lightbox/jquery.lightbox-0.5');
+
+		if ($this->request->params['controller'] == 'cams') {
+			echo $this->Html->css('cams');
+			echo $this->Html->css('colorbox');
+			echo $this->Html->script('colorbox');
+			echo $this->Html->script('colorbox-es');
+		}
 		
 		echo $this->fetch('css');
 

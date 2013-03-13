@@ -1,0 +1,273 @@
+.room_element {
+	border: 1px solid #BEBEBE;
+	float: left;
+	margin: 7px;
+	position: relative;
+	width: 230px;
+}
+div.element_image {
+	padding: 2px;
+}
+a.element_small_photo {
+	border: 1px solid #BEBEBE;
+	display: block;
+	height: 120px;
+	padding: 1px;
+	width: 160px;
+}
+a img {
+	border: 0 none;
+}
+
+div.room_element .online_badge {
+	position: absolute;
+	right: -1px;
+	top: -1px;
+}
+
+
+div.room_element div.rating {
+	position: absolute;
+	right: 2px;
+	top: 104px;
+}
+
+div.element_title {
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#333), to(#111));
+	background-image: -webkit-linear-gradient(top, #333, #111);
+	background-image: -moz-linear-gradient(top, #333, #111);
+	color: #FFFFFF;
+	line-height: 36px;
+	padding: 0 6px;
+	width: auto;
+}
+
+
+div.element_link {
+	background-color: #ECECED;
+	color: #333333;
+	font-size: 14px;
+	line-height: 32px;
+	padding: 0 6px;
+	text-align: center;
+	width: auto;
+}
+
+
+div.element_title div.title_name {
+	float: left;
+	}
+div.element_title div.title_age {
+	text-align: right;
+}
+
+div.element_link a {
+	color: #404040;
+	text-decoration: none;
+}
+
+div.rating div.mini_heart {
+	display: inline;
+	float: left;
+	height: 12px;
+	margin: 0;
+	padding: 0;
+	width: 12px;
+}
+div.mini_heart_on {
+	background: url(../img/star.png) no-repeat scroll right top transparent;
+}
+div.mini_heart_off {
+	background: url(../img/star.png) no-repeat scroll right bottom transparent;
+}
+
+/*
+ * Ficha
+ */
+div.room_profile {
+	margin-top: 2em;
+	position: relative;
+}
+
+div.profile_header {
+	background: none repeat scroll 0 0 #EAEAEA;
+	font-family: MyScriptFont;
+	font-size: 32px;
+	font-weight: bold;
+	height: 54px;
+	line-height: 54px;
+	margin: 0 -1px 28px 0;
+}
+.arrow_box:after {
+	border-color: rgba(255, 185, 131, 0) rgba(255, 185, 131, 0) rgba(255, 185, 131, 0) #FFB983;
+	border-width: 27px;
+	margin-top: -27px;
+	top: 50%;
+}
+.arrow_box:after {
+	border: medium solid transparent;
+	content: " ";
+	height: 0;
+	left: 100%;
+	pointer-events: none;
+	position: absolute;
+	width: 0;
+}
+.arrow_box {
+	background: none repeat scroll 0 0 #FFB983;
+	color: #FFFFFF;
+	float: left;
+	font-family: Helvetica,Arial,sans-serif;
+	font-size: 18px;
+	font-weight: bold;
+	height: 54px;
+	line-height: 54px;
+	margin-left: -4px;
+	margin-right: 54px;
+	padding: 0 20px;
+	position: relative;
+	width: auto;
+}
+div.room_profile .online_badge {
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+div.profile_media {
+	float: left;
+	margin: 0 12px;
+	text-align: center;
+	width: 512px;
+}
+
+div.videoplayer, img.profile_photo { /* era a.videoplayer */
+	border: 1px solid #BEBEBE;
+	display: block;
+	height: 369px;
+	margin: 2px;
+	padding: 3px;
+	width: 494px;
+}
+
+div.profile_media {
+	text-align: center;
+}
+
+a.profile_small_photo {
+	border: 1px solid #BEBEBE;
+	display: block;
+	float: left;
+	height: 120px;
+	margin: 1px 3px 1px 2px;
+	padding: 1px;
+	width: 160px;
+}
+
+.profile_data {
+	margin-left: 536px;
+	margin-right: 24px;
+}
+
+div.profile_connect {
+	background: none repeat scroll 0 0 #EAEAEA;
+	clear: both;
+	float: left;
+	height: 64px;
+	line-height: 64px;
+	margin: 4px -1px 20px;
+	padding: 32px 1px;
+	position: relative;
+	text-align: center;
+	width: 100%;
+}
+
+.profile_data dl {
+	margin: 0;
+	padding: 0;
+}
+
+.profile_data dl dt {
+	font-weight: bold;
+	margin-top: 14px;
+}
+
+.profile_data dl dd {
+	margin-left: 12px;
+}
+
+div.boton_verde {
+	margin: 40px 0;
+	text-align: center;
+}
+
+a.boton_verde {
+	background: linear-gradient(10deg, #6FB159 0%, #6EB058 40%, #408228 60%, #6FB159 80%, #6EB058 100%) repeat scroll 0 0 transparent;
+	border: 1px groove #6FB159;
+	border-radius: 3px 3px 3px 3px;
+	color: #FFFFFF;
+	font-size: 26px;
+	font-weight: bold;
+	line-height: 28px;
+	padding: 8px 12px;
+	text-decoration: none;
+	text-shadow: 1px 1px 1px #333333;
+}
+
+
+div.profile_connect div.connect_container {
+	display: inline-block;
+	left: 0;
+	margin: auto;
+	position: relative;
+	top: 0;
+	width: auto;
+}
+
+div.profile_connect div.connect_description, div.profile_connect div.connect_link {
+	float: left;
+	position: relative;
+}
+div.connect_description {
+	color: #333333;
+	font-family: BlueHighwayCondensed;
+	font-size: 36px;
+	font-weight: bold;
+	margin: 0 1em;
+	text-transform: uppercase;
+}
+
+div.connect_link a:before {
+	border-color: rgba(230, 193, 208, 0) #E6C1D0 rgba(230, 193, 208, 0) rgba(230, 193, 208, 0);
+	border-width: 25px;
+	margin-top: -25px;
+	top: 50%;
+}
+div.connect_link a:before {
+	border: medium solid transparent;
+	content: " ";
+	height: 0;
+	left: -50px;
+	pointer-events: none;
+	position: absolute;
+	width: 0;
+}
+div.connect_link a {
+	background: none repeat scroll 0 0 #E6C1D0;
+	color: #D94683;
+	float: right;
+	font-family: Helvetica,Arial,sans-serif;
+	font-size: 24px;
+	font-weight: bold;
+	height: 50px;
+	line-height: 50px;
+	margin: 7px 0 7px 10px;
+	padding: 0 30px;
+	position: relative;
+	text-decoration: none;
+	text-transform: uppercase;
+	width: auto;
+}
+
+.fp-controls, .fp-embed, .fp-fullscreen {
+	display: none !important;
+}
