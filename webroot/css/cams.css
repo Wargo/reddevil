@@ -108,14 +108,14 @@ div.profile_header {
 	width: 0;
 }
 .arrow_box:after {
-	border-color: rgba(255, 185, 131, 0);
-	border-left-color: #FFB983;
+	border-color: rgba(50, 50, 50, 0);
+	border-left-color: #333;
 	border-width: 27px;
 	top: 50%;
 	margin-top: -27px;
 }
 .arrow_box {
-	background: none repeat scroll 0 0 #FFB983;
+	background: none repeat scroll 0 0 #333;
 	color: #FFFFFF;
 	float: left;
 	font-family: Helvetica,Arial,sans-serif;
@@ -201,16 +201,13 @@ div.boton_verde {
 	text-align: center;
 }
 
+a.boton_verde:hover {
+	background:#333;
+}
 a.boton_verde {
-	background: linear-gradient(10deg, #6FB159 0%, #6EB058 40%, #408228 60%, #6FB159 80%, #6EB058 100%) repeat scroll 0 0 transparent;
-	background: #6fb159; /* Old browsers */
-	background: -moz-linear-gradient(10deg,  #6fb159 0%, #6eb058 40%, #408228 60%, #6fb159 80%, #6eb058 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,#6fb159), color-stop(40%,#6eb058), color-stop(60%,#408228), color-stop(80%,#6fb159), color-stop(100%,#6eb058)); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(80deg,  #6fb159 0%,#6eb058 40%,#408228 60%,#6fb159 80%,#6eb058 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(80deg,  #6fb159 0%,#6eb058 40%,#408228 60%,#6fb159 80%,#6eb058 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(80deg,  #6fb159 0%,#6eb058 40%,#408228 60%,#6fb159 80%,#6eb058 100%); /* IE10+ */
-	background: linear-gradient(10deg,  #6fb159 0%,#6eb058 40%,#408228 60%,#6fb159 80%,#6eb058 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6fb159', endColorstr='#6eb058',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#333), to(#111));
+	background-image: -webkit-linear-gradient(top, #333, #111);
+	background-image: -moz-linear-gradient(top, #333, #111);
 
 	border: 1px groove #6FB159;
 	border-radius: 3px 3px 3px 3px;
@@ -256,14 +253,14 @@ div.connect_link a:before {
 	width: 0;
 }
 div.connect_link a:before {
-	border-color: rgba(230, 193, 208, 0) #E6C1D0 rgba(230, 193, 208, 0) rgba(230, 193, 208, 0);
+	border-color: rgba(255, 193, 50, 0) #FF9933 rgba(255, 193, 50, 0) rgba(255, 193, 50, 0);
 	border-width: 25px;
 	margin-top: -25px;
 	top: 50%;
 }
 div.connect_link a {
-	background: none repeat scroll 0 0 #E6C1D0;
-	color: #D94683;
+	background: none repeat scroll 0 0 #FF9933;
+	color: #FFF;
 	float: right;
 	font-family: Helvetica,Arial,sans-serif;
 	font-size: 24px;
