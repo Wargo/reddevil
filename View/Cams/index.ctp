@@ -1,25 +1,40 @@
+<div class="clearfix">
 <?php
-
 foreach ($cams as $cam) {
+	$url = array('controller' => 'cams', 'action' => 'view', $cam->Room->nick);
 	?>
 	<div class="room_element">
 		<div class="element_image">
-			<?php echo $this->Html->link($this->Html->image('http://foto.paraisowebcam.com/c6781/160@120_1.jpg', array('width' => 160)), 'http://www.modelocam.com/spa/rooms/display/Anais', array('escape' => false)); ?>
+			<?php echo $this->Html->link($this->Html->image($cam->RoomSmallPhoto[0]->uri, array('width' => 160)), $url, array('escape' => false)); ?>
 		</div>
-		<div class="online_badge">
-			<img width="74" height="85" alt="Online" src="/img/modelocam/online_badge.png">
+		<?php if ($cam->Room->status == 1) { ?>
+			<div class="online_badge">
+				<?php echo $this->Html->image('online_badge.png'); ?>
+			</div>
+		<?php } ?>
+		<div class="rating">
+			<?php
+			for ($i = 1; $i <= $cam->Room->popularity; $i ++) {
+				echo '<div class="mini_heart mini_heart_on"></div>';
+			}
+			for ($j = $i; $j <= 5; $j ++) {
+				echo '<div class="mini_heart mini_heart_off"></div>';
+			}
+			?>
 		</div>
 		<div class="element_title">
 			<div class="title_name">
-				Anais
+				<?php echo $cam->Room->name; ?>
 			</div>
 			<div class="title_age">
-				28 años
+				<?php echo $cam->Room->age . ' ' . __('años'); ?>
 			</div>
 		</div>
 		<div class="element_link">
-			<a title="Entra a la webcam de Anais" href="/spa/rooms/display/Anais">Webcam de Anais</a>
+			<?php echo $this->Html->link(__('Webcam de') . ' ' . $cam->Room->name, $url, array()); ?>
 		</div>
 	</div>
 	<?php
 }
+?>
+</div>
