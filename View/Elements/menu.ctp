@@ -11,4 +11,5 @@
 	</ul>
 	<?php echo $this->element('follow'); ?>
 	<?php echo $this->element('search'); ?>
+	<?php echo $this->element('Users/top_login'); ?>
 </div>

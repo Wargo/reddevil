@@ -13,7 +13,7 @@ $(document).ready(function() {
 		}
 		$.get(this.href, function(data) {
 			$('#section').html(data);
-			load_popup();
+			//load_popup();
 		});
 		$('#view_video').addClass('selected');
 		$('#view_trailer').removeClass('selected');
@@ -108,117 +108,11 @@ $(document).ready(function() {
 	});
 
 	if ($('.remaining').html()) {
-		load_popup();
+		//load_popup();
 	}
 
-	function load_popup() {
-		$('.remaining').html('90');
-		$.scrollTo('#buttons', 200, {offset:{top:-100}});
-		stop_refreshing = false;
-		setTimeout(function() {
-			$('#dialog-message').dialog({
-				width: 630,
-				//height: 200,
-				modal: true,
-				buttons: {
-					Cancelar: function() { // TODO idioma de "Cancelar"
-						$(this).dialog('close');
-					}
-				},
-				close: function() {
-					stop_refreshing = true;
-				}
-			});
-			setTimeout(function() {
-				refresh($('.remaining').html());
-				isCalling();
-			}, 1000);
-		}, 500);
-	}
 
 	stop_refreshing = false;
-
-	function refresh(timeleft) {
-
-		if (stop_refreshing) {
-			return;
-		}
-
-		if (parseInt($('#phone').html())) {
-
-			$('.remaining').html(timeleft);
-
-			if (timeleft >= 0) {
-
-				timeleft --;
-
-				setTimeout(function(){
-					refresh(timeleft);
-				}, 1000);
-
-			} else {
-
-				$('.pay').html('Se acabó el tiempo');
-				$('.sms').html('Se acabó el tiempo');
-
-				setTimeout(function() {
-					$('#dialog-message').dialog('close');
-				}, 2000);
-
-			}
-
-		} else {
-
-			$('.pay').html('Ha ocurrido un error: "' + $('#phone').html() + '"');
-			$('.sms').html('Ha ocurrido un error: "' + $('#phone').html() + '"');
-
-		}
-
-	}
-
-	function isCalling() {
-
-		if (stop_refreshing) {
-			return;
-		}
-
-		//var temp_path = '/webs/reddevil';
-		var temp_path = '';
-
-		if (parseInt($('#phone').html())) {
-
-			$.ajaxSetup({
-			    cache: false
-			});
-
-			$.get(temp_path + '/videos/check_phone', function(data) {
-
-				if (data) {
-					if (data.substring(0, 1) == '/') {
-						$(location).attr('href', data);
-					}
-				}
-
-			});
-
-			$.get(temp_path + '/videos/check_sms', function(data) {
-
-				if (data) {
-					if (data.substring(0, 1) == '/') {
-						$(location).attr('href', data);
-					}
-				}
-
-			});
-
-			setTimeout(function(){
-				isCalling();
-			}, 2000);
-
-
-		}
-
-	}
 
 	
 	$('._dialog').click(function() {
@@ -332,3 +226,129 @@ $(document).ready(function() {
 	}
 
 });
+
+
+	function load_popup() {
+		$('.remaining').html('90');
+		$.scrollTo('#buttons', 200, {offset:{top:-100}});
+		stop_refreshing = false;
+		setTimeout(function() {
+
+			$.get($('#_view_video').attr('var'), function(data) {
+				$('#dialog').html(data);
+				$('#dialog').dialog({
+					width: 530,
+					height: 390,
+					modal: true,
+					buttons: {
+						Cancelar: function() {
+							$(this).dialog('close');
+						}
+					},
+				});
+			});
+			/*
+			$('#dialog-message').dialog({
+				width: 630,
+				//height: 200,
+				modal: true,
+				buttons: {
+					Cancelar: function() { // TODO idioma de "Cancelar"
+						$(this).dialog('close');
+					}
+				},
+				close: function() {
+					stop_refreshing = true;
+				}
+			});
+			*/
+			setTimeout(function() {
+				refresh($('.remaining').html());
+				isCalling();
+			}, 1000);
+		}, 500);
+	}
+
+
+	function refresh(timeleft) {
+
+		if (stop_refreshing) {
+			return;
+		}
+
+		//if (parseInt($('#phone').html())) {
+
+			$('.remaining').html(timeleft);
+
+			if (timeleft >= 0) {
+
+				timeleft --;
+
+				setTimeout(function(){
+					refresh(timeleft);
+				}, 1000);
+
+			} else {
+
+				$('.pay').html('Se acabó el tiempo');
+				$('.sms').html('Se acabó el tiempo');
+
+				setTimeout(function() {
+					$('#dialog-message').dialog('close');
+				}, 2000);
+
+			}
+
+		//} else {
+
+			//$('.pay').html('Ha ocurrido un error: "' + $('#phone').html() + '"');
+			//$('.sms').html('Ha ocurrido un error: "' + $('#phone').html() + '"');
+
+		//}
+
+	}
+
+	function isCalling() {
+
+		if (stop_refreshing) {
+			return;
+		}
+
+		//var temp_path = '/webs/reddevil';
+		var temp_path = '';
+
+		if (parseInt($('#phone').html())) {
+
+			$.ajaxSetup({
+			    cache: false
+			});
+
+			$.get(temp_path + '/videos/check_phone', function(data) {
+
+				if (data) {
+					if (data.substring(0, 1) == '/') {
+						$(location).attr('href', data);
+					}
+				}
+
+			});
+
+			$.get(temp_path + '/videos/check_sms', function(data) {
+
+				if (data) {
+					if (data.substring(0, 1) == '/') {
+						$(location).attr('href', data);
+					}
+				}
+
+			});
+
+			setTimeout(function(){
+				isCalling();
+			}, 2000);
+
+
+		}
+
+	}
+

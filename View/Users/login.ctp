@@ -16,7 +16,7 @@
 		<?php echo $this->Html->image('llave.png',array('alt'=>'','width'=>128,'height'=>128,'class'=>'fixPNG'));?>
 		</div>
 		<?php
-		echo $this->Form->input('email',array('label'=>__('Usuario')));
+		echo $this->Form->input('username',array('label'=>__('Nombre de Usuario')));
 		echo $this->Form->input('password',array('label'=>__('Contrase&ntilde;a')));
 /*
 		echo $this->Form->input('email', array(

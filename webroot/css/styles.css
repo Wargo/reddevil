@@ -783,3 +783,22 @@ a.more_videos_button:hover {
 	text-align:center;
 	margin-top:50px;
 }
+
+form.register div {
+	width: 260px;
+	float:left;
+}
+
+#top_login {
+	color:#fff;
+	font-size:11px;
+	top:50px;
+	right:30px;
+	position:absolute;
+}
+
+#top_login a {
+
+	color:#fff;
+}
+

@@ -1,22 +1,30 @@
 <?php
 extract ($user);
 ?>
+	<h2><?php __('Datos del usuario'); ?></h2>
 	<h3><?php echo $User['username'] ?></h3>
 	<dl>
-		<dt>Name</dt>
+		<dt>Nombre</dt>
 		<dd><?php echo $User['first_name'] . ' ' . $User['last_name']; ?></dd>
 		<dt>Email</dt>
 		<dd><?php echo $User['email']; ?></dd>
+		<dt>Cuenta activa hasta:</dt>
+		<dd><?php echo mostrar_fecha($User['caducidad']); ?></dd>
 	</dl>
-<?php
-if ($User['id'] == $this->Session->read('Auth.User.id')) {
-	$menu->settings(__('Opciones', true));
-	$menu->add(array(
-		array('title' => __('Edita tu perfil', true), 'url' => array('action' => 'edit')),
-		array('title' => __('Cambia tu contraseña', true), 'url' => array('action' => 'change_password')),
-	));
-}
 
-echo $this->element('friends/petition', array('to_user_id' => $User['id']));
-echo '<br />';
-echo $this->element('follower/follow', array('foreign_id' => $User['id'], 'model' => 'User'));
+<ul>
+<li>
+<?php
+	echo $this->Html->link(__('Editar mis datos'), array('controller' => 'users', 'action' => 'edit'));
+?>
+</li>
+<li>
+<?php
+	echo $this->Html->link(__('Renovar suscripción'), array('controller' => 'users', 'action' => 'renew'));
+?>
+</li>
+<li>
+<?php
+	echo $this->Html->link(__('Desconectar'), array('controller' => 'users', 'action' => 'logout'));
+?>
+</li>

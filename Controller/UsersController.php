@@ -475,18 +475,20 @@ class UsersController extends AppController {
  * @return void
  */
 	public function logout() {
+		$this->_logout();
+		if ($this->Auth->user()) {
+			$this->_message(__('¡Hasta pronto!'), false, null, true);
+		}
+		$this->redirect($this->Auth->logout());
+	}
 
-			$this->Session->delete('dir_comercial'); 
-			$this->Session->delete('dir_operaciones');
-			$this->Session->destroy();
+	protected function _logout() {
+		$this->Session->destroy();
 		if ($this->Auth->user()) {
 			$this->SwissArmy->loadComponent('Cookie');
 			$this->Cookie->delete('User');
 			$this->Cookie->delete();
-			$this->_message(__('¡Hasta pronto!'), false, null, true);
 		}
-
-		$this->redirect($this->Auth->logout());
 	}
 
 /**
@@ -496,19 +498,12 @@ class UsersController extends AppController {
  * @access public
  * @return void
  */
-	public function profile($id = null) {
-		if(!$id) {
-			$id = $this->Auth->user('id');
+	public function profile() {
+		if (!$this->Auth->user('id')) {
+			$this->redirect('/');
 		}
-		if (!$id) {
-			$this->_message(__('Usuario no encontrado'), false, null, true);
-			return $this->redirect($this->referer());
-		}
-		$user = $this->User->findByid($id);
-		if (!$user) {
-			$this->_message(__('Usuario no encontrado'), false, null, true);
-			return $this->_back();
-		}
+		
+		$user = $this->User->findByid($this->Auth->user('id'));
 		$this->set(compact('user'));
 	}
 
@@ -523,20 +518,89 @@ class UsersController extends AppController {
 		$override = false;
 
 		if ($this->request->data) {
+			$this->_logout();
+			/*
+			if (!empty($this->request->data['User']['payment'])) {
+				$this->Session->write('payment', $this->request->data['User']['payment']);
+			}
+			*/
+
+			if (!empty($this->request->data['User']['slug'])) {
+				$slug = $this->request->data['User']['slug'];
+				$loginRedirect = array('controller' => 'videos', 'action' => 'view_video', $slug);
+			} else {
+				$loginRedirect = array('controller' => 'videos', 'action' => 'home');	
+			}
+
+
+			$this->Auth->login();
+
+			if ($this->Auth->user('id')) {
+				$this->_message(__('Bienvenido de nuevo.'), $loginRedirect, null);
+			}
 
 			$this->request->data['User']['group'] = 'user';
-			$this->request->data['User']['active'] = 0;
-			list($return, $message) = $this->User->register($this->request->data);
+			$this->request->data['User']['active'] = 1;
 
-			if ($return) {
-				$this->User->mailRegistro($this->User->id);
-				$this->_message(__('Registro finalizado. Espere a que un administrador valide su cuenta.'), false, null);
-				$this->redirect(array('controller' => 'users', 'action' => 'register'));
-			} elseif ($message) {
-				$this->_message($message, false, null, true);
+			$this->User->Behaviors->detach('MiUsers.UserAccount');
+			$this->User->create();
+			$return = $this->User->save($this->request->data);
+			$this->User->Behaviors->attach('MiUsers.UserAccount');
+			if ($return) {	
+				$this->Auth->login();
+				$this->_message(__('Registro finalizado.'), $loginRedirect, null);
+			} else {
+				$this->_message(__('Error al registrarse'), false, null, true);
 			}
 		}
 		$this->set('passwordPolicy', $this->User->passwordPolicy());
+	}
+
+	public function register_popup($slug = false) {
+		$this->loadModel('Video');
+		$video = $this->Video->findBySlug($slug);
+		$Video = $video['Video'];
+		$this->set(compact('slug', 'Video'));
+		$this->render('/Elements/payment_popup');
+	}
+
+	public function renew() {
+		if (!$this->Auth->user('id')) {
+			$this->redirect('/');
+		}
+		if (!empty($this->request->data)) {
+				$this->Session->write('payment', $this->request->data['User']['payment']);
+				$this->redirect(array('action' => 'payment'));
+		}
+	}
+
+	public function payment($video_id = false) {
+		die;
+		//@TODO Hacer aquí el pago con tarjeta
+		if (!$this->Auth->user('id')) {
+			$this->redirect('/');
+		}
+		$payment = $this->Session->read('payment');
+		$tCaducidad = strtotime($this->User->field('caducidad', array('id' => $this->Auth->user('id'))));
+		$now = time();
+		if ($tCaducidad < $now) {
+			$tCaducidad = $now;
+		}
+		switch ($payment) {
+			case 'day': $caducidad = strftime('%Y-%m-%d %H:%M:%S', strtotime('+1 day', $tCaducidad)); break;
+			case 'month': $caducidad = strftime('%Y-%m-%d %H:%M:%S', strtotime('+1 month', $tCaducidad)); break;
+			case '3month': $caducidad = strftime('%Y-%m-%d %H:%M:%S', strtotime('+3 months', $tCaducidad)); break;
+			case 'year': $caducidad = strftime('%Y-%m-%d %H:%M:%S', strtotime('+1 year', $tCaducidad)); break;
+		}
+
+		$this->User->id = $this->Auth->user('id');
+		$this->User->save(compact('caducidad'));
+		
+		if ($video_id) {
+			$this->loadModel('Video');
+			$video_id = $this->Video->field('slug', array('id' => $video_id));
+		}
+		$this->set(compact('video_id'));
 	}
 
 /**

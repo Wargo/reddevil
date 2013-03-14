@@ -40,9 +40,16 @@ $image = $this->Html->url('/img/Photo/' . $folder . '/' . $main['Photo']['id'] .
 		'logo' : '<?php echo $this->Html->url('/img/logo.png', true); ?>'
 	});
 </script>
+<?php if (!$this->Session->read('Auth.User.id') || (strtotime($this->Session->read('Auth.User.caducidad')) < time())): ?>
+<script>
+$(document).ready(function() {
+	load_popup();
+});
+</script>
+<?php endif; 
 
-<?php
-if (ClassRegistry::init('Video')->isPrivate($Video['id'], $cookies)) {
+	//echo $this->element('payment_popup');
+/* if (ClassRegistry::init('Video')->isPrivate($Video['id'], $cookies)) {
 	?>
 	<div class="hidden" id="dialog-message" title="<?php echo __('Ver el vídeo completo'); ?>">
 		<div id="tabs">
@@ -50,7 +57,7 @@ if (ClassRegistry::init('Video')->isPrivate($Video['id'], $cookies)) {
 				<li><a href="#fragment-1"><span><?php echo __('Teléfono'); ?></span></a></li>
 				<li><a href="#fragment-2"><span><?php echo __('SMS'); ?></span></a></li>
 				<?php
-				if (false && Configure::read('debug')) {
+				if (Configure::read('debug')) {
 					?>
 					<li><a href="#fragment-3"><span><?php echo __('Registro'); ?></span></a></li>
 					<?php
@@ -70,16 +77,15 @@ if (ClassRegistry::init('Video')->isPrivate($Video['id'], $cookies)) {
 				</div>
 			</div>
 			<?php
-			if (false && Configure::read('debug')) {
+			if (Configure::read('debug')) {
 				?>
 				<div id="fragment-3">
 					<div class="register">
-						<?php echo $this->Html->link(__('Regístrate'), array('controller' => 'users', 'action' => 'register')); ?>
-						<p class="info_text"><?php echo __('Regístrate para obtener más ventajas...'); ?></p>
+					<?php echo $this->element('Users/register', array('video_id' => $Video['id'])); ?>
 					</div>
 				</div>
 				<?php
-			}
+			} 
 			?>
 		</div>
 		<script>
@@ -87,4 +93,4 @@ if (ClassRegistry::init('Video')->isPrivate($Video['id'], $cookies)) {
 		</script>
 	</div>
 	<?php
-}
+} */

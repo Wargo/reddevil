@@ -216,3 +216,4 @@ function isdevelopment() {
 }
 
 
+App::import('Vendor', 'Funciones');

@@ -25,9 +25,9 @@ class User extends AppModel {
 		'MiUsers.UserAccount' => array(
 			'passwordPolicy' => 'weak',
 			'token' => array('length' => 10, 'fields' => array('email'), 'expires' => false),
-			'fields' => array('username' => 'email', 'confirmation' => 'email'),
+			'fields' => array('username' => 'username', 'confirmation' => 'email'),
 			'sendEmails' => array(
-				'welcome' => array('subject' => 'Tu cuenta ha sido creada en Red Devil X'),
+				'welcome' => false,
 				'accountChange' => false
 			)
 		),
@@ -52,19 +52,7 @@ class User extends AppModel {
 					'message' => __('El nombre de usuario ya existe en nuestra base de datos', true)
 				),
 			),
-			'first_name' => array(
-				'missing' => array(
-					'rule' => 'notEmpty',
-					'message' => __('El nombre es obligatorio', true)
-				)
-
-			),
 			'email' => array(
-				'missing' => array(
-					'rule' => 'notEmpty',
-					'last' => true,
-					'message' => __('El e-mail es obligatorio', true)
-				),
 				'email' => array(
 					'rule' => 'email',
 					'last' => true,
