@@ -47,6 +47,7 @@ class UsersController extends AppController {
 			'logout',
 			'profile',
 			'register',
+			'register_popup',
 			'reset_password',
 			'switch_language'
 		);
@@ -505,6 +506,8 @@ class UsersController extends AppController {
 		
 		$user = $this->User->findByid($this->Auth->user('id'));
 		$this->set(compact('user'));
+		
+		$this->render('/Elements/Users/payment');
 	}
 
 /**
@@ -556,11 +559,15 @@ class UsersController extends AppController {
 		$this->set('passwordPolicy', $this->User->passwordPolicy());
 	}
 
-	public function register_popup($slug = false) {
-		$this->loadModel('Video');
-		$video = $this->Video->findBySlug($slug);
-		$Video = $video['Video'];
-		$this->set(compact('slug', 'Video'));
+	public function register_popup($slug = null) {
+		if ($slug) {
+			$this->loadModel('Video');
+			extract($this->Video->findBySlug($slug));
+			$id = $Video['id'];
+		} else {
+			$id = null;
+		}
+		$this->set(compact('slug', 'id'));
 		$this->render('/Elements/payment_popup');
 	}
 

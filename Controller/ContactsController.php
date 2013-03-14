@@ -74,4 +74,12 @@ class ContactsController extends AppController {
 
 	}
 
+	function admin_index() {
+
+		$contacts = $this->Contact->find('all');
+
+		$this->set(compact('contacts'));
+
+	}
+
 }

@@ -42,11 +42,11 @@ $image = $this->Html->url('/img/Photo/' . $folder . '/' . $main['Photo']['id'] .
 	});
 </script>
 <?php if (!$this->Session->read('Auth.User.id') || (strtotime($this->Session->read('Auth.User.caducidad')) < time())): ?>
-<script>
-$(document).ready(function() {
-	load_popup();
-});
-</script>
+	<script>
+	$(document).ready(function() {
+		load_popup();
+	});
+	</script>
 <?php endif; 
 
 	//echo $this->element('payment_popup');

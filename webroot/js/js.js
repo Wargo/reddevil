@@ -225,130 +225,116 @@ $(document).ready(function() {
 		$.datepicker.setDefaults($.datepicker.regional['es']);
 	}
 
+	$('.go_my_profile').click(function() {
+		load_popup();
+		return false;
+	});
+
 });
 
+function load_popup() {
+	$('.remaining').html('90');
+	$.scrollTo('#buttons', 200, {offset:{top:-100}});
+	stop_refreshing = false;
+	setTimeout(function() {
 
-	function load_popup() {
-		$('.remaining').html('90');
-		$.scrollTo('#buttons', 200, {offset:{top:-100}});
-		stop_refreshing = false;
+		if ($('#_view_video').attr('var')) {
+			var path = $('#_view_video').attr('var');
+		} else {
+			var path = '/users/register_popup';
+		}
+
+		$.get(path, function(data) {
+			$('#register_dialog').html(data);
+		});
 		setTimeout(function() {
-
-			$.get($('#_view_video').attr('var'), function(data) {
-				$('#dialog').html(data);
-				$('#dialog').dialog({
-					width: 530,
-					height: 390,
-					modal: true,
-					buttons: {
-						Cancelar: function() {
-							$(this).dialog('close');
-						}
-					},
-				});
-			});
-			/*
-			$('#dialog-message').dialog({
-				width: 630,
-				//height: 200,
-				modal: true,
-				buttons: {
-					Cancelar: function() { // TODO idioma de "Cancelar"
-						$(this).dialog('close');
-					}
-				},
-				close: function() {
-					stop_refreshing = true;
-				}
-			});
-			*/
-			setTimeout(function() {
+			if ($('.remaining').html()) {
 				refresh($('.remaining').html());
 				isCalling();
-			}, 1000);
-		}, 500);
-	}
-
-
-	function refresh(timeleft) {
-
-		if (stop_refreshing) {
-			return;
-		}
-
-		//if (parseInt($('#phone').html())) {
-
-			$('.remaining').html(timeleft);
-
-			if (timeleft >= 0) {
-
-				timeleft --;
-
-				setTimeout(function(){
-					refresh(timeleft);
-				}, 1000);
-
-			} else {
-
-				$('.pay').html('Se acabó el tiempo');
-				$('.sms').html('Se acabó el tiempo');
-
-				setTimeout(function() {
-					$('#dialog-message').dialog('close');
-				}, 2000);
-
 			}
+		}, 1000);
 
-		//} else {
+	}, 500);
+}
 
-			//$('.pay').html('Ha ocurrido un error: "' + $('#phone').html() + '"');
-			//$('.sms').html('Ha ocurrido un error: "' + $('#phone').html() + '"');
 
-		//}
+function refresh(timeleft) {
 
+	if (stop_refreshing) {
+		return;
 	}
 
-	function isCalling() {
+	//if (parseInt($('#phone').html())) {
 
-		if (stop_refreshing) {
-			return;
-		}
+		$('.remaining').html(timeleft);
 
-		//var temp_path = '/webs/reddevil';
-		var temp_path = '';
+		if (timeleft >= 0) {
 
-		if (parseInt($('#phone').html())) {
-
-			$.ajaxSetup({
-			    cache: false
-			});
-
-			$.get(temp_path + '/videos/check_phone', function(data) {
-
-				if (data) {
-					if (data.substring(0, 1) == '/') {
-						$(location).attr('href', data);
-					}
-				}
-
-			});
-
-			$.get(temp_path + '/videos/check_sms', function(data) {
-
-				if (data) {
-					if (data.substring(0, 1) == '/') {
-						$(location).attr('href', data);
-					}
-				}
-
-			});
+			timeleft --;
 
 			setTimeout(function(){
-				isCalling();
-			}, 2000);
+				refresh(timeleft);
+			}, 1000);
 
+		} else {
+
+			//$('.pay').html('Se acabó el tiempo');
+			$('.sms').html('Se acabó el tiempo');
+
+			setTimeout(function() {
+				$('#dialog').dialog('close');
+			}, 2000);
 
 		}
 
+	//} else {
+
+		//$('.pay').html('Ha ocurrido un error: "' + $('#phone').html() + '"');
+		//$('.sms').html('Ha ocurrido un error: "' + $('#phone').html() + '"');
+
+	//}
+
+}
+
+function isCalling() {
+
+	if (stop_refreshing) {
+		return;
 	}
+
+	//if (parseInt($('#phone').html())) {
+
+		$.ajaxSetup({
+			cache: false
+		});
+
+		/*$.get(temp_path + '/videos/check_phone', function(data) {
+
+			if (data) {
+				if (data.substring(0, 1) == '/') {
+					$(location).attr('href', data);
+				}
+			}
+
+		});*/
+
+		$.get('/videos/check_sms', function(data) {
+
+			if (data) {
+				if (data.substring(0, 1) == '/') {
+					stop_refreshing = true;
+					$(location).attr('href', data);
+				}
+			}
+
+		});
+
+		setTimeout(function(){
+			isCalling();
+		}, 2000);
+
+
+	//}
+
+}
 

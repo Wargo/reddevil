@@ -51,5 +51,6 @@
 	<?php echo $this->element('sql_dump'); ?>
 	<?php echo $this->element('feedback'); ?>
 	<div class="hidden" id="dialog"></div>
+	<div class="hidden clearfix" id="register_dialog"></div>
 </body>
 </html>

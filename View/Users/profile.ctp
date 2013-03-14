@@ -9,7 +9,13 @@ extract ($user);
 		<dt>Email</dt>
 		<dd><?php echo $User['email']; ?></dd>
 		<dt>Cuenta activa hasta:</dt>
-		<dd><?php echo mostrar_fecha($User['caducidad']); ?></dd>
+		<dd><?php
+			if ($User['caducidad'] > '1') {
+				echo mostrar_fecha($User['caducidad']);
+			} else {
+				echo __('Todavía no tienes ninguna suscripción');
+			}
+		?></dd>
 	</dl>
 
 <ul>
