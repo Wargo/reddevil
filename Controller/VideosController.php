@@ -407,16 +407,11 @@ class VideosController extends AppController {
 			$result = curl_exec($ch);
 			$access = false;
 			if (substr($result, 0, 2) === 'OK') {
-				//$this->validateAccess();
-				//$current = $this->Session->read('current_video_id');
-				//$this->Cookie->write('video_' . $current, date('Y-m-d H:i:s'));
-
 				$this->loadModel('User');
 				$this->User->id = $this->Auth->user('id');
 				$date = date('Y-m-d H:i:s', strtotime("+7 day"));
 				$this->User->save(array('caducidad' => $date));
 				$this->Session->write('Auth.User.caducidad', $date);
-
 				$access = true;
 			}
 			$this->set(compact('result', 'access'));
