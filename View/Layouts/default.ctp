@@ -41,7 +41,7 @@
 		</div>
 		<div id="content">
 			<div class="bg_header"></div>
-			<?php echo $this->Session->flash(); ?>
+			<?php //echo $this->Session->flash(); ?>
 			<?php echo $this->fetch('content'); ?>
 		</div>
 		<div id="footer">
