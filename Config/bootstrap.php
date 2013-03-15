@@ -224,4 +224,4 @@ function isdevelopment() {
 
 App::import('Vendor', 'Funciones');
 
-setlocale(LC_TIME, 'es_ES');
+setlocale(LC_ALL, 'es_ES');

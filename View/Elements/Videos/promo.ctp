@@ -6,11 +6,26 @@ echo '<div class="next_video">';
 
 	$published = ClassRegistry::init('Video')->findById($next_video_id);
 	$day = substr($published['Video']['published'], 8, 2);
-	//$month = substr($published['Video']['published'], 5, 2);
-	$month = date('F', strtotime($published['Video']['published']));
+	//$month = date('F', strtotime($published['Video']['published']));
+
+	$month = substr($published['Video']['published'], 5, 2);
+	switch ($month) {
+		case '01': $m = __('Enero'); break;
+		case '02': $m = __('Febrero'); break;
+		case '03': $m = __('Marzo'); break;
+		case '04': $m = __('Abril'); break;
+		case '05': $m = __('Mayo'); break;
+		case '06': $m = __('Junio'); break;
+		case '07': $m = __('Julio'); break;
+		case '08': $m = __('Agosto'); break;
+		case '09': $m = __('Septiembre'); break;
+		case '10': $m = __('Octubre'); break;
+		case '11': $m = __('Noviembre'); break;
+		case '12': $m = __('Diciembre'); break;
+	}
 
 	echo '<div class="badge">';
-		echo __('Nueva escena %s %s', '<span class="day">' . $day . '</span><br />', $month); 
+		echo __('Nueva escena %s %s', '<span class="day">' . $day . '</span><br />', $m); 
 	echo '</div>';
 
 	echo '<div class="promo_images">';
