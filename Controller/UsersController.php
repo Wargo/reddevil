@@ -554,12 +554,14 @@ class UsersController extends AppController {
 			$this->User->Behaviors->detach('MiUsers.UserAccount');
 			$this->User->create();
 			$return = $this->User->save($this->request->data);
-		
+
 			$this->User->Behaviors->attach('MiUsers.UserAccount');
 			if ($return) {	
-				$this->Auth->login();
+				$this->Auth->login();	
+
 				if ($this->request->isAjax()) {
-					$this->render('/Elements/Users/register');
+					$this->render('/Elements/Users/payment');
+					return true;
 				} else {
 					$this->_message(__('Registro finalizado.'), $loginRedirect, null);
 				}
