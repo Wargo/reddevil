@@ -12,23 +12,29 @@ echo '<div class="next_video">';
 		echo __('Nueva escena %s %s', '<span class="day">' . $day . '</span><br />', $month); 
 	echo '</div>';
 
-	$images = ClassRegistry::init('Photo')->find('all', array(
-		'conditions' => array(
-			'video_id' => $next_video_id,
-			'main' => 0,
-			'featured' => 1,
-		),
-		'limit' => 3,
-		'order' => array('rand()')
-	));
 	echo '<div class="promo_images">';
-	$i = 0;
-	foreach ($images as $image) {
-		$i ++;
-		extract($image);
-		$alt = ClassRegistry::init('Photo')->getTitle($Photo);
-		echo $this->Html->image('Photo' . DS . $Photo['id'] . ',fitCrop,326,243.jpg', array('class' => $i == 3 ? 'last' : '', 'alt' => $alt, 'title' => $alt));
-	}
+		if (false) {
+
+			$images = ClassRegistry::init('Photo')->find('all', array(
+				'conditions' => array(
+					'video_id' => $next_video_id,
+					'main' => 0,
+					'featured' => 1,
+				),
+				'limit' => 3,
+				'order' => array('rand()')
+			));
+			$i = 0;
+			foreach ($images as $image) {
+				$i ++;
+				extract($image);
+				$alt = ClassRegistry::init('Photo')->getTitle($Photo);
+				echo $this->Html->image('Photo' . DS . $Photo['id'] . ',fitCrop,326,243.jpg', array('class' => $i == 3 ? 'last' : '', 'alt' => $alt, 'title' => $alt));
+			}
+
+		} else {
+			echo $this->Html->image('escena_porno_fallas.jpg', array('width' => 980));
+		}
 	echo '</div>';
 	
 	echo '<div class="promo_text clearfix">';
