@@ -226,7 +226,12 @@ $(document).ready(function() {
 	}
 
 	$('.go_my_profile').click(function() {
-		load_popup();
+		if ($('#register_dialog').html()) {
+			stop_refreshing = true;
+			$('#register_dialog').html('');
+		} else {
+			load_popup();
+		}
 		return false;
 	});
 
