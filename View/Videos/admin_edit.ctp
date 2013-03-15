@@ -44,7 +44,8 @@ echo $this->Form->inputs(array(
 	'published' => array(
 		'label' => __('Fecha de publicación'),
 		'id' => 'datepicker',
-		'type' => 'text'
+		'type' => 'text',
+		'value' => $id ? $this->request->data['Video']['published'] : '0000-00-00 00:00:00'
 	)
 ));
 
