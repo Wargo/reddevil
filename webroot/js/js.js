@@ -245,7 +245,7 @@ $(document).ready(function() {
 		  url: $(this).attr('action'),
 		  success: function(data) {	
 			$('#register_dialog').html(data);
-			return false;
+			//return false;
 		  },
 		  data: $(this).serialize(),
 		  dataType: 'html'
