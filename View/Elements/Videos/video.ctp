@@ -11,13 +11,14 @@ $image = $this->Html->url('/img/Photo/' . $folder . '/' . $main['Photo']['id'] .
 			data-swf="<?php echo $this->Html->url('/html5/flowplayer/flowplayer.swf'); ?>">
 			<?php
 			//if (!empty($cookies[$Video['id']])) {
-			if (!empty($cookies['video_' . $Video['id']]) && $cookies['video_' . $Video['id']] > date('Y-m-d H:i:s', strtotime("-1 day"))) {
+			//if (!empty($cookies['video_' . $Video['id']]) && $cookies['video_' . $Video['id']] > date('Y-m-d H:i:s', strtotime("-1 day"))) {
+			if ($this->Session->read('Auth.User.caducidad') > date('Y-m-d H:i:s')) {
 
-				$link = Security::hash($cookies['user'] . '_' . $Video['id'], null, true);
+				$link = Security::hash($this->Session->read('Auth.User.id') . '_' . $Video['id'], null, true);
 				?>
 				<video>
-					<source type="video/mp4" src="<?php echo $this->Html->url('/links/' . $cookies['user'] . '/' . $link . '_mp4_m.mp4'); ?>"/>
-					<source type='video/ogg; codecs="theora, vorbis"' src="<?php echo $this->Html->url('/links/' . $cookies['user'] . '/' . $link . '_ogg_m.ogg'); ?>"/>
+					<source type="video/mp4" src="<?php echo $this->Html->url('/links/' . $this->Session->read('Auth.User.id') . '/' . $link . '_mp4_m.mp4'); ?>"/>
+					<source type='video/ogg; codecs="theora, vorbis"' src="<?php echo $this->Html->url('/links/' . $this->Session->read('Auth.User.id') . '/' . $link . '_ogg_m.ogg'); ?>"/>
 				</video>
 				<?php
 			} else {
