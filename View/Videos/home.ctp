@@ -5,14 +5,7 @@ if (!empty($this->params['actor'])) {
 	extract(ClassRegistry::init('Actor')->findById($id));
 	echo $this->element('Actor/profile', compact('Actor'));
 } else {
-	echo '<div style="position: relative;">';
-		echo $this->Html->image('promo.jpg', array('class' => 'banner_header'));
-		if ($this->Session->read('Auth.User.id')) {
-			echo $this->Html->link(__('Ver mi cuenta'), array('controller' => 'users', 'action' => 'profile'), array('class' => 'go_my_profile floating_button'));
-		} else {
-			echo $this->Html->link(__('Hacerme socio'), array('controller' => 'users', 'action' => 'profile'), array('class' => 'go_my_profile floating_button'));
-		}
-	echo '</div>';
+	echo $this->element('Videos/promo');
 }
 foreach ($videos as $video) {
 	
