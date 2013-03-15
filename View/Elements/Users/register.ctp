@@ -12,6 +12,7 @@
 </div>
 
 <?php
+
 echo $this->Form->create('User', array('class' => 'register clearfix', 'url' => array('controller' => 'users', 'action' => 'register')));
 
 echo '<span class="text_big small" style="display:block; margin-left:10px; margin-top:40px;">' . __('Registro') . '</span>';
@@ -19,6 +20,7 @@ echo '<span class="text_big small" style="display:block; margin-left:10px; margi
 echo $this->Form->input('username', array(
 	'fieldset' => false, 
 	'label' => false,
+	'id' => 'username',
 	'placeholder' => __('Nombre de usuario', true),
 ));
 
@@ -33,6 +35,6 @@ if (!empty($slug)) {
 	echo $this->Form->hidden('slug', array('value' => $slug));
 }
 
-echo $this->Form->button(__('Hacerme socio'), array('type'=>'submit'));
-
+echo $this->Form->button(__('Hacerme socio'), array('type'=>'submit', 'id' => 'submit_register'));
+echo $this->Html->image('preload.gif', array('class' => 'hidden preload'));
 echo $this->Form->end();

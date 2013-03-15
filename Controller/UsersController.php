@@ -540,7 +540,13 @@ class UsersController extends AppController {
 			$this->Auth->login();
 
 			if ($this->Auth->user('id')) {
-				$this->_message(__('Bienvenido de nuevo.'), $loginRedirect, null);
+				if ($this->request->isAjax()) {
+					$this->set(compact('loginRedirect'));
+					$this->render('/Elements/Users/close_popup');
+					return true;
+				} else {
+					$this->_message(__('Bienvenido de nuevo.'), $loginRedirect, null);
+				}
 			}
 
 			$this->request->data['User']['group'] = 'user';
@@ -549,15 +555,29 @@ class UsersController extends AppController {
 			$this->User->Behaviors->detach('MiUsers.UserAccount');
 			$this->User->create();
 			$return = $this->User->save($this->request->data);
+		
 			$this->User->Behaviors->attach('MiUsers.UserAccount');
 			if ($return) {	
 				$this->Auth->login();
-				$this->_message(__('Registro finalizado.'), $loginRedirect, null);
+				if ($this->request->isAjax()) {
+					$this->render('/Elements/Users/register');
+				} else {
+					$this->_message(__('Registro finalizado.'), $loginRedirect, null);
+				}
 			} else {
-				$this->_message(__('Error al registrarse'), false, null, true);
+				if ($this->request->isAjax()) {
+					$this->set('errors', $this->User->validationErrors);
+					$this->render('/Elements/Users/register');
+
+				} else {
+					$this->_message(__('Error al registrarse'), $loginRedirect, null, true);
+				}
 			}
 		}
 		$this->set('passwordPolicy', $this->User->passwordPolicy());
+		if ($this->request->isAjax()) {
+			$this->render('/Elements/Users/register');
+		}
 	}
 
 	public function register_popup($slug = null) {

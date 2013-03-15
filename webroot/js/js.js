@@ -237,6 +237,22 @@ $(document).ready(function() {
 		return false;
 	});
 
+	$('form.register').live('submit', function() {
+		$('#submit_register').hide();
+		$('img.preload').show();
+		$.ajax({
+		  type: 'POST',
+		  url: $(this).attr('action'),
+		  success: function(data) {	
+			$('#register_dialog').html(data);
+			return false;
+		  },
+		  data: $(this).serialize(),
+		  dataType: 'html'
+		});
+		return false;
+	});
+
 });
 
 function load_popup() {
