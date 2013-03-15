@@ -2,6 +2,7 @@
 echo '<div class="next_video">';
 
 	$next_video_id = '51430a39-9fe0-4eab-8473-63acbca5e1a6';
+	$composition = 'escena_porno_fallas.jpg';
 
 	$published = ClassRegistry::init('Video')->findById($next_video_id);
 	$day = substr($published['Video']['published'], 8, 2);
@@ -13,7 +14,7 @@ echo '<div class="next_video">';
 	echo '</div>';
 
 	echo '<div class="promo_images">';
-		if (false) {
+		if (!$composition) {
 
 			$images = ClassRegistry::init('Photo')->find('all', array(
 				'conditions' => array(
@@ -33,7 +34,7 @@ echo '<div class="next_video">';
 			}
 
 		} else {
-			echo $this->Html->image('escena_porno_fallas.jpg', array('width' => 980));
+			echo $this->Html->image($composition, array('width' => 980));
 		}
 	echo '</div>';
 	
