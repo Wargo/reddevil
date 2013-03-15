@@ -73,7 +73,8 @@ $actors = ClassRegistry::init('VideoRelationship')->getActors($Video['id']);
 	<div class="footer clearfix">
 		<?php echo $this->Html->link(__('Haz click aquí ver el vídeo completo', true), array('controller' => 'videos', 'action' => 'view_video', $Video['slug']), array('class' => 'suscribe')); ?>
 		<?php
-		if (ClassRegistry::init('Video')->isPrivate($Video['id'], $cookies)) {
+		//if (ClassRegistry::init('Video')->isPrivate($Video['id'], $cookies)) {
+		if ($this->Session->read('Auth.User.caducidad') < date('Y-m-d H:i:s')) {
 			echo '<span class="private">' . __('Privado') . '</span>';
 		} else {
 			echo '<span class="private public">' . __('Público') . '</span>';

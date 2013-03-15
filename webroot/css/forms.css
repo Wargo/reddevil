@@ -172,7 +172,7 @@ form.search .search_button {
 */
 #search input[type="text"] {
 	float:right;
-	margin-top:11px;
+	margin-top:2px;
 	background: url(../img/search-dark.png) no-repeat 10px 6px #444;
 	border: 0 none;
 	font: bold 12px Arial,Helvetica,Sans-serif;

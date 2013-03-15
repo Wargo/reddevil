@@ -78,7 +78,7 @@ $(function() {
 				array('class' => '_download_video'));
 		}
 		?></li>
-		<li><?php echo $this->Html->link(__('Ver el vídeo completo') . $this->Html->image('mini_play.png', array('align' => 'absmiddle')), array('controller' => 'videos', 'action' => 'view_video', $Video['slug']), array('escape' => false, 'class' => '_view_video with_image')); ?></li>
+		<li><?php echo $this->Html->link(__('Ver el vídeo completo') . $this->Html->image('mini_play.png', array('align' => 'absmiddle')), array('controller' => 'videos', 'action' => 'view_video', $Video['slug']), array('escape' => false, 'class' => '_view_video with_image', 'id' => '_view_video', 'var' => $this->Html->url(array('controller' => 'users', 'action' => 'register_popup', $Video['slug'])))); ?></li>
 		<li><?php echo $this->Html->link(sprintf(__('Fotos (%s)'), $num_photos), array('controller' => 'videos', 'action' => 'view_photos', $Video['id']), array('class' => '_view_photos')); ?></li>
 	</ul>
 </div>

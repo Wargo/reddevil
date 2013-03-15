@@ -30,6 +30,7 @@
 				<li><?php echo $this->Html->link(__('Vídeos', true), array('admin' => true, 'controller' => 'videos', 'action' => 'index'), array('class' => $this->params['controller'] == 'videos' ? 'selected' : '')); ?></li>
 				<li><?php echo $this->Html->link(__('Archivos subidos', true), array('admin' => true, 'controller' => 'archivos', 'action' => 'index'), array('class' => $this->params['controller'] == 'archivos' ? 'selected' : '')); ?></li>
 				<li><?php echo $this->Html->link(__('Fotos', true), array('admin' => true, 'controller' => 'photos', 'action' => 'index'), array('class' => $this->params['controller'] == 'photos' ? 'selected' : '')); ?></li>
+				<li><?php echo $this->Html->link(__('Contactos', true), array('admin' => true, 'controller' => 'contacts', 'action' => 'index'), array('class' => $this->params['controller'] == 'contacts' ? 'selected' : '')); ?></li>
 			</ul>
 		</div>
 		<div id="content">

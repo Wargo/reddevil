@@ -4,6 +4,8 @@ if (!empty($this->params['actor'])) {
 	$id = ClassRegistry::init('Actor')->field('id', compact('slug'));
 	extract(ClassRegistry::init('Actor')->findById($id));
 	echo $this->element('Actor/profile', compact('Actor'));
+} else {
+	echo $this->element('Videos/promo');
 }
 foreach ($videos as $video) {
 	

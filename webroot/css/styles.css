@@ -654,6 +654,86 @@ a.more_videos_button:hover {
 	border-radius:0px;
 }
 
+
+
+/*
+ * Register Dialog
+ */
+#register_dialog {
+	position:fixed;
+	width:600px;
+	background-color: rgba(0, 0, 0, 0.8);
+	left:50%;
+	top:50%;
+	margin-left: -300px;
+	margin-top: -100px;
+	z-index:100;
+}
+#register_dialog { /* TODO */
+	left:50%;
+	top:70px;
+	margin-left: -370px;
+	margin-top: 0px;
+}
+#register_dialog form {
+	width:270px;
+	float:right;
+}
+#register_dialog form input[type='password'],
+#register_dialog form input[type='text'] {
+	font-size:13px;
+	height:25px;
+	width:230px;
+	border:solid 1px #3399CC;
+}
+#register_dialog .text_big {
+	font-family: 'Yanone Kaffeesatz', sans-serif;
+	text-transform:uppercase;
+	font-size:38px;
+	color: #FFF;
+	font-weight: 700;
+}
+#register_dialog .text_big.small {
+	font-size:27px;
+	font-weight: 400;
+}
+#register_dialog .text_big .blue {
+	color: #3399CC;
+}
+#register_dialog .right_part {
+	width:370px;
+	float:right;
+}
+#register_dialog .left_part {
+	padding:0px 0px 0px 20px;
+	width:300px;
+	float:left;
+	background:black;
+}
+#register_dialog form button[type='submit']:hover, #register_dialog a.logout:hover {
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#1E8ABF), to(#66AAD2));
+	background-image: -webkit-linear-gradient(top, #1E8ABF, #66AAD2);
+	background-image: -moz-linear-gradient(top, #1E8ABF, #66AAD2);
+}
+#register_dialog form button[type='submit'], #register_dialog a.logout {
+	cursor:pointer;
+	margin-left:65px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	border-color: #2d6324;
+	border-width: 1px;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#66AAD2), to(#1E8ABF));
+	background-image: -webkit-linear-gradient(top, #66AAD2, #1E8ABF);
+	background-image: -moz-linear-gradient(top, #66AAD2, #1E8ABF);
+	color: #fff;
+	text-shadow: rgba(0, 0, 0, 0.5) 0px -1px 0px;
+	padding: 8px 15px;
+}
+#register_dialog a.logout {
+	margin-left:130px;
+}
+
 /*
  * Fotos por actriz
  */
@@ -713,11 +793,11 @@ a.more_videos_button:hover {
 /*
  * Follow
  */
-.menu ul.follow {
+ul.follow {
 	float:left;
-	margin:18px 0px 0px 20px;
+	margin:10px 0px 0px 125px;
 }
-.menu ul.follow li {
+ul.follow li {
 	margin:0 2px;
 	float:left;
 	display:inline;
@@ -782,4 +862,144 @@ a.more_videos_button:hover {
 	font-size:24px;
 	text-align:center;
 	margin-top:50px;
+}
+
+form.register div {
+	width: 260px;
+	float:left;
+}
+
+#top_login {
+	color:#fff;
+	font-size:11px;
+	top:50px;
+	right:30px;
+	position:absolute;
+}
+
+#top_login a {
+
+	color:#fff;
+}
+
+
+img.preload {
+	margin-left:66px;
+}
+
+/*
+ * banner header
+ */
+.next_video {
+	position: relative;
+}
+.next_video .floating_button:hover {
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#1E8ABF), to(#66AAD2));
+	background-image: -webkit-linear-gradient(top, #1E8ABF, #66AAD2);
+	background-image: -moz-linear-gradient(top, #1E8ABF, #66AAD2);
+}
+.next_video .floating_button {
+	float:left;
+	cursor:pointer;
+	margin-left:85px;
+	margin-top:45px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	border-color: #2d6324;
+	border-width: 1px;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#66AAD2), to(#1E8ABF));
+	background-image: -webkit-linear-gradient(top, #66AAD2, #1E8ABF);
+	background-image: -moz-linear-gradient(top, #66AAD2, #1E8ABF);
+	color: #fff;
+	font-size:18px;
+	text-shadow: rgba(0, 0, 0, 0.5) 0px -1px 0px;
+	padding: 18px 25px;
+}
+.next_video .promo_images {
+	border: solid 2px #3399CC;
+}
+.next_video .promo_images img {
+	margin:0px 1px 0px 0px;
+}
+.next_video .promo_images img.last {
+	margin:0px;
+}
+.next_video .bg_red {
+	width:328px;
+	font-family: 'Yanone Kaffeesatz', sans-serif;
+	text-transform:uppercase;
+	font-size:38px;
+	color: #FFF;
+	font-weight: 700;
+	float:left;
+	background:#860717;
+	text-align:center;
+	padding-top:40px;
+	height:150px;
+}
+.next_video .bg_white {
+	/*width:360px;*/
+	width:656px;
+	float:left;
+}
+.next_video .bg_black {
+	margin-left:1px;
+	background:#000;
+	color:#FFF;
+	font-family: 'Yanone Kaffeesatz', sans-serif;
+	padding:7px 5px;
+	font-size:19px;
+	/*width:316px;*/
+}
+.next_video .text_big {
+	color:#000;
+	font-family: 'Yanone Kaffeesatz', sans-serif;
+	padding:7px 5px;
+	font-size:25px;
+	width:316px;
+	text-transform:uppercase;
+	font-weight: 700;
+}
+.next_video .text_small {
+	color:#3399CC;
+	font-family: 'Yanone Kaffeesatz', sans-serif;
+	padding:7px 5px;
+	font-size:22px;
+	width:316px;
+	text-transform:uppercase;
+	font-weight: 700;
+	line-height:22px;
+}
+.next_video .promo_footer {
+	background:#3399CC;
+	color:#FFF;
+	font-family: 'Yanone Kaffeesatz', sans-serif;
+	padding:30px 0px;
+	text-align:center;
+	font-size:32px;
+	text-transform:uppercase;
+	font-weight: 700;
+	line-height:22px;
+	margin-bottom:20px;
+}
+.next_video .badge {
+	position:absolute;
+	right:5px;
+	top:0px;
+	background-color: rgba(22, 22, 22, 0.8);
+	width:86px;
+	height:92px;
+	text-align:center;
+	color:#3399CC;
+	font-family: 'Yanone Kaffeesatz', sans-serif;
+	text-transform:uppercase;
+	font-weight: 700;
+	font-size:16px;
+	padding-top:5px;
+	line-height:27px;
+}
+.next_video .day {
+	line-height:27px;
+	font-size:32px;
 }

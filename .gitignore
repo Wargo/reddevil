@@ -3,6 +3,7 @@ tmp
 uploads
 
 *.swp
+*.swo
 
 Plugin
 webroot/img/screenshots

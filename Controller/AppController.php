@@ -43,7 +43,7 @@ class AppController extends Controller {
 		'Auth' => array(
 				'authenticate' => array(
 					'Form' => array(
-						'fields' => array('username' => 'email')
+						'fields' => array('username' => 'username')
 					)
 				),
 				'loginAction' => array(

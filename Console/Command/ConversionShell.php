@@ -170,7 +170,7 @@ class ConversionShell extends AppShell {
 					$priority = 'nice -n ' . Configure::read('VideoProcessPriority') . ' ';
 				}
 				$ffmpegPath = Configure::read('FfmpegPath');
-				$cmd = $priority . " " . $ffmpegPath . "ffmpeg -i ".$path.$input." -b:v ".$bitrate." -s ".$res." ".$output;
+				$cmd = $priority . " " . $ffmpegPath . "ffmpeg -i ".$path.$input." -b:v ".$bitrate." -s ".$res." -ac 2 ".$output;
 				shell_exec($cmd);
 		
 				if ($this->_checkVideo($id, $model, 'wmv', $size, $duration)) {

@@ -88,6 +88,8 @@ class VideosController extends AppController {
 
 		$total_seconds = 90;
 
+		/*
+
 		$this->loadModel('User');
 
 		if ($this->Cookie->read('user')) {
@@ -137,6 +139,7 @@ class VideosController extends AppController {
 		$this->Session->write('phone', $phone);
 		$this->Session->write('text', $text);
 		$this->Session->write('sms', $sms);
+		*/
 
 		$section = 'video';
 
@@ -158,7 +161,9 @@ class VideosController extends AppController {
 
 		$this->set(compact('Video', 'main', 'section', 'user', 'phone', 'text', 'sms', 'total_seconds', 'title_for_layout'));
 
-		if ($this->Cookie->read('video_' . $Video['id']) > date('Y-m-d H:i:s', strtotime("-1 day"))) {
+		//if ($this->Cookie->read('video_' . $Video['id']) > date('Y-m-d H:i:s', strtotime("-1 day"))) {
+
+		if ($this->Auth->user('caducidad') > date('Y-m-d H:i:s')) {
 
 			$this->validateAccess();
 
@@ -396,21 +401,23 @@ class VideosController extends AppController {
 
 		$this->layout = 'ajax';
 
-		if (is_numeric($this->Session->read('phone'))) {
+		//if (is_numeric($this->Session->read('phone'))) {
 			$ch = curl_init('http://213.27.137.219:8080/SMSGateway/SmsGateway2FlashIn?cid=' . Configure::read('CID_m') . '&uid=' . $this->Cookie->read('user') . '&control=' . Configure::read('pass_m') . '&peticion=NO');
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 			$result = curl_exec($ch);
 			$access = false;
 			if (substr($result, 0, 2) === 'OK') {
-				//$this->validateAccess();
-				$current = $this->Session->read('current_video_id');
-				$this->Cookie->write('video_' . $current, date('Y-m-d H:i:s'));
+				$this->loadModel('User');
+				$this->User->id = $this->Auth->user('id');
+				$date = date('Y-m-d H:i:s', strtotime("+7 day"));
+				$this->User->save(array('caducidad' => $date));
+				$this->Session->write('Auth.User.caducidad', $date);
 				$access = true;
 			}
 			$this->set(compact('result', 'access'));
-		} else {
-			$this->autoRender = false;
-		}
+		//} else {
+			//$this->autoRender = false;
+		//}
 	}
 
 	function validateAccess() {
