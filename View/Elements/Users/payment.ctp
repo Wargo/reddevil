@@ -1,4 +1,3 @@
-<link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,700' rel='stylesheet' type='text/css'>
 <div class="left_part" style="width:200px">
 	<p class="text_big small">
 		<?php echo __('Bienvenido'); ?>
