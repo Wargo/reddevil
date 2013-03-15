@@ -61,23 +61,26 @@ echo '<div class="next_video">';
 			echo '<div class="bg_black">';
 				echo __('Disfruta nuestros contenidos por menos de 1 € al día');
 			echo '</div>';
-			echo '<div class="text_big">';
-				echo __('Hazte socio y accede al contenido exclusivo de los rodajes');
+			echo '<div class="left">';
+				echo '<div class="text_big">';
+					echo __('Hazte socio y accede al contenido exclusivo de los rodajes');
+				echo '</div>';
+				echo '<div class="text_small">';
+					echo __('Tomas falsas');
+					echo '<br />';
+					echo __('Cámaras espía');
+					echo '<br />';
+					echo __('Sesiones de fotos');
+				echo '</div>';
 			echo '</div>';
-			echo '<div class="text_small">';
-				echo __('Tomas falsas');
-				echo '<br />';
-				echo __('Cámaras espía');
-				echo '<br />';
-				echo __('Sesiones de fotos');
-			echo '</div>';
-		echo '</div>';
 
-		if ($this->Session->read('Auth.User.id')) {
-			echo $this->Html->link(__('Ver mi cuenta'), array('controller' => 'users', 'action' => 'profile'), array('class' => 'go_my_profile floating_button'));
-		} else {
-			echo $this->Html->link(__('Hacerme socio'), array('controller' => 'users', 'action' => 'profile'), array('class' => 'go_my_profile floating_button'));
-		}
+			if ($this->Session->read('Auth.User.id')) {
+				echo $this->Html->link(__('Ver mi cuenta'), array('controller' => 'users', 'action' => 'profile'), array('class' => 'go_my_profile floating_button'));
+			} else {
+				echo $this->Html->link(__('Hacerme socio'), array('controller' => 'users', 'action' => 'profile'), array('class' => 'go_my_profile floating_button'));
+			}
+
+		echo '</div>';
 
 	echo '</div>';
 
