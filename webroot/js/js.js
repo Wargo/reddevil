@@ -246,13 +246,14 @@ function load_popup() {
 
 		$.get(path, function(data) {
 			$('#register_dialog').html(data);
+
+			setTimeout(function() {
+				if ($('.remaining').html()) {
+					refresh($('.remaining').html());
+					isCalling();
+				}
+			}, 1000);
 		});
-		setTimeout(function() {
-			if ($('.remaining').html()) {
-				refresh($('.remaining').html());
-				isCalling();
-			}
-		}, 1000);
 
 	}, 500);
 }
