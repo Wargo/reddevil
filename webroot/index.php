@@ -70,7 +70,8 @@
 		define('WWW_ROOT', dirname(__FILE__) . DS);
 	}
 
-	define('CAKE_CORE_INCLUDE_PATH', '../../../cakes/2.1.5.x');
+	
+	define('CAKE_CORE_INCLUDE_PATH', ROOT . '/../cakes/2.1.5.x');
 
 	if (!defined('CAKE_CORE_INCLUDE_PATH')) {
 		if (function_exists('ini_set')) {
