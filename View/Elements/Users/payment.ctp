@@ -25,6 +25,7 @@
 			?>
 		</p>
 		<?php
+			echo $this->Html->link(__('Desconectar'), array('controller' => 'users', 'action' => 'logout'), array('class' => 'logout'));
 	} else {
 		$user = $this->Session->read('Auth.User.id');
 		$total_seconds = 90;

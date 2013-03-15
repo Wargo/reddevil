@@ -49,7 +49,7 @@ class User extends AppModel {
 				),
 				'isUnique' => array(
 					'rule' => 'isUnique',
-					'message' => __('El nombre de usuario ya existe en nuestra base de datos', true)
+					'message' => __('Nombre de usuario o contraseña incorrecta', true)
 				),
 			),
 			'email' => array(
