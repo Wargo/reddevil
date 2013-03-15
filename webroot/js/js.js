@@ -226,7 +226,14 @@ $(document).ready(function() {
 	}
 
 	$('.go_my_profile').click(function() {
-		load_popup();
+		if ($('#register_dialog').html()) {
+			$(this).removeClass('selected');
+			stop_refreshing = true;
+			$('#register_dialog').html('');
+		} else {
+			$(this).addClass('selected');
+			load_popup();
+		}
 		return false;
 	});
 
@@ -262,13 +269,14 @@ function load_popup() {
 
 		$.get(path, function(data) {
 			$('#register_dialog').html(data);
+
+			setTimeout(function() {
+				if ($('.remaining').html()) {
+					refresh($('.remaining').html());
+					isCalling();
+				}
+			}, 1000);
 		});
-		setTimeout(function() {
-			if ($('.remaining').html()) {
-				refresh($('.remaining').html());
-				isCalling();
-			}
-		}, 1000);
 
 	}, 500);
 }
