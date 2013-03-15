@@ -227,9 +227,11 @@ $(document).ready(function() {
 
 	$('.go_my_profile').click(function() {
 		if ($('#register_dialog').html()) {
+			$(this).removeClass('selected');
 			stop_refreshing = true;
 			$('#register_dialog').html('');
 		} else {
+			$(this).addClass('selected');
 			load_popup();
 		}
 		return false;
