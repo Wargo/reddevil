@@ -480,7 +480,8 @@ class UsersController extends AppController {
 		if ($this->Auth->user()) {
 			$this->_message(__('¡Hasta pronto!'), false, null, true);
 		}
-		$this->redirect($this->Auth->logout());
+		//$this->redirect($this->Auth->logout());
+		$this->redirect('/');
 	}
 
 	protected function _logout() {
