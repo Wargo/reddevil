@@ -105,6 +105,7 @@ input[type=submit] {
 }
 form input[type=submit] {
 	background:#333;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#555555', endColorstr='#111111');
 	background-image: -webkit-gradient(linear, left top, left bottom, from(#555), to(#111));
 	background-image: -webkit-linear-gradient(top, #555, #111);
 	background-image: -moz-linear-gradient(top, #555, #111);

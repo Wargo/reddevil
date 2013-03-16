@@ -33,6 +33,7 @@ div.room_element div.rating {
 }
 
 div.element_title {
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#333333', endColorstr='#111111');
 	background-image: -webkit-gradient(linear, left top, left bottom, from(#333), to(#111));
 	background-image: -webkit-linear-gradient(top, #333, #111);
 	background-image: -moz-linear-gradient(top, #333, #111);
@@ -205,6 +206,8 @@ a.boton_verde:hover {
 	background:#333;
 }
 a.boton_verde {
+	background:#333;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#333333', endColorstr='#111111');
 	background-image: -webkit-gradient(linear, left top, left bottom, from(#333), to(#111));
 	background-image: -webkit-linear-gradient(top, #333, #111);
 	background-image: -moz-linear-gradient(top, #333, #111);

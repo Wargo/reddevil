@@ -422,19 +422,25 @@ class VideosController extends AppController {
 
 	function validateAccess() {
 
-		exec('mkdir links/' . $this->Cookie->read('user'));
+		exec('mkdir links/' . $this->Auth->user('id'));
 
-		$current = $this->Session->read('current_video_id');
-		//$this->Cookie->write('video_' . $current, date('Y-m-d H:i:s'));
+		//$current = $this->Session->read('current_video_id');
+
+		$videos = $this->Video->find('all');
+
+		foreach ($videos as $video) {
+
+			$current = $video['Video']['id'];
 		
-		$link = Security::hash($this->Cookie->read('user') . '_' . $current, null, true);
+			$link = Security::hash($this->Auth->user('id') . '_' . $current, null, true);
 
-		$formats = Configure::read('formats');
+			$formats = Configure::read('formats');
 
-		exec('ln -s ../../../uploads/Video/mp4/l/' . $current . '.mp4 links/' . $this->Cookie->read('user') . '/' . $link . '_mp4_l.mp4');
-		foreach ($formats as $format) {
-			foreach ($format['sizes'] as $size) {
-				exec('ln -s ../../../uploads/Video/' . $format['folder'] . '/' . $size . '/' . $current . '.' . $format['folder'] . ' links/' . $this->Cookie->read('user') . '/' . $link . '_' . $format['folder'] . '_' . $size . '.' . $format['folder']);
+			exec('ln -s ../../../uploads/Video/mp4/l/' . $current . '.mp4 links/' . $this->Auth->user('id') . '/' . $link . '_mp4_l.mp4');
+			foreach ($formats as $format) {
+				foreach ($format['sizes'] as $size) {
+					exec('ln -s ../../../uploads/Video/' . $format['folder'] . '/' . $size . '/' . $current . '.' . $format['folder'] . ' links/' . $this->Auth->user('id') . '/' . $link . '_' . $format['folder'] . '_' . $size . '.' . $format['folder']);
+				}
 			}
 		}
 	}

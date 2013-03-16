@@ -68,7 +68,8 @@ $(function() {
 <div class="video_footer">
 	<ul>
 		<li><?php
-		if (ClassRegistry::init('Video')->isPrivate($Video['id'], $cookies)) {
+		//if (ClassRegistry::init('Video')->isPrivate($Video['id'], $cookies)) {
+		if ($this->Session->read('Auth.User.caducidad') < date('Y-m-d H:i:s')) {
 			echo $this->Html->link(__('Bájate el vídeo completo'),
 				array('controller' => 'videos', 'action' => 'view_video', $Video['slug']),
 				array('class' => '_view_video'));

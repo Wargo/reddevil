@@ -29,6 +29,8 @@ foreach ($formats[$type]['sizes'] as $size) {
 
 	}
 
+$cookies['user'] = $this->Session->read('Auth.User.id');
+
 	$link = Security::hash($cookies['user'] . '_' . $Video['id'], null, true);
 
 	$file = '/links/' . $cookies['user'] . '/' . $link . '_' . $ext . '_' . $size . '.' . $ext;
