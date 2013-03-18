@@ -3,6 +3,8 @@ echo '<div class="next_video">';
 
 	$next_video_id = '51430a39-9fe0-4eab-8473-63acbca5e1a6';
 	$composition = 'escena_porno_fallas.jpg';
+	$next_video_id = '51445ac2-8214-4d15-8802-1ddfbca5e1a6';
+	$composition = 'me_gusta-tu_pelo_verde.jpg';
 
 	$published = ClassRegistry::init('Video')->findById($next_video_id);
 	$day = substr($published['Video']['published'], 8, 2);
@@ -62,15 +64,11 @@ echo '<div class="next_video">';
 				echo __('Disfruta nuestros contenidos por menos de 1 € al día');
 			echo '</div>';
 			echo '<div class="left">';
-				echo '<div class="text_big">';
+				echo '<div class="text_big" style="margin-left:20px; margin-top:10px;">';
 					echo __('Hazte socio y accede al contenido exclusivo de los rodajes');
 				echo '</div>';
-				echo '<div class="text_small">';
-					echo __('Tomas falsas');
-					echo '<br />';
-					echo __('Cámaras espía');
-					echo '<br />';
-					echo __('Sesiones de fotos');
+				echo '<div class="text_small" style="margin-top:15px; margin-left:20px;">';
+					echo __('Envía 1 SMS y disfruta 1 semana');
 				echo '</div>';
 			echo '</div>';
 

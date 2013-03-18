@@ -12,7 +12,7 @@ $image = $this->Html->url('/img/Photo/' . $folder . '/' . $main['Photo']['id'] .
 			<?php
 			//if (!empty($cookies[$Video['id']])) {
 			//if (!empty($cookies['video_' . $Video['id']]) && $cookies['video_' . $Video['id']] > date('Y-m-d H:i:s', strtotime("-1 day"))) {
-			if ($Video['id'] != '51430a39-9fe0-4eab-8473-63acbca5e1a6' && $this->Session->read('Auth.User.caducidad') > date('Y-m-d H:i:s')) {
+			if ($Video['id'] != 'x51430a39-9fe0-4eab-8473-63acbca5e1a6' && $this->Session->read('Auth.User.caducidad') > date('Y-m-d H:i:s')) {
 
 				$link = Security::hash($this->Session->read('Auth.User.id') . '_' . $Video['id'], null, true);
 				?>

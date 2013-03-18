@@ -13,7 +13,10 @@ echo $this->Form->inputs(array(
 		'label' => __('Publicado')
 	),
 	'main' => array(
-		'label' => __('Foto principal')
+		'label' => __('Foto principal trailer')
+	),
+	'main_video' => array(
+		'label' => __('Foto principal vídeo')
 	),
 	'adv' => array(
 		'label' => __('Para publicidad')

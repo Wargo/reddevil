@@ -153,9 +153,17 @@ class VideosController extends AppController {
 		$main = ClassRegistry::init('Photo')->find('first', array(
 			'conditions' => array(
 				'video_id' => $Video['id'],
-				'main' => 1
+				'main_video' => 1
 			),
 		));
+		if (!$main) {
+			$main = ClassRegistry::init('Photo')->find('first', array(
+				'conditions' => array(
+					'video_id' => $Video['id'],
+					'main' => 1
+				),
+			));
+		}
 
 		$title_for_layout = $this->Video->getTitle($Video);
 
@@ -402,9 +410,18 @@ class VideosController extends AppController {
 		$this->layout = 'ajax';
 
 		//if (is_numeric($this->Session->read('phone'))) {
-			$ch = curl_init('http://213.27.137.219:8080/SMSGateway/SmsGateway2FlashIn?cid=' . Configure::read('CID_m') . '&uid=' . $this->Cookie->read('user') . '&control=' . Configure::read('pass_m') . '&peticion=NO');
+			$url = 'http://213.27.137.219:8080/SMSGateway/SmsGateway2FlashIn?cid=' . Configure::read('CID_m') . '&uid=' . $this->Auth->user('id') . '&control=' . Configure::read('pass_m') . '&peticion=NO';
+			$ch = curl_init($url);
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 			$result = curl_exec($ch);
+
+$file = fopen('sms.txt', 'a');
+fwrite($file, "\r\n\r\n");
+fwrite($file, "\r\n" . $url . "\r\n");
+fwrite($file, "\r\n" . $result . "\r\n");
+fwrite($file, "\r\n" . date('Y-m-d H:i:s') . "\r\n");
+fwrite($file, "\r\n\r\n");
+fclose($file);
 			$access = false;
 			if (substr($result, 0, 2) === 'OK') {
 				$this->loadModel('User');

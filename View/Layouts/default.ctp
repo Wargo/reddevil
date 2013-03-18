@@ -13,7 +13,8 @@
 	<?php
 		echo $this->Html->meta('icon');
 
-		echo $this->Html->css('styles');
+		//echo $this->Html->css('styles');
+		echo $this->Html->css('styles2');
 		echo $this->Html->css('forms');
 		echo $this->Html->css('flowplayer/minimalist');
 		echo $this->Html->css('lightbox/jquery.lightbox-0.5');

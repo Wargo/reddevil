@@ -15,7 +15,7 @@
 
 echo $this->Form->create('User', array('class' => 'register clearfix', 'url' => array('controller' => 'users', 'action' => 'register')));
 
-echo '<span class="text_big small" style="display:block; margin-left:10px; margin-top:40px;">' . __('Registro') . '</span>';
+echo '<span class="text_big small" style="display:block; margin-left:10px; margin-top:40px;">' . __('Registro / Login') . '</span>';
 
 echo $this->Form->input('username', array(
 	'fieldset' => false, 

@@ -1,4 +1,9 @@
 <script type="text/javascript">
+if (navigator.platform == 'iPad') {
+	setTimeout(function() {
+		$('.ipad_message').removeClass('hidden');
+	}, 2000);	
+}
 $(function() {
 	$.scrollTo('#buttons', 200, {offset:{top:-100}});
 });
@@ -62,6 +67,8 @@ $(function() {
 				break;
 		}
 		?>
+		
+		<div style="text-align: center; color:#FFF" class="hidden ipad_message"><?php echo __('Si no puedes ver el vídeo y estás usando Chrome, pincha en "opciones" (arriba a la derecha) y pincha en "solicitar sitio escritorio" para dar acceso al vídeo.'); ?></div>
 
 	</div>
 </div>
@@ -120,7 +127,8 @@ echo $this->Html->link('
 		$others = ClassRegistry::init('Video')->find('all', array(
 			'conditions' => array(
 				'id !=' => $Video['id'],
-				'Video.active' => 1
+				'Video.active' => 1,
+				'published <=' => date('Y-m-d H:i:s')
 			),
 			'limit' => 3,
 			'order' => array('rand()'),
@@ -146,3 +154,6 @@ echo $this->Html->link('
 		?>
 	</div>
 </div>
+<?php
+echo '<div style="height:20px;"></div>';
+echo $this->element('Videos/promo');

@@ -42,9 +42,9 @@ class Video extends AppModel {
 		
 		$ips = array('84.123.66.33', '127.0.0.1');
 		if (empty($_SERVER['REMOTE_ADDR']) || in_array($_SERVER['REMOTE_ADDR'], $ips)) {
-			//$conditions['published <='] = date('Y-m-d H:i:s');
+			$conditions['published <='] = date('Y-m-d H:i:s');
 		} else {
-			//$conditions['published <='] = date('Y-m-d H:i:s');
+			$conditions['published <='] = date('Y-m-d H:i:s');
 		}
 		$conditions['active'] = 1;
 
