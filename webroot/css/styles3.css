@@ -848,7 +848,8 @@ ul.follow li {
 	transition: all 0.3s ease 0s;
 	position:fixed;
 	right:0;
-	top:50%;
+	*right:24px; /* TODO no va! */
+	top:90%;
 	/* WebKit, Safari */
 	-webkit-transform: rotate(-90deg); 
 	/* Firefox 3.5+*/
