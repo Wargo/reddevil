@@ -37,6 +37,9 @@
 	<?php echo $this->element('analytics'); ?>
 </head>
 <body>
+	<?php echo $this->Html->link($this->Html->image('bg/fallera.png', array()),
+		array('controller' => 'videos', 'action' => 'view', 'pablo-ferrari-y-julia-de-lucia-en-fallas-o-follas-valencia-en-fallas'),
+		array('class' => 'bg_promo', 'escape' => false)); ?>
 	<div id="container">
 		<div id="header">
 			<?php echo $this->element('menu'); ?>

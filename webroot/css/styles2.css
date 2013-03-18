@@ -840,6 +840,7 @@ ul.follow li {
  * Feedback button
  */
 .feedback {
+	z-index:20;
 	-webkit-transition: all 0.3s ease 0s;
 	-moz-transition: all 0.3s ease 0s;
 	-o-transition: all 0.3s ease 0s;
@@ -1018,4 +1019,19 @@ img.preload {
 .next_video .day {
 	line-height:27px;
 	font-size:32px;
+}
+
+/*
+ * bg promo
+ */
+.bg_promo {
+	display:block;
+	position:fixed;
+	top:70px;
+	left:50%;
+	margin-left:503px;
+	z-index:10;
+}
+.bg_promo img {
+	width:300px;
 }
