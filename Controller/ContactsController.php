@@ -76,7 +76,7 @@ class ContactsController extends AppController {
 
 	function admin_index() {
 
-		$contacts = $this->Contact->find('all');
+		$contacts = $this->Contact->find('all', array('order' => array('created' => 'desc')));
 
 		$this->set(compact('contacts'));
 
