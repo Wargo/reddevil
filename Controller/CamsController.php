@@ -7,6 +7,8 @@ class CamsController extends AppController {
 
 		$title_for_layout = __('Webcams');
 
+		$description_for_layout = __('Webcams porno, chicas on-line');
+
 		//$url = 'http://modelocam.com/spa/rooms/get_list/20/filter:altas.json';
 		$url_filters = 'http://modelocam.com/spa/filters/get_list.json';
 

@@ -1,6 +1,6 @@
 <meta name="title" content="<?php echo $title_for_layout; ?>" />
 <meta name="description" content="<?php echo !empty($description_for_layout) ? $description_for_layout : ''; ?>" />
-<meta name="keywords" content="<?php echo !empty($keywords_for_layout) ? $keywords_for_layout : 'red porno, porno español, videos x, reddevilx, reddevil, chicas, desnudos, teta, culo, mamada'; ?>" />
+<meta name="keywords" content="<?php echo !empty($keywords_for_layout) ? $keywords_for_layout : 'red porno, porno español, videos x, reddevilx, reddevil, chicas, webcams, chicas online, desnudos, tetas, culos, mamada'; ?>" />
 
 <meta name="google-site-verification" content="67mjGpxk9OhIr6Mrez0OQpFOVAUM9oOW7wI_WSY_AVg" />
 
