@@ -1,4 +1,5 @@
 <?php
+echo $this->Session->flash();
 $this->set('title_for_layout', __('Quiero ser actriz porno'));
 ?>
 <div class="page_content">
