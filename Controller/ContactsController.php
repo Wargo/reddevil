@@ -36,6 +36,7 @@ class ContactsController extends AppController {
 			$this->Contact->create();
 			if ($this->Contact->save($this->request->data)) {
 				$this->Session->setFlash(__('Formulario enviado correctamente'), 'default', array('class' => 'notification'));
+				$this->request->data = null;
 			} else {
 				$this->Session->setFlash(__('Ha ocurrido un error, revisa todos los datos'), 'default', array('class' => 'error'));
 			}
