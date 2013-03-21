@@ -62,6 +62,8 @@
 	Router::connect('/categoria/:category/:page', array('controller' => 'videos', 'action' => 'home'));
 
 
+	Router::connect('/quiero-afiliarme', array('controller' => 'pages', 'action' => 'display', 'webmaster'));
+
 	Router::connect('/quiero-ser-actriz-porno', array('controller' => 'pages', 'action' => 'display', 'wannabe'));
 
 	Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));

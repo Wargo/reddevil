@@ -10,6 +10,7 @@ foreach ($contacts as $contact) {
 
 	echo '<ul style="margin-bottom:20px;">';
 
+		echo '<li>Tipo de contacto: ' . $Contact['type'] . '</li>';
 		echo '<li>Nombre: ' . $Contact['name'] . '</li>';
 		echo '<li>Edad: ' . $Contact['age'] . '</li>';
 		echo '<li>País: ' . $Contact['country'] . '</li>';

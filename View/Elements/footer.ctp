@@ -7,7 +7,7 @@
 	<?php } else { ?>
 		<li><?php echo $this->Html->link(__('Webcams', true), array(), array('class' => 'disabled', 'title' => __('Webcams'))); ?></li>
 	<?php } ?>
-	<li><?php echo $this->Html->link(__('Zona para webmasters'), 'http://www.webafiliacion.com', array('target' => '_blank')); ?></li>
+	<li><?php echo $this->Html->link(__('Zona para webmasters'), array('controller' => 'pages', 'action' => 'display', 'webmaster'), array()); ?></li>
 	<li><?php echo $this->Html->link(__('Ser actriz porno'), array('controller' => 'pages', 'action' => 'display', 'wannabe')); ?></li>
 	<li><?php echo $this->Html->link(__('Versión móvil'), array(), array('class' => 'disabled')); ?></li>
 </ul>
