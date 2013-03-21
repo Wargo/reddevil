@@ -8,32 +8,11 @@ $published = ClassRegistry::init('Video')->find('first', array(
 	'order' => array('published' => 'asc')
 ));
 
-if (file_exists(WWW_ROOT . 'img' . DS . 'promos' . DS . $published['Video']['id'] . '.jpg')) {
-	$composition = 'promos' . DS . $published['Video']['id'] . '.jpg';
-}
-
-$day = substr($published['Video']['published'], 8, 2);
-//$month = date('F', strtotime($published['Video']['published']));
-
-$month = substr($published['Video']['published'], 5, 2);
-switch ($month) {
-	case '01': $m = __('Enero'); break;
-	case '02': $m = __('Febrero'); break;
-	case '03': $m = __('Marzo'); break;
-	case '04': $m = __('Abril'); break;
-	case '05': $m = __('Mayo'); break;
-	case '06': $m = __('Junio'); break;
-	case '07': $m = __('Julio'); break;
-	case '08': $m = __('Agosto'); break;
-	case '09': $m = __('Septiembre'); break;
-	case '10': $m = __('Octubre'); break;
-	case '11': $m = __('Noviembre'); break;
-	case '12': $m = __('Diciembre'); break;
-}
-
 if ($published) {
 
-	if (empty($composition)) {
+	if (file_exists(WWW_ROOT . 'img' . DS . 'promos' . DS . $published['Video']['id'] . '.jpg')) {
+		$composition = 'promos' . DS . $published['Video']['id'] . '.jpg';
+	} else {
 
 		$images = ClassRegistry::init('Photo')->find('all', array(
 			'conditions' => array(
@@ -47,10 +26,33 @@ if ($published) {
 
 	}
 
-	if (!empty($images) || !empty($composition)) {
+	$day = substr($published['Video']['published'], 8, 2);
+	//$month = date('F', strtotime($published['Video']['published']));
+
+	$month = substr($published['Video']['published'], 5, 2);
+	switch ($month) {
+		case '01': $m = __('Enero'); break;
+		case '02': $m = __('Febrero'); break;
+		case '03': $m = __('Marzo'); break;
+		case '04': $m = __('Abril'); break;
+		case '05': $m = __('Mayo'); break;
+		case '06': $m = __('Junio'); break;
+		case '07': $m = __('Julio'); break;
+		case '08': $m = __('Agosto'); break;
+		case '09': $m = __('Septiembre'); break;
+		case '10': $m = __('Octubre'); break;
+		case '11': $m = __('Noviembre'); break;
+		case '12': $m = __('Diciembre'); break;
+	}
+
+}
 
 		echo '<div class="next_video">';
 
+if ($published) {
+
+	if (!empty($images) || !empty($composition)) {
+			
 			echo '<div class="badge">';
 				echo __('Nueva escena %s %s', '<span class="day">' . $day . '</span><br />', $m); 
 			echo '</div>';
@@ -72,7 +74,11 @@ if ($published) {
 				}
 
 			echo '</div>';
-			
+
+	}
+
+}
+
 			echo '<div class="promo_text clearfix">';
 				echo '<div class="bg_red">';
 					echo __('Vive la experiencia RedDevilX');
@@ -105,7 +111,3 @@ if ($published) {
 			echo '</div>';
 
 		echo '</div>';
-
-	}
-
-}

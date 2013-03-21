@@ -17,7 +17,8 @@ $(function() {
 			'conditions' => array(
 				'video_id !=' => $Video['id'],
 				'adv' => 1,
-				'Video.active' => 1
+				'Video.active' => 1,
+				'Video.published <' => date('Y-m-d H:i:s'),
 			),
 			'order' => ('rand()'),
 		));
@@ -26,7 +27,8 @@ $(function() {
 			'conditions' => array(
 				'video_id !=' => $Video['id'],
 				'featured' => 1,
-				'Video.active' => 1
+				'Video.active' => 1,
+				'Video.published <' => date('Y-m-d H:i:s'),
 			),
 			'order' => ('rand()'),
 		));

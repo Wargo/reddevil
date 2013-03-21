@@ -50,7 +50,7 @@ class Photo extends AppModel {
 			$last = array_pop($actors);
 			return sprintf(__('Fotos de %s y %s %s'), implode(', ', $actors), $last, $Photo['title']);
 		} else {
-			return sprintf(__('Fotos de %s en %s'), implode(', ', $actors), $Photo['title']);
+			return sprintf(__('Fotos de %s %s'), implode(', ', $actors), $Photo['title']);
 		}
 
 	}
