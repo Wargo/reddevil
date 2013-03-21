@@ -60,7 +60,7 @@ $this->set('title_for_layout', __('Quiero afiliarme'));
 
 		echo '<h2>' . $Video['title'] . '</h2>';
 		
-		echo '<textarea width="300" height="100" readonly="true"><iframe height="367" scrolling="no" width="630" src="' . $this->Html->url(array('full_base' => true, 'controller' => 'videos', 'action' => 'external', $Video['id']))  . '"></iframe></textarea>';
+		echo '<textarea onClick="$(\'#' . $Video['id'] . '\').select();" id="' . $Video['id'] . '" width="300" height="100" readonly="true"><iframe height="367" scrolling="no" width="630" src="' . $this->Html->url(array('full_base' => true, 'controller' => 'videos', 'action' => 'external', $Video['id']))  . '"></iframe></textarea>';
 
 	}
 	?>
