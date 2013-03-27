@@ -14,5 +14,4 @@
 		<li><?php echo $this->Html->link($text, array('controller' => 'users', 'action' => 'profile'), array('class' => $this->params['controller'] == 'users' ? 'selected' : 'go_my_profile', 'title' => $text)); ?></li>
 	</ul>
 	<?php echo $this->element('search'); ?>
-	<?php echo $this->element('follow'); ?>
 </div>

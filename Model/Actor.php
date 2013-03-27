@@ -1,6 +1,7 @@
 <?php
 class Actor extends AppModel {
 
+/*
 	public $actsAs = array(
 		'Media.Transfer' => array(
 			'trustClient' => false,
@@ -8,5 +9,6 @@ class Actor extends AppModel {
 			'createDirectory' => true,	
 		),
 	);
+*/
 
 }

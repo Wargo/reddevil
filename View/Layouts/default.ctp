@@ -49,6 +49,7 @@
 			<div class="bg_header"></div>
 			<?php //echo $this->Session->flash(); ?>
 			<?php echo $this->fetch('content'); ?>
+			<?php echo $this->element('follow'); ?>
 		</div>
 		<div id="footer">
 			<?php echo $this->element('footer'); ?>

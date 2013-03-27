@@ -3,6 +3,7 @@ class Photo extends AppModel {
 
 	var $belongsTo = array('Video');
 
+/*
 	public $actsAs = array(
 		'Media.Transfer' => array(
 			'trustClient' => false,
@@ -10,6 +11,7 @@ class Photo extends AppModel {
 			'createDirectory' => true,	
 		),
 	);
+*/
 
 	function getPhotos($video_id, $limit = 0) {
 

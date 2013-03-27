@@ -57,7 +57,7 @@ class PhotosController extends AppController {
 
 	function admin_index() {
 		
-		$photos = $this->Photo->find('all');
+		$photos = $this->Photo->find('all', array('order' => array('Photo.created' => 'desc')));
 
 		$this->set(compact('photos'));
 
@@ -107,6 +107,17 @@ class PhotosController extends AppController {
 			}
 
 			$this->Photo->save($this->request->data);
+
+			if (!empty($_FILES['data']['name']['Photo']['file'])) {
+				$aux = explode('-', $this->Photo->id);
+				$aux = substr($aux[1], 0, 3);
+				if (!is_dir(APP . 'uploads' . DS . 'img' . DS . 'Photo' . DS . $aux)) {
+					mkdir(APP . 'uploads' . DS . 'img' . DS . 'Photo' . DS . $aux);
+				}
+				exec('rm -f ' . WWW_ROOT . 'img' . DS . 'Photo' . DS . $aux . DS . $this->Photo->id . '*');
+				move_uploaded_file($_FILES['data']['tmp_name']['Photo']['file'],
+					APP . 'uploads' . DS . 'img' . DS . 'Photo' . DS . $aux . DS . $this->Photo->id . '.jpg');
+			}
 
 			if (!$id) {
 				$id = $this->Photo->id;

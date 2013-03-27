@@ -17,7 +17,6 @@ if ($published) {
 		$images = ClassRegistry::init('Photo')->find('all', array(
 			'conditions' => array(
 				'video_id' => $published['Video']['id'],
-				'main' => 0,
 				'featured' => 1,
 			),
 			'limit' => 3,

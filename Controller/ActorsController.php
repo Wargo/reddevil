@@ -23,6 +23,17 @@ class ActorsController extends AppController {
 
 			$this->Actor->save($this->request->data);
 
+			if (!empty($_FILES['data']['name']['Actor']['file'])) {
+				$aux = explode('-', $this->Actor->id);
+				$aux = substr($aux[1], 0, 3);
+				if (!is_dir(APP . 'uploads' . DS . 'img' . DS . 'Actor' . DS . $aux)) {
+					mkdir(APP . 'uploads' . DS . 'img' . DS . 'Actor' . DS . $aux);
+				}
+				exec('rm -f ' . WWW_ROOT . 'img' . DS . 'Actor' . DS . $aux . DS . $this->Actor->id . '*');
+				move_uploaded_file($_FILES['data']['tmp_name']['Actor']['file'],
+					APP . 'uploads' . DS . 'img' . DS . 'Actor' . DS . $aux . DS . $this->Actor->id . '.jpg');
+			}
+
 			return $this->redirect('index');
 
 		}

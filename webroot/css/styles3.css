@@ -805,8 +805,8 @@ a.more_videos_button:hover {
  * Follow
  */
 ul.follow {
-	float:left;
-	margin:10px 0px 0px 125px;
+	float:right;
+	margin:15px 0px 0px 125px;
 }
 ul.follow li {
 	margin:0 2px;
