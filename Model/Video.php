@@ -10,7 +10,8 @@ class Video extends AppModel {
 		return $this->find('all', array(
 			'conditions' => $conditions,
 			'limit' => 6,
-			'offset' => $this->limit * $page
+			'offset' => $this->limit * $page,
+			'order' => array('published' => 'desc')
 		));
 
 	}

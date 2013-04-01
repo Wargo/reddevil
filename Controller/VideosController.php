@@ -230,9 +230,12 @@ class VideosController extends AppController {
 			$page = !empty($this->params['named']['page']) ? $this->params['named']['page'] : 1;
 		}
 
-		$conditions['or'] = array(
+		$conditions = array(
 			'active' => 1,
-			'published >' => date('Y-m-d H:i:s'),
+			'published <=' => date('Y-m-d H:i:s'),
+		);
+
+		$conditions['or'] = array(
 			'title like' => '%' . $search . '%',
 			'description like' => '%' . $search . '%',
 		);

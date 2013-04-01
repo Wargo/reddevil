@@ -32,20 +32,32 @@
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 		$mobile = curl_exec($ch);
 
-		$mobile = explode('<SEPARATOR>', $mobile);
-		$text = $mobile[0];
-		$sms = str_replace('<SENDER>', '', $mobile[1]);
-		?>
-		<p class="sms" style="color:#FFF;">
-			<?php echo sprintf(__('Envía %s al %s, dispones de %s segundos para mandarlo'), '<span class="big">' . $text . '</span>', '<span class="big">' . $sms . '</span>', '<span class="remaining">' . $total_seconds . '</span>'); ?>
-			<br />
-			<br />
-			<?php echo __('¡Este servicio te permite acceder a todo el contenido privado de RedDevilX durante 7 días!'); ?>
-			<br />
-			<br />
-			<span class="info_text"><?php echo Configure::read('info_m'); ?></span>
-		</p>
-		<?php
+		if ($mobile) {
+
+			$mobile = explode('<SEPARATOR>', $mobile);
+			$text = $mobile[0];
+			$sms = str_replace('<SENDER>', '', $mobile[1]);
+			?>
+			<p class="sms" style="color:#FFF;">
+				<?php echo sprintf(__('Envía %s al %s, dispones de %s segundos para mandarlo'), '<span class="big">' . $text . '</span>', '<span class="big">' . $sms . '</span>', '<span class="remaining">' . $total_seconds . '</span>'); ?>
+				<br />
+				<br />
+				<?php echo __('¡Este servicio te permite acceder a todo el contenido privado de RedDevilX durante 7 días!'); ?>
+				<br />
+				<br />
+				<span class="info_text"><?php echo Configure::read('info_m'); ?></span>
+			</p>
+			<?php
+		} else {
+			?>
+			<p class="sms" style="color:#FFF;">
+				<?php echo __('Ha ocurrido un error al realizar la consulta para obtener el número y código del SMS'); ?>
+				<br />
+				<br />
+				<span class="info_text"><?php echo Configure::read('info_m'); ?></span>
+			</p>
+			<?php
+		}
 	}
 	?>
 </div>
