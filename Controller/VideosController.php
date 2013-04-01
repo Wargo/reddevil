@@ -231,6 +231,8 @@ class VideosController extends AppController {
 		}
 
 		$conditions['or'] = array(
+			'active' => 1,
+			'published >' => date('Y-m-d H:i:s'),
 			'title like' => '%' . $search . '%',
 			'description like' => '%' . $search . '%',
 		);
