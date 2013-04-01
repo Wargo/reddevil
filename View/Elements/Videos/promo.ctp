@@ -46,67 +46,67 @@ if ($published) {
 
 }
 
-		echo '<div class="next_video">';
+echo '<div class="next_video">';
 
 if ($published) {
 
+	echo '<div class="badge">';
+		echo __('Nueva escena %s %s', '<span class="day">' . $day . '</span><br />', $m); 
+	echo '</div>';
+
 	if (!empty($images) || !empty($composition)) {
 			
-			echo '<div class="badge">';
-				echo __('Nueva escena %s %s', '<span class="day">' . $day . '</span><br />', $m); 
-			echo '</div>';
+		echo '<div class="promo_images">';
 
-			echo '<div class="promo_images">';
+			if (empty($composition)) {
 
-				if (empty($composition)) {
-
-					$i = 0;
-					foreach ($images as $image) {
-						$i ++;
-						extract($image);
-						$alt = ClassRegistry::init('Photo')->getTitle($Photo);
-						echo $this->Html->image('Photo' . DS . $Photo['id'] . ',fitCrop,326,243.jpg', array('class' => $i == 3 ? 'last' : '', 'alt' => $alt, 'title' => $alt));
-					}
-
-				} else {
-					echo $this->Html->image($composition, array('width' => 980));
+				$i = 0;
+				foreach ($images as $image) {
+					$i ++;
+					extract($image);
+					$alt = ClassRegistry::init('Photo')->getTitle($Photo);
+					echo $this->Html->image('Photo' . DS . $Photo['id'] . ',fitCrop,326,243.jpg', array('class' => $i == 3 ? 'last' : '', 'alt' => $alt, 'title' => $alt));
 				}
 
-			echo '</div>';
+			} else {
+				echo $this->Html->image($composition, array('width' => 980));
+			}
+
+		echo '</div>';
 
 	}
 
 }
 
-			echo '<div class="promo_text clearfix">';
-				echo '<div class="bg_red">';
-					echo __('Vive la experiencia RedDevilX');
+	echo '<div class="promo_text clearfix">';
+		echo '<div class="bg_red">';
+			echo __('Vive la experiencia RedDevilX');
+		echo '</div>';
+		echo '<div class="bg_white">';
+			echo '<div class="bg_black">';
+				echo __('Disfruta nuestros contenidos por menos de 1 € al día');
+			echo '</div>';
+			echo '<div class="left">';
+				echo '<div class="text_big" style="margin-left:20px; margin-top:10px;">';
+					echo __('Hazte socio y accede al contenido exclusivo de los rodajes');
 				echo '</div>';
-				echo '<div class="bg_white">';
-					echo '<div class="bg_black">';
-						echo __('Disfruta nuestros contenidos por menos de 1 € al día');
-					echo '</div>';
-					echo '<div class="left">';
-						echo '<div class="text_big" style="margin-left:20px; margin-top:10px;">';
-							echo __('Hazte socio y accede al contenido exclusivo de los rodajes');
-						echo '</div>';
-						echo '<div class="text_small" style="margin-top:15px; margin-left:20px;">';
-							echo __('Envía 1 SMS y disfruta 1 semana');
-						echo '</div>';
-					echo '</div>';
-
-					if ($this->Session->read('Auth.User.id')) {
-						echo $this->Html->link(__('Ver mi cuenta'), array('controller' => 'users', 'action' => 'profile'), array('class' => 'go_my_profile floating_button'));
-					} else {
-						echo $this->Html->link(__('Hacerme socio'), array('controller' => 'users', 'action' => 'profile'), array('class' => 'go_my_profile floating_button'));
-					}
-
+				echo '<div class="text_small" style="margin-top:15px; margin-left:20px;">';
+					echo __('Envía 1 SMS y disfruta 1 semana');
 				echo '</div>';
-
 			echo '</div>';
 
-			echo '<div class="promo_footer">';
-				echo __('Bienvenido al porno 3.0');
-			echo '</div>';
+			if ($this->Session->read('Auth.User.id')) {
+				echo $this->Html->link(__('Ver mi cuenta'), array('controller' => 'users', 'action' => 'profile'), array('class' => 'go_my_profile floating_button'));
+			} else {
+				echo $this->Html->link(__('Hacerme socio'), array('controller' => 'users', 'action' => 'profile'), array('class' => 'go_my_profile floating_button'));
+			}
 
 		echo '</div>';
+
+	echo '</div>';
+
+	echo '<div class="promo_footer">';
+		echo __('Bienvenido al porno 3.0');
+	echo '</div>';
+
+echo '</div>';

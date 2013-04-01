@@ -194,7 +194,7 @@ form.search .search_button {
 }
 
 #search input[type="text"]:focus {
-    width: 200px;
+    width: 180px;
 }
 
 form.register div.input {
