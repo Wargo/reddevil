@@ -6,7 +6,7 @@ $image = $this->Html->url('/img/Photo/' . $folder . '/' . $main['Photo']['id'] .
 ?>
 <div class="player">
 	<div class="player_video">
-		<div class="flowplayer is-splash" 
+		<div class="flowplayer is-splash play-button" 
 			<?php echo 'style="background-image:url('.$image.')"'; ?>
 			data-swf="<?php echo $this->Html->url('/html5/flowplayer/flowplayer.swf'); ?>">
 			<video>

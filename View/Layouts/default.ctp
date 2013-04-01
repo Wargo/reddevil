@@ -10,6 +10,7 @@
 	<script src="http://flesler-plugins.googlecode.com/files/jquery.scrollTo-1.4.3.1.js"></script> 
 	<link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,700' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
+	<link rel="stylesheet" href="http://releases.flowplayer.org/5.3.2/skin/minimalist.css" />
 	<?php
 		echo $this->Html->meta('icon');
 
@@ -17,7 +18,7 @@
 		//echo $this->Html->css('styles2');
 		echo $this->Html->css('styles3');
 		echo $this->Html->css('forms');
-		echo $this->Html->css('flowplayer/minimalist');
+		//echo $this->Html->css('flowplayer/minimalist');
 		echo $this->Html->css('lightbox/jquery.lightbox-0.5');
 
 		if ($this->request->params['controller'] == 'cams') {
