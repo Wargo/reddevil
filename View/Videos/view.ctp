@@ -27,6 +27,7 @@ $(function() {
 			'conditions' => array(
 				'video_id !=' => $Video['id'],
 				'featured' => 1,
+				'adv' => 0,
 				'Video.active' => 1,
 				'Video.published <' => date('Y-m-d H:i:s'),
 			),
