@@ -28,4 +28,8 @@ App::uses('Shell', 'Console');
  */
 class AppShell extends Shell {
 
+	public function loadModel($Model) {
+		$this->{$Model} = ClassRegistry::init($Model);
+	}
+
 }

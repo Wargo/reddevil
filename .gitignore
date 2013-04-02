@@ -16,3 +16,4 @@ webroot/sitemap.xml
 
 Config/core.php
 Config/database.php
+Config/Nats/last_import
