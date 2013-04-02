@@ -18,13 +18,15 @@ class CronShell extends AppShell {
 		$conditions = array('status' => 1, 'joined >' => $last_import);
 		$order = array('joined' => 'asc');
 		$members = $this->NatsMember->find('all', compact('conditions', 'order'));
+
 		foreach ($members as $member) {
 			extract($member);
 			if ($this->User->find('first', array('conditions' => array('username' => $NatsMember['username'])))) {
 				continue;
 			}
+			
 			$data = array(
-				'password' => AuthComponent::password($NatsMember['password']),
+				'password' => $NatsMember['password'],
 				'group' => 'normal',
 				'email_verified' => $NatsMember['mailok'],
 				'email' => $NatsMember['email'],
