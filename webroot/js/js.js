@@ -216,7 +216,8 @@ $(document).ready(function() {
 			monthNamesShort: ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'],
 			dayNames: ['lunes','martes','miércoles','jueves','viernes','sábado','domingo'],
 			dayNamesShort: ['lun','mar','mié','jue','vie','sáb','dom'],
-			dayNamesMin: ['Lu','Ma','Mi','Ju','Vi','Sá','Do'],
+			//dayNamesMin: ['Lu','Ma','Mi','Ju','Vi','Sá','Do'],
+			dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sá'],
 			firstDay: 1,
 			showMonthAfterYear: false,
 			yearSuffix: ''

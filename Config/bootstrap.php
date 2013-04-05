@@ -159,10 +159,16 @@ Configure::write('pass_m1', 'n1p5l2s');
 Configure::write('pool_m1', 94);
 Configure::write('info_m1', __('WPR,S.A. Cte sms 1.45€ I.V.A incl., sms@wpr.es Nº atn clte 902044008. Apdo. Correos 14.953 - 28080 Madrid'));
 
+// SMS 4€ + IVA
+//Configure::write('CID_m', 'FA_7509_SMS_2');
+//Configure::write('pass_m', 'g2n2r3c42');
+//Configure::write('pool_m', 88);
+//Configure::write('info_m', __('WPR,S.A. Cte sms 4.84€ I.V.A incl. , sms@wpr.es Nº atn clte 902044008. Apdo. Correos 14.953 - 28080 Madrid'));
+
 // SMS 7€ + IVA
-Configure::write('CID_m', 'FA_7509_SMS_2');
-Configure::write('pass_m', 'g2n2r3c42');
-Configure::write('pool_m', 88);
+Configure::write('CID_m', 'FA_7509_SMS_1');
+Configure::write('pass_m', 'g2n2r3c4');
+Configure::write('pool_m', 89);
 Configure::write('info_m', __('WPR,S.A. Cte sms 7.26€ I.V.A incl. , sms@wpr.es Nº atn clte 902044008. Apdo. Correos 14.953 - 28080 Madrid'));
 
 $formats = array(

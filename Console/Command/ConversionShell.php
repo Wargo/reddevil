@@ -7,7 +7,6 @@ class ConversionShell extends AppShell {
 		//'wmv' => array('folder' => 'wmv', 'sizes' => array('l', 'm', 's')),
 		//'v3gp' => array('folder' => '3gp', 'sizes' => array('s')),
 		//'ogg' => array('folder' => 'ogg', 'sizes' => array('l', 'm', 's'))
-		//'mp4' => array('folder' => 'mp4', 'sizes' => array('s')),
 
 		'mp4' => array('folder' => 'mp4', 'sizes' => array('m', 's')),
 		'ogg' => array('folder' => 'ogg', 'sizes' => array('m', 's')),
