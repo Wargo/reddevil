@@ -11,11 +11,28 @@
 	</p>
 </div>
 
+<style>
+
+.register_button {
+	background-image: -moz-linear-gradient(center top , #66AAD2, #1E8ABF);
+	border-color: #2D6324;
+	border-radius: 4px 4px 4px 4px;
+	border-width: 1px;
+	color: #FFFFFF;
+	cursor: pointer;
+	font-size: 18px;
+	margin: 15px 10px;
+	padding: 8px 15px;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.5);
+	float:left;
+}
+</style>
+
 <?php
 
 echo $this->Form->create('User', array('class' => 'register clearfix', 'url' => array('controller' => 'users', 'action' => 'register')));
 
-echo '<span class="text_big small" style="display:block; margin-left:10px; margin-top:40px;">' . __('Registro / Login') . '</span>';
+echo '<span class="text_big small" style="display:block; margin-left:10px; margin-top:10px;">' . __('Login') . '</span>';
 
 echo $this->Form->input('username', array(
 	'fieldset' => false, 
@@ -35,6 +52,11 @@ if (!empty($slug)) {
 	echo $this->Form->hidden('slug', array('value' => $slug));
 }
 
-echo $this->Form->button(__('Hacerme socio'), array('type'=>'submit', 'id' => 'submit_register'));
+echo $this->Form->button(__('Acceder'), array('type'=>'submit', 'id' => 'submit_register'));
 echo $this->Html->image('preload.gif', array('class' => 'hidden preload'));
+
+echo '<span class="text_big small" style="display:block; margin-left:10px; margin-top:20px;">' . __('Registrarte') . '</span>';
+echo $this->Html->link('SMS', array('controller' => 'users', 'action' => 'register'), array('class' => 'register_button'));
+echo $this->Html->link('Tarjeta', 'http://tour.reddevilx.com/signup/signup.php?nats=MC4wLjMuNS4wLjAuMC4wLjA&step=2', array('class' => 'register_button'));
+
 echo $this->Form->end();
