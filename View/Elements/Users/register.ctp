@@ -14,7 +14,10 @@
 <style>
 
 .register_button {
-	background-image: -moz-linear-gradient(center top , #66AAD2, #1E8ABF);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1E8ABF', endColorstr='#66AAD2');
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#1E8ABF), to(#66AAD2));
+	background-image: -webkit-linear-gradient(top, #1E8ABF, #66AAD2);
+	background-image: -moz-linear-gradient(top, #1E8ABF, #66AAD2);
 	border-color: #2D6324;
 	border-radius: 4px 4px 4px 4px;
 	border-width: 1px;
