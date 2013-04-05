@@ -57,7 +57,7 @@ class PhotosController extends AppController {
 
 	function admin_index() {
 		
-		$photos = $this->Photo->find('all', array('order' => array('Photo.created' => 'desc')));
+		$photos = $this->Photo->find('all', array('order' => array('Video.created' => 'desc', 'order' => 'asc')));
 
 		$this->set(compact('photos'));
 

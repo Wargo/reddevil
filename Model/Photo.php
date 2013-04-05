@@ -18,8 +18,11 @@ class Photo extends AppModel {
 		return $this->find('all', array(
 			'conditions' => array(
 				'video_id' => $video_id,
+				'Photo.active' => 1,
+				//'Video.active' => 1,
 			),
-			'limit' => $limit
+			'limit' => $limit,
+			'order' => array('order' => 'asc'),
 		));
 
 	}

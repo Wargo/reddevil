@@ -16,6 +16,7 @@ foreach ($photos as $photo) {
 	}
 
 	echo '<tr>';
+		echo '<td>' . $Photo['order'] . '</td>';
 		echo '<td>' . $this->Html->image('Photo/' . $Photo['id'] . ',fitCrop,60,60.jpg', array('width' => 60)) . '</td>';
 		echo '<td>' . $Photo['title'] . '</td>';
 		echo '<td>' . (!empty($Video) ? $Video['title'] : '') . '</td>';
