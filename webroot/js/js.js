@@ -265,7 +265,7 @@ function load_popup() {
 		if ($('#_view_video').attr('var')) {
 			var path = $('#_view_video').attr('var');
 		} else {
-			var path = '/users/register_popup';
+			var path = $('#link_socio').attr('href');
 		}
 
 		$.get(path, function(data) {

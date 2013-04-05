@@ -1,17 +1,11 @@
 <?php
 echo $this->Form->create('User', array('class' => 'register clearfix'));
 
-echo $this->Form->input('first_name', array(
+echo $this->Form->input('username', array(
 	'fieldset' => false, 
-
-	'label' => __('Nombre', true),
+	'label' => __('Nombre de usuario', true),
 ));
 
-echo $this->Form->input('last_name', array(
-	'fieldset' => false, 
-
-	'label' => __('Apellidos', true),
-));
 
 echo $this->Form->input('email', array(
 	'fieldset' => false, 
@@ -33,6 +27,8 @@ echo $this->Form->input('confirm', array(
 	'label' => __('Repetir contraseña', true),
 ));
 echo $this->Form->error('password');
+
+echo $this->Form->radio('option', array(0 => 'SMS', 1 => 'Tarjeta de crédito'), array('legend' => __('Forma de pago')));
 
 echo $this->Form->button(__('Registrarse'), array('type'=>'submit'));
 

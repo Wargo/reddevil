@@ -237,7 +237,7 @@ $(document).ready(function() {
 		}
 		return false;
 	});
-
+/*
 	$('form.register').live('submit', function() {
 		$('#submit_register').hide();
 		$('img.preload').show();
@@ -253,7 +253,7 @@ $(document).ready(function() {
 		});
 		//return false;
 	});
-
+*/
 });
 
 function load_popup() {

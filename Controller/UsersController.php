@@ -435,6 +435,11 @@ class UsersController extends AppController {
  */
 	public function login() {
 		if ($this->request->is('post')) {
+			if (!$this->Auth->login()) {
+				//Mirar si el usuario está en la tabla de la BD de NATS
+				$this->loadModel('NatsMember');
+				$this->NatsMember->importMembers();
+			}
 			if ($this->Auth->login()) {
 				$this->User->id = $this->Auth->user('id');
 				$user_group=$this->Auth->user('group');
@@ -536,8 +541,12 @@ class UsersController extends AppController {
 				$loginRedirect = array('controller' => 'videos', 'action' => 'home');	
 			}
 
-
-			$this->Auth->login();
+			if (!$this->Auth->login()) {
+				//Mirar si el usuario está en la tabla de la BD de NATS
+				$this->loadModel('NatsMember');
+				$this->NatsMember->importMembers();
+				$this->Auth->login();
+			}
 
 			if ($this->Auth->user('id')) {
 				if ($this->request->isAjax()) {
@@ -549,7 +558,24 @@ class UsersController extends AppController {
 				}
 			}
 
-			$this->request->data['User']['group'] = 'user';
+
+			$this->request->data['User']['group'] = 'normal';
+			$this->request->data['User']['active'] = 1;
+
+			if (!empty($this->request->data['User']['email'])) {
+				if (empty($this->request->data['User']['option'])) {
+					list($return, $message) = $this->User->register($this->request->data);
+					$this->Auth->login();
+					if ($return) {
+						$this->redirect('/');
+					}
+				} else {
+					$this->redirect('http://tour.reddevilx.com/signup/signup.php?nats=MC4wLjMuNS4wLjAuMC4wLjA&step=2');
+				}
+			}
+			
+			/* Ya no hay registro automático, te envía a pagina de registro
+			$this->request->data['User']['group'] = 'normal';
 			$this->request->data['User']['active'] = 1;
 
 			$this->User->Behaviors->detach('MiUsers.UserAccount');
@@ -575,6 +601,7 @@ class UsersController extends AppController {
 					$this->_message(__('Error al registrarse'), $loginRedirect, null, true);
 				}
 			}
+			*/
 		}
 		$this->set('passwordPolicy', $this->User->passwordPolicy());
 		if ($this->request->isAjax()) {

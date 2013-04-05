@@ -11,7 +11,9 @@
 			$text = __('Hazte socio');
 		}
 		?>
-		<li><?php echo $this->Html->link($text, array('controller' => 'users', 'action' => 'profile'), array('class' => $this->params['controller'] == 'users' ? 'selected' : 'go_my_profile', 'title' => $text)); ?></li>
+		<li><?php echo $this->Html->link($text, 
+			array('controller' => 'users', 'action' => 'profile'), 
+			array('class' => $this->params['controller'] == 'users' ? 'selected' : 'go_my_profile', 'title' => $text, 'id' => 'link_socio')); ?></li>
 	</ul>
 	<?php echo $this->element('search'); ?>
 </div>
