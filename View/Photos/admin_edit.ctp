@@ -9,6 +9,9 @@ echo $this->Form->inputs(array(
 	'description' => array(
 		'label' => __('Descripción', true),
 	),
+	'order' => array(
+		'label' => __('Orden')
+	),
 	'active' => array(
 		'label' => __('Publicado')
 	),
