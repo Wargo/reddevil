@@ -1,8 +1,8 @@
 <div class="clearfix">
 <?php
-echo $this->Html->image('bg/fallera.png', array('align' => 'left', 'width' => 400));
+echo $this->Html->image('bg/fallera.png', array('align' => 'left', 'width' => 576));
 
-echo '<div style="float:right; width:380px; margin-right:50px;">';
+echo '<div style="float:right; width:380px; margin-right:0px;">';
 
 	echo '<h1>' . __('Login') . '</h1>';
 	echo '<p>' . __('Accede para ver a todos los vídeos privados') . '</p>';
