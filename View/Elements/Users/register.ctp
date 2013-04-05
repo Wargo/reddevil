@@ -30,7 +30,7 @@
 
 <?php
 
-echo $this->Form->create('User', array('class' => 'register clearfix', 'url' => array('controller' => 'users', 'action' => 'register')));
+echo $this->Form->create('User', array('class' => 'register clearfix', 'url' => array('controller' => 'users', 'action' => 'login')));
 
 echo '<span class="text_big small" style="display:block; margin-left:10px; margin-top:10px;">' . __('Login') . '</span>';
 

@@ -466,6 +466,8 @@ class UsersController extends AppController {
 			$user_group=$this->Auth->user('group');
 			return $this->redirect(array('controller' => 'videos', 'action' => 'home'));
 		}
+
+		return $this->redirect(array('controller' => 'users', 'action' => 'register'));
 	/*	if (Configure::read()) {
 			$this->Session->setFlash('Debug only message: Save some tedium - check remember me.');
 		}*/
@@ -540,7 +542,7 @@ class UsersController extends AppController {
 			} else {
 				$loginRedirect = array('controller' => 'videos', 'action' => 'home');	
 			}
-
+/*
 			if (!$this->Auth->login()) {
 				//Mirar si el usuario está en la tabla de la BD de NATS
 				$this->loadModel('NatsMember');
@@ -557,7 +559,7 @@ class UsersController extends AppController {
 					$this->_message(__('Bienvenido de nuevo.'), $loginRedirect, null);
 				}
 			}
-
+*/
 
 			$this->request->data['User']['group'] = 'normal';
 			$this->request->data['User']['active'] = 1;
