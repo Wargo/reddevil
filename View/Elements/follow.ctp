@@ -11,7 +11,7 @@ $pages = array(
 echo '<ul class="follow">';
 	foreach ($pages as $key => $value) {
 
-		echo '<li>' . $this->Html->link($this->Html->image($key . '.png', array('width' => 20)), $value, array('alt' => sprintf(__('Síguenos en %s'), ucfirst($key)), 'title' => sprintf(__('Síguenos en %s'), ucfirst($key)), 'escape' => false, 'target' => '_blank'));
+		echo '<li>' . $this->Html->link($this->Html->image($key . '.png', array('width' => 20)), $value, array('alt' => sprintf(__('Síguenos en %s'), ucfirst($key)), 'title' => sprintf(__('Síguenos en %s'), ucfirst($key)), 'escape' => false, 'target' => '_blank')) . '</li>';
 
 	}
 echo '</ul>';
