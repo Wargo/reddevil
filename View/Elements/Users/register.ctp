@@ -10,27 +10,6 @@
 		<?php echo __('Menos de 1 € al día'); ?>
 	</p>
 </div>
-
-<style>
-
-.register_button {
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1E8ABF', endColorstr='#66AAD2');
-	background-image: -webkit-gradient(linear, left top, left bottom, from(#1E8ABF), to(#66AAD2));
-	background-image: -webkit-linear-gradient(top, #1E8ABF, #66AAD2);
-	background-image: -moz-linear-gradient(top, #1E8ABF, #66AAD2);
-	border-color: #2D6324;
-	border-radius: 4px 4px 4px 4px;
-	border-width: 1px;
-	color: #FFFFFF;
-	cursor: pointer;
-	font-size: 18px;
-	margin: 15px 10px;
-	padding: 8px 15px;
-	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.5);
-	float:left;
-}
-</style>
-
 <?php
 
 echo $this->Form->create('User', array('class' => 'register clearfix', 'url' => array('controller' => 'users', 'action' => 'login')));
