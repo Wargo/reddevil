@@ -14,7 +14,7 @@ class NatsMember extends AppModel {
 		$conditions = array('status' => 1, 'joined >' => $last_import);
 		$order = array('joined' => 'asc');
 		$members = $this->find('all', compact('conditions', 'order'));
-
+		
 		foreach ($members as $member) {
 			extract($member);
 			if ($User->find('first', array('conditions' => array('username' => $NatsMember['username'])))) {
@@ -40,12 +40,12 @@ class NatsMember extends AppModel {
 			);
 			$User->Behaviors->detach('MiUsers.UserAccount');
 			$User->create();
-			$return = $User->save($data);
+			$return = $User->save($data);	
 			$User->Behaviors->attach('MiUsers.UserAccount');
 
 			$last_import = $NatsMember['joined'];
 		}
 		$File->delete();
-		$File->append($last_import);
+		$File->write($last_import);
 	}
 }
