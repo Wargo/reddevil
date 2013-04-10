@@ -469,7 +469,7 @@ class UsersController extends AppController {
 				if ($this->RequestHandler->isAjax() && !empty($this->params['refresh'])) {
 					return $this->redirect(array('controller' => 'videos', 'action' => 'video'));
 				}
-				return $this->redirect(array('controller' => 'videos', 'action' => 'videos'));
+				return $this->redirect(array('controller' => 'videos', 'action' => 'home'));
 			} else {
 				$this->Session->setFlash(__('Email o contraseña incorrectos'));
 			}
