@@ -1,13 +1,13 @@
 <div class="clearfix">
 <?php
-echo $this->Html->image('bg/fallera.png', array('align' => 'left', 'width' => 400));
+echo $this->Html->image('bg/fallera.png', array('align' => 'left', 'width' => 576));
 
-echo '<div style="float:right; width:450px;">';
+echo '<div style="float:right; width:380px; margin-right:0px;">';
 
 	echo '<h1>' . __('Login') . '</h1>';
 	echo '<p>' . __('Accede para ver a todos los vídeos privados') . '</p>';
 
-	echo $this->Form->create('User', array('class' => 'register clearfix', 'url' => array('controller' => 'users', 'action' => 'login')));
+	echo $this->Form->create('User', array('class' => 'register clearfix', 'style' => 'background-color:#DDD', 'url' => array('controller' => 'users', 'action' => 'login')));
 
 	echo $this->Form->input('username', array(
 		'fieldset' => false, 
@@ -26,7 +26,7 @@ echo '<div style="float:right; width:450px;">';
 	echo '<h1>' . __('Registro') . '</h1>';
 	echo '<p>' . __('Regístrate y obtén acceso a todos los vídeos privados') . '</p>';
 
-	echo $this->Form->create('User', array('class' => 'register clearfix'));
+	echo $this->Form->create('User', array('class' => 'register clearfix', 'style' => 'background-color:#DDD'));
 
 	echo $this->Form->input('username', array(
 		'fieldset' => false, 
@@ -55,6 +55,7 @@ echo '<div style="float:right; width:450px;">';
 	echo $this->Form->error('password');
 
 	//echo $this->Form->radio('option', array(0 => 'SMS', 1 => 'Tarjeta de crédito'), array('legend' => __('Forma de pago')));
+	$this->request->data['User']['option'] = 0;
 	echo $this->Form->inputs(array(
 		'fieldset' => false,
 		'option' => array(

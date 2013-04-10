@@ -10,12 +10,11 @@
 		<?php echo __('Menos de 1 € al día'); ?>
 	</p>
 </div>
-
 <?php
 
 echo $this->Form->create('User', array('class' => 'register clearfix', 'url' => array('controller' => 'users', 'action' => 'login')));
 
-echo '<span class="text_big small" style="display:block; margin-left:10px; margin-top:40px;">' . __('Registro / Login') . '</span>';
+echo '<span class="text_big small" style="display:block; margin-left:10px; margin-top:10px;">' . __('Accede') . ':</span>';
 
 echo $this->Form->input('username', array(
 	'fieldset' => false, 
@@ -35,6 +34,11 @@ if (!empty($slug)) {
 	echo $this->Form->hidden('slug', array('value' => $slug));
 }
 
-echo $this->Form->button(__('Hacerme socio'), array('type'=>'submit', 'id' => 'submit_register'));
+echo $this->Form->button(__('Acceder'), array('type'=>'submit', 'id' => 'submit_register'));
 echo $this->Html->image('preload.gif', array('class' => 'hidden preload'));
+
+echo '<span class="text_big small" style="display:block; margin-left:10px; margin-top:20px;">' . __('Regístrate') . ':</span>';
+echo $this->Html->link('SMS', array('controller' => 'users', 'action' => 'register'), array('class' => 'register_button'));
+echo $this->Html->link('Tarjeta', 'http://tour.reddevilx.com/signup/signup.php?nats=MC4wLjMuNS4wLjAuMC4wLjA&step=2', array('class' => 'register_button'));
+
 echo $this->Form->end();

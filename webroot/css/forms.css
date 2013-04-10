@@ -109,6 +109,7 @@ form input[type=submit] {
 	background-image: -webkit-gradient(linear, left top, left bottom, from(#555), to(#111));
 	background-image: -webkit-linear-gradient(top, #555, #111);
 	background-image: -moz-linear-gradient(top, #555, #111);
+	background-image: linear-gradient(#555, #111);
 	border-color: #2d6324;
 	border-width: 1px;
 	color: #fff;
@@ -199,4 +200,29 @@ form.search .search_button {
 
 form.register div.input {
 	float:none;
+}
+
+.register_button {
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1E8ABF', endColorstr='#66AAD2');
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#1E8ABF), to(#66AAD2));
+	background-image: -webkit-linear-gradient(top, #1E8ABF, #66AAD2);
+	background-image: -moz-linear-gradient(top, #1E8ABF, #66AAD2);
+	background-image: linear-gradient(#1E8ABF, #66AAD2);
+	border-color: #2D6324;
+	border-radius: 4px 4px 4px 4px;
+	border-width: 1px;
+	color: #FFFFFF;
+	cursor: pointer;
+	font-size: 18px;
+	margin: 15px 10px;
+	padding: 8px 15px;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.5);
+	float:left;
+}
+.register_button:hover {
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#66aad2', endColorstr='#1E8ABF');
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#66AAD2), to(#1E8ABF));
+	background-image: -webkit-linear-gradient(top, #66AAD2, #1E8ABF);
+	background-image: -moz-linear-gradient(top, #66AAD2, #1E8ABF);
+	background-image: linear-gradient(#66AAD2, #1E8ABF);
 }
