@@ -21,11 +21,13 @@ class NatsMember extends AppModel {
 				continue;
 			}
 
-			if ($NatsMember['trial']) {
-				$caducidad = strftime('%Y-%m-%d %H:%M:%S', strtotime('+1 week', $NatsMember['joined']));
-			} else {
-				$caducidad = strftime('%Y-%m-%d %H:%M:%S', strtotime('+1 month', $NatsMember['joined']));
-			}
+			$memberid = $NatsMember['memberid'];
+			$conditions = array('memberid' => $memberid);
+			$order = array('expires' => 'desc');
+			$memberSubscription = ClassRegistry::init('NatsMemberSubscription')->find('first', compact('conditions', 'order'));
+
+			$caducidad = strftime('%Y-%m-%d %H:%M:%S', $memberSubscription['NatsMemberSubscription']['expires']);
+			
 			
 			$data = array(
 				'password' => $NatsMember['password'],
