@@ -29,7 +29,7 @@ class NatsMember extends AppModel {
 			
 			$data = array(
 				'password' => $NatsMember['password'],
-				'group' => 'normal',
+				'group' => 'user',
 				'email_verified' => $NatsMember['mailok'],
 				'email' => $NatsMember['email'],
 				'username' => $NatsMember['username'],

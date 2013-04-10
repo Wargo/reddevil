@@ -561,7 +561,7 @@ class UsersController extends AppController {
 			}
 */
 
-			$this->request->data['User']['group'] = 'normal';
+			$this->request->data['User']['group'] = 'user';
 			$this->request->data['User']['active'] = 1;
 
 			if (!empty($this->request->data['User']['email'])) {
