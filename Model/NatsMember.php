@@ -48,4 +48,28 @@ class NatsMember extends AppModel {
 		$File->delete();
 		$File->append($last_import);
 	}
+
+	//Comprobar al loguearse si el usuario sigue activo en la tabla de Nats
+	public function checkActive($user) {
+		$member = $this->find('first', array('conditions' => array('username' => $user['username'])));
+		return ($member[$this->alias]['status'] == 1);
+	}
+
+	//Actualizar la fecha de caducidad si ha cambiado en las tablas de NATS
+	public function updateSubscription($user) {
+		$member = $this->find('first', array('conditions' => array('username' => $user['username'])));
+		$memberid = $member[$this->alias]['memberid'];
+		$conditions = array('memberid' => $memberid);
+		$order = array('expires' => 'desc');
+		$memberSubscription = ClassRegistry::init('NatsMemberSubscription')->find('first', compact('conditions', 'order'));
+
+		if ($memberSubscription['NatsMemberSubscription']['expires'] > strtotime($user['caducidad'])) {
+			$User = ClassRegistry::init('User');
+			$User->id = $user['id'];
+			$caducidad = strftime('%Y-%m-%d %H:%M:%S', $memberSubscription['NatsMemberSubscription']['expires']);
+			$User->save(array('caducidad' => $caducidad));
+			return $caducidad;
+		}
+		return false;
+	}
 }
