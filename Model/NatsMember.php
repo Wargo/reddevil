@@ -65,7 +65,7 @@ class NatsMember extends AppModel {
 		$order = array('expires' => 'desc');
 		$memberSubscription = ClassRegistry::init('NatsMemberSubscription')->find('first', compact('conditions', 'order'));
 
-		if ($memberSubscription['NatsMemberSubscription']['expires'] > strtotime($user['caducidad'])) {
+		if ($memberSubscription['NatsMemberSubscription']['expires'] != strtotime($user['caducidad'])) {
 			$User = ClassRegistry::init('User');
 			$User->id = $user['id'];
 			$caducidad = strftime('%Y-%m-%d %H:%M:%S', $memberSubscription['NatsMemberSubscription']['expires']);
