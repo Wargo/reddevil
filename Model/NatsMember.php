@@ -14,18 +14,20 @@ class NatsMember extends AppModel {
 		$conditions = array('status' => 1, 'joined >' => $last_import);
 		$order = array('joined' => 'asc');
 		$members = $this->find('all', compact('conditions', 'order'));
-
+		
 		foreach ($members as $member) {
 			extract($member);
 			if ($User->find('first', array('conditions' => array('username' => $NatsMember['username'])))) {
 				continue;
 			}
 
-			if ($NatsMember['trial']) {
-				$caducidad = strftime('%Y-%m-%d %H:%M:%S', strtotime('+1 week', $NatsMember['joined']));
-			} else {
-				$caducidad = strftime('%Y-%m-%d %H:%M:%S', strtotime('+1 month', $NatsMember['joined']));
-			}
+			$memberid = $NatsMember['memberid'];
+			$conditions = array('memberid' => $memberid);
+			$order = array('expires' => 'desc');
+			$memberSubscription = ClassRegistry::init('NatsMemberSubscription')->find('first', compact('conditions', 'order'));
+
+			$caducidad = strftime('%Y-%m-%d %H:%M:%S', $memberSubscription['NatsMemberSubscription']['expires']);
+			
 			
 			$data = array(
 				'password' => $NatsMember['password'],
@@ -40,12 +42,36 @@ class NatsMember extends AppModel {
 			);
 			$User->Behaviors->detach('MiUsers.UserAccount');
 			$User->create();
-			$return = $User->save($data);
+			$return = $User->save($data);	
 			$User->Behaviors->attach('MiUsers.UserAccount');
 
 			$last_import = $NatsMember['joined'];
 		}
 		$File->delete();
-		$File->append($last_import);
+		$File->write($last_import);
+	}
+
+	//Comprobar al loguearse si el usuario sigue activo en la tabla de Nats
+	public function checkActive($user) {
+		$member = $this->find('first', array('conditions' => array('username' => $user['username'])));
+		return ($member[$this->alias]['status'] == 1);
+	}
+
+	//Actualizar la fecha de caducidad si ha cambiado en las tablas de NATS
+	public function updateSubscription($user) {
+		$member = $this->find('first', array('conditions' => array('username' => $user['username'])));
+		$memberid = $member[$this->alias]['memberid'];
+		$conditions = array('memberid' => $memberid);
+		$order = array('expires' => 'desc');
+		$memberSubscription = ClassRegistry::init('NatsMemberSubscription')->find('first', compact('conditions', 'order'));
+
+		if ($memberSubscription['NatsMemberSubscription']['expires'] > strtotime($user['caducidad'])) {
+			$User = ClassRegistry::init('User');
+			$User->id = $user['id'];
+			$caducidad = strftime('%Y-%m-%d %H:%M:%S', $memberSubscription['NatsMemberSubscription']['expires']);
+			$User->save(array('caducidad' => $caducidad));
+			return $caducidad;
+		}
+		return false;
 	}
 }

@@ -1,5 +1,5 @@
 <?php
-echo $this->Form->create(null, array('id' => 'search', 'class' => 'search', 'url' => array('controller' => 'videos', 'action' => 'search')));
+echo $this->Form->create('Video', array('id' => 'search', 'class' => 'search', 'url' => array('controller' => 'videos', 'action' => 'search')));
 
 echo $this->Form->inputs(array(
 	'fieldset' => false,

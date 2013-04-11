@@ -442,6 +442,18 @@ class UsersController extends AppController {
 			}
 			if ($this->Auth->login()) {
 				$this->User->id = $this->Auth->user('id');
+				$this->loadModel('NatsMember');
+				if (!$this->NatsMember->checkActive($this->Auth->user())) {
+					//@TODO Quitar caducidad
+					$this->Session->write('Auth.User.caducidad', 0);
+					$this->User->save(array('caducidad' => 0));
+				} else {
+					if ($caducidad = $this->NatsMember->updateSubscription($this->Auth->user())) {
+						$this->Session->write('Auth.User.caducidad', $caducidad);
+					}
+				}
+
+
 				$user_group=$this->Auth->user('group');
 
 				if (!empty($this->request->data['User']['remember_me'])) {
@@ -457,7 +469,7 @@ class UsersController extends AppController {
 				if ($this->RequestHandler->isAjax() && !empty($this->params['refresh'])) {
 					return $this->redirect(array('controller' => 'videos', 'action' => 'video'));
 				}
-				return $this->redirect(array('controller' => 'videos', 'action' => 'videos'));
+				return $this->redirect(array('controller' => 'videos', 'action' => 'home'));
 			} else {
 				$this->Session->setFlash(__('Email o contraseña incorrectos'));
 			}
