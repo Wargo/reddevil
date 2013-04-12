@@ -1049,3 +1049,11 @@ img.preload {
 .bg_promo img {
 	width:375px;
 }
+
+
+/*
+ * Nats
+ */
+.join_error {
+	color: red;
+}
