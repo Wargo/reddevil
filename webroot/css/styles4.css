@@ -4,8 +4,9 @@
 
 body {
 	margin:0;
-	background:url(../img/bg.png);
+	/*background:url(../img/bg.png);*/
 	/*background:url(../img/bg/fondo_fallas.jpg);*/
+	background:black;
 	font-size:13px;
 	font-family:'Arial';
 }
@@ -1038,7 +1039,15 @@ img.preload {
 /*
  * bg promo
  */
-.bg_promo {
+.bg_promo_left {
+	display:block;
+	position:fixed;
+	top:70px;
+	right:50%;
+	margin-right:503px;
+	z-index:10;
+}
+.bg_promo_right {
 	display:block;
 	position:fixed;
 	top:70px;
@@ -1046,6 +1055,8 @@ img.preload {
 	margin-left:503px;
 	z-index:10;
 }
-.bg_promo img {
-	width:375px;
+.bg_promo_left img,
+.bg_promo_right img {
+	min-width:200px;
+	width:100%;
 }
