@@ -8,6 +8,13 @@
 	<p style="color:white">
 		<?php echo __('Puedes ahora recargar tu cuenta enviando un mensaje de texto. Y podrás acceder a todo el contenido de RedDevilX durante una semana.'); ?></p>
 	</p>
+<?php if ($this->Session->read('Auth.User.caducidad') < date('Y-m-d H:i:s')): ?>
+	<p>
+		<?php
+			echo $this->Html->link(__('Pago con Tarjeta'), array('controller' => 'users', 'action' => 'logout_payment'), array('class' => 'register_button'));
+		?>
+	</p>
+<?php endif; ?>
 </div>
 
 <div class="right_part">

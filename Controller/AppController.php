@@ -69,6 +69,10 @@ class AppController extends Controller {
 
 		}
 
+		if (isset($this->params->query['nats'])) {
+			$this->Session->write('NatsCode', $this->params->query['nats']);
+		}
+
  	 	$this->Cookie->name = 'RedDevilX';
 		$this->Cookie->time = 3600 * 24;  // or '1 hour'
 

@@ -39,6 +39,11 @@ echo $this->Html->image('preload.gif', array('class' => 'hidden preload'));
 
 echo '<span class="text_big small" style="display:block; margin-left:10px; margin-top:20px;">' . __('Regístrate') . ':</span>';
 echo $this->Html->link('SMS', array('controller' => 'users', 'action' => 'register'), array('class' => 'register_button'));
-echo $this->Html->link('Tarjeta', 'http://tour.reddevilx.com/signup/signup.php?nats=MC4wLjMuNS4wLjAuMC4wLjA&step=2', array('class' => 'register_button'));
+if ($this->Session->check('NatsCode')) {
+	$NatsCode = $this->Session->read('NatsCode');
+} else {
+	$NatsCode = Configure::read('NatsCode');
+}
+echo $this->Html->link('Tarjeta', 'http://tour.reddevilx.com/signup/signup.php?nats='.$NatsCode.'&step=2', array('class' => 'register_button'));
 
 echo $this->Form->end();

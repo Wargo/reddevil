@@ -584,7 +584,13 @@ class UsersController extends AppController {
 						$this->redirect('/');
 					}
 				} else {
-					$this->redirect('http://tour.reddevilx.com/signup/signup.php?nats=MC4wLjMuNS4wLjAuMC4wLjA&step=2');
+
+					if ($this->Session->check('NatsCode')) {
+						$NatsCode = $this->Session->read('NatsCode');
+					} else {
+						$NatsCode = Configure::read('NatsCode');
+					}
+					$this->redirect('http://tour.reddevilx.com/signup/signup.php?nats='.$NatsCode.'&step=2');
 				}
 			}
 			
@@ -643,6 +649,16 @@ class UsersController extends AppController {
 				$this->Session->write('payment', $this->request->data['User']['payment']);
 				$this->redirect(array('action' => 'payment'));
 		}
+	}
+
+	public function logout_payment() {
+			if ($this->Session->check('NatsCode')) {
+				$NatsCode = $this->Session->read('NatsCode');
+			} else {
+				$NatsCode = Configure::read('NatsCode');
+			}
+			$this->_logout();
+			$this->redirect('http://tour.reddevilx.com/signup/signup.php?nats='.$NatsCode.'&step=2');
 	}
 
 	public function payment($video_id = false) {

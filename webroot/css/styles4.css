@@ -1060,3 +1060,11 @@ img.preload {
 	min-width:200px;
 	width:100%;
 }
+
+
+/*
+ * Nats
+ */
+.join_error {
+	color: red;
+}

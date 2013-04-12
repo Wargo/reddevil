@@ -14,11 +14,13 @@ class NatsMember extends AppModel {
 		$conditions = array('status' => 1, 'joined >' => $last_import);
 		$order = array('joined' => 'asc');
 		$members = $this->find('all', compact('conditions', 'order'));
-		
+
 		foreach ($members as $member) {
 			extract($member);
-			if ($User->find('first', array('conditions' => array('username' => $NatsMember['username'])))) {
-				continue;
+			if ($user = $User->find('first', array('conditions' => array('username' => $NatsMember['username'])))) {
+				if ($user['User']['email_verified']) {
+					continue;
+				}
 			}
 
 			$memberid = $NatsMember['memberid'];
@@ -41,14 +43,18 @@ class NatsMember extends AppModel {
 				'caducidad' => $caducidad,
 			);
 			$User->Behaviors->detach('MiUsers.UserAccount');
-			$User->create();
-			$return = $User->save($data);	
+			if (!empty($user)) {
+				$User->id = $user['User']['id'];
+			} else {
+				$User->create();
+			}
+			$return = $User->save($data);
 			$User->Behaviors->attach('MiUsers.UserAccount');
 
 			$last_import = $NatsMember['joined'];
 		}
 		$File->delete();
-		$File->write($last_import);
+		$File->append($last_import);
 	}
 
 	//Comprobar al loguearse si el usuario sigue activo en la tabla de Nats
@@ -65,7 +71,7 @@ class NatsMember extends AppModel {
 		$order = array('expires' => 'desc');
 		$memberSubscription = ClassRegistry::init('NatsMemberSubscription')->find('first', compact('conditions', 'order'));
 
-		if ($memberSubscription['NatsMemberSubscription']['expires'] > strtotime($user['caducidad'])) {
+		if ($memberSubscription['NatsMemberSubscription']['expires'] != strtotime($user['caducidad'])) {
 			$User = ClassRegistry::init('User');
 			$User->id = $user['id'];
 			$caducidad = strftime('%Y-%m-%d %H:%M:%S', $memberSubscription['NatsMemberSubscription']['expires']);
