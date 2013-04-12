@@ -539,4 +539,18 @@ fclose($file);
 		$this->autoRender = false;
 	}
 
+	function whatsapp($id = null) {
+
+		if (!$id) {
+			return $this->redirect('home');
+		}
+
+		$dir = WWW_ROOT . 'pills' . DS . $id;
+
+		$videos = scandir($dir);
+
+		$this->set(compact('videos'));
+
+	}
+
 }
