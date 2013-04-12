@@ -16,7 +16,8 @@
 
 		//echo $this->Html->css('styles');
 		//echo $this->Html->css('styles2');
-		echo $this->Html->css('styles4');
+		//echo $this->Html->css('styles4');
+		echo $this->Html->css('styles5');
 		echo $this->Html->css('forms2');
 		//echo $this->Html->css('flowplayer/minimalist');
 		echo $this->Html->css('lightbox/jquery.lightbox-0.5');
@@ -40,9 +41,12 @@
 </head>
 <body>
 	<?php
-	//echo $this->Html->link($this->Html->image('bg/fallera.png', array()),
-		//array('controller' => 'videos', 'action' => 'view', 'pablo-ferrari-y-julia-de-lucia-en-fallas-o-follas-valencia-en-fallas'),
-		//array('class' => 'bg_promo', 'escape' => false));
+	echo $this->Html->link($this->Html->image('bg/derecha_ok_bw.jpg', array()),
+		array('controller' => 'videos', 'action' => 'view', 'dinio-y-noe-milk-en-el-botones'),
+		array('class' => 'bg_promo_right', 'escape' => false));
+	echo $this->Html->link($this->Html->image('bg/IZQUIERDA_bw.jpg', array()),
+		array('controller' => 'videos', 'action' => 'view', 'dinio-y-noe-milk-en-el-botones'),
+		array('class' => 'bg_promo_left', 'escape' => false));
 		?>
 	<div id="container">
 		<div id="header">
