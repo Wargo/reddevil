@@ -1068,3 +1068,19 @@ img.preload {
 .join_error {
 	color: red;
 }
+
+
+/*
+ * Promo
+ */
+.link_promo {
+	position:relative;
+	margin-bottom:10px;
+}
+.link_promo a {
+	position:absolute;
+	right:0;
+}
+.link_promo img {
+	height: 328px;
+}
