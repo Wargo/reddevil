@@ -54,7 +54,7 @@ class NatsMember extends AppModel {
 			$last_import = $NatsMember['joined'];
 		}
 		$File->delete();
-		$File->append($last_import);
+		$File->write($last_import);
 	}
 
 	//Comprobar al loguearse si el usuario sigue activo en la tabla de Nats
