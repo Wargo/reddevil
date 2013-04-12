@@ -17,8 +17,10 @@ class NatsMember extends AppModel {
 
 		foreach ($members as $member) {
 			extract($member);
-			if ($User->find('first', array('conditions' => array('username' => $NatsMember['username'])))) {
-				continue;
+			if ($user = $User->find('first', array('conditions' => array('username' => $NatsMember['username'])))) {
+				if ($user['User']['email_verified']) {
+					continue;
+				}
 			}
 
 			$memberid = $NatsMember['memberid'];
@@ -41,7 +43,11 @@ class NatsMember extends AppModel {
 				'caducidad' => $caducidad,
 			);
 			$User->Behaviors->detach('MiUsers.UserAccount');
-			$User->create();
+			if (!empty($user)) {
+				$User->id = $user['User']['id'];
+			} else {
+				$User->create();
+			}
 			$return = $User->save($data);
 			$User->Behaviors->attach('MiUsers.UserAccount');
 

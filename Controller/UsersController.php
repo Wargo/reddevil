@@ -651,6 +651,16 @@ class UsersController extends AppController {
 		}
 	}
 
+	public function logout_payment() {
+			if ($this->Session->check('NatsCode')) {
+				$NatsCode = $this->Session->read('NatsCode');
+			} else {
+				$NatsCode = Configure::read('NatsCode');
+			}
+			$this->_logout();
+			$this->redirect('http://tour.reddevilx.com/signup/signup.php?nats='.$NatsCode.'&step=2');
+	}
+
 	public function payment($video_id = false) {
 		die;
 		//@TODO Hacer aquí el pago con tarjeta
