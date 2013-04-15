@@ -549,7 +549,7 @@ fclose($file);
 
 		$videos = scandir($dir);
 
-		$this->set(compact('videos'));
+		$this->set(compact('videos', 'id'));
 
 	}
 
