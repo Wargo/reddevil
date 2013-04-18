@@ -27,27 +27,28 @@ foreach ($videos as $video) {
 		<span class="title">' . $title . '</span>
 		<script>
 		flowplayer(".mini_video_' . $i . '", {
+			wmode:\'transparent\',
 			src:\'http://toomuchmedia.reddevilx.com/flash/flowplayer.swf\',
 			width: 300,
-			height: 200}, {
-				playlist: [\'http://reddevilx.com/img/Photo/e41/515eb7a0-e41c-4780-b624-1a3fbca5e1a6.jpg\', {
-					autoPlay: false,
-					autoBuffering: false,
-					loop: false,
-					url: \'http://reddevilx.com/pills/' . $id . '/' . $video . '\',
-					//linkUrl: "http://tour.reddevilx.com/track/NC4xLjMuNS4wLjMxLjAuMC4w"
-				}],
-				plugins: {
-					controls: {
-						all: false,
-						play: true,
-						scrubber: true,
-						mute: true,
-						fullscreen: true
-					}
+			height: 200
+		}, {
+			playlist: [\'http://reddevilx.com/img/Photo/e41/515eb7a0-e41c-4780-b624-1a3fbca5e1a6.jpg\', {
+				autoPlay: false,
+				autoBuffering: false,
+				loop: false,
+				url: \'http://reddevilx.com/pills/' . $id . '/' . $video . '\',
+				//linkUrl: "http://tour.reddevilx.com/track/NC4xLjMuNS4wLjMxLjAuMC4w"
+			}],
+			plugins: {
+				controls: {
+					all: false,
+					play: true,
+					scrubber: true,
+					mute: true,
+					fullscreen: true
 				}
 			}
-		);
+		});
 		</script>
 	</div>
 	';
