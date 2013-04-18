@@ -1045,7 +1045,12 @@ img.preload {
 	top:70px;
 	right:50%;
 	margin-right:503px;
-	z-index:-10;
+	z-index:10;
+}
+@media screen and (-webkit-min-device-pixel-ratio:0) { /* Sólo para Chrome */
+	.bg_promo_left {
+		z-index:-10;
+	}
 }
 .bg_promo_right {
 	display:block;
@@ -1077,7 +1082,7 @@ img.preload {
 	position:relative;
 	margin-bottom:10px;
 }
-.link_promo a {
+.link_promo a.go_my_profile {
 	position:absolute;
 	right:0;
 }
@@ -1116,4 +1121,8 @@ img.preload {
 	background-image: -webkit-linear-gradient(top, #9B2603, #D38373);
 	background-image: -moz-linear-gradient(top, #9B2603, #D38373);
 	background-image: linear-gradient(#9B2603, #D38373);
-
+}
+.block_mini_video .title {
+	display:block;
+	padding:5px;
+}
