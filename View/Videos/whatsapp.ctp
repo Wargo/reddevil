@@ -12,14 +12,29 @@ foreach ($videos as $video) {
 	}
 	$i ++;
 	switch ($i) {
-		case 1: $title = 'Vas a saber lo que es confundirme la noche...'; break;
-		case 2: $title = 'Y si viene tu madre... me la follo también!'; break;
-		case 3: $title = 'Me echó Marujita a la puta calle...'; break;
-		case 4: $title = 'Es que estoy haciendo deporte en la playa...'; break;
-		case 5: $title = 'Le quité un chalet y un piso...'; break;
-		case 6: $title = 'Madre mía... pedazo culito que me voy a follar!'; break;
-		case 7: $title = 'Voy a limpiarte la fresita que van a pensar que te rompí el culito'; break;
+		case 1:
+			$title = 'Vas a saber lo que es confundirme la noche...';
+			break;
+		case 2:
+			$title = 'Y si viene tu madre... me la follo también!';
+			break;
+		case 3:
+			$title = 'Me echó Marujita a la puta calle...';
+			break;
+		case 4:
+			$title = 'Es que estoy haciendo deporte en la playa...';
+			break;
+		case 5:
+			$title = 'Le quité un chalet y un piso...';
+			break;
+		case 6:
+			$title = 'Madre mía... pedazo culito que me voy a follar!';
+			break;
+		case 7:
+			$title = 'Voy a limpiarte la fresita que van a pensar que te rompí el culito';
+			break;
 	}
+	$image = 'http://www.reddevilx.com/img/cromos/dinio/' . $i . '.jpg';
 	echo '
 	<div class="block_mini_video">
 		<div class="mini_video mini_video_' . $i . '"></div>
@@ -32,7 +47,7 @@ foreach ($videos as $video) {
 			width: 300,
 			height: 200
 		}, {
-			playlist: [\'http://reddevilx.com/img/Photo/e41/515eb7a0-e41c-4780-b624-1a3fbca5e1a6.jpg\', {
+			playlist: [\'' . $image . '\', {
 				autoPlay: false,
 				autoBuffering: false,
 				loop: false,
