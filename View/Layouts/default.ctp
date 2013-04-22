@@ -42,10 +42,10 @@
 <body>
 	<?php
 	$url = 'pablo-ferrari-y-samantha-pink-en-number-one';
-	echo $this->Html->link($this->Html->image('bg/derecha_ok_bw.jpg', array()),
+	echo $this->Html->link($this->Html->image('bg/derecha_ok_bw.jpg?v=1', array()),
 		array('controller' => 'videos', 'action' => 'view', $url),
 		array('class' => 'bg_promo_right', 'escape' => false));
-	echo $this->Html->link($this->Html->image('bg/IZQUIERDA_bw.jpg', array()),
+	echo $this->Html->link($this->Html->image('bg/IZQUIERDA_bw.jpg?v=1', array()),
 		array('controller' => 'videos', 'action' => 'view', $url),
 		array('class' => 'bg_promo_left', 'escape' => false));
 		?>
