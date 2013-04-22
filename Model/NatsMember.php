@@ -65,6 +65,9 @@ class NatsMember extends AppModel {
 
 	//Actualizar la fecha de caducidad si ha cambiado en las tablas de NATS
 	public function updateSubscription($user) {
+		if ($user['group'] == 'vip') {
+			return false;
+		}
 		$member = $this->find('first', array('conditions' => array('username' => $user['username'])));
 		$memberid = $member[$this->alias]['memberid'];
 		$conditions = array('memberid' => $memberid);
