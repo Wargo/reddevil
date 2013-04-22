@@ -1,0 +1,441 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: laschool\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-12-23 16:41+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Thomas Klaiber <tklaiber@gmx.net>\n"
+"Language-Team: Thomas Klaiber <tklaiber@gmx.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-Language: German\n"
+"X-Poedit-Country: GERMANY\n"
+"X-Poedit-SearchPath-0: C:\\Users\\Thommy\\Documents\\Websites\\xampplite-win32-1.6.6a\\xampplite\\htdocs\\wordpress\\wp-content\\themes\\laschool\n"
+
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/404.php:5
+msgid "Error 404 - Not Found"
+msgstr "Fehler 404 - Nicht gefunden"
+
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/archive.php:9
+#, php-format
+msgid "Archive for the &#8216;%s&#8217; Category"
+msgstr "Archiv f&uuml;r die Kategorie &#8222;%s&#8220;"
+
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/archive.php:11
+#, php-format
+msgid "Posts Tagged &#8216;%s&#8217;"
+msgstr "Artikel-Tags: &#8222;%s&#8220;"
+
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/archive.php:13
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/index.php:10
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/legacy.comments.php:33
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/single.php:8
+msgid "F jS, Y"
+msgstr "F jS, Y"
+
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/archive.php:15
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/sidebar.php:24
+msgid "F, Y"
+msgstr "F, Y"
+
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/archive.php:17
+msgid "Y"
+msgstr "Y"
+
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/archive.php:19
+msgid "Author Archive"
+msgstr "Autorenarchiv"
+
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/archive.php:21
+msgid "Blog Archives"
+msgstr "Blogarchiv"
+
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/archive.php:27
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/index.php:10
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/search.php:15
+#, php-format
+msgid "Permanent Link to %s"
+msgstr "Permanent-Link zu %s"
+
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/archive.php:27
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/search.php:15
+msgid "j. F, Y"
+msgstr "j. F, Y"
+
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/archive.php:33
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/index.php:16
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/search.php:21
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/single.php:19
+msgid "0<span> Comments</span>"
+msgstr "0<span> Kommentare</span>"
+
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/archive.php:33
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/index.php:16
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/search.php:21
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/single.php:19
+msgid "1<span> Comment</span>"
+msgstr "1<span> Kommentar</span>"
+
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/archive.php:33
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/index.php:16
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/search.php:21
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/single.php:19
+msgid "%<span> Comments</span>"
+msgstr "%<span> Kommentare</span>"
+
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/archive.php:34
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/index.php:17
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/search.php:22
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/single.php:20
+#, php-format
+msgid "Posted in %s"
+msgstr "Ver&ouml;ffentlicht in %s"
+
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/archive.php:41
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/index.php:23
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/search.php:29
+msgid "&laquo; Older Entries"
+msgstr "&laquo; &Auml;ltere Eintr&auml;ge"
+
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/archive.php:42
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/index.php:24
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/search.php:30
+msgid "Newer Entries &raquo;"
+msgstr "Neuere Eintr&auml;ge &raquo;"
+
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/archive.php:47
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/index.php:29
+msgid "Not Found"
+msgstr "Nicht gefunden"
+
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/archives.php:11
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/sidebar.php:53
+msgid "Archives"
+msgstr "Archive"
+
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/archives.php:13
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/single.php:14
+msgid "Tags:"
+msgstr "Tags:"
+
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/archives.php:20
+msgid "The last 30 Posts:"
+msgstr "Die letzten 30 Eintr&auml;ge:"
+
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/archives.php:41
+msgid "with"
+msgstr "mit"
+
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/archives.php:41
+msgid "0 Comments"
+msgstr "0 Kommentaren"
+
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/archives.php:41
+msgid "1 Comment"
+msgstr "einem Kommentar"
+
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/archives.php:41
+msgid "% Comments"
+msgstr "% Kommentaren"
+
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/archives.php:48
+msgid "Show 30 Posts more"
+msgstr "Zeige 30 Einträge mehr"
+
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/comments.php:6
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/legacy.comments.php:9
+msgid "This post is password protected. Enter the password to view comments."
+msgstr "Dieser Beitrag ist passwortgesch&uuml;tzt. Bitte geben Sie das Passwort ein, um Kommentare lesen zu k&ouml;nnen."
+
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/comments.php:13
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/legacy.comments.php:21
+msgid "No Responses"
+msgstr "Keine Kommentare"
+
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/comments.php:13
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/legacy.comments.php:21
+msgid "One Response"
+msgstr "1 Kommentar"
+
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/comments.php:13
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/legacy.comments.php:21
+msgid "% Responses"
+msgstr "% Kommentare"
+
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/comments.php:13
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/legacy.comments.php:21
+#, php-format
+msgid "to &#8220;%s&#8221;"
+msgstr "zu &#8222;%s&#8220;"
+
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/comments.php:31
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/legacy.comments.php:54
+msgid "Comments are closed."
+msgstr "Kommentieren ist momentan nicht m&ouml;glich."
+
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/comments.php:39
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/comments.php:50
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/legacy.comments.php:62
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/legacy.comments.php:69
+msgid "Leave a Reply"
+msgstr "Kommentieren"
+
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/comments.php:39
+#, php-format
+msgid "Leave a Reply to %s"
+msgstr "Kommentiere %s"
+
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/comments.php:46
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/legacy.comments.php:65
+#, php-format
+msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
+msgstr "Sie m&uuml;ssen <a href=\"%s\">angemeldet</a> sein, um kommentieren zu k&ouml;nnen."
+
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/comments.php:55
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/legacy.comments.php:74
+#, php-format
+msgid "Logged in as <a href=\"%1$s\">%2$s</a>."
+msgstr "Angemeldet als <a href=\"%1$s\">%2$s</a>."
+
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/comments.php:55
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/legacy.comments.php:74
+msgid "Log out of this account"
+msgstr "Jetzt abmelden"
+
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/comments.php:55
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/legacy.comments.php:74
+msgid "Log out &raquo;"
+msgstr "Abmelden &raquo;"
+
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/comments.php:59
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/legacy.comments.php:78
+msgid "Name"
+msgstr "Name"
+
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/comments.php:59
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/legacy.comments.php:78
+msgid "<small>required</small>"
+msgstr "<small>ben&ouml;tigt</small>"
+
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/comments.php:62
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/legacy.comments.php:81
+msgid "Mail <small>will not be published</small>"
+msgstr "E-Mail <small>wird nicht ver&ouml;ffentlicht</small>"
+
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/comments.php:62
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/legacy.comments.php:81
+msgid "<small>, required</small>"
+msgstr "<small>, ben&ouml;tigt</small>"
+
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/comments.php:65
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/legacy.comments.php:84
+msgid "Website"
+msgstr "Website"
+
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/comments.php:70
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/legacy.comments.php:89
+msgid "Comment"
+msgstr "Kommentar"
+
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/comments.php:70
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/legacy.comments.php:89
+msgid "<small>no spam</small>"
+msgstr "<small>kein Spam</small>"
+
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/comments.php:74
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/legacy.comments.php:93
+msgid "Submit Comment"
+msgstr "Kommentar senden"
+
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/comments.php:74
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/legacy.comments.php:93
+msgid "or"
+msgstr "oder"
+
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/comments.php:74
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/legacy.comments.php:93
+msgid "chancel"
+msgstr "abbrechen"
+
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/footer.php:9
+#, php-format
+msgid "%d queries. %s seconds."
+msgstr "%d Abfragen. %s Sekunden."
+
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/header.php:9
+msgid "&raquo; Blog Archive"
+msgstr "&raquo; Blogarchiv"
+
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/header.php:16
+#, php-format
+msgid "%s RSS Feed"
+msgstr "RSS-Feed f&uuml;r %s"
+
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/index.php:13
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/single.php:11
+msgid "Read the rest of this entry &raquo;"
+msgstr "Diesen Beitrag weiterlesen &raquo;"
+
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/index.php:30
+msgid "Sorry, but you are looking for something that isn&#8217;t here."
+msgstr "Es konnten leider keine passenden Inhalte gefunden werden."
+
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/legacy.comments.php:31
+msgid "Your comment is awaiting moderation."
+msgstr "Ihr Kommentar wartet auf Freischaltung."
+
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/legacy.comments.php:33
+#, php-format
+msgid "%1$s at %2$s"
+msgstr "%1$s um %2$s Uhr"
+
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/legacy.comments.php:33
+msgid "edit"
+msgstr "bearbeiten"
+
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/page.php:10
+msgid "Read the rest of this page &raquo;"
+msgstr "Diesen Seite weiterlesen &raquo;"
+
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/page.php:12
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/single.php:13
+msgid "Pages:"
+msgstr "Seiten:"
+
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/page.php:18
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/single.php:17
+msgid "Edit this entry."
+msgstr "Diesen Eintrag bearbeiten."
+
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/search.php:7
+msgid "Search Results"
+msgstr "Suchergebnisse"
+
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/search.php:9
+#, php-format
+msgid "You have searched the <a href=\"%1$s/\">%2$s</a> blog archives for <strong>&#8216;%3$s&#8217;</strong>."
+msgstr "Sie haben im Blogarchiv von <a href=\"%1$s/\">%2$s</a> nach <strong>&#8222;%3$s&#8220;</strong> gesucht."
+
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/search.php:35
+msgid "No posts found. Try a different search?"
+msgstr "Ihre Suche ergab keine Treffer. M&ouml;chten Sie eine neue Suche starten?"
+
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/searchform.php:4
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/searchform.php:5
+msgid "Searchterm..."
+msgstr "Suchbegriff..."
+
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/searchform.php:6
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/sidebar.php:41
+msgid "Search"
+msgstr "Suche"
+
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/sidebar.php:7
+msgid "Author"
+msgstr "Autor"
+
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/sidebar.php:18
+#, php-format
+msgid "You are currently browsing the archives for the %s category."
+msgstr "Sie sind momentan im Archiv der Kategorie %s."
+
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/sidebar.php:21
+#, php-format
+msgid "You are currently browsing the <a href=\"%1$s/\">%2$s</a> blog archives for the day %3$s."
+msgstr "Sie sind momentan im Blogarchiv f&uuml;r den %3$s von <a href=\"%1$s/\">%2$s</a>."
+
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/sidebar.php:21
+msgid "l, F jS, Y"
+msgstr "l, F jS, Y"
+
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/sidebar.php:24
+#, php-format
+msgid "You are currently browsing the <a href=\"%1$s/\">%2$s</a> blog archives for %3$s."
+msgstr "Sie sind momentan im Blogarchiv f&uuml;r %3$s von <a href=\"%1$s/\">%2$s</a>."
+
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/sidebar.php:27
+#, php-format
+msgid "You are currently browsing the <a href=\"%1$s/\">%2$s</a> blog archives for the year %3$s."
+msgstr "Sie sind momentan im Blogarchiv f&uuml;r das Jahr %3$s von <a href=\"%1$s/\">%2$s</a>."
+
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/sidebar.php:30
+#, php-format
+msgid "You are currently browsing the <a href=\"%1$s/\">%2$s</a> blog archives."
+msgstr "Sie sind momentan im Blogarchiv von <a href=\"%1$s/\">%2$s</a>."
+
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/sidebar.php:36
+msgid "Pages"
+msgstr "Seiten"
+
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/sidebar.php:47
+msgid "Photostream"
+msgstr "Neuste Fotos"
+
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/sidebar.php:58
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/sidebar.php:65
+msgid "Categories"
+msgstr "Kategorien"
+
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/sidebar.php:72
+msgid "Bookmarks"
+msgstr "Lesezeichen"
+
+#: C:\Users\Thommy\Documents\Websites\xampplite-win32-1.6.6a\xampplite\htdocs\wordpress\wp-content\themes\laschool/single.php:28
+msgid "Sorry, no posts matched your criteria."
+msgstr "Leider wurden keine Artikel gefunden, die Ihren Kriterien entsprechen."
+
+#~ msgid ", <small>required</small>"
+#~ msgstr ", <small>ben&ouml;tigt</small>"
+
+#, fuzzy
+#~ msgid "&laquo; Previous Entries"
+#~ msgstr "&laquo; &Auml;ltere Eintr&auml;ge"
+
+#, fuzzy
+#~ msgid "Next Entries &raquo;"
+#~ msgstr "Neuere Eintr&auml;ge &raquo;"
+
+#, fuzzy
+#~ msgid "Tags"
+#~ msgstr "Tags:"
+#~ msgid "Archives by Month:"
+#~ msgstr "Archive nach Monat:"
+#~ msgid "Archives by Subject:"
+#~ msgstr "Archive nach Thema:"
+#~ msgid "This entry was posted %1$s on %2$s at %3$s and is filed under %4$s."
+#~ msgstr ""
+#~ "Dieser Beitrag wurde vor %1$s am %2$s um %3$s Uhr ver&ouml;ffentlicht und "
+#~ "unter %4$s gespeichert."
+#~ msgid ""
+#~ "You can follow any responses to this entry through the <a href='%s'>RSS "
+#~ "2.0</a> feed."
+#~ msgstr ""
+#~ "Sie k&ouml;nnen Kommentare zu diesem Eintrag &uuml;ber den <a href='%"
+#~ "s'>RSS-2.0</a>-Feed verfolgen."
+#~ msgid ""
+#~ "You can <a href=\"#respond\">leave a response</a>, or <a href=\"%s\" rel="
+#~ "\"trackback\">trackback</a> from your own site."
+#~ msgstr ""
+#~ "Sie k&ouml;nnen einen <a href=\"#respond\">Kommentar hinterlassen</a> "
+#~ "oder einen <a href=\"%s\" rel=\"trackback\">Trackback</a> von Ihrer "
+#~ "Website hierher setzen."
+#~ msgid ""
+#~ "Responses are currently closed, but you can <a href=\"%s\" rel=\"trackback"
+#~ "\">trackback</a> from your own site."
+#~ msgstr ""
+#~ "Kommentare sind momentan deaktiviert, aber Sie k&ouml;nnen einen <a href="
+#~ "\"%s\" rel=\"trackback\">Trackback</a> von Ihrer Website hierher setzen."
+#~ msgid ""
+#~ "You can skip to the end and leave a response. Pinging is currently not "
+#~ "allowed."
+#~ msgstr ""
+#~ "Sie k&ouml;nnen einen <a href=\"#respond\">Kommentar hinterlassen</a>, "
+#~ "Pingbacks/Trackbacks sind momentan deaktiviert."
+#~ msgid "Both comments and pings are currently closed."
+#~ msgstr ""
+#~ "Momentan ist weder das Kommentieren noch das Setzen eines Trackbacks "
+#~ "m&ouml;glich."
+
