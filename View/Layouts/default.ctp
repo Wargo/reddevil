@@ -42,12 +42,10 @@
 <body>
 	<?php
 	echo $this->Html->link($this->Html->image('bg/derecha_ok_bw.jpg', array()),
-		//array('controller' => 'videos', 'action' => 'view', 'dinio-y-noe-milk-en-el-botones'),
-		'/',
+		array('controller' => 'videos', 'action' => 'view', 'pablo-ferrari-y-amanda-en-feria-de-abril-mamadas-mil'),
 		array('class' => 'bg_promo_right', 'escape' => false));
 	echo $this->Html->link($this->Html->image('bg/IZQUIERDA_bw.jpg', array()),
-		//array('controller' => 'videos', 'action' => 'view', 'dinio-y-noe-milk-en-el-botones'),
-		'/',
+		array('controller' => 'videos', 'action' => 'view', 'pablo-ferrari-y-amanda-en-feria-de-abril-mamadas-mil'),
 		array('class' => 'bg_promo_left', 'escape' => false));
 		?>
 	<div id="container">
