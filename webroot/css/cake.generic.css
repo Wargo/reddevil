@@ -766,3 +766,7 @@ pre {
 	float: left;
 	clear: none;
 }
+
+.gray {
+	background :#CCC !important;
+}
