@@ -1,4 +1,5 @@
 <?php
+//debug($_SERVER['HTTP_USER_AGENT']);
 $size = $mobileDevice?'s':'m';
 $folder = explode('-', $main['Photo']['id']);
 $folder = substr($folder[1], 0, 3);
@@ -7,7 +8,8 @@ $image = $this->Html->url('/img/Photo/' . $folder . '/' . $main['Photo']['id'] .
 <div class="player">
 	<?php
 	//if (!Configure::read('debug')) {
-	if (true || stristr($_SERVER['HTTP_USER_AGENT'], 'ipad') || stristr($_SERVER['HTTP_USER_AGENT'], 'iphone')) {
+	// Pongo Mac para que en los ipad usando chrome salga
+	if (stristr($_SERVER['HTTP_USER_AGENT'], 'Mac') || stristr($_SERVER['HTTP_USER_AGENT'], 'ipad') || stristr($_SERVER['HTTP_USER_AGENT'], 'iphone')) {
 		?>
 		<div class="player_video">
 			<div class="flowplayer is-splash play-button" 
