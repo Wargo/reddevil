@@ -1,4 +1,5 @@
 <?php
+echo $this->Html->link(__('Volver'), array('controller' => 'photos', 'action' => 'index'));
 echo $this->Form->create('Photo', array('type' => 'file', 'url' => array('controller' => 'photos', 'action' => 'edit', $id)));
 
 echo $this->Form->inputs(array(

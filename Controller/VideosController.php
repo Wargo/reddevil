@@ -52,6 +52,12 @@ class VideosController extends AppController {
 			return $this->redirect('/');
 		}
 
+		// TEMPORAL
+		if ($id == 'pablo-ferrari-y-samantha-pink-en-samantha-pink') {
+			$id = 'pablo-ferrari-y-samantha-pink-en-number-one';
+			return $this->redirect(array('controller' => 'videos', 'action' => 'view', $id), 301);
+		}
+
 		$section = 'trailer';
 
 		if (!$video = $this->Video->findById($id)) {
