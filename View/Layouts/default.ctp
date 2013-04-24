@@ -14,30 +14,17 @@
 	<?php
 		echo $this->Html->meta('icon');
 
-		//echo $this->Html->css('styles');
-		//echo $this->Html->css('styles2');
-		//echo $this->Html->css('styles4');
-		echo $this->Html->css('styles5');
-		echo $this->Html->css('forms2');
-		//echo $this->Html->css('flowplayer/minimalist');
-		echo $this->Html->css('lightbox/jquery.lightbox-0.5');
-
+		$this->Asset->css(array('styles', 'forms', 'lightbox/jquery.lightbox-0.5'));	
 		if ($this->request->params['controller'] == 'cams') {
-			echo $this->Html->css('cams');
-			echo $this->Html->css('colorbox');
-			echo $this->Html->script('colorbox');
-			echo $this->Html->script('colorbox-es');
+			$this->Asset->css(array('cams', 'colorbox'));
+			$this->Asset->js(array('colorbox', 'colorbox-es'));
 		}
-		
-		echo $this->fetch('css');
+		echo $this->Asset->out('css');	
 
-		echo $this->element('js');
+
 		echo $this->element('meta');
 
-		//echo $this->fetch('script');
-		//echo $this->fetch('meta');
 	?>
-	<?php echo $this->element('analytics'); ?>
 </head>
 <body>
 	<?php
@@ -67,5 +54,9 @@
 	<?php echo $this->element('feedback'); ?>
 	<div class="hidden" id="dialog"></div>
 	<div class="hidden clearfix" id="register_dialog"></div>
+	<?php
+	echo $this->element('js');
+	echo $this->element('analytics'); 
+	?>
 </body>
 </html>
