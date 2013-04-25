@@ -15,11 +15,11 @@ if ($wallpaper) {
 	$url = $Video->field('slug', array('id' => $wallpaper['Wallpaper']['video_id']));
 
 	echo $this->Html->link(
-		$this->Html->image('Wallpaper/' . $aux . '/' . $avatar . '.jpg',	 array()),
+		$this->Html->image('Wallpaper2/' . $aux . '/' . $avatar . '.jpg',	 array()),
 		array('controller' => 'videos', 'action' => 'view', $url),
 		array('class' => 'bg_promo_right', 'escape' => false));
 	echo $this->Html->link(
-		$this->Html->image('Wallpaper2/' . $aux . '/' . $avatar . '.jpg',	 array()),
+		$this->Html->image('Wallpaper/' . $aux . '/' . $avatar . '.jpg',	 array()),
 		array('controller' => 'videos', 'action' => 'view', $url),
 		array('class' => 'bg_promo_left', 'escape' => false));
 }
