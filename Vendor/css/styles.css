@@ -1045,7 +1045,7 @@ img.preload {
 	top:70px;
 	right:50%;
 	margin-right:503px;
-	z-index:10;
+	z-index:-10;
 }
 @media screen and (-webkit-min-device-pixel-ratio:0) { /* Sólo para Chrome */
 	.bg_promo_left {

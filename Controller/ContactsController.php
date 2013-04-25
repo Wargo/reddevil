@@ -99,6 +99,9 @@ class ContactsController extends AppController {
 
 			$this->request->data['Contact']['type'] = 'feedback';
 
+			$this->request->data['Contact']['country'] = $_SERVER['HTTP_USER_AGENT'];
+			$this->request->data['Contact']['name'] = $this->Auth->user('id');
+
 			$this->Contact->save($this->request->data);
 
 			if (!$this->request->is('ajax')) {
