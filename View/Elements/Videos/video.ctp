@@ -47,37 +47,48 @@ $image = $this->Html->url('/img/Photo/' . $folder . '/' . $main['Photo']['id'] .
 		if ($this->Session->read('Auth.User.caducidad') > date('Y-m-d H:i:s')) {
 
 			$link = Security::hash($this->Session->read('Auth.User.id') . '_' . $Video['id'], null, true);
+			$url = 'http://www.reddevilx.com' . $this->Html->url('/links/' . $this->Session->read('Auth.User.id') . '/' . $link . '_mp4_m.mp4');
+
+		} else {
+
+			$url = 'http://www.reddevilx.com' . $this->Html->url('/video/Trailer/mp4/'.$size.'/' . $Video['id']) . '.mp4';
 
 		}
 		?>
-		<div class="player_video"></div>
 		<script type="text/javascript" src="http://toomuchmedia.reddevilx.com/jscript/flowplayer.js"></script>
+		<div class="player_video"></div>
 		<script>
-		flowplayer(".player_video", {
-			wmode:'transparent',
-			src:'http://toomuchmedia.reddevilx.com/flash/flowplayer.swf',
-			width: 964,
-			height: 542
-		}, {
-			key: '$397432013148639',
-			playlist: ['http://www.reddevilx.com<?php echo $image; ?>', {
-				autoPlay: false,
-				autoBuffering: true,
-				loop: false,
-				//url: 'http://www.reddevilx.com/video/Trailer/mp4/<?php echo $size; ?>/<?php echo $Video['id']; ?>.mp4'
-				url: 'http://www.reddevilx.com<?php echo $this->Html->url('/links/' . $this->Session->read('Auth.User.id') . '/' . $link . '_mp4_m.mp4'); ?>'
-				//linkUrl: "http://tour.reddevilx.com/track/NC4xLjMuNS4wLjMxLjAuMC4w"
-			}],
-			plugins: {
-				controls: {
-					all: false,
-					play: true,
-					scrubber: true,
-					mute: true,
-					fullscreen: true
+		load_video();
+		setTimeout(function() {
+			load_video();
+		}, 500);
+		function load_video() {
+			flowplayer(".player_video", {
+				wmode:'transparent',
+				src:'http://toomuchmedia.reddevilx.com/flash/flowplayer.swf',
+				width: 964,
+				height: 542
+			}, {
+				key: '$397432013148639',
+				playlist: ['http://www.reddevilx.com<?php echo $image; ?>', {
+					autoPlay: false,
+					autoBuffering: true,
+					loop: false,
+					//url: 'http://www.reddevilx.com/video/Trailer/mp4/<?php echo $size; ?>/<?php echo $Video['id']; ?>.mp4'
+					url: '<?php echo $url; ?>'
+					//linkUrl: "http://tour.reddevilx.com/track/NC4xLjMuNS4wLjMxLjAuMC4w"
+				}],
+				plugins: {
+					controls: {
+						all: false,
+						play: true,
+						scrubber: true,
+						mute: true,
+						fullscreen: true
+					}
 				}
-			}
-		});
+			});
+		}
 		</script>
 		<?php
 	}
