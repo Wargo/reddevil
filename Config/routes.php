@@ -69,6 +69,8 @@
 	Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));
 
 
+	Router::connect('/js/*', array('plugin' => 'mi_asset', 'controller' => 'asset', 'action' => 'serve'));
+	Router::connect('/css/*', array('plugin' => 'mi_asset', 'controller' => 'asset', 'action' => 'serve'));
 
 /**
  * Connect media types to media plugin

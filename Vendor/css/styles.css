@@ -4,8 +4,9 @@
 
 body {
 	margin:0;
-	background:url(../img/bg.png);
+	/*background:url(../img/bg.png);*/
 	/*background:url(../img/bg/fondo_fallas.jpg);*/
+	background:black;
 	font-size:13px;
 	font-family:'Arial';
 }
@@ -115,7 +116,7 @@ html[xmlns] .clearfix {
 	text-align:center;
 }
 #footer ul {
-	border-top:solid 1px #CCC;
+	/*border-top:solid 1px #CCC;*/
 	padding:30px 0px;
 	margin-top:20px;
 }
@@ -124,7 +125,7 @@ html[xmlns] .clearfix {
 	padding:18px 20px;
 }
 #footer ul li a {
-	color:#333;
+	color:#CCC;
 	font-weight:bold;
 	font-size:1.3em;
 }
@@ -1038,7 +1039,20 @@ img.preload {
 /*
  * bg promo
  */
-.bg_promo {
+.bg_promo_left {
+	display:block;
+	position:fixed;
+	top:70px;
+	right:50%;
+	margin-right:503px;
+	z-index:-10;
+}
+@media screen and (-webkit-min-device-pixel-ratio:0) { /* Sólo para Chrome */
+	.bg_promo_left {
+		z-index:-10;
+	}
+}
+.bg_promo_right {
 	display:block;
 	position:fixed;
 	top:70px;
@@ -1046,6 +1060,69 @@ img.preload {
 	margin-left:503px;
 	z-index:10;
 }
-.bg_promo img {
-	width:375px;
+.bg_promo_left img,
+.bg_promo_right img {
+	min-width:200px;
+	width:100%;
+}
+
+
+/*
+ * Nats
+ */
+.join_error {
+	color: red;
+}
+
+
+/*
+ * Promo
+ */
+.link_promo {
+	position:relative;
+	margin-bottom:10px;
+}
+.link_promo a.go_my_profile {
+	position:absolute;
+	right:0;
+}
+.link_promo img {
+	height: 328px;
+}
+
+/*
+ * píldoras
+ */
+.block_mini_video {
+	float:left;
+	width:300px;
+	width:300px;
+	margin: 10px 12px 10px 12px;
+}
+.block_mini_video .whatsapp {
+	margin-top:10px;
+	font-size: 18px;
+	font-weight:bold;
+	display:block;
+	padding:10px 0px;
+	color:#FFF;
+	-webkit-border-radius:3px;
+	border-radius:3px;
+	text-align:center;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#D38373', endColorstr='#9B2603');
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#D38373), to(#9B2603));
+	background-image: -webkit-linear-gradient(top, #D38373, #9B2603);
+	background-image: -moz-linear-gradient(top, #D38373, #9B2603);
+	background-image: linear-gradient(#D38373, #9B2603);
+}
+.block_mini_video .whatsapp:hover {
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#9B2603', endColorstr='#D38373');
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#9B2603), to(#D38373));
+	background-image: -webkit-linear-gradient(top, #9B2603, #D38373);
+	background-image: -moz-linear-gradient(top, #9B2603, #D38373);
+	background-image: linear-gradient(#9B2603, #D38373);
+}
+.block_mini_video .title {
+	display:block;
+	padding:5px;
 }

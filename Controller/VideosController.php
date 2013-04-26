@@ -52,6 +52,19 @@ class VideosController extends AppController {
 			return $this->redirect('/');
 		}
 
+		// TEMPORAL - no borrar
+		if ($id == 'pablo-ferrari-y-samantha-pink-en-samantha-pink') {
+			$id = 'pablo-ferrari-y-samantha-pink-en-number-one';
+			return $this->redirect(array('controller' => 'videos', 'action' => 'view', $id), 301);
+		}
+
+		if ($this->Session->read('Auth.User.caducidad') > date('Y-m-d H:i:s')) {
+			if (!$this->params['isAjax']) {
+				return $this->redirect(array('controller' => 'videos', 'action' => 'view_video', $id));
+			}
+		}
+
+
 		$section = 'trailer';
 
 		if (!$video = $this->Video->findById($id)) {

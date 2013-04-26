@@ -33,7 +33,7 @@ App::uses('Controller', 'Controller');
  */
 class AppController extends Controller {
 
-	public $helpers = array('Html', 'Form', 'Session',  'Funciones');
+	public $helpers = array('Html', 'Form', 'Session',  'Funciones', 'MiAsset.Asset');
 
 	public $components = array(
 		'Security' => array('csrfUseOnce' => false),

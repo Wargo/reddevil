@@ -32,33 +32,39 @@ $image = $this->Html->url('/img/Photo/' . $folder . '/' . $main['Photo']['id'] .
 		<?php
 	} else {
 		?>
-		<div class="player_video"></div>
 		<script type="text/javascript" src="http://toomuchmedia.reddevilx.com/jscript/flowplayer.js"></script>
+		<div class="player_video"></div>
 		<script>
-		flowplayer(".player_video", {
-			wmode:'transparent',
-			src:'http://toomuchmedia.reddevilx.com/flash/flowplayer.swf',
-			width: 964,
-			height: 542
-		}, {
-			key: '$397432013148639',
-			playlist: ['http://www.reddevilx.com<?php echo $image; ?>', {
-				autoPlay: false,
-				autoBuffering: true,
-				loop: false,
-				url: 'http://www.reddevilx.com/video/Trailer/mp4/<?php echo $size; ?>/<?php echo $Video['id']; ?>.mp4'
-				//linkUrl: "http://tour.reddevilx.com/track/NC4xLjMuNS4wLjMxLjAuMC4w"
-			}],
-			plugins: {
-				controls: {
-					all: false,
-					play: true,
-					scrubber: true,
-					mute: true,
-					fullscreen: true
+		load_video();
+		setTimeout(function() {
+			load_video();
+		}, 500);
+		function load_video() {
+			flowplayer(".player_video", {
+				wmode:'transparent',
+				src:'http://toomuchmedia.reddevilx.com/flash/flowplayer.swf',
+				width: 964,
+				height: 542
+			}, {
+				key: '$397432013148639',
+				playlist: ['http://www.reddevilx.com<?php echo $image; ?>', {
+					autoPlay: false,
+					autoBuffering: true,
+					loop: false,
+					url: 'http://www.reddevilx.com/video/Trailer/mp4/<?php echo $size; ?>/<?php echo $Video['id']; ?>.mp4'
+					//linkUrl: "http://tour.reddevilx.com/track/NC4xLjMuNS4wLjMxLjAuMC4w"
+				}],
+				plugins: {
+					controls: {
+						all: false,
+						play: true,
+						scrubber: true,
+						mute: true,
+						fullscreen: true
+					}
 				}
-			}
-		});
+			});
+		}
 		</script>
 		<?php
 	}

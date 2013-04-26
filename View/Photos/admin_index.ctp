@@ -15,7 +15,7 @@ foreach ($photos as $photo) {
 		extract($video);
 	}
 
-	echo '<tr>';
+	echo '<tr class="' . ($Photo['active'] ? '' : 'gray') . '">';
 		echo '<td>' . $Photo['order'] . '</td>';
 		echo '<td>' . $this->Html->image('Photo/' . $Photo['id'] . ',fitCrop,60,60.jpg', array('width' => 60)) . '</td>';
 		echo '<td>' . $Photo['title'] . '</td>';

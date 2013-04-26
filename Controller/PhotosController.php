@@ -151,7 +151,7 @@ class PhotosController extends AppController {
 				}
 			}
 
-			return $this->redirect('index');
+			//return $this->redirect('index');
 
 		}
 
