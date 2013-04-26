@@ -10,53 +10,26 @@ echo $this->Asset->out('js');
 <script>
 $(document).ready(function() {
 	if (FlashDetect.installed) {
-		$('#html5').remove();
+		//$('#html5').remove();
 	} else {
-		$('#flash_player').remove();
+		$('#flash_player').html('<div class="no_flash_detected"><?php echo __('Parece que no dispones del flash player, puedes descargártelo %s', $this->Html->link(__('aquí'), 'http://www.adobe.com/go/getflashplayer', array('target' => '_blank'))); ?></div>');
 	}
 });
-var ipad   = (navigator.userAgent.toLowerCase().indexOf('ipad')!='-1');
 </script>
 <div class="player">
-	<?php
-	//if (stristr($_SERVER['HTTP_USER_AGENT'], 'Mac') || stristr($_SERVER['HTTP_USER_AGENT'], 'ipad') || stristr($_SERVER['HTTP_USER_AGENT'], 'iphone')) {
-	//if (!Configure::read('debug')) {
-	?>
-	<div class="player_video" id="html5">
-		<div class="flowplayer is-splash play-button" 
-			<?php echo 'style="background-image:url('.$image.')"'; ?>
-			data-swf="<?php echo $this->Html->url('/html5/flowplayer/flowplayer.swf'); ?>">
-			<?php
-			if ($this->Session->read('Auth.User.caducidad') > date('Y-m-d H:i:s')) {
-
-				$link = Security::hash($this->Session->read('Auth.User.id') . '_' . $Video['id'], null, true);
-				?>
-				<video>
-					<source type="video/mp4" src="<?php echo $this->Html->url('/links/' . $this->Session->read('Auth.User.id') . '/' . $link . '_mp4_m.mp4'); ?>"/>
-					<source type='video/ogg; codecs="theora, vorbis"' src="<?php echo $this->Html->url('/links/' . $this->Session->read('Auth.User.id') . '/' . $link . '_ogg_m.ogg'); ?>"/>
-				</video>
-				<?php
-			} else {
-				?>
-				<video>
-					<source type='video/mp4; codecs="avc1.4D401E, mp4a.40.2"' src="<?php echo $this->Html->url('/video/Trailer/mp4/'.$size.'/' . $Video['id']); ?>.mp4"/>
-					<source type='video/ogg; codecs="theora, vorbis"' src="<?php echo $this->Html->url('/video/Trailer/ogg/'.$size.'/' . $Video['id']); ?>.ogg"/>
-					<source type="video/flash" src="<?php echo $this->Html->url('/video/Trailer/flv/'.$size.'/' . $Video['id']); ?>.flv"/>
-				</video>
-				<?php
-			}
+	<?php if (strpos(strtolower($_SERVER['HTTP_USER_AGENT']), 'ipod') || strpos(strtolower($_SERVER['HTTP_USER_AGENT']), 'ipad') || strpos(strtolower($_SERVER['HTTP_USER_AGENT']), 'iphone')) { ?>
+		<?php
+		if ($this->Session->read('Auth.User.caducidad') > date('Y-m-d H:i:s')) {
+			$link = Security::hash($this->Session->read('Auth.User.id') . '_' . $Video['id'], null, true);
 			?>
-		</div>
-	</div>
-	<script>
-		$(".flowplayer").flowplayer({
-			tooltip: false,
-			'key': '$397432013148639',
-			'logo' : '<?php echo $this->Html->url('/img/logo.png', true); ?>'
-		});
-	</script>
-	<?php
-	//} else {
+			<video src="<?php echo $this->Html->url('/links/' . $this->Session->read('Auth.User.id') . '/' . $link . '_mp4_m.mp4'); ?>" controls="controls" width="964" height="542" poster="<?php echo $image; ?>"></video>
+			<?php
+		} else {
+			?>
+			<video src="<?php echo $this->Html->url('/video/Trailer/mp4/'.$size.'/' . $Video['id']); ?>.mp4" controls="controls" width="964" height="542" poster="<?php echo $image; ?>"></video>
+			<?php
+		}
+	} else {
 		if ($this->Session->read('Auth.User.caducidad') > date('Y-m-d H:i:s')) {
 
 			$link = Security::hash($this->Session->read('Auth.User.id') . '_' . $Video['id'], null, true);
@@ -83,11 +56,12 @@ var ipad   = (navigator.userAgent.toLowerCase().indexOf('ipad')!='-1');
 					width: 964,
 					height: 542
 				}, {
-					key: '$397432013148639',
+					key: "$397432013148639",
 					playlist: ['http://www.reddevilx.com<?php echo $image; ?>', {
 						autoPlay: false,
 						autoBuffering: true,
 						loop: false,
+						scaling:'fit',
 						//url: 'http://www.reddevilx.com/video/Trailer/mp4/<?php echo $size; ?>/<?php echo $Video['id']; ?>.mp4'
 						url: '<?php echo $url; ?>'
 						//linkUrl: "http://tour.reddevilx.com/track/NC4xLjMuNS4wLjMxLjAuMC4w"
@@ -106,7 +80,7 @@ var ipad   = (navigator.userAgent.toLowerCase().indexOf('ipad')!='-1');
 			</script>
 		</div>
 		<?php
-	//}
+	}
 	?>
 </div>
 

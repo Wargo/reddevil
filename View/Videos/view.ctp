@@ -71,7 +71,7 @@ $(function() {
 		}
 		?>
 		
-		<div style="text-align: center; color:#FFF" class="hidden ipad_message"><?php echo __('Si no puedes ver el vídeo y estás usando Chrome, cambia al Safari, porque la página todavía no está optimizada para Chrome de iPad.'); ?></div>
+		<!--<div style="text-align: center; color:#FFF" class="hidden ipad_message"><?php echo __('Si no puedes ver el vídeo y estás usando Chrome, cambia al Safari, porque la página todavía no está optimizada para Chrome de iPad.'); ?></div>-->
 
 	</div>
 </div>
