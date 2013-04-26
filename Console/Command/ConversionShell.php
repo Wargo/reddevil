@@ -9,8 +9,9 @@ class ConversionShell extends AppShell {
 		//'ogg' => array('folder' => 'ogg', 'sizes' => array('l', 'm', 's'))
 
 		//'mp4' => array('folder' => 'mp4', 'sizes' => array('m', 's')),
-		'ogg' => array('folder' => 'ogg', 'sizes' => array('m', 's')),
+		//'ogg' => array('folder' => 'ogg', 'sizes' => array('m', 's')),
 		//'flv' => array('folder' => 'flv', 'sizes' => array('m', 's')), 
+		'flv' => array('folder' => 'flv', 'sizes' => array('m')), 
 	);
 	
 	public function convert_all() {

@@ -3,13 +3,26 @@ $size = $mobileDevice?'s':'m';
 $folder = explode('-', $main['Photo']['id']);
 $folder = substr($folder[1], 0, 3);
 $image = $this->Html->url('/img/Photo/' . $folder . '/' . $main['Photo']['id'] . ',fitCrop,964,542.jpg', array('class' => 'image', 'alt' => ''));
+
+$this->Asset->js(array('detect_flash'));
+echo $this->Asset->out('js');
 ?>
+<script>
+$(document).ready(function() {
+	if (FlashDetect.installed) {
+		$('#html5').remove();
+	} else {
+		$('#flash_player').remove();
+	}
+});
+var ipad   = (navigator.userAgent.toLowerCase().indexOf('ipad')!='-1');
+</script>
 <div class="player">
 	<?php
-	if (stristr($_SERVER['HTTP_USER_AGENT'], 'Mac') || stristr($_SERVER['HTTP_USER_AGENT'], 'ipad') || stristr($_SERVER['HTTP_USER_AGENT'], 'iphone')) {
+	//if (stristr($_SERVER['HTTP_USER_AGENT'], 'Mac') || stristr($_SERVER['HTTP_USER_AGENT'], 'ipad') || stristr($_SERVER['HTTP_USER_AGENT'], 'iphone')) {
 	//if (!Configure::read('debug')) {
 	?>
-	<div class="player_video">
+	<div class="player_video" id="html5">
 		<div class="flowplayer is-splash play-button" 
 			<?php echo 'style="background-image:url('.$image.')"'; ?>
 			data-swf="<?php echo $this->Html->url('/html5/flowplayer/flowplayer.swf'); ?>">
@@ -43,11 +56,11 @@ $image = $this->Html->url('/img/Photo/' . $folder . '/' . $main['Photo']['id'] .
 		});
 	</script>
 	<?php
-	} else {
+	//} else {
 		if ($this->Session->read('Auth.User.caducidad') > date('Y-m-d H:i:s')) {
 
 			$link = Security::hash($this->Session->read('Auth.User.id') . '_' . $Video['id'], null, true);
-			$url = 'http://www.reddevilx.com' . $this->Html->url('/links/' . $this->Session->read('Auth.User.id') . '/' . $link . '_mp4_m.mp4');
+			$url = 'http://www.reddevilx.com' . $this->Html->url('/links/' . $this->Session->read('Auth.User.id') . '/' . $link . '_flv_m.flv');
 
 		} else {
 
@@ -55,43 +68,45 @@ $image = $this->Html->url('/img/Photo/' . $folder . '/' . $main['Photo']['id'] .
 
 		}
 		?>
-		<script type="text/javascript" src="http://toomuchmedia.reddevilx.com/jscript/flowplayer.js"></script>
-		<div class="player_video"></div>
-		<script>
-		load_video();
-		setTimeout(function() {
+		<div id="flash_player">
+			<script type="text/javascript" src="http://toomuchmedia.reddevilx.com/jscript/flowplayer.js"></script>
+			<div class="player_video"></div>
+			<script>
 			load_video();
-		}, 500);
-		function load_video() {
-			flowplayer(".player_video", {
-				wmode:'transparent',
-				src:'http://toomuchmedia.reddevilx.com/flash/flowplayer.swf',
-				width: 964,
-				height: 542
-			}, {
-				key: '$397432013148639',
-				playlist: ['http://www.reddevilx.com<?php echo $image; ?>', {
-					autoPlay: false,
-					autoBuffering: true,
-					loop: false,
-					//url: 'http://www.reddevilx.com/video/Trailer/mp4/<?php echo $size; ?>/<?php echo $Video['id']; ?>.mp4'
-					url: '<?php echo $url; ?>'
-					//linkUrl: "http://tour.reddevilx.com/track/NC4xLjMuNS4wLjMxLjAuMC4w"
-				}],
-				plugins: {
-					controls: {
-						all: false,
-						play: true,
-						scrubber: true,
-						mute: true,
-						fullscreen: true
+			setTimeout(function() {
+				load_video();
+			}, 500);
+			function load_video() {
+				flowplayer(".player_video", {
+					wmode:'transparent',
+					src:'http://toomuchmedia.reddevilx.com/flash/flowplayer.swf',
+					width: 964,
+					height: 542
+				}, {
+					key: '$397432013148639',
+					playlist: ['http://www.reddevilx.com<?php echo $image; ?>', {
+						autoPlay: false,
+						autoBuffering: true,
+						loop: false,
+						//url: 'http://www.reddevilx.com/video/Trailer/mp4/<?php echo $size; ?>/<?php echo $Video['id']; ?>.mp4'
+						url: '<?php echo $url; ?>'
+						//linkUrl: "http://tour.reddevilx.com/track/NC4xLjMuNS4wLjMxLjAuMC4w"
+					}],
+					plugins: {
+						controls: {
+							all: false,
+							play: true,
+							scrubber: true,
+							mute: true,
+							fullscreen: true
+						}
 					}
-				}
-			});
-		}
-		</script>
+				});
+			}
+			</script>
+		</div>
 		<?php
-	}
+	//}
 	?>
 </div>
 

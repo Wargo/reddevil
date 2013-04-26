@@ -57,6 +57,10 @@ class VideosController extends AppController {
 			$id = 'pablo-ferrari-y-samantha-pink-en-number-one';
 			return $this->redirect(array('controller' => 'videos', 'action' => 'view', $id), 301);
 		}
+		if ($id == 'pablo-ferrari-y-erica-fontes-en-golosa-busca-polla-sabrosa') {
+			$id = 'pablo-ferrari-y-erica-fontes-en-good-morning-erica';
+			return $this->redirect(array('controller' => 'videos', 'action' => 'view', $id), 301);
+		}
 
 		if ($this->Session->read('Auth.User.caducidad') > date('Y-m-d H:i:s')) {
 			if (!$this->params['isAjax']) {
@@ -97,6 +101,15 @@ class VideosController extends AppController {
 
 		if (empty($id)) {
 			return $this->redirect('/');
+		}
+
+		if ($id == 'pablo-ferrari-y-samantha-pink-en-samantha-pink') {
+			$id = 'pablo-ferrari-y-samantha-pink-en-number-one';
+			return $this->redirect(array('controller' => 'videos', 'action' => 'view_video', $id), 301);
+		}
+		if ($id == 'pablo-ferrari-y-erica-fontes-en-golosa-busca-polla-sabrosa') {
+			$id = 'pablo-ferrari-y-erica-fontes-en-good-morning-erica';
+			return $this->redirect(array('controller' => 'videos', 'action' => 'view_video', $id), 301);
 		}
 
 		$total_seconds = 90;
