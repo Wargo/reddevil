@@ -367,6 +367,7 @@ html[xmlns] .clearfix {
 	/*text-align:center;*/
 }
 .video .player_video {
+	color:#FFF;
 	height:542px;
 	width:964px;
 }
@@ -1125,4 +1126,15 @@ img.preload {
 .block_mini_video .title {
 	display:block;
 	padding:5px;
+}
+
+.no_flash_detected {
+	color:#FFF;
+	font-size:20px;
+	margin:50px;
+	text-align:center;
+}
+.no_flash_detected a {
+	color:#FFF;
+	text-decoration:underline;
 }

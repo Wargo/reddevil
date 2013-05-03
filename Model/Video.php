@@ -159,7 +159,8 @@ class Video extends AppModel {
 
 		$this->xml = new File(WWW_ROOT . 'sitemap.xml');
 		if ($this->xml->exists()) {
-			$this->xml->delete();
+			//$this->xml->delete();
+			unlink(WWW_ROOT . 'sitemap.xml');
 		}	
 
 		$this->xml->append('<?xml version="1.0" encoding="UTF-8"?>'."\r\n");
