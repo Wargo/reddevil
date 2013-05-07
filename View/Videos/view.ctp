@@ -70,9 +70,6 @@ $(function() {
 				break;
 		}
 		?>
-		
-		<!--<div style="text-align: center; color:#FFF" class="hidden ipad_message"><?php echo __('Si no puedes ver el vídeo y estás usando Chrome, cambia al Safari, porque la página todavía no está optimizada para Chrome de iPad.'); ?></div>-->
-
 	</div>
 </div>
 <div class="video_footer">
@@ -93,6 +90,16 @@ $(function() {
 		<li><?php echo $this->Html->link(sprintf(__('Fotos (%s)'), $num_photos), array('controller' => 'videos', 'action' => 'view_photos', $Video['id']), array('class' => '_view_photos')); ?></li>
 	</ul>
 </div>
+<?php
+$actors = ClassRegistry::init('VideoRelationship')->getActors($Video['id']);
+echo '<p class="actors">';
+	$links = array();
+	foreach ($actors as $actor) {
+		$links[] = $this->Html->link($actor['Actor']['name'], array('controller' => 'videos', 'action' => 'home', 'page' => 1, 'actor' => $actor['Actor']['slug'], 'gender' => $actor['Actor']['gender']));
+	}
+	echo __('Actores:') . ' ' . implode(', ', $links);
+echo '</p>';
+?>
 <div class="preview_photos">
 	<?php
 	$images = ClassRegistry::init('Photo')->find('all', array(

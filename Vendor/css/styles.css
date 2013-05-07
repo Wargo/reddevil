@@ -1138,3 +1138,15 @@ img.preload {
 	color:#FFF;
 	text-decoration:underline;
 }
+
+.actors {
+	margin-left: 20px;
+	color:#333;
+}
+.actors a {
+	font-weight:bold;
+	color:#333;
+}
+.actors a:hover {
+	text-decoration:underline;
+}

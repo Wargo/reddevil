@@ -105,5 +105,12 @@ if (!empty($this->request->data['Video']['has_video'])) {
 	echo $this->element('Videos/admin_brief', array('mode' => 'Video', 'data' => $this->request->data));
 }
 
+echo $this->Form->inputs(array(
+	'fieldset' => false,
+	'slug' => array(
+		'disabled' => true,
+	),
+));
+
 echo $this->Form->end(__('Guardar', true));
 echo $this->Html->link(__('Cancelar', true), array('controller' => 'videos', 'action' => 'index'));
