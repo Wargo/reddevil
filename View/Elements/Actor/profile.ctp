@@ -19,6 +19,7 @@
 			?>
 		</div>
 	</div>
+	<div style="clear:both;"></div>
 	<?php
 	if ($this->params['controller'] == 'photos') {
 		echo $this->Html->link(__('Ver sus escenas'),
