@@ -340,8 +340,10 @@ class VideosController extends AppController {
 			if (count($actors) > 1) {
 				$last = array_pop($actors);
 				$layout_title = sprintf(__('%s y %s en %s'), implode(', ', $actors), $last, $this->request->data['Video']['title']);
+			} elseif (count($actors) == 0) {
+				$layout_title = $this->request->data['Video']['title'];
 			} else {
-				$layout_title = sprintf(__('%s en %s'), implode(', ', $actors), $Video['title']);
+				$layout_title = sprintf(__('%s en %s'), implode(', ', $actors), $this->request->data['Video']['title']);
 			}
 
 			$categories = ClassRegistry::init('VideoRelationship')->getCategories($id);

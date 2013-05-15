@@ -9,7 +9,7 @@ class Video extends AppModel {
 		
 		return $this->find('all', array(
 			'conditions' => $conditions,
-			'limit' => 6,
+			'limit' => 12,
 			'offset' => $this->limit * $page,
 			'order' => array('published' => 'desc')
 		));
@@ -41,8 +41,7 @@ class Video extends AppModel {
 		}
 
 		
-		$ips = array('84.123.66.33', '127.0.0.1');
-		if (empty($_SERVER['REMOTE_ADDR']) || in_array($_SERVER['REMOTE_ADDR'], $ips)) {
+		if (Configure::read('debug')) {
 			$conditions['published <='] = date('Y-m-d H:i:s');
 			$conditions['active'] = 1;
 		} else {
