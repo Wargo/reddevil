@@ -1,4 +1,5 @@
 <?php
+$registered = ($this->Session->read('Auth.User.id') && strtotime($this->Session->read('Auth.User.caducidad'))>time());
 echo $this->element('Actor/profile', compact('Actor'));
 ?>
 <div class="actor_photos" id="gallery">
@@ -22,9 +23,16 @@ echo $this->element('Actor/profile', compact('Actor'));
 	?>
 </div>
 <script type="text/javascript">
+<?php if ($registered): ?>
 $(function() {
 	$('#gallery a').lightBox();
 });
+<?php else: ?>
+	$('#gallery a').bind('click', function() { 
+		load_popup();
+		return false;
+	});
+<?php endif; ?>
 </script>
 <?php
 $pageCount = $this->params['paging']['Photo']['pageCount'];

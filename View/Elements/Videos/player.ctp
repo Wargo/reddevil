@@ -1,5 +1,5 @@
 <?php
-$size = $mobileDevice?'s':'m';
+$size = $mobileDevice?'m':'m';
 $folder = explode('-', $main['Photo']['id']);
 $folder = substr($folder[1], 0, 3);
 $image = $this->Html->url('/img/Photo/' . $folder . '/' . $main['Photo']['id'] . ',fitCrop,964,542.jpg', array('class' => 'image', 'alt' => ''));

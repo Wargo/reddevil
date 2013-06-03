@@ -1,5 +1,5 @@
 <?php
-$size = $mobileDevice?'s':'m';
+$size = $mobileDevice?'m':'m';
 $folder = explode('-', $main['Photo']['id']);
 $folder = substr($folder[1], 0, 3);
 $image = $this->Html->url('/img/Photo/' . $folder . '/' . $main['Photo']['id'] . ',fitCrop,964,542.jpg', array('class' => 'image', 'alt' => ''));
@@ -39,6 +39,25 @@ $(document).ready(function() {
 
 			$url = 'http://www.reddevilx.com' . $this->Html->url('/video/Trailer/mp4/'.$size.'/' . $Video['id']) . '.mp4';
 
+		}
+		if (false && $Video['id'] == '519b2590-2efc-4806-83e0-16bcbca5e1a6') {
+			$url = 'http://www.reddevilx.com' . $this->Html->url('/video/Trailer/mp4/'.$size.'/' . $Video['id']) . '.mp4';
+			?>
+			<script>
+				$(document).ready(function() {
+					$('#dialog').html('<h2 style="margin:20px;">Lo sentimos, la escena completa no estará disponible hasta dentro de unas horas</h2>');
+					$('#dialog').dialog({
+						width: 500,
+						modal: true,
+						buttons: {
+							Ok: function() {
+								$(this).dialog('close');
+							}
+						},
+					});
+				});
+			</script>
+			<?php
 		}
 		?>
 		<div id="flash_player">
