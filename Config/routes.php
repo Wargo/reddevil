@@ -27,6 +27,7 @@
  */
 	Router::connect('/', array('controller' => 'videos', 'action' => 'home'));
 
+	//Router::connect('/:subdomain/:controller/:action/*', array(), array('subdomain' => '[a-zA-Z0-9]'));
 
 	Router::connect('/videos/check_phone', array('controller' => 'videos', 'action' => 'check_phone'));
 	Router::connect('/videos/check_sms', array('controller' => 'videos', 'action' => 'check_sms'));
