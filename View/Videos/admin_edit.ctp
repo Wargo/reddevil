@@ -46,7 +46,14 @@ echo $this->Form->inputs(array(
 		'id' => 'datepicker',
 		'type' => 'text',
 		'value' => $id ? $this->request->data['Video']['published'] : '0000-00-00 00:00:00'
-	)
+	),
+	'site' => array(
+		'label' => __('Sitio web'),
+		'options' => array(
+			'reddevilx' => 'RedDevilX',
+			'glassman' => 'The Glassman Project',
+		)
+	),
 ));
 
 $c_fields = array('fieldset' => false);

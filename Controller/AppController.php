@@ -58,8 +58,6 @@ class AppController extends Controller {
 
 	function beforeFilter() {
 
-		//debug($this->params);
-
 		$this->Auth->allow('*');
 		parent::beforeFilter();	
 		if (!empty($this->params['admin'])) {

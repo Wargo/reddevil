@@ -27,7 +27,7 @@
  */
 	Router::connect('/', array('controller' => 'videos', 'action' => 'home'));
 
-	//Router::connect('/:subdomain/:controller/:action/*', array(), array('subdomain' => '[a-zA-Z0-9]'));
+	//Router::connect('/:subdomain/:controller/:action/*', array(), array('subdomain' => '[0-9]'));
 
 	Router::connect('/videos/check_phone', array('controller' => 'videos', 'action' => 'check_phone'));
 	Router::connect('/videos/check_sms', array('controller' => 'videos', 'action' => 'check_sms'));
@@ -43,6 +43,7 @@
 	Router::connect('/trailer/*', array('controller' => 'videos', 'action' => 'view'));
 
 	Router::connect('/video/*', array('controller' => 'videos', 'action' => 'view_video'));
+	//Router::connect('/:site/video/*', array('controller' => 'videos', 'action' => 'view_video'), array('site' => '[a-zA-Z0-9_]{1,30}'));
 
 	Router::connect('/webcams', array('controller' => 'cams', 'action' => 'index'));
 
