@@ -2,7 +2,7 @@
 $registered = ($this->Session->read('Auth.User.id') && strtotime($this->Session->read('Auth.User.caducidad'))>time());
 echo $this->element('Actor/profile', compact('Actor'));
 ?>
-<div class="actor_photos" id="gallery">
+<div class="actor_photos clearfix" id="gallery">
 	<?php
 	foreach ($photos as $photo) {
 

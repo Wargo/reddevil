@@ -105,12 +105,9 @@ if (!empty($this->request->data['Video']['has_video'])) {
 	echo $this->element('Videos/admin_brief', array('mode' => 'Video', 'data' => $this->request->data));
 }
 
-echo $this->Form->inputs(array(
-	'fieldset' => false,
-	'slug' => array(
-		'disabled' => true,
-	),
-));
-
+if (!empty($this->request->data['Video'])) {
+	echo '<div style="clear:both;"></div>';
+	echo $this->Html->link(__('Ir al vídeo'), array('admin' => false, 'controller' => 'videos', 'action' => 'view', $this->request->data['Video']['slug']), array('target' => '_blank'));
+}
 echo $this->Form->end(__('Guardar', true));
 echo $this->Html->link(__('Cancelar', true), array('controller' => 'videos', 'action' => 'index'));

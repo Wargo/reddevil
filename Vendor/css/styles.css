@@ -760,6 +760,8 @@ a.more_videos_button:hover {
  * Fotos por actriz
  */
 .actor_photos a {
+	display:block;
+	float:left;
 	margin:4px;
 }
 
