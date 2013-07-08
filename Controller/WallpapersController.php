@@ -50,6 +50,22 @@ class WallpapersController extends AppController {
 				move_uploaded_file($_FILES['data']['tmp_name']['Wallpaper']['file2'],
 					APP . 'uploads' . DS . 'img' . DS . 'Wallpaper2' . DS . $aux . DS . $avatar . '.jpg');
 			}
+
+			if (!empty($_FILES['data']['name']['Wallpaper']['file3'])) {
+				if ($avatar == 'placeholder') {
+					$avatar = String::uuid();
+					$this->request->data['Wallpaper']['avatar'] = $avatar;
+				}
+				$aux = explode('-', $avatar);
+				$aux = substr($aux[1], 0, 3);
+				if (!is_dir(APP . 'uploads' . DS . 'img' . DS . 'bg' . DS . $aux)) {
+					mkdir(APP . 'uploads' . DS . 'img' . DS . 'bg' . DS . $aux);
+				}
+				exec('rm -f ' . WWW_ROOT . 'img' . DS . 'bg' . DS . $aux . DS . $avatar . '*');
+				move_uploaded_file($_FILES['data']['tmp_name']['Wallpaper']['file3'],
+					APP . 'uploads' . DS . 'img' . DS . 'bg' . DS . $aux . DS . $avatar . '.jpg');
+			}
+			
 			$this->Wallpaper->save($this->request->data);
 			return $this->redirect(array('action' => 'index'));
 

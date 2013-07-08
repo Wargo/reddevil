@@ -22,6 +22,11 @@ echo $this->Form->inputs(array(
 		'type' => 'file',
 		'after' => $this->Html->image('Wallpaper2/' . $aux .'/' . $avatar . '.jpg', array('width' => 300))
 	),
+	'file3' => array(
+		'label' => __('Banner central'),
+		'type' => 'file',
+		'after' => $this->Html->image('bg/' . $aux .'/' . $avatar . '.jpg', array('width' => 300))
+	),
 	'video_id' => array('label' => __('Video asociado')),
 	'avatar' => array('type' => 'hidden', 'value' => $avatar)
 ));
