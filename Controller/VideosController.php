@@ -28,9 +28,14 @@ class VideosController extends AppController {
 					'slug' => $params['actor']
 				)
 			)));
-			$title_for_layout = sprintf(__('Vídeos de %s'), $Actor['name']);
-			$description_for_layout =  $Actor['description'];
+			$title_for_layout = $Actor['name']; //sprintf(__('Vídeos de %s'), $Actor['name']);
+			$description_for_layout =  strip_tags($Actor['description']);
 			$keywords_for_layout =  $Actor['name'];
+
+			if ($page > 1) {
+				$title_for_layout .= ' - ' . $page . 'ª ' . __('página');
+			}
+
 			$this->set(compact('description_for_layout', 'keywords_for_layout'));
 		} elseif ($params['category']) {
 			$title_for_layout = sprintf(__('Vídeos sobre %s'), ClassRegistry::init('Category')->field('name', array(
@@ -114,59 +119,6 @@ class VideosController extends AppController {
 
 		$total_seconds = 90;
 
-		/*
-
-		$this->loadModel('User');
-
-		if ($this->Cookie->read('user')) {
-			$user = $this->Cookie->read('user');
-			if (!$this->Auth->user('id')) {
-				$this->Auth->login($this->User->findById($user));
-			}
-		} else {
-			$user = mt_rand(1000000, 9999999);
-			//$this->User->register(array(
-			$this->User->Behaviors->detach('UserAccount');
-			$this->User->create();
-
-			$user_data = array(
-				'group' => 'guest',
-				'email' => $user . '@guest.com',
-				'password' => $user,
-				'confirm' => $user,
-				'active' => 0,
-				'username' => $user,
-				'first_name' => $user,
-				'last_name' => $user,
-				'ip' => $_SERVER['REMOTE_ADDR'],
-				'last_active' => date('Y-m-d H:i:s'),
-			);
-			$this->User->save($user_data);
-
-			$user = $this->User->id;
-			$this->Cookie->write('user', $user);
-
-			$aux = $this->User->findById($user);
-			$this->Auth->login($aux['User']);
-		}
-
-		$ch = curl_init('http://flashaccess2008.micropagos.net:8080/c2enopin/servlet/RequestListener?cid=' . Configure::read('CID') . '&uid=' . $user . '&pool=' . Configure::read('pool') . '&control=' . Configure::read('pass'));
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-		$phone = curl_exec($ch);
-
-		$ch = curl_init('http://213.27.137.219:8080/SMSGateway/SmsGateway2FlashIn?cid=' . Configure::read('CID_m') . '&uid=' . $user . '&pool=' . Configure::read('pool_m') . '&control=' . Configure::read('pass_m') . '&peticion=SI');
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-		$mobile = curl_exec($ch);
-
-		$mobile = explode('<SEPARATOR>', $mobile);
-		$text = $mobile[0];
-		$sms = str_replace('<SENDER>', '', $mobile[1]);
-
-		$this->Session->write('phone', $phone);
-		$this->Session->write('text', $text);
-		$this->Session->write('sms', $sms);
-		*/
-
 		$section = 'video';
 
 		if (!$video = $this->Video->findById($id)) {
@@ -195,12 +147,15 @@ class VideosController extends AppController {
 
 		$this->set(compact('Video', 'main', 'section', 'user', 'phone', 'text', 'sms', 'total_seconds', 'title_for_layout'));
 
-		//if ($this->Cookie->read('video_' . $Video['id']) > date('Y-m-d H:i:s', strtotime("-1 day"))) {
-
 		if ($this->Auth->user('caducidad') > date('Y-m-d H:i:s')) {
 
 			$this->validateAccess();
 
+		}
+
+		if ($Video['site'] == 'glassman') {
+			$this->layout = 'glassman';
+			return $this->render('glassman');
 		}
 
 		if ($this->request->is('ajax')) {
@@ -259,6 +214,7 @@ class VideosController extends AppController {
 		$conditions = array(
 			'active' => 1,
 			'published <=' => date('Y-m-d H:i:s'),
+			'site' => 'reddevilx',
 		);
 
 		$conditions['or'] = array(

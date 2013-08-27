@@ -19,6 +19,7 @@ $(function() {
 				'adv' => 1,
 				'Video.active' => 1,
 				'Video.published <' => date('Y-m-d H:i:s'),
+				'Video.site' => 'reddevilx',
 			),
 			'order' => ('rand()'),
 		));
@@ -30,6 +31,7 @@ $(function() {
 				'adv' => 0,
 				'Video.active' => 1,
 				'Video.published <' => date('Y-m-d H:i:s'),
+				'Video.site' => 'reddevilx',
 			),
 			'order' => ('rand()'),
 		));
@@ -139,7 +141,8 @@ echo $this->Html->link('
 			'conditions' => array(
 				'id !=' => $Video['id'],
 				'Video.active' => 1,
-				'published <=' => date('Y-m-d H:i:s')
+				'published <=' => date('Y-m-d H:i:s'),
+				'Video.site' => 'reddevilx',
 			),
 			'limit' => 3,
 			'order' => array('rand()'),

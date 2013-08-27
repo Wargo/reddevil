@@ -5,12 +5,10 @@
 	<title>
 		<?php echo $title_for_layout; ?>
 	</title>
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script> 
-	<script src="http://flesler-plugins.googlecode.com/files/jquery.scrollTo-1.4.3.1.js"></script> 
 	<link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,700' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
 	<link rel="stylesheet" href="http://releases.flowplayer.org/5.3.2/skin/minimalist.css" />
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 	<?php
 		echo $this->Html->meta('icon');
 
@@ -46,6 +44,8 @@
 	<?php echo $this->element('feedback'); ?>
 	<div class="hidden" id="dialog"></div>
 	<div class="hidden clearfix" id="register_dialog"></div>
+	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script> 
+	<script src="http://flesler-plugins.googlecode.com/files/jquery.scrollTo-1.4.3.1.js"></script> 
 	<?php
 	echo $this->element('js');
 	echo $this->element('analytics'); 

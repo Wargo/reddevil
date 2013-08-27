@@ -45,7 +45,7 @@ class PhotosController extends AppController {
 		
 		$this->paginate['limit'] = 12;
 		$this->paginate['page'] = $page;
-		$photos = $this->paginate('Photo', array('Photo.id' => $ids, 'Video.published <' => date('Y-m-d H:i:s'),  'Video.active' => 1, 'Photo.active' => 1));
+		$photos = $this->paginate('Photo', array('Photo.id' => $ids, 'Video.site' => 'reddevilx', 'Video.published <' => date('Y-m-d H:i:s'),  'Video.active' => 1, 'Photo.active' => 1));
 
 		$title_for_layout = sprintf(__('Fotos de %s'), $Actor['name']);
 		$description_for_layout =  $Actor['description'];

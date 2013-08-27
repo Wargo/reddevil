@@ -26,6 +26,10 @@ if ($pageCount > 1) {
 		$key = $value = null;
 		if (!empty($this->params['actor'])) {
 			$url['actor'] = $this->params['actor'];
+			$url['gender'] = $this->params['gender'];
+		}
+		if (!empty($this->params['category'])) {
+			$url['category'] = $this->params['category'];
 		}
 		if ($page > 1) {
 			$url['page'] = $page - 1;

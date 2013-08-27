@@ -1,7 +1,7 @@
 <div class="profile clearfix">
 	<div class="photo">
 		<?php
-		echo $this->Html->image('Actor/' . $Actor['id'] . ',fitInside,300,500.jpg', array());
+		echo $this->Html->image('Actor/' . $Actor['id'] . ',fitInside,300,500.jpg', array('alt' => $Actor['name'], 'title' => $Actor['name']));
 		?>
 	</div>
 	<div class="info">
@@ -13,7 +13,8 @@
 				$photos = ClassRegistry::init('Photo')->getPhotosByActor($Actor['id'], 6);
 				foreach ($photos as $photo) {
 					extract($photo);
-					echo $this->Html->image('Photo/' . $Photo['id'] . ',fitCrop,100,100.jpg', array());
+					$alt = ClassRegistry::init('Photo')->getTitle($Photo);
+					echo $this->Html->image('Photo/' . $Photo['id'] . ',fitCrop,100,100.jpg', array('alt' => $alt, 'title' => $alt));
 				}
 			}
 			?>

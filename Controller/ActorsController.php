@@ -1,6 +1,24 @@
 <?php
 class ActorsController extends AppController {
 
+	function index() {
+	
+		$actors = $this->Actor->find('all', array(
+			'conditions' => array(
+				//'active' => 1
+			),
+		));
+
+		$title_for_layout = __('Actores y actrices de RedDevilX');
+
+		$names = Set::extract('/Actor/name', $actors);
+
+		$description_for_layout = implode(', ', $names);
+
+		$this->set(compact('actors', 'title_for_layout', 'description_for_layout'));
+		
+	}
+
 	function admin_index() {
 		
 		$actors = $this->Actor->find('all');

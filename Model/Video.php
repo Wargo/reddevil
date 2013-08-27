@@ -44,9 +44,11 @@ class Video extends AppModel {
 		if (Configure::read('debug')) {
 			$conditions['published <='] = date('Y-m-d H:i:s');
 			$conditions['active'] = 1;
+			$conditions['site'] = 'reddevilx';
 		} else {
 			$conditions['published <='] = date('Y-m-d H:i:s');
 			$conditions['active'] = 1;
+			$conditions['site'] = 'reddevilx';
 		}
 
 

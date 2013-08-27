@@ -434,6 +434,11 @@ class UsersController extends AppController {
  * @return void
  */
 	public function login() {
+		if (!empty($this->request->data['User']['slug'])) {
+			$redirect = array('controller' => 'videos', 'action' => 'view', $this->request->data['User']['slug']);
+		} else {
+			$redirect = array('controller' => 'videos', 'action' => 'home');
+		}
 		if ($this->request->is('post')) {
 			if (!$this->Auth->login()) {
 				//Mirar si el usuario está en la tabla de la BD de NATS
@@ -467,16 +472,16 @@ class UsersController extends AppController {
 				$display = $this->User->display();
 				$this->_message(__('Bienvenido de nuevo %1$s.', $display), false, null);
 				if ($this->RequestHandler->isAjax() && !empty($this->params['refresh'])) {
-					return $this->redirect(array('controller' => 'videos', 'action' => 'video'));
+					return $this->redirect($redirect);
 				}
-				return $this->redirect(array('controller' => 'videos', 'action' => 'home'));
+				return $this->redirect($redirect);
 			} else {
 				$this->Session->setFlash(__('Email o contraseña incorrectos'));
 			}
 
 		} elseif ($this->Auth->user('id')) {
 			$user_group=$this->Auth->user('group');
-			return $this->redirect(array('controller' => 'videos', 'action' => 'home'));
+			return $this->redirect($redirect);
 		}
 
 		return $this->redirect(array('controller' => 'users', 'action' => 'register'));
@@ -536,17 +541,12 @@ class UsersController extends AppController {
  * @access public
  * @return void
  */
-	public function register() {
+	public function register($slug = null) {
 
 		$override = false;
 
 		if ($this->request->data) {
 			$this->_logout();
-			/*
-			if (!empty($this->request->data['User']['payment'])) {
-				$this->Session->write('payment', $this->request->data['User']['payment']);
-			}
-			*/
 
 			if (!empty($this->request->data['User']['slug'])) {
 				$slug = $this->request->data['User']['slug'];
@@ -554,24 +554,6 @@ class UsersController extends AppController {
 			} else {
 				$loginRedirect = array('controller' => 'videos', 'action' => 'home');	
 			}
-/*
-			if (!$this->Auth->login()) {
-				//Mirar si el usuario está en la tabla de la BD de NATS
-				$this->loadModel('NatsMember');
-				$this->NatsMember->importMembers();
-				$this->Auth->login();
-			}
-
-			if ($this->Auth->user('id')) {
-				if ($this->request->isAjax()) {
-					$this->set(compact('loginRedirect'));
-					$this->render('/Elements/Users/close_popup');
-					return true;
-				} else {
-					$this->_message(__('Bienvenido de nuevo.'), $loginRedirect, null);
-				}
-			}
-*/
 
 			$this->request->data['User']['group'] = 'user';
 			$this->request->data['User']['active'] = 1;
@@ -581,7 +563,7 @@ class UsersController extends AppController {
 					list($return, $message) = $this->User->register($this->request->data);
 					$this->Auth->login();
 					if ($return) {
-						$this->redirect('/');
+						$this->redirect($loginRedirect);
 					}
 				} else {
 
@@ -594,35 +576,8 @@ class UsersController extends AppController {
 				}
 			}
 			
-			/* Ya no hay registro automático, te envía a pagina de registro
-			$this->request->data['User']['group'] = 'normal';
-			$this->request->data['User']['active'] = 1;
-
-			$this->User->Behaviors->detach('MiUsers.UserAccount');
-			$this->User->create();
-			$return = $this->User->save($this->request->data);
-
-			$this->User->Behaviors->attach('MiUsers.UserAccount');
-			if ($return) {	
-				$this->Auth->login();	
-
-				if ($this->request->isAjax()) {
-					$this->render('/Elements/Users/payment');
-					return true;
-				} else {
-					$this->_message(__('Registro finalizado.'), $loginRedirect, null);
-				}
-			} else {
-				if ($this->request->isAjax()) {
-					$this->set('errors', $this->User->validationErrors);
-					$this->render('/Elements/Users/register');
-
-				} else {
-					$this->_message(__('Error al registrarse'), $loginRedirect, null, true);
-				}
-			}
-			*/
 		}
+		$this->set('slug', $slug);
 		$this->set('passwordPolicy', $this->User->passwordPolicy());
 		if ($this->request->isAjax()) {
 			$this->render('/Elements/Users/register');

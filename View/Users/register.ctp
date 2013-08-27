@@ -20,6 +20,10 @@ echo '<div style="float:right; width:380px; margin-right:0px;">';
 		'label' => __('Contraseña', true),
 	));
 
+	if (!empty($slug)) {
+		echo $this->Form->hidden('slug', array('value' => $slug));
+	}
+
 	echo $this->Form->submit(__('Acceder'));
 	echo $this->Form->end();
 
@@ -67,6 +71,10 @@ echo '<div style="float:right; width:380px; margin-right:0px;">';
 			'type' => 'radio',
 		)
 	));
+
+	if (!empty($slug)) {
+		echo $this->Form->hidden('slug', array('value' => $slug));
+	}
 
 	echo $this->Form->submit(__('Registrarse'));
 

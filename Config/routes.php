@@ -25,8 +25,14 @@
  * its action called 'display', and we pass a param to select the view file
  * to use (in this case, /app/View/Pages/home.ctp)...
  */
-	Router::connect('/', array('controller' => 'videos', 'action' => 'home'));
-
+	if ($_SERVER['HTTP_HOST'] == 'www.unpaisparafollarselo.reddevilx.com') {	
+		Router::connect('/', array('controller' => 'videos', 'action' => 'home', 
+			'category' => 'un-pais-para-follarselo', 'page' => '1' )
+		);
+	} else {
+		Router::connect('/', array('controller' => 'videos', 'action' => 'home'));	
+	}
+	
 	//Router::connect('/:subdomain/:controller/:action/*', array(), array('subdomain' => '[0-9]'));
 
 	Router::connect('/videos/check_phone', array('controller' => 'videos', 'action' => 'check_phone'));
@@ -57,9 +63,13 @@
 
 	Router::connect('/fotos-de/:actor/:page', array('controller' => 'photos', 'action' => 'view'));
 
+	Router::connect('/actriz/:actor', array('controller' => 'videos', 'action' => 'home', 'gender' => 0, 'page' => 1));
 	Router::connect('/actriz/:actor/:page', array('controller' => 'videos', 'action' => 'home', 'gender' => 0));
 
+	Router::connect('/actor/:actor', array('controller' => 'videos', 'action' => 'home', 'gender' => 1, 'page' => 1));
 	Router::connect('/actor/:actor/:page', array('controller' => 'videos', 'action' => 'home', 'gender' => 1));
+
+	Router::connect('/actores-y-actrices', array('controller' => 'actors', 'action' => 'index'));
 
 	Router::connect('/categoria/:category/:page', array('controller' => 'videos', 'action' => 'home'));
 
