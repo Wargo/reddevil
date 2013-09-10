@@ -69,7 +69,7 @@
 	Router::connect('/actor/:actor', array('controller' => 'videos', 'action' => 'home', 'gender' => 1, 'page' => 1));
 	Router::connect('/actor/:actor/:page', array('controller' => 'videos', 'action' => 'home', 'gender' => 1));
 
-	Router::connect('/actores-y-actrices', array('controller' => 'actors', 'action' => 'index'));
+	Router::connect('/chicas', array('controller' => 'actors', 'action' => 'index'));
 
 	Router::connect('/categoria/:category/:page', array('controller' => 'videos', 'action' => 'home'));
 

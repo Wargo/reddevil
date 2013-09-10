@@ -5,11 +5,12 @@ class ActorsController extends AppController {
 	
 		$actors = $this->Actor->find('all', array(
 			'conditions' => array(
+				'gender' => 0
 				//'active' => 1
 			),
 		));
 
-		$title_for_layout = __('Actores y actrices de RedDevilX');
+		$title_for_layout = __('Chicas de RedDevilX');
 
 		$names = Set::extract('/Actor/name', $actors);
 

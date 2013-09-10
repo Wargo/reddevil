@@ -19,6 +19,7 @@ foreach ($contacts as $contact) {
 		echo '<li>Email: ' . $Contact['email'] . '</li>';
 		echo '<li>Comentario: ' . $Contact['comment'] . '</li>';
 		echo '<li>Fecha: ' . $Contact['created'] . '</li>';
+		echo '<li>IP: ' . $Contact['ip'] . '</li>';
 
 	echo '</ul>';
 

@@ -34,6 +34,7 @@ class ContactsController extends AppController {
 			}
 
 			$this->request->data['Contact']['type'] = 'webmaster';
+			$this->request->data['Contact']['ip'] = $_SERVER['REMOTE_ADDR'];
 
 			$this->Contact->create();
 			if ($this->Contact->save($this->request->data)) {
@@ -73,6 +74,8 @@ class ContactsController extends AppController {
 				return $this->render('/Pages/wannabe');
 			}
 
+			$this->request->data['Contact']['ip'] = $_SERVER['REMOTE_ADDR'];
+
 			$this->Contact->create();
 			if ($this->Contact->save($this->request->data)) {
 				$this->Session->setFlash(__('Formulario enviado correctamente'), 'default', array('class' => 'notification'));
@@ -98,6 +101,7 @@ class ContactsController extends AppController {
 			$this->Contact->create();
 
 			$this->request->data['Contact']['type'] = 'feedback';
+			$this->request->data['Contact']['ip'] = $_SERVER['REMOTE_ADDR'];
 
 			$this->request->data['Contact']['country'] = $_SERVER['HTTP_USER_AGENT'];
 			$this->request->data['Contact']['name'] = $this->Auth->user('id');

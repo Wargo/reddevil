@@ -575,10 +575,12 @@ a.more_videos_button:hover {
 /*
  * Photos
  */
+.girls_page,
 .block_photos {
 	background:#000;
 	margin-bottom:20px;
 }
+.girls_page .title,
 .block_photos .title {
 	color:#FFF;
 	font-size:1.3em;
@@ -1151,4 +1153,24 @@ img.preload {
 }
 .actors a:hover {
 	text-decoration:underline;
+}
+
+.girl {
+	float: left;
+	width: 246px;
+	position: relative;
+	margin-bottom: 3px;
+}
+.girl .name {
+	text-align: center;
+	width: 100%;
+	position: absolute;
+	display: block;
+	bottom: 0;
+	height: 40px;
+	line-height: 40px;
+	font-weight: bold;
+	font-size: 1.1em;
+	background-color: rgba(0, 0, 0, 0.5);
+	color: #FFF;
 }
