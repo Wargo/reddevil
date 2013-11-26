@@ -5,9 +5,9 @@ class CamsController extends AppController {
 
 	function index() {
 
-		$title_for_layout = __('Webcams');
+		$title_for_layout = __('Webcams RedDevilX');
 
-		$description_for_layout = __('Webcams porno, chicas on-line');
+		$description_for_layout = __('Webcams porno, chicas on-line, desnudos en directo, sexo en vivo');
 
 		//$url = 'http://modelocam.com/spa/rooms/get_list/20/filter:altas.json';
 		$url_filters = 'http://modelocam.com/spa/filters/get_list.json';
@@ -20,7 +20,7 @@ class CamsController extends AppController {
 
 		$cams = $cams->data;
 
-		$this->set(compact('cams', 'title_for_layout'));
+		$this->set(compact('cams', 'title_for_layout', 'description_for_layout'));
 
 	}
 
@@ -35,8 +35,9 @@ class CamsController extends AppController {
 		$room = $room->data;
 
 		$title_for_layout = __('Webcam de') . ' ' . $room->Room->name;
+		$description_for_layout = __('Webcam de') . ' ' . $room->Room->name . ', ' . __('Webcams porno, chicas on-line, desnudos en directo, sexo en vivo');
 
-		$this->set(compact('room', 'title_for_layout'));
+		$this->set(compact('room', 'title_for_layout', 'description_for_layout'));
 
 	}
 

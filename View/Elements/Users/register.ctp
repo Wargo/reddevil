@@ -38,7 +38,7 @@ echo $this->Form->button(__('Acceder'), array('type'=>'submit', 'id' => 'submit_
 echo $this->Html->image('preload.gif', array('class' => 'hidden preload'));
 
 echo '<span class="text_big small" style="display:block; margin-left:10px; margin-top:20px;">' . __('Regístrate') . ':</span>';
-echo $this->Html->link('SMS', array('controller' => 'users', 'action' => 'register', $slug), array('class' => 'register_button'));
+echo $this->Html->link('SMS', array('controller' => 'users', 'action' => 'register', $slug), array('onclick' => 'return false;', 'class' => 'disabled register_button'));
 if ($this->Session->check('NatsCode')) {
 	$NatsCode = $this->Session->read('NatsCode');
 } else {

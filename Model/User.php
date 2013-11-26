@@ -184,4 +184,27 @@ class User extends AppModel {
 
 	}
 
+	function create_vip($user, $pass) {
+
+		//App::uses('Security', 'Utility');
+		//$sha1_pass = Security::hash($pass, null, true);
+
+		if ($this->findByUsername($user)) {
+			debug($user . ' ya existe');
+		} else {
+			$this->create();
+			$return = $this->save(array(
+				'username' => $user,
+				'confirm' => $pass,
+				'password' => $pass,
+				'group' => 'vip',
+				'active' => 1,
+				'email_verified' => 1,
+				'email' => $user . '_vip@reddevilx.com',
+			));
+			debug($return);
+		}
+
+	}
+
 }

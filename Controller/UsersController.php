@@ -484,7 +484,13 @@ class UsersController extends AppController {
 			return $this->redirect($redirect);
 		}
 
-		return $this->redirect(array('controller' => 'users', 'action' => 'register'));
+		//return $this->redirect(array('controller' => 'users', 'action' => 'register'));
+		if ($this->Session->check('NatsCode')) {
+			$NatsCode = $this->Session->read('NatsCode');
+		} else {
+			$NatsCode = Configure::read('NatsCode');
+		}
+		return $this->redirect('http://tour.reddevilx.com/signup/signup.php?nats='.$NatsCode.'&step=2');
 	/*	if (Configure::read()) {
 			$this->Session->setFlash('Debug only message: Save some tedium - check remember me.');
 		}*/

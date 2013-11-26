@@ -198,7 +198,7 @@ class Video extends AppModel {
 			$this->xml->append("\t".'</url>'."\r\n");
 
 			$this->xml->append("\t".'<url>'."\r\n");
-			$this->xml->append("\t\t".'<loc>' . $this->domain . Router::url(array('controller' => 'photos', 'action' => 'view', 'actor' => $Actor['slug'], 'gender' => $Actor['gender'], 'page' => 1)) . '</loc>' . "\r\n");
+			$this->xml->append("\t\t".'<loc>' . $this->domain . Router::url(array('controller' => 'photos', 'action' => 'view', 'actor' => $Actor['slug'], 'page' => 1)) . '</loc>' . "\r\n");
 			$this->xml->append("\t\t".'<lastmod>'.date('c').'</lastmod>'."\r\n");
 			$this->xml->append("\t".'</url>'."\r\n");
 
@@ -212,6 +212,29 @@ class Video extends AppModel {
 
 			$this->xml->append("\t".'<url>'."\r\n");
 			$this->xml->append("\t\t".'<loc>' . $this->domain . Router::url(array('controller' => 'videos', 'action' => 'home', 'category' => $Category['slug'], 'page' => 1)) . '</loc>' . "\r\n");
+			$this->xml->append("\t\t".'<lastmod>'.date('c').'</lastmod>'."\r\n");
+			$this->xml->append("\t".'</url>'."\r\n");
+
+		}
+
+		// Webcams
+
+		$url_filters = 'http://modelocam.com/spa/filters/get_list.json';
+
+		$url = 'http://modelocam.com/spa/rooms/get_list/80.json';
+
+		$ch = curl_init($url);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		$cams = json_decode(curl_exec($ch));
+
+		$cams = $cams->data;
+
+		foreach ($cams as $cam) {
+
+			$url = array('controller' => 'cams', 'action' => 'view', $cam->Room->nick);
+
+			$this->xml->append("\t".'<url>'."\r\n");
+			$this->xml->append("\t\t".'<loc>' . $this->domain . Router::url($url) . '</loc>' . "\r\n");
 			$this->xml->append("\t\t".'<lastmod>'.date('c').'</lastmod>'."\r\n");
 			$this->xml->append("\t".'</url>'."\r\n");
 

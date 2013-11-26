@@ -21,11 +21,13 @@
 			</video>
 		</a>
 		<script>
+		$(document).ready(function() {
 			$(".videoplayer").flowplayer({
 				tooltip: false,
 				key: '$397432013148639',
 				logo: '<?php echo $this->Html->url('/img/logo.png', true); ?>'
 			});
+		});
 		</script>
 		<?php
 	} else {
@@ -65,7 +67,9 @@
 
 		<script type="text/javascript">
 		//&lt;![CDATA[
-		$('a.profile_photos').colorbox();
+		$(document).ready(function() {
+			$('a.profile_photos').colorbox();
+		});
 		//]]&gt;
 		</script>
 	</div>
@@ -87,9 +91,11 @@
 				<?php echo $this->Html->link(__('Conectar'), array('controller' => 'cams', 'action' => 'go', $room->Room->code), array('id' => 'connect_manager_link')); ?>
 				<script type="text/javascript">
 				//<![CDATA[
-				$('a#connect_manager_link').colorbox();
-				$('a#connect_boton_verde').colorbox();
-				$('a#videoplayer').colorbox();
+				$(document).ready(function() {
+					$('a#connect_manager_link').colorbox();
+					$('a#connect_boton_verde').colorbox();
+					$('a#videoplayer').colorbox();
+				});
 				//]]>
 				</script>
 			</div>

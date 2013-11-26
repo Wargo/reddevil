@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-	$('.selected').click(function() {
+	$('._view_trailer.selected').click(function() {
 		return false;
 	});
 	$('.disabled').click(function() {

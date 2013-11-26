@@ -224,6 +224,7 @@ class VideosController extends AppController {
 
 		$this->paginate['limit'] = 3;
 		$this->paginate['page'] = $page;
+		$this->paginate['order'] = array('published' => 'desc');
 
 		$videos = $this->paginate('Video', $conditions);
 

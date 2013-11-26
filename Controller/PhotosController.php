@@ -43,7 +43,7 @@ class PhotosController extends AppController {
 			$page = !empty($this->params['named']['page']) ? $this->params['named']['page'] : 1;
 		}
 		
-		$this->paginate['limit'] = 12;
+		$this->paginate['limit'] = 48;
 		$this->paginate['page'] = $page;
 		$photos = $this->paginate('Photo', array('Photo.id' => $ids, 'Video.site' => 'reddevilx', 'Video.published <' => date('Y-m-d H:i:s'),  'Video.active' => 1, 'Photo.active' => 1));
 
@@ -57,7 +57,7 @@ class PhotosController extends AppController {
 
 	function admin_index() {
 		
-		$photos = $this->Photo->find('all', array('limit' => 150, 'order' => array('Video.created' => 'desc', 'order' => 'asc')));
+		$photos = $this->Photo->find('all', array('limit' => 0, 'order' => array('Video.created' => 'desc', 'order' => 'asc')));
 
 		$this->set(compact('photos'));
 
