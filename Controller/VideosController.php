@@ -538,4 +538,8 @@ fclose($file);
 
 	}
 
+	function sites() {
+		
+	}
+
 }

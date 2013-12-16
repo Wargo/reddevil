@@ -161,7 +161,7 @@ html[xmlns] .clearfix {
 	font-weight:bold;
 	display:block;
 	margin-left:20px;
-	padding:18px 25px;
+	padding:18px 15px;
 }
 .menu ul.menu_buttons li a.selected,
 .menu ul.menu_buttons li a:hover {
@@ -1173,4 +1173,32 @@ img.preload {
 	font-size: 1.1em;
 	background-color: rgba(0, 0, 0, 0.5);
 	color: #FFF;
+}
+
+.sites a {
+	margin: 20px;
+	padding-bottom: 20px;
+	display: block;
+	color: #333;
+	border-bottom: solid 1px #CCC;
+	-webkit-transition: all 0.3s ease 0s;
+	-moz-transition: all 0.3s ease 0s;
+	-o-transition: all 0.3s ease 0s;
+	transition: all 0.3s ease 0s;
+}
+.sites a:hover {
+	opacity: .4;
+}
+.sites a img {
+	float: left;
+	width: 400px;
+}
+.sites a h2 {
+	margin: 0;
+}
+.sites a h2,
+.sites a p {
+	width: 500px;
+	float: left;
+	margin-left: 20px;
 }

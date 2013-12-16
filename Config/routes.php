@@ -25,12 +25,35 @@
  * its action called 'display', and we pass a param to select the view file
  * to use (in this case, /app/View/Pages/home.ctp)...
  */
-	if ($_SERVER['HTTP_HOST'] == 'www.unpaisparafollarselo.reddevilx.com') {	
-		Router::connect('/', array('controller' => 'videos', 'action' => 'home', 
-			'category' => 'un-pais-para-follarselo', 'page' => '1' )
-		);
-	} else {
-		Router::connect('/', array('controller' => 'videos', 'action' => 'home'));	
+	switch ($_SERVER['HTTP_HOST']) {
+		case 'www.castings.reddevilx.com':
+			Router::connect('/', array('controller' => 'videos', 'action' => 'home', 
+				'category' => 'castings', 'page' => '1' )
+			);
+			break;
+		case 'www.pornstarschool.reddevilx.com':
+			Router::connect('/', array('controller' => 'videos', 'action' => 'home', 
+				'category' => 'pornstar-school', 'page' => '1' )
+			);
+			break;
+		case 'www.loschicosdelcable.reddevilx.com':
+			Router::connect('/', array('controller' => 'videos', 'action' => 'home', 
+				'category' => 'los-chicos-del-cable', 'page' => '1' )
+			);
+			break;
+		case 'www.glassman.reddevilx.com':
+			Router::connect('/', array('controller' => 'videos', 'action' => 'home', 
+				'category' => 'glassman', 'page' => '1' )
+			);
+			break;
+		case 'www.unpaisparafollarselo.reddevilx.com':
+			Router::connect('/', array('controller' => 'videos', 'action' => 'home', 
+				'category' => 'un-pais-para-follarselo', 'page' => '1' )
+			);
+			break;
+		default:
+			Router::connect('/', array('controller' => 'videos', 'action' => 'home'));	
+			break;
 	}
 	
 	//Router::connect('/:subdomain/:controller/:action/*', array(), array('subdomain' => '[0-9]'));
@@ -38,6 +61,7 @@
 	Router::connect('/videos/check_phone', array('controller' => 'videos', 'action' => 'check_phone'));
 	Router::connect('/videos/check_sms', array('controller' => 'videos', 'action' => 'check_sms'));
 	Router::connect('/videos/sitemap', array('controller' => 'videos', 'action' => 'sitemap'));
+	Router::connect('/series', array('controller' => 'videos', 'action' => 'sites'));
 
 	Router::connect('/videos/:page', array('controller' => 'videos', 'action' => 'home'));
 
