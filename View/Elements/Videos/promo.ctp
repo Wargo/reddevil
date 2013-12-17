@@ -1,9 +1,27 @@
 <?php
 
 switch ($_SERVER['HTTP_HOST']) {
+	case 'www.pornstarschool.reddevilx.com':
+		echo '<div class="link_promo">';
+			echo $this->Html->image('sites/pornstar.jpg', array());
+			echo $this->Html->link($this->Html->image('promo.png', array()), array('controller' => 'users', 'action' => 'profile'), array('escape' => false, 'class' => 'go_my_profile'));
+		echo '</div>';
+		break;
+	case 'www.glassman.reddevilx.com':
+		echo '<div class="link_promo">';
+			echo $this->Html->image('sites/glassman.jpg', array());
+			echo $this->Html->link($this->Html->image('promo.png', array()), array('controller' => 'users', 'action' => 'profile'), array('escape' => false, 'class' => 'go_my_profile'));
+		echo '</div>';
+		break;
+	case 'www.loschicosdelcable.reddevilx.com':
+		echo '<div class="link_promo">';
+			echo $this->Html->image('sites/chicos-del-cable.jpg', array());
+			echo $this->Html->link($this->Html->image('promo.png', array()), array('controller' => 'users', 'action' => 'profile'), array('escape' => false, 'class' => 'go_my_profile'));
+		echo '</div>';
+		break;
 	case 'www.unpaisparafollarselo.reddevilx.com':
 		echo '<div class="link_promo">';
-			echo $this->Html->image('h_uppf.jpg', array());
+			echo $this->Html->image('sites/pais.jpg', array());
 			echo $this->Html->link($this->Html->image('promo.png', array()), array('controller' => 'users', 'action' => 'profile'), array('escape' => false, 'class' => 'go_my_profile'));
 		echo '</div>';
 		break;
