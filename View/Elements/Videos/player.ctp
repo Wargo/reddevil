@@ -12,14 +12,21 @@ $(document).ready(function() {
 	if (FlashDetect.installed) {
 		//$('#html5').remove();
 	} else {
-		$('#flash_player').html('<div class="no_flash_detected"><?php echo __('Parece que no dispones del flash player, puedes descargártelo %s', $this->Html->link(__('aquí'), 'http://www.adobe.com/go/getflashplayer', array('target' => '_blank'))); ?></div>');
+		//$('#flash_player').html('<div class="no_flash_detected"><?php echo __('Parece que no dispones del flash player, puedes descargártelo %s', $this->Html->link(__('aquí'), 'http://www.adobe.com/go/getflashplayer', array('target' => '_blank'))); ?></div>');
 	}
 });
 </script>
 <div class="player">
-	<?php if (strpos(strtolower($_SERVER['HTTP_USER_AGENT']), 'ipod') || strpos(strtolower($_SERVER['HTTP_USER_AGENT']), 'ipad') || strpos(strtolower($_SERVER['HTTP_USER_AGENT']), 'iphone')) { ?>
+	<?php if (
+	strpos(strtolower($_SERVER['HTTP_USER_AGENT']), 'android') !== false || 
+	strpos(strtolower($_SERVER['HTTP_USER_AGENT']), 'ipod') || 
+	strpos(strtolower($_SERVER['HTTP_USER_AGENT']), 'ipad') || 
+	strpos(strtolower($_SERVER['HTTP_USER_AGENT']), 'iphone')) 
+	{ ?>
 		<div class="player_video" id="html5">
-			<video src="<?php echo $this->Html->url('/video/Trailer/mp4/'.$size.'/' . $Video['id']); ?>.mp4" controls="controls" width="964" height="542" poster="<?php echo $image; ?>"></video>
+			<video controls="controls" width="964" height="542" poster="<?php echo $image; ?>">
+				<source type="video/mp4" src="<?php echo $this->Html->url('/video/Trailer/mp4/'.$size.'/' . $Video['id']); ?>.mp4">
+			</video>
 		</div>
 	<?php } else { ?>
 		<div id="flash_player">

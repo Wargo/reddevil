@@ -12,7 +12,7 @@ class ConversionShell extends AppShell {
 		//'ogg' => array('folder' => 'ogg', 'sizes' => array('m')),
 		//'flv' => array('folder' => 'flv', 'sizes' => array('m', 's')), 
 		'flv' => array('folder' => 'flv', 'sizes' => array('m')), 
-		'mp4' => array('folder' => 'mp4', 'sizes' => array('m')),
+		'mp4' => array('folder' => 'mp4', 'sizes' => array('m', 's')),
 	);
 	
 	public function convert_all() {
@@ -61,8 +61,8 @@ class ConversionShell extends AppShell {
 				$res = '1280x720';
 				$bitrate = '2500k';
 			} elseif ($size = 's') {
-				$res = '480x270';
-				$bitrate = '700k';
+				$res = '600x330';
+				$bitrate = '900k';
 			}
 			
 			if ($reconvert && file_exists($output)) {

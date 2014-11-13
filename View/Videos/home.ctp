@@ -7,11 +7,21 @@ if (!empty($this->params['actor'])) {
 } else {
 	echo $this->element('Videos/promo');
 }
+
+$i = 0;
 foreach ($videos as $video) {
 	
 	extract($video);
 
 	echo $this->element('Videos/block', compact('Video'));
+
+	$i ++;
+	array_shift($videos);
+
+	if ($i >= 3) {
+		$more_videos = $videos;
+		break;
+	}
 
 }
 
@@ -52,7 +62,7 @@ if ($pageCount > 1) {
 	<?php
 }
 
-$more_videos = ClassRegistry::init('Video')->findMore($page, $conditions);
+//$more_videos = ClassRegistry::init('Video')->findMore($page, $conditions);
 if (count($more_videos)) {
 	?>
 	<div class="more_videos">
@@ -91,4 +101,16 @@ if (count($more_videos)) {
 		</div>
 	</div>
 	<?php
+}
+
+if ($registered) {
+	echo '
+	$(document).ready(function() {
+		<script>
+			$(\'.go_my_profile\').addClass(\'selected\');
+			setTimeout(function() {
+				load_popup();
+			}, 100);
+		</script>
+	});';
 }

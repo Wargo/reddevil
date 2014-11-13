@@ -2,13 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<?php echo $this->Html->charset(); ?>
-	<title>
-		<?php echo $title_for_layout; ?>
-	</title>
+	<title><?php echo $title_for_layout; ?></title>
 	<link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,700' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
 	<link rel="stylesheet" href="http://releases.flowplayer.org/5.3.2/skin/minimalist.css" />
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script type="text/javascript"><!--
+		if (top.location!=this.location) top.location='http://www.reddevilx.com';
+	//--></script>
 	<?php
 		echo $this->Html->meta('icon');
 

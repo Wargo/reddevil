@@ -8,6 +8,7 @@ class ActorsController extends AppController {
 				'gender' => 0
 				//'active' => 1
 			),
+			'order' => array('created' => 'desc'),
 		));
 
 		$title_for_layout = __('Chicas de RedDevilX');

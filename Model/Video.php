@@ -1,7 +1,7 @@
 <?php
 class Video extends AppModel {
 
-	var $limit = 3;
+	var $limit = 15;
 
 	var $domain = 'http://www.reddevilx.com';
 
@@ -40,7 +40,6 @@ class Video extends AppModel {
 			$conditions['id'] = $ids;
 		}
 
-		
 		if (Configure::read('debug')) {
 			$conditions['published <='] = date('Y-m-d H:i:s');
 			$conditions['active'] = 1;

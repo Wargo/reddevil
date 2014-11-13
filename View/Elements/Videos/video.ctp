@@ -17,7 +17,12 @@ $(document).ready(function() {
 });
 </script>
 <div class="player">
-	<?php if (strpos(strtolower($_SERVER['HTTP_USER_AGENT']), 'ipod') || strpos(strtolower($_SERVER['HTTP_USER_AGENT']), 'ipad') || strpos(strtolower($_SERVER['HTTP_USER_AGENT']), 'iphone')) { ?>
+	<?php if (
+		strpos(strtolower($_SERVER['HTTP_USER_AGENT']), 'android') !== false || 
+		strpos(strtolower($_SERVER['HTTP_USER_AGENT']), 'ipod') || 
+		strpos(strtolower($_SERVER['HTTP_USER_AGENT']), 'ipad') || 
+		strpos(strtolower($_SERVER['HTTP_USER_AGENT']), 'iphone')) 
+	{ ?>
 		<?php
 		if ($this->Session->read('Auth.User.caducidad') > date('Y-m-d H:i:s')) {
 			$link = Security::hash($this->Session->read('Auth.User.id') . '_' . $Video['id'], null, true);

@@ -3,7 +3,8 @@
 	<ul class="menu_buttons">
 		<li><?php echo $this->Html->link(__('Vídeos'), array('controller' => 'videos', 'action' => 'home'), array('class' => $this->params['controller'] == 'videos' && $this->params['action'] == 'home' ? 'selected' : '', 'title' => __('Vídeos'))); ?></li>
 		<li><?php echo $this->Html->link(__('Fotos'), array('controller' => 'photos', 'action' => 'index'), array('class' => $this->params['controller'] == 'photos' ? 'selected' : '', 'title' => __('Fotos'))); ?></li>
-		<li><?php echo $this->Html->link(__('Webcams'), array('controller' => 'cams', 'action' => 'index'), array('class' => $this->params['controller'] == 'cams' ? 'selected' : '', 'title' => __('Webcams'))); ?></li>
+		<li><?php echo $this->Html->link(__('Chicas'), array('controller' => 'actors', 'action' => 'index'), array('class' => $this->params['controller'] == 'actors' ? 'selected' : '', 'title' => __('Chicas'))); ?></li>
+		<li><?php echo $this->Html->link(__('Blog'), 'http://blog.reddevilx.com', array('target' => '_blank', 'title' => __('Blog'))); ?></li>
 		<li><?php echo $this->Html->link(__('Sitios'), array('controller' => 'videos', 'action' => 'sites'), array('class' => $this->params['controller'] == 'videos' && $this->params['action'] == 'sites' ? 'selected' : '', 'title' => __('Webcams'))); ?></li>
 		<?php
 		if ($this->Session->read('Auth.User.id')) {

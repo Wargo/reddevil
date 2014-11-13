@@ -11,6 +11,12 @@ class VideosController extends AppController {
 
 	function home() {
 
+		$registered = false;
+		if (!empty($this->params->query['registered'])) {
+			$registered = true;
+		}
+		$this->set(compact('registered'));
+
 		if (!empty($this->params['page'])) {
 			$page = $this->params['page'];
 		} else {
@@ -368,7 +374,7 @@ class VideosController extends AppController {
 				$this->redirect(array('controller' => 'archivos', 'action' => 'index'));
 			}
 		}
-		$videos = $this->Video->find('list');
+		$videos = $this->Video->find('list', array('order' => array('Video.title' => 'asc')));
 		$this->set(compact('videos'));
 		$this->set($this->params['named']);
 	}
