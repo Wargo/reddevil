@@ -26,5 +26,6 @@
 	}
 	echo '</div>';
 	?>
-	<div class="_download_text"></div>
+	<!--<div class="_download_text"></div>-->
+	<div style="display: block; margin: 20px auto; width: 220px; text-align: center;">Deshabilitado temporalmente</div>
 </div>

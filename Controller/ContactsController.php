@@ -108,6 +108,21 @@ class ContactsController extends AppController {
 
 			$this->Contact->save($this->request->data);
 
+			// Load model MiEmail y send_mail
+			$this->loadModel('MiEmail');
+			$data = array(
+				'to' => 'guillermo@artvisual.net',
+				'subject' => __('Contacto desde la web'),
+				'data' => $this->request->data,
+				'template' => 'contact',
+				'from' => 'noreply@reddevilx.com',
+				'from_user_id' => $this->Auth->user('id'),
+				'to_user_id' => $this->Auth->user('id'),
+				'type' => 'private',
+			);
+			$this->MiEmail->create();
+			$this->MiEmail->send($data);
+
 			if (!$this->request->is('ajax')) {
 				return $this->redirect('/');
 			}

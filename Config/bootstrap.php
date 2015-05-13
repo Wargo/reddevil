@@ -137,7 +137,7 @@ App::uses('Folder', 'Utility');
 
 
 define('MEDIA_TRANSFER', APP . 'uploads' . DS);
-
+define('USE_STREAMING',true);
 
 // 803
 /*

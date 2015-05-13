@@ -18,6 +18,7 @@ $(document).ready(function() {
 </script>
 <div class="player">
 	<?php if (
+		true || // force html5 for all platforms
 		strpos(strtolower($_SERVER['HTTP_USER_AGENT']), 'android') !== false || 
 		strpos(strtolower($_SERVER['HTTP_USER_AGENT']), 'ipod') || 
 		strpos(strtolower($_SERVER['HTTP_USER_AGENT']), 'ipad') || 
@@ -38,15 +39,27 @@ $(document).ready(function() {
 		if ($this->Session->read('Auth.User.caducidad') > date('Y-m-d H:i:s')) {
 
 			$link = Security::hash($this->Session->read('Auth.User.id') . '_' . $Video['id'], null, true);
-			$url = 'http://www.reddevilx.com' . $this->Html->url('/links/' . $this->Session->read('Auth.User.id') . '/' . $link . '_flv_m.flv');
+			
+			if(USE_STREAMING){
+				$url = 'links/' . $this->Session->read('Auth.User.id') . '/' . $link . '_flv_m.flv';
+			}
+			else{
+				$url = 'http://www.reddevilx.com' . $this->Html->url('/links/' . $this->Session->read('Auth.User.id') . '/' . $link . '_flv_m.flv');
+			}
 
 		} else {
 
-			$url = 'http://www.reddevilx.com' . $this->Html->url('/video/Trailer/mp4/'.$size.'/' . $Video['id']) . '.mp4';
+			if(USE_STREAMING){
+				$url = 'Trailer/flv/'.$size.'/' . $Video['id'] . '.flv';
+			}
+			else{
+				$url = 'http://www.reddevilx.com' . $this->Html->url('/video/Trailer/mp4/'.$size.'/' . $Video['id']) . '.mp4';
+			}
 
 		}
 		if (false && $Video['id'] == '519b2590-2efc-4806-83e0-16bcbca5e1a6') {
-			$url = 'http://www.reddevilx.com' . $this->Html->url('/video/Trailer/mp4/'.$size.'/' . $Video['id']) . '.mp4';
+			//$url = 'http://www.reddevilx.com' . $this->Html->url('/video/Trailer/mp4/'.$size.'/' . $Video['id']) . '.mp4';
+			$url = 'Trailer/mp4/'.$size.'/' . $Video['id'] . '.mp4';
 			?>
 			<script>
 				$(document).ready(function() {
@@ -86,6 +99,9 @@ $(document).ready(function() {
 						autoBuffering: true,
 						loop: false,
 						scaling:'fit',
+						<?php if(USE_STREAMING):?>
+						provider:'hddn',
+						<?php endif;?>
 						//url: 'http://www.reddevilx.com/video/Trailer/mp4/<?php echo $size; ?>/<?php echo $Video['id']; ?>.mp4'
 						url: '<?php echo $url; ?>'
 						//linkUrl: "http://tour.reddevilx.com/track/NC4xLjMuNS4wLjMxLjAuMC4w"
@@ -97,7 +113,15 @@ $(document).ready(function() {
 							scrubber: true,
 							mute: true,
 							fullscreen: true
-						}
+						},
+						<?php if(USE_STREAMING):?>
+						// here is our rtmp plugin configuration
+                                                hddn: {
+                                                    url: "http://toomuchmedia.reddevilx.com/flash/flowplayer.rtmp.swf",
+                                                    // netConnectionUrl defines where the streams are found
+                                                    netConnectionUrl: 'rtmp://reddevilx.com/reddevilx'
+                                                }
+						<?php endif;?>
 					}
 				});
 			}

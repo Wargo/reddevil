@@ -18,6 +18,7 @@ $(document).ready(function() {
 </script>
 <div class="player">
 	<?php if (
+	true || // force html5 for all platforms
 	strpos(strtolower($_SERVER['HTTP_USER_AGENT']), 'android') !== false || 
 	strpos(strtolower($_SERVER['HTTP_USER_AGENT']), 'ipod') || 
 	strpos(strtolower($_SERVER['HTTP_USER_AGENT']), 'ipad') || 
@@ -50,8 +51,14 @@ $(document).ready(function() {
 						autoBuffering: true,
 						loop: false,
 						scaling:'fit',
+						<?php if(USE_STREAMING):?>
+						provider: 'hddn',
 						//url: 'http://www.reddevilx.com/video/Trailer/mp4/<?php echo $size; ?>/<?php echo $Video['id']; ?>.mp4'
+						url: 'Trailer/flv/<?php echo $size; ?>/<?php echo $Video['id']; ?>.flv'
+						<?php else:?>
 						url: 'http://www.reddevilx.com/video/Trailer/flv/<?php echo $size; ?>/<?php echo $Video['id']; ?>.flv'
+						<?php endif;?>
+						//url: 'http://www.reddevilx.com/video/Trailer/flv/<?php echo $size; ?>/<?php echo $Video['id']; ?>.flv'
 						//linkUrl: "http://tour.reddevilx.com/track/NC4xLjMuNS4wLjMxLjAuMC4w"
 					}],
 					plugins: {
@@ -62,7 +69,15 @@ $(document).ready(function() {
 							scrubber: true,
 							mute: true,
 							fullscreen: true
-						}
+						},
+						<?php if(USE_STREAMING):?>
+        					// here is our rtmp plugin configuration
+					        hddn: {
+					            url: "http://toomuchmedia.reddevilx.com/flash/flowplayer.rtmp.swf",
+					            // netConnectionUrl defines where the streams are found
+					            netConnectionUrl: 'rtmp://reddevilx.com/reddevilx'
+        					}
+						<?php endif;?>
 					}
 				});
 			}

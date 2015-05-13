@@ -54,6 +54,9 @@ echo $this->Form->inputs(array(
 			'glassman' => 'The Glassman Project',
 		)
 	),
+	'duration' => array(
+		'label' => __('Duración'),
+	),
 ));
 
 $c_fields = array('fieldset' => false);

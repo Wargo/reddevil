@@ -101,6 +101,9 @@ echo '<p class="actors">';
 	}
 	echo __('Actores:') . ' ' . implode(', ', $links);
 echo '</p>';
+echo '<p class="actors">';
+	echo $Video['description'];
+echo '</p>';
 ?>
 <div class="preview_photos">
 	<?php
